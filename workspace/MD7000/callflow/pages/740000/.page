@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@2371377:1470743622599" name="740000" version="6.0.1">
+<element height="46" id="Element@26636391:1470743622599" name="740000" type="Page Entry" width="92" x="307" y="-47">
+<exit_states>
+<exit_state name="next" target="Element@27979597:1470744631682"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10804595:1470744631682" name="HIGH" type="Page Connector" width="79" x="56" y="622">
+<page_connector target="Element@6454614:1470892236370">HIGH<config/>
+</page_connector>
+</element>
+<element height="75" id="Element@25617698:1470744631682" type="Comment" width="213" x="432" y="522">
+<comment><![CDATA[[740003] 
+ARS 주문비밀번호 변경은 1번, 
+계좌비밀번호 변경은 2번, 
+다시듣기는 별표, 상담직원 연결은 0번, 
+이전단계는 우물정자를 눌러주세요.]]></comment>
+</element>
+<element height="46" id="Element@3291035:1470744631682" name="MAIN" type="Page Connector" width="81" x="638" y="635">
+<page_connector target="Element@3553551:1470743142115">MAIN<config/>
+</page_connector>
+</element>
+<element height="15" id="Element@22100961:1470744631682" type="Comment" width="233" x="38" y="423">
+<comment><![CDATA[[740001] 각종비밀번호 변경 서비스입니다.]]></comment>
+</element>
+<element height="46" id="Element@30763171:1470744631682" name="740000_740003" type="Subflow Call" width="139" x="283" y="563">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT7/740003.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">*#0129</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@3642178:1470744631682"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5371762:1470744631682" name="AGENT" type="Page Connector" width="92" x="634" y="693">
+<page_connector target="Element@26778672:1470743142115">AGENT<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@12789129:1470744631682" name="740000_740001" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="283" y="388">
+<exit_states>
+<exit_state name="done" target="Element@9755745:1470744881000"/>
+</exit_states>
+</element>
+<element height="15" id="Element@31448128:1470744631682" type="Comment" width="54" x="-266" y="1633">
+<comment><![CDATA[Comment]]></comment>
+</element>
+<element height="46" id="Element@3642178:1470744631682" name="740000_Decision_740003" type="Decision" width="190" x="261" y="693">
+<exit_states>
+<exit_state name="0 : 상담원연결" target="Element@5371762:1470744631682"/>
+<exit_state name="false : MAX ERROR" target="Element@3291035:1470744631682"/>
+<exit_state name="* : 재청취" target="Element@30763171:1470744631682">
+<bendpoint>
+<dim1 x="-111" y="-52"/>
+<dim2 x="-110" y="39"/>
+</bendpoint>
+</exit_state>
+<exit_state name="# : 상위메뉴" target="Element@10804595:1470744631682"/>
+<exit_state name="other" target="Element@29333293:1474878855403"/>
+<exit_state name="9 : 음성인식" target="Element@29940374:1470744631682"/>
+<exit_state name="1 : ARS주문비밀번호변경" target="Element@32645253:1470744977906"/>
+<exit_state name="2 : 계좌비밀번호변경" target="Element@11379334:1470744982696"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29940374:1470744631682" name="VOICE" type="Page Connector" width="87" x="78" y="753">
+<page_connector target="Element@12321120:1470743142115">VOICE<config/>
+</page_connector>
+</element>
+<element height="135" id="Element@17021656:1470744631682" type="Comment" width="151" x="93" y="-129">
+<comment><![CDATA[[시나리오정보]
+작성자 : 배은희
+작성일 : 2016년 8월 9일
+메뉴명 : 각종 비밀번호 변경
+서비스코드 : 740000
+
+[세션변수 사용내역]
+m_strDTMF : DTMF 입력값
+m_EndType : End 타입]]></comment>
+</element>
+<element height="46" id="Element@27979597:1470744631682" name="740000_ServiceCode" src="Element.Utils.EUSetSvcCode" type="Action Element" width="164" x="271" y="61">
+<exit_states>
+<exit_state name="done" target="Element@15556388:1476512930637"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9755745:1470744881000" name="740000_m_iSRMoveFlag" src="Element.Utils.EUSetSessionValue" type="Action Element" width="183" x="262" y="472">
+<exit_states>
+<exit_state name="done" target="Element@30763171:1470744631682"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32645253:1470744977906" name="741000" type="Page Connector" width="92" x="169" y="838">
+<page_connector target="Element@14979222:1470743624424">741000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@11379334:1470744982696" name="742000" type="Page Connector" width="92" x="462" y="839">
+<page_connector target="Element@20010882:1470743625220">742000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@29333293:1474878855403" name="END" type="Page Connector" width="79" x="635" y="587">
+<page_connector target="Element@13471862:1470743142115">END<config/>
+</page_connector>
+</element>
+<element height="15" id="Element@17143379:1476512930637" type="Comment" width="161" x="754" y="85">
+<comment><![CDATA[[740003] : 발신번호 금지번호]]></comment>
+</element>
+<element height="46" id="Element@15556388:1476512930637" name="740000_CV1_Check" type="Decision" width="158" x="274" y="129">
+<exit_states>
+<exit_state name="F : 해외전화" target="Element@84871:1476512930637"/>
+<exit_state name="P : 공중전화or발신제한전화" target="Element@1045071:1476512930637"/>
+<exit_state name="other" target="Element@11493658:1476512930637"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11493658:1476512930637" name="740000_m_strAnyFlag_3" src="Element.Utils.EUSetSessionValue" type="Action Element" width="181" x="262" y="194">
+<exit_states>
+<exit_state name="done" target="Element@20259649:1476516633892"/>
+</exit_states>
+</element>
+<element height="46" id="Element@84871:1476512930637" name="740000_m_strAnyFlag_4" src="Element.Utils.EUSetSessionValue" type="Action Element" width="181" x="493" y="129">
+<exit_states>
+<exit_state name="done" target="Element@27712279:1476512930637"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1045071:1476512930637" name="740000_m_strAnyFlag_2" src="Element.Utils.EUSetSessionValue" type="Action Element" width="181" x="499" y="194">
+<exit_states>
+<exit_state name="done" target="Element@27712279:1476512930637"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24762724:1476512930637" name="MAIN" type="Page Connector" width="81" x="931" y="129">
+<page_connector target="Element@3553551:1470743142115">MAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@27712279:1476512930637" name="740000_740002" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="735" y="129">
+<exit_states>
+<exit_state name="done" target="Element@24762724:1476512930637"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27110689:1476516633892" name="740000_m_iSRPlayFlag_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="192" x="611" y="291">
+<exit_states>
+<exit_state name="done" target="Element@9755745:1470744881000"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20259649:1476516633892" name="740000_m_iSRPlayFlag_Check" type="Decision" width="219" x="243" y="291">
+<exit_states>
+<exit_state name="other" target="Element@12789129:1470744631682"/>
+<exit_state name="Y : 음성인식" target="Element@27110689:1476516633892"/>
+</exit_states>
+</element>
+</page>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@24351093:1476670707636" name="Decision_CheckServiceCode" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="Decision_CheckServiceCode" default_exit_state="other">
+        <exit_state name="MDA000" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strSvcCode" />
+                </data>
+                <constant_string value="MDA000" />
+            </string>
+        </exit_state>
+        <exit_state name="MD2000:시세" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strSvcCode" />
+                </data>
+                <constant_string value="MD2000" />
+            </string>
+        </exit_state>
+        <exit_state name="MD3000:주문/체결내역" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strSvcCode" />
+                </data>
+                <constant_string value="MD3000" />
+            </string>
+        </exit_state>
+        <exit_state name="MD1000:빠른말 안내" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strSvcCode" />
+                </data>
+                <constant_string value="MD1000" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

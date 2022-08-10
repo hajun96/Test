@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@31796175:1482734998061" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1482734998061" name="workingTime" type="Subflow Start" width="119" x="230" y="30">
+<exit_states>
+<exit_state name="next" target="Element@32059701:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1262943:1482735009831" name="SetMultiSetValue_Saturday" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="201" x="72" y="699">
+<exit_states>
+<exit_state name="done" target="Element@19881986:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19881986:1482735009831" name="Decision_WorkingTimeCheck" type="Decision" width="214" x="442" y="623">
+<exit_states>
+<exit_state name="업무시간:Y" target="Element@2318341:1482735009831"/>
+<exit_state name="업무시간외:N" target="Element@21519707:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21519707:1482735009831" name="SetVar_WorkingTime_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="181" x="596" y="769">
+<exit_states>
+<exit_state name="done" target="Element@7667430:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23895662:1482735009831" name="EUMultiOutputBlock_01" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="470" y="516">
+<exit_states>
+<exit_state name="done" target="Element@19881986:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@110613:1482735009831" name="SetMultiSetValue_WEEK" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="185" x="80" y="618">
+<exit_states>
+<exit_state name="done" target="Element@19881986:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26812990:1482735009831" name="EFINIReader_endTime_01" src="Element.File.EFINIReader" type="Action Element" width="194" x="-236" y="628">
+<exit_states>
+<exit_state name="done" target="Element@9912409:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6246508:1482735009831" name="SetMultiSetValue_Sunday" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="194" x="76" y="787">
+<exit_states>
+<exit_state name="done" target="Element@19881986:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9912409:1482735009831" name="EDWeekCheck_01" src="Element.Decision.EDWeekCheck" type="Decision Element" width="150" x="-213" y="752">
+<exit_states>
+<exit_state name="week" target="Element@110613:1482735009831"/>
+<exit_state name="saturday" target="Element@1262943:1482735009831"/>
+<exit_state name="sunday" target="Element@6246508:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1405580:1482735009831" name="EFINIReader_startTime_01" src="Element.File.EFINIReader" type="Action Element" width="197" x="-238" y="535">
+<exit_states>
+<exit_state name="done" target="Element@26812990:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26830740:1482735009831" name="EUGetDateTime_Today_YYYMMDD" src="Element.Utils.EUGetDateTime" type="Action Element" width="249" x="175" y="289">
+<exit_states>
+<exit_state name="done" target="Element@17803546:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32059701:1482735009831" name="SubString" src="Element.Strings.EUStringSubString" type="Action Element" width="170" x="208" y="127">
+<exit_states>
+<exit_state name="done" target="Element@10333254:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10333254:1482735009831" name="EUSetSessionValue_01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="203" y="214">
+<exit_states>
+<exit_state name="done" target="Element@26830740:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17803546:1482735009831" name="EUGetDateTime_Today_HHMM" src="Element.Utils.EUGetDateTime" type="Action Element" width="225" x="187" y="365">
+<exit_states>
+<exit_state name="done" target="Element@19331819:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7667430:1482735009831" name="Subflow Return_01" type="Subflow Return" width="153" x="492" y="883"/>
+<element height="46" id="Element@2318341:1482735009831" name="SetVar_WorkingTime_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="392" y="769">
+<exit_states>
+<exit_state name="done" target="Element@7667430:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19331819:1482735009831" name="EUSetMultiSessionValue_02" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="196" y="446">
+<exit_states>
+<exit_state name="done" target="Element@17486381:1482735009831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17486381:1482735009831" name="ENOracleDB_01" src="Element.DataBase.ENOracleDB" type="Decision Element" width="138" x="230" y="534">
+<exit_states>
+<exit_state name="success" target="Element@23895662:1482735009831"/>
+<exit_state name="fail" target="Element@1405580:1482735009831"/>
+</exit_states>
+</element>
+</page>

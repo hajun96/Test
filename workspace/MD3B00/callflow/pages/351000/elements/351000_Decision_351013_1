@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@4542271:1476097478520" name="351000_Decision_351013_1" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="351000_Decision_351013_1" default_exit_state="other">
+        <exit_state name="1 : 주문전송" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="1" />
+            </string>
+        </exit_state>
+        <exit_state name="* : 주문취소" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="*" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

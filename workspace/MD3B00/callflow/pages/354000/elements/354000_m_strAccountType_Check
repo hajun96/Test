@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@9061010:1477901880741" name="354000_m_strAccountType_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="354000_m_strAccountType_Check" default_exit_state="other">
+        <exit_state name="020 : CMA 약정 계좌" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strAccountType" />
+                </data>
+                <constant_string value="020" />
+            </string>
+        </exit_state>
+        <exit_state name="022 : CMA 미약정 계좌" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strAccountType" />
+                </data>
+                <constant_string value="022" />
+            </string>
+        </exit_state>
+        <exit_state name="033 : 금융상품 계좌" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strAccountType" />
+                </data>
+                <constant_string value="033" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

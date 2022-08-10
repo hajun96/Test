@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE knowledge_base SYSTEM "../../../../../dtds/DecisionKnowledgeBase.dtd">
+<knowledge_base>
+    <rule default_exit_state="other" name="jumun_pw_auth_No_Agreement_Decision">
+        <exit_state conjugate="and" name="0 : 상담원연결">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF"/>
+                </data>
+                <constant_string value="0"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="# : 상위메뉴">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF"/>
+                </data>
+                <constant_string value="#"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="입력오류">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF"/>
+                </data>
+                <constant_string value="false"/>
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>

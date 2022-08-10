@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE knowledge_base SYSTEM "../../../../dtds/DecisionKnowledgeBase.dtd">
+<knowledge_base>
+    <rule default_exit_state="그외" name="ASR_MAIN_Decision_JongmokCheck">
+        <exit_state conjugate="and" name="0:유효함">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF"/>
+                </data>
+                <constant_string value="0"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="C:에러">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF"/>
+                </data>
+                <constant_string value="C"/>
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@28250947:1478075806467" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1478075806467" name="asr_input" type="Subflow Start" width="98" x="140" y="-1">
+<exit_states>
+<exit_state name="next" target="Element@28509435:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1558305:1478075836886" name="Subflow Return_ASR_SERVER_FAIL" type="Subflow Return" width="250" x="-356" y="759"/>
+<element height="46" id="Element@12215844:1478075836886" name="EULogWrite_START" src="Element.Utils.EULogWrite" type="Action Element" width="166" x="109" y="191">
+<exit_states>
+<exit_state name="done" target="Element@25677328:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16814643:1478075836886" name="Hold_Music" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="116" x="421" y="484">
+<exit_states>
+<exit_state name="done" target="Element@11249388:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15309823:1478075836886" name="Record_Voice" src="com.audium.server.voiceElement.record.MRecord" type="Voice Element" width="152" x="118" y="484">
+<exit_states>
+<exit_state name="done" target="Element@16814643:1478075836886"/>
+<exit_state name="max_noinput" target="Element@8294747:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13915252:1478075836886" name="ASR_REG_FAIL_END" type="Subflow Return" width="167" x="614" y="573"/>
+<element height="46" id="Element@5268314:1478075836886" name="LogWrite_Fail" src="Element.Utils.EULogWrite" type="Action Element" width="124" x="-293" y="568">
+<exit_states>
+<exit_state name="done" target="Element@27971014:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25677328:1478075836886" name="EUGetDateTime" src="Element.Utils.EUGetDateTime" type="Action Element" width="139" x="124" y="304">
+<exit_states>
+<exit_state name="done" target="Element@23829788:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23829788:1478075836886" name="EUSetSessionValue_01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="-145" y="344">
+<exit_states>
+<exit_state name="done" target="Element@18620364:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22798255:1478075836886" name="EUSetMultiSessionValue_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="90" y="681">
+<exit_states>
+<exit_state name="done" target="Element@17980439:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27971014:1478075836886" name="EUSetMultiSessionValue_ServerFail" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="251" x="-357" y="674">
+<exit_states>
+<exit_state name="done" target="Element@1558305:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8294747:1478075836886" name="ASR_REG_FAIL" type="Page Connector" width="147" x="-144" y="484">
+<page_connector target="Element@32813844:1478075836886">ASR_REG_FAIL<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18620364:1478075836886" name="EULogWrite_ASRFileName" src="Element.Utils.EULogWrite" type="Action Element" width="198" x="95" y="400">
+<exit_states>
+<exit_state name="done" target="Element@24715233:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28509435:1478075836886" name="initValues" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="149" x="119" y="95">
+<exit_states>
+<exit_state name="done" target="Element@12215844:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1632800:1478075836886" name="ASR_INPUT_AGAIN" type="Page Entry" width="159" x="399" y="295">
+<exit_states>
+<exit_state name="next" target="Element@25677328:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17980439:1478075836886" name="DTMF_Subflow Return_SUCCESS" type="Subflow Return" width="239" x="74" y="769"/>
+<element height="46" id="Element@24715233:1478075836886" name="Hold_Music_1" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="128" x="415" y="400">
+<exit_states>
+<exit_state name="done" target="Element@15309823:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11249388:1478075836886" name="EAASRChecker_vagel_01" src="Element.Audio.EAASRChecker_vagel" type="Decision Element" width="191" x="98" y="567">
+<exit_states>
+<exit_state name="success" target="Element@22798255:1478075836886"/>
+<exit_state name="fail" target="Element@5268314:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6030124:1478075836886" name="SetValue_ResultErr" src="Element.Utils.EUSetSessionValue" type="Action Element" width="207" x="594" y="472">
+<exit_states>
+<exit_state name="done" target="Element@13915252:1478075836886"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32813844:1478075836886" name="ASR_REG_FAIL" type="Page Entry" width="147" x="627" y="353">
+<exit_states>
+<exit_state name="next" target="Element@6030124:1478075836886"/>
+</exit_states>
+</element>
+<element height="90" id="Element@32137405:1478076541703" type="Comment" width="681" x="371" y="63">
+<comment><![CDATA[### 음성인식 Element/시나리오 개발
+mode관련
+TASK0 : 핵심어 형식으로 "종목명, "메뉴명"이외에 고객 발성 패턴이 반영되어 있음. 주로 핵심어 단어들이 등록되어 있음.
+TASK1 : 단답형 형식으로 "종목명" "메뉴명"등의 고객발성 패턴이 반영되어 있고, 주로 자주 발성하는 단어/문장 형태들이 등록.
+TASK2 : "주문" 인식 후 / 현금매도/,/현금매수/의 인식어휘세트
+TASK23 : 예/ 아니오 관련 인식어휘 세트]]></comment>
+</element>
+</page>

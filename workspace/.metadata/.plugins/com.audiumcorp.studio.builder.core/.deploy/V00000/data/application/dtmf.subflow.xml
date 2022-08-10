@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE call_flow SYSTEM "../../../../dtds/Callflow_1-1.dtd">
+<call_flow first_element="dtmf" serial="0000" version="1.1">
+<events/>
+<element_def name="dtmf">
+<subflow_start class="com.audium.server.voiceElement.SubflowStartElement">
+<static>dtmf.xml</static>
+</subflow_start>
+<exit_state name="next">
+<next_element>dtmf_ERR</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_DTMF_false_Log">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>dtmf_DTMF_false_Log.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_m_strDTMF_false_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="# : TERMCHAR">
+<next_element>dtmf_Length</next_element>
+</exit_state>
+<exit_state name="* : TERMCHAR">
+<next_element>dtmf_Length</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>dtmf_DTMF_Append</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_One_Char">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF_One_Char.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>menu_m_strDTMF_One_Char</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_Length_zero">
+<action>
+<class src="Element.Strings.EUStringLength">
+<static>dtmf_Length_zero.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_First_Input_Check_zero</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_Check_Star">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="* : TERMCHAR">
+<next_element>dtmf_DTMF_Append_zero</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>dtmf_Length_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_Log">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>m_strDTMF_Log.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>menu_m_strDTMF_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_Audio">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="dtmf_Audio.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>dtmf_Digit</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_MAXDIGIT">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="MAXDIGIT">
+<next_element>m_strDTMF_Star_Check</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>dtmf_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_MAXDIGIT_num">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="MAXDIGIT">
+<next_element>dtmf_OPTION_num</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>dtmf_Digit</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_g_nCount_Increment">
+<action>
+<class src="Element.Utils.EUCountIncrement">
+<static>dtmf_g_nCount_Increment.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_MaxError_Compare</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_Length_m_strDTMF">
+<action>
+<class src="Element.Strings.EUStringLength">
+<static>dtmf_Length_m_strDTMF.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_MAXDIGIT_num</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_Check_zero">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="0 : TERMCHAR">
+<next_element>dtmf_Length_zero</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>dtmf_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_Audio</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_NoInput_Audio">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="dtmf_NoInput_Audio.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>dtmf_g_nCount_Increment</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_Length_MAXDIGIT">
+<action>
+<class src="Element.Strings.EUStringLength">
+<static>dtmf_Length_MAXDIGIT.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_MAXDIGIT</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_Star_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="* 포함">
+<next_element>dtmf_NoMatch_Log</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strDTMF_Log</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_MaxError_Compare">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="retry">
+<next_element>dtmf_Retry_Audio</next_element>
+</exit_state>
+<exit_state name="maxerror">
+<next_element>dtmf_MaxError_Log</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_First_Input_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="0 : 첫 입력">
+<next_element>m_strDTMF_One_Char</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>dtmf_Check_Star</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_PATTERN">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="other">
+<next_element>dtmf_NoMatch_Log</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>dtmf_OPTION</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_MaxError_Retry">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="dtmf_MaxError_Retry.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>dtmfDTMF_false</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_First_Input_Check_zero">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="0 : 첫 입력">
+<next_element>dtmf_Length</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>dtmf_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_NoInput_Log">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>dtmf_NoInput_Log.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_NoInput_Audio</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmfDTMF_false">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>dtmfDTMF_false.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_DTMF_false_Log</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_g_nCount_zero">
+<action>
+<class src="Element.Utils.EUCountClear">
+<static>dtmf_g_nCount_zero.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>m_strDTMF</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_OPTION">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="num">
+<next_element>dtmf_Length_MAXDIGIT</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>dtmf_Length_MAXDIGIT</next_element>
+</exit_state>
+<exit_state name="sharp">
+<next_element>dtmf_Length_MAXDIGIT</next_element>
+</exit_state>
+<exit_state name="zero">
+<next_element>dtmf_Check_zero</next_element>
+</exit_state>
+<exit_state name="numsharp">
+<next_element>dtmf_Check_numsharp</next_element>
+</exit_state>
+<exit_state name="zeromenu">
+<next_element>dtmf_Length</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_m_strDTMF_false_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>dtmf_m_strDTMF_false_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="dtmf_Digit">
+<voice class="com.audium.server.voiceElement.digit.MBasicDigit">
+<dynamic default="dtmf_Digit.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="max_noinput">
+<next_element>dtmf_NoInput_Log</next_element>
+</exit_state>
+<exit_state name="max_nomatch">
+<next_element>dtmf_NoMatch_Log</next_element>
+</exit_state>
+<exit_state name="done">
+<next_element>dtmf_PATTERN</next_element>
+</exit_state>
+</element_def>
+<element_def name="menu_m_strDTMF_One_Char">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>menu_m_strDTMF_One_Char.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="menu_m_strDTMF_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>menu_m_strDTMF_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="dtmf_ERR">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="Y">
+<next_element>dtmf_g_nCount_Increment</next_element>
+</exit_state>
+<exit_state name="N">
+<next_element>dtmf_g_nCount_zero</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_MaxError_Sorry">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="dtmf_MaxError_Sorry.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>dtmf_MaxError_Retry</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_Length">
+<action>
+<class src="Element.Strings.EUStringLength">
+<static>dtmf_Length.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_First_Input_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_Retry_Audio">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="dtmf_Retry_Audio.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>m_strDTMF</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_DTMF_Append_zero">
+<action>
+<class src="Element.Strings.EUStringAppend">
+<static>dtmf_DTMF_Append_zero.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_Length_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_NoMatch_Log">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>dtmf_NoMatch_Log.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_NoMatch_Audio</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_OPTION_num">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="num">
+<next_element>m_strDTMF_Star_Check</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>dtmf_Digit</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_Length_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="초과">
+<next_element>dtmf_NoMatch_Log</next_element>
+</exit_state>
+<exit_state name="미만">
+<next_element>dtmf_NoMatch_Log</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strDTMF_Star_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_MaxError_NoTTS">
+<voice class="com.audium.server.voiceElement.digit.MBasicDigit">
+<static>dtmf_MaxError_NoTTS.xml</static>
+</voice>
+<exit_state name="max_noinput">
+<next_element>dtmf_MaxError_Sorry</next_element>
+</exit_state>
+<exit_state name="max_nomatch">
+<next_element>dtmf_MaxError_Sorry</next_element>
+</exit_state>
+<exit_state name="done">
+<next_element>dtmf_MaxError_Sorry</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_MaxError_Log">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>dtmf_MaxError_Log.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_MaxError_NoTTS</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_DTMF_Append">
+<action>
+<class src="Element.Strings.EUStringAppend">
+<static>dtmf_DTMF_Append.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>dtmf_Length_m_strDTMF</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_NoMatch_Audio">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="dtmf_NoMatch_Audio.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>dtmf_g_nCount_Increment</next_element>
+</exit_state>
+</element_def>
+<element_def name="dtmf_Check_numsharp">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="NUM">
+<next_element>dtmf_DTMF_Append</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>dtmf_Check</next_element>
+</exit_state>
+</element_def>
+</call_flow>

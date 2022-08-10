@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@631155:1470788874154" name="710000_Decision_710003" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="710000_Decision_710003" default_exit_state="other">
+        <exit_state name="1 : 계좌번호로 신고" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="1" />
+            </string>
+        </exit_state>
+        <exit_state name="2 : 주민번호로 신고" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="2" />
+            </string>
+        </exit_state>
+        <exit_state name="false : MAX ERROR" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="false" />
+            </string>
+        </exit_state>
+        <exit_state name="# : 상위메뉴" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="#" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

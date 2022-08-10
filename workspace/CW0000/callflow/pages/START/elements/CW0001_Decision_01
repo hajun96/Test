@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@18199901:1473656965890" name="CW0001_Decision_01" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="CW0001_Decision_01" default_exit_state="이외">
+        <exit_state name="고객센터(일반업무)" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="inType" />
+                </data>
+                <constant_string value="A" />
+            </string>
+            <string operator="equal">
+                <data>
+                    <session name="m_strAgtType" />
+                </data>
+                <constant_string value="B" />
+            </string>
+        </exit_state>
+        <exit_state name="고객센터(사이버매체)" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="inType" />
+                </data>
+                <constant_string value="A" />
+            </string>
+            <string operator="equal">
+                <data>
+                    <session name="m_strAgtType" />
+                </data>
+                <constant_string value="C" />
+            </string>
+        </exit_state>
+        <exit_state name="스마트상담센터" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="inType" />
+                </data>
+                <constant_string value="C" />
+            </string>
+        </exit_state>
+        <exit_state name="금융상품상담센터" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="inType" />
+                </data>
+                <constant_string value="E" />
+            </string>
+        </exit_state>
+        <exit_state name="퇴직연금상담센터" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="inType" />
+                </data>
+                <constant_string value="F" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@15270886:1475127760561" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1475127760561" name="bankName" type="Subflow Start" width="108" x="230" y="30">
+<exit_states>
+<exit_state name="next" target="Element@5257579:1475127844961"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5257579:1475127844961" name="EULogWrite_Query" src="Element.Utils.EULogWrite" type="Action Element" width="149" x="217" y="103">
+<exit_states>
+<exit_state name="done" target="Element@15322918:1475127844961"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15322918:1475127844961" name="Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="76" x="254" y="187">
+<exit_states>
+<exit_state name="done" target="Element@2372675:1475127844961"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11442118:1475127844961" name="Subflow Return_01" type="Subflow Return" width="152" x="-19" y="488"/>
+<element height="46" id="Element@20036742:1475127844961" name="EUMultiOutputBlock_02" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="203" y="415">
+<exit_states>
+<exit_state name="done" target="Element@7234351:1475127844961"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7234351:1475127844961" name="EULogWrite_01" src="Element.Utils.EULogWrite" type="Action Element" width="131" x="226" y="488">
+<exit_states>
+<exit_state name="done" target="Element@11442118:1475127844961"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2372675:1475127844961" name="ENOracleDB_01" src="Element.DataBase.ENOracleDB" type="Decision Element" width="134" x="225" y="249">
+<exit_states>
+<exit_state name="success" target="Element@14898233:1475127844961"/>
+<exit_state name="fail" target="Element@11442118:1475127844961">
+<bendpoint>
+<dim1 x="-208" y="36"/>
+<dim2 x="31" y="-205"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="15" id="Element@2020234:1475127844961" type="Comment" width="48" x="56" y="29">
+<comment><![CDATA[은행코드]]></comment>
+</element>
+<element height="46" id="Element@14898233:1475127844961" name="EUMultiOutputBlock_01" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="203" y="333">
+<exit_states>
+<exit_state name="done" target="Element@20036742:1475127844961"/>
+</exit_states>
+</element>
+</page>

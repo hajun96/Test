@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@8927497:1479182708130" name="335000_SelectTime4_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="330000_SelectTime4_Check" default_exit_state="그 외">
+        <exit_state name="장시작전" conjugate="and">
+            <number operator="less">
+                <data>
+                    <session name="m_strNowTime" />
+                </data>
+                <data>
+                    <session name="m_strSelectStartTime4" />
+                </data>
+            </number>
+        </exit_state>
+        <exit_state name="장종료" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <session name="m_strNowTime" />
+                </data>
+                <data>
+                    <session name="m_strSelectEndTime4" />
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

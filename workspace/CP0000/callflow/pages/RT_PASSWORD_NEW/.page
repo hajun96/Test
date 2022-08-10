@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@8360404:1473065210129" name="RT_PASSWORD_NEW" version="6.0.1">
+<element height="46" id="Element@20915389:1473065210129" name="RT_NEW_PASSWORD" type="Page Entry" width="172" x="702" y="-19">
+<exit_states>
+<exit_state name="next" target="Element@11750589:1481518639710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22551240:1481518639710" name="DTMF_MAX_ERROR" type="Page Connector" width="164" x="1081" y="287">
+<page_connector target="Element@16054767:1473062321146">DTMF_MAX_ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@26286477:1481518639710" name="5_DTMF_retire_newpwd" type="Subflow Call" width="197" x="684" y="100">
+<subflow_call subflow_name="dtmf" target="Element@31:1472189229287">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/CP1005.wav</data>
+<data name="MINDIGIT">4</data>
+<data name="MAXDIGIT">8</data>
+<data name="PATTERN">0123456789#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">numsharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@19173735:1481518639710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7186586:1481518639710" name="5_Decision_DTMF_ACCOUNT_2" type="Decision" width="269" x="648" y="370">
+<exit_states>
+<exit_state name="END" target="Element@22551240:1481518639710"/>
+<exit_state name="정상" target="Element@21392708:1481518639710"/>
+<exit_state name="#" target="Element@29759576:1481518639710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11750589:1481518639710" name="5_retire_new_pwd_SetVar_ErrorValue_INIT" src="Element.Utils.EUSetSessionValue" type="Action Element" width="287" x="1036" y="59">
+<exit_states>
+<exit_state name="done" target="Element@26286477:1481518639710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21392708:1481518639710" name="5_retire_Decision_DTMF_2" type="Decision" width="247" x="659" y="492">
+<exit_states>
+<exit_state name="정상" target="Element@10330818:1481518744541"/>
+<exit_state name="실패" target="Element@29759576:1481518639710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11516198:1481518639710" name="5_retire_SetVar_dtmfTmp" src="Element.Utils.EUSetSessionValue" type="Action Element" width="189" x="353" y="142">
+<exit_states>
+<exit_state name="done" target="Element@24326023:1481518639710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6838288:1481518639710" name="5_DTMF_retire_newpwd_2" type="Subflow Call" width="236" x="664" y="286">
+<subflow_call subflow_name="dtmf" target="Element@31:1472189229287">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/CP1011.wav</data>
+<data name="MINDIGIT">4</data>
+<data name="MAXDIGIT">8</data>
+<data name="PATTERN">0123456789#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">numsharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@7186586:1481518639710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29759576:1481518639710" name="5_retire_new_pwd_SetVar_ErrorValue_Y_2" src="Element.Utils.EUSetSessionValue" type="Action Element" width="284" x="305" y="322">
+<exit_states>
+<exit_state name="done" target="Element@6838288:1481518639710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10780039:1481518639710" name="5_retire_new_pwd_SetVar_ErrorValue_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="272" x="1039" y="158">
+<exit_states>
+<exit_state name="done" target="Element@26286477:1481518639710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24326023:1481518639710" name="5_retire_new_pwd_SetVar_ErrorValue_INIT_2" src="Element.Utils.EUSetSessionValue" type="Action Element" width="299" x="298" y="233">
+<exit_states>
+<exit_state name="done" target="Element@6838288:1481518639710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19173735:1481518639710" name="5_Decision_DTMF_ACCOUNT" type="Decision" width="217" x="674" y="184">
+<exit_states>
+<exit_state name="END" target="Element@22551240:1481518639710"/>
+<exit_state name="정상" target="Element@11516198:1481518639710"/>
+<exit_state name="#" target="Element@10780039:1481518639710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10330818:1481518744541" name="EUSetMultiSessionValue_021" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="213" x="679" y="607">
+<exit_states>
+<exit_state name="done" target="Element@1299641:1481518794253"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1299641:1481518794253" name="Return_AEMS" type="Page Connector" width="122" x="724" y="710">
+<page_connector target="Element@4655813:1473062436718">Return_AEMS<config/>
+</page_connector>
+</element>
+</page>

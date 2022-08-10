@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@33440480:1475124981835" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1475124981835" name="stockname" type="Subflow Start" width="110" x="223" y="-1">
+<exit_states>
+<exit_state name="next" target="Element@27569985:1475126557901"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25456003:1475124987325" name="stockname_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="178" x="188" y="228">
+<exit_states>
+<exit_state name="success" target="Element@6877308:1475124987325"/>
+<exit_state name="fail" target="Element@20044074:1475124987340">
+<bendpoint>
+<dim1 x="-170" y="106"/>
+<dim2 x="-122" y="-106"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@20044074:1475124987340" name="stockname_Subflow Return" type="Subflow Return" width="196" x="-99" y="506"/>
+<element height="46" id="Element@29196578:1475124987325" name="stockname_EULogWrite" src="Element.Utils.EULogWrite" type="Action Element" width="175" x="189" y="506">
+<exit_states>
+<exit_state name="done" target="Element@20044074:1475124987340"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6877308:1475124987325" name="stockname_EUMultiOutputBlock" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="222" x="166" y="318">
+<exit_states>
+<exit_state name="done" target="Element@29196578:1475124987325"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27569985:1475126557901" name="stockname_EULogWrite_Query" src="Element.Utils.EULogWrite" type="Action Element" width="212" x="172" y="87">
+<exit_states>
+<exit_state name="done" target="Element@6674524:1475126683905"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6674524:1475126683905" name="stockname_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="208" y="159">
+<exit_states>
+<exit_state name="done" target="Element@25456003:1475124987325"/>
+</exit_states>
+</element>
+<element height="15" id="Element@5036560:1475127142942" type="Comment" width="48" x="36" y="9">
+<comment><![CDATA[종목이름]]></comment>
+</element>
+</page>

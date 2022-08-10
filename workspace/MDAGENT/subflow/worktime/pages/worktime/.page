@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@32506755:1472776712729" name="worktime" version="6.0.1">
+<element height="46" id="Element@31:1472776712729" name="worktime" type="Subflow Start" width="100" x="230" y="30">
+<exit_states>
+<exit_state name="next" target="Element@30069843:1472776740809"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30069843:1472776740809" name="worktime_m_strWeek" type="Action" width="163" x="198" y="122">
+<exit_states>
+<exit_state name="done" target="Element@21924869:1472776740809"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21924869:1472776740809" name="worktime_m_strWeek_Check" type="Decision" width="201" x="179" y="210">
+<exit_states>
+<exit_state name="other" target="Element@13772420:1472776861708"/>
+<exit_state name="1 : 일요일" target="Element@18592141:1472776902657"/>
+<exit_state name="7 : 토요일" target="Element@18592141:1472776902657">
+<bendpoint>
+<dim1 x="181" y="53"/>
+<dim2 x="-33" y="-53"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@14601353:1472776861708" name="worktime_m_iSqlSelectCnt_Check_weekdays" type="Decision" width="286" x="-178" y="410">
+<exit_states>
+<exit_state name="other" target="Element@11235041:1472790998285"/>
+<exit_state name="존재" target="Element@14552102:1472777942872"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13772420:1472776861708" name="worktime_ENOracleDB_weekdays" src="Element.DataBase.ENOracleDB" type="Decision Element" width="226" x="-148" y="316">
+<exit_states>
+<exit_state name="success" target="Element@14601353:1472776861708"/>
+<exit_state name="fail" target="Element@11235041:1472790998285"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18592141:1472776902657" name="worktime_ENOracleDB_weekend" src="Element.DataBase.ENOracleDB" type="Decision Element" width="222" x="484" y="316">
+<exit_states>
+<exit_state name="success" target="Element@1566327:1472776902657"/>
+<exit_state name="fail" target="Element@14552102:1472777942872"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1566327:1472776902657" name="worktime_m_iSqlSelectCnt_Check_weekend" type="Decision" width="282" x="454" y="410">
+<exit_states>
+<exit_state name="other" target="Element@14552102:1472777942872"/>
+<exit_state name="존재" target="Element@29524698:1472777647665"/>
+</exit_states>
+</element>
+<element height="45" id="Element@15404531:1472777042136" type="Comment" width="638" x="384" y="210">
+<comment><![CDATA[[worktime_ENOracleDB_weekend : 고객지원센터 업무시간(토요일, 일요일)]
+인자값 : @m_strCallServiceCode,  DATEFORMAT(@m_DStartTime, "%Y%m%d"))
+쿼리 : select sdate, edate from ars_branch_time where (service_code = 'ALL' or service_code = '%s') and regdate = '%s']]></comment>
+</element>
+<element height="45" id="Element@3278864:1472777204391" type="Comment" width="574" x="-408" y="217">
+<comment><![CDATA[[worktime_ENOracleDB_weekdays : 고객지원센터 업무시간(평일)]
+인자값 : @m_strCallServiceCode,  DATEFORMAT(@m_DStartTime, "%Y%m%d"))
+쿼리 : select * from ars_branch_day where (service_code = 'ALL' or service_code = '%s') and regdate = '%s']]></comment>
+</element>
+<element height="46" id="Element@29524698:1472777647665" name="worktime_m_strCounselStartTime" src="Element.Utils.EUSetSessionValue" type="Action Element" width="235" x="477" y="498">
+<exit_states>
+<exit_state name="done" target="Element@4215192:1472777679372"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4215192:1472777679372" name="worktime_m_strCounselEndTime" src="Element.Utils.EUSetSessionValue" type="Action Element" width="223" x="483" y="583">
+<exit_states>
+<exit_state name="done" target="Element@19070320:1472780594558"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14552102:1472777942872" name="worktime_m_strDCode_Check" type="Decision" width="209" x="-140" y="497">
+<exit_states>
+<exit_state name="other" target="Element@21224674:1472778518796"/>
+<exit_state name="02 : 투자상담" target="Element@25472045:1472778518796"/>
+<exit_state name="22 : 투자상담1" target="Element@25472045:1472778518796">
+<bendpoint>
+<dim1 x="-199" y="-44"/>
+<dim2 x="252" y="-12"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="15" id="Element@22400239:1472778093942" type="Comment" width="190" x="181" y="12">
+<comment><![CDATA[worktime = 고객지원센터 업무시간]]></comment>
+</element>
+<element height="46" id="Element@25472045:1472778518796" name="worktime_weekdays_m_strOfficeHoursPlayMent_JA00024" src="Element.Utils.EUSetSessionValue" type="Action Element" width="356" x="-422" y="583">
+<exit_states>
+<exit_state name="done" target="Element@32426613:1472791421793"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21224674:1472778518796" name="worktime_weekdays_m_strOfficeHoursPlayMent_JA00003_2" src="Element.Utils.EUSetSessionValue" type="Action Element" width="368" x="-35" y="583">
+<exit_states>
+<exit_state name="done" target="Element@32426613:1472791421793"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19070320:1472780594558" name="worktime_hhMM" src="Element.Utils.EUGetDateTime" type="Action Element" width="141" x="524" y="684">
+<exit_states>
+<exit_state name="done" target="Element@5058157:1472780594558"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5058157:1472780594558" name="worktime_m_strNowTime" src="Element.Utils.EUSetSessionValue" type="Action Element" width="185" x="502" y="771">
+<exit_states>
+<exit_state name="done" target="Element@15689057:1472780682710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11182538:1472780647721" name="worktime_m_strCounselEndTime_LEFT4" src="Element.Utils.EUSetSessionValue" type="Action Element" width="259" x="465" y="1112">
+<exit_states>
+<exit_state name="done" target="Element@13160165:1472780996854"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19518016:1472780647721" name="worktime_m_strCounselStartTime_LEFT4" src="Element.Utils.EUSetSessionValue" type="Action Element" width="264" x="462" y="1029">
+<exit_states>
+<exit_state name="done" target="Element@11182538:1472780647721"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15689057:1472780682710" name="worktime_SubString_m_strCounselStartTime" src="Element.Strings.EUStringSubString" type="Action Element" width="286" x="451" y="860">
+<exit_states>
+<exit_state name="done" target="Element@16437231:1472780773452"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16437231:1472780773452" name="worktime_SubString_m_strCounselEndTime" src="Element.Strings.EUStringSubString" type="Action Element" width="281" x="454" y="943">
+<exit_states>
+<exit_state name="done" target="Element@19518016:1472780647721"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13160165:1472780996854" name="worktime_m_strNowTime_Check" type="Decision" width="223" x="483" y="1191">
+<exit_states>
+<exit_state name="other" target="Element@1274038:1472781279804"/>
+<exit_state name="상담업무 시작전" target="Element@1274038:1472781279804">
+<bendpoint>
+<dim1 x="-328" y="-45"/>
+<dim2 x="319" y="-45"/>
+</bendpoint>
+</exit_state>
+<exit_state name="업무시간" target="Element@21994721:1472791299910"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16495220:1472781279804" name="worktime_m_strOfficeHoursPlayMent_JA00027" src="Element.Utils.EUSetSessionValue" type="Action Element" width="300" x="-445" y="1272">
+<exit_states>
+<exit_state name="done" target="Element@15694787:1472791316836"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1274038:1472781279804" name="worktime_m_strDCode_Check_2" type="Decision" width="221" x="-163" y="1191">
+<exit_states>
+<exit_state name="other" target="Element@5044028:1472781279804"/>
+<exit_state name="02 : 투자상담" target="Element@16495220:1472781279804"/>
+<exit_state name="22 : 투자상담1" target="Element@16495220:1472781279804">
+<bendpoint>
+<dim1 x="-199" y="-44"/>
+<dim2 x="252" y="-12"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@5044028:1472781279804" name="worktime_m_strOfficeHoursPlayMent_JA00003" src="Element.Utils.EUSetSessionValue" type="Action Element" width="300" x="-58" y="1272">
+<exit_states>
+<exit_state name="done" target="Element@15694787:1472791316836"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32592808:1472790998285" name="worktime_m_iSqlSelectCnt_Check_Sday" type="Decision" width="261" x="-907" y="410">
+<exit_states>
+<exit_state name="other" target="Element@1925306:1472791530603"/>
+<exit_state name="존재" target="Element@33277260:1472791102633"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11235041:1472790998285" name="worktime_ENOracleDB_Sday" src="Element.DataBase.ENOracleDB" type="Decision Element" width="201" x="-877" y="316">
+<exit_states>
+<exit_state name="success" target="Element@32592808:1472790998285"/>
+<exit_state name="fail" target="Element@1925306:1472791530603"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5640180:1472791102633" name="worktime_Sday_m_strCounselEndTime" src="Element.Utils.EUSetSessionValue" type="Action Element" width="254" x="-904" y="583">
+<exit_states>
+<exit_state name="done" target="Element@460282:1472791205390"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33277260:1472791102633" name="worktime_Sday_m_strCounselStartTime" src="Element.Utils.EUSetSessionValue" type="Action Element" width="259" x="-906" y="497">
+<exit_states>
+<exit_state name="done" target="Element@5640180:1472791102633"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27763522:1472791174081" name="worktime_Check" type="Page Entry" width="138" x="758" y="684">
+<exit_states>
+<exit_state name="next" target="Element@19070320:1472780594558"/>
+</exit_states>
+</element>
+<element height="46" id="Element@460282:1472791205390" name="worktime_Check" type="Page Connector" width="138" x="-846" y="682">
+<page_connector target="Element@27763522:1472791174081">worktime_Check<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@525964:1472791257042" name="worktime_yes" type="Page Entry" width="122" x="-113" y="813">
+<exit_states>
+<exit_state name="next" target="Element@26110570:1472792617834"/>
+</exit_states>
+</element>
+<element height="46" id="Element@68182:1472791281580" name="worktime_no" type="Page Entry" width="119" x="8" y="813">
+<exit_states>
+<exit_state name="next" target="Element@23226701:1472792654821"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21994721:1472791299910" name="worktime_yes" type="Page Connector" width="122" x="533" y="1305">
+<page_connector target="Element@525964:1472791257042">worktime_yes<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@15694787:1472791316836" name="worktime_no" type="Page Connector" width="119" x="-112" y="1426">
+<page_connector target="Element@68182:1472791281580">worktime_no<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@11743931:1472791386834" name="worktime_holiday" type="Page Entry" width="144" x="130" y="813">
+<exit_states>
+<exit_state name="next" target="Element@4274469:1472792662122"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32426613:1472791421793" name="worktime_holiday" type="Page Connector" width="144" x="-108" y="671">
+<page_connector target="Element@11743931:1472791386834">worktime_holiday<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@31297150:1472791503241" name="worktime_m_iSqlSelectCnt_Check_Wtime" type="Decision" width="270" x="-640" y="794">
+<exit_states>
+<exit_state name="other" target="Element@22081959:1472792582391"/>
+<exit_state name="존재" target="Element@16570356:1472792571814"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1925306:1472791530603" name="worktime_ENOracleDB_Wtime" src="Element.DataBase.ENOracleDB" type="Decision Element" width="210" x="-610" y="715">
+<exit_states>
+<exit_state name="success" target="Element@31297150:1472791503241"/>
+<exit_state name="fail" target="Element@31297150:1472791503241"/>
+</exit_states>
+</element>
+<element height="120" id="Element@26159856:1472792389084" type="Comment" width="423" x="-1070" y="752">
+<comment><![CDATA[[worktime_ENOracleDB_Wtime : 고객지원센터 업무시간(평일업무)]
+인자값 : @m_strCallServiceCode, IF(DAYOFWEEK(CURRENTTIME()) == 7, 7, 0))
+쿼리 : select 
+                sdate, edate 
+         from 
+                ars_branch_dwtiime 
+         where 
+                service_code = '%s' and dw_code = '%d']]></comment>
+</element>
+<element height="46" id="Element@16570356:1472792571814" name="worktime_Check" type="Page Connector" width="138" x="-669" y="956">
+<page_connector target="Element@27763522:1472791174081">worktime_Check<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@22081959:1472792582391" name="worktime_no" type="Page Connector" width="119" x="-488" y="956">
+<page_connector target="Element@68182:1472791281580">worktime_no<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@26110570:1472792617834" name="m_strDTMF_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="123" x="-114" y="889">
+<exit_states>
+<exit_state name="done" target="Element@2493130:1472792617834"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2493130:1472792617834" name="worktime_m_strDTMF_Return" type="Subflow Return" width="206" x="-36" y="1021"/>
+<element height="46" id="Element@23226701:1472792654821" name="m_strDTMF_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="125" x="5" y="889">
+<exit_states>
+<exit_state name="done" target="Element@2493130:1472792617834"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4274469:1472792662122" name="m_strDTMF_H" src="Element.Utils.EUSetSessionValue" type="Action Element" width="125" x="139" y="889">
+<exit_states>
+<exit_state name="done" target="Element@2493130:1472792617834"/>
+</exit_states>
+</element>
+</page>

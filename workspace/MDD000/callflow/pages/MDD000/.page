@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@24302800:1474592998168" name="MDD000" version="6.0.1">
+<element height="46" id="Element@28864206:1474592998168" name="Start Of Call" start_of_call="true" type="Page Entry" width="117" x="261" y="-104">
+<exit_states>
+<exit_state name="next" target="Element@28433775:1474619867728"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27102620:1474593048954" name="MDD000_EUSetSvcCode" src="Element.Utils.EUSetSvcCode" type="Action Element" width="210" x="215" y="142">
+<exit_states>
+<exit_state name="done" target="Element@25925505:1485245366449"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1675200:1474619351704" name="MDD_000_EUGetCallData" src="Element.Utils.EUGetCallData" type="Action Element" width="207" x="216" y="64">
+<exit_states>
+<exit_state name="done" target="Element@27102620:1474593048954"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28433775:1474619867728" name="CVP Subdialog Start" src="com.audium.server.voiceElement.internal.CiscoSubdialogStartElement" type="Subdialog Start" width="160" x="239" y="-22">
+<exit_states>
+<exit_state name="done" target="Element@1675200:1474619351704"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21385175:1476098148067" name="MDD000_Audio_MDD002" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="192" x="-189" y="497">
+<exit_states>
+<exit_state name="done" target="Element@27153830:1476098174362"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19128370:1476098148067" name="COMMON_END" type="Page Connector" width="139" x="-243" y="938">
+<page_connector target="Element@14146338:1474593841685">COMMON_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@24457321:1476098148067" name="MDD000_Decision_workingTimeCheck" type="Decision" width="265" x="187" y="681">
+<exit_states>
+<exit_state name="업무시간" target="Element@24808343:1485247993876"/>
+<exit_state name="업무시간외" target="Element@21385175:1476098148067"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27153830:1476098174362" name="MDD000_Audio_MDD004" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="192" x="-189" y="594">
+<exit_states>
+<exit_state name="done" target="Element@4354108:1476098699806"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4354108:1476098699806" name="MDD000_Call_DTMF_MDD0005" type="Subflow Call" width="226" x="-206" y="681">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTR/MDD005.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">0</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@30841934:1476098699806"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30841934:1476098699806" name="MDD000_Decision_dtmfCheck" type="Decision" width="219" x="-203" y="771">
+<exit_states>
+<exit_state name="0:ARS" target="Element@15249701:1476098851960"/>
+<exit_state name="else" target="Element@19128370:1476098148067"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15249701:1476098851960" name="MAIN" type="Page Connector" width="82" x="-35" y="938">
+<page_connector target="Element@27806919:1476098847248">MAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@12447278:1479126130825" name="MDD000_Call_WorkingTime" type="Subflow Call" width="202" x="219" y="594">
+<subflow_call subflow_name="workingTime" target="Element@31:1475044263277">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@24457321:1476098148067"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11935287:1479542502591" name="MDD000_Audio_MDD003" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="192" x="224" y="1298">
+<exit_states>
+<exit_state name="done" target="Element@21243838:1485250180649"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17119320:1482229119750" name="MDD000_Greeting" type="Subflow Call" width="150" x="245" y="331">
+<subflow_call subflow_name="Greeting" target="Element@31:1482229252262">
+<config>
+<argument_data>
+<data name="TYPE">H</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@10621996:1482305480342"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10621996:1482305480342" name="Holiday_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="123" x="259" y="419">
+<exit_states>
+<exit_state name="done" target="Element@14310716:1482305480342"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14310716:1482305480342" name="EDHolidayCheck" src="Element.Decision.EDHolidayCheck" type="Decision Element" width="139" x="251" y="497">
+<exit_states>
+<exit_state name="yes" target="Element@21385175:1476098148067"/>
+<exit_state name="no" target="Element@12447278:1479126130825"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25925505:1485245366449" name="MDD000_ANI" type="Subflow Call" width="125" x="257" y="230">
+<subflow_call subflow_name="any" target="Element@31:1472686781222">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@17119320:1482229119750"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24808343:1485247993876" name="MDD000_Auth" type="Subflow Call" width="131" x="254" y="777">
+<subflow_call subflow_name="certification" target="Element@31:1484977652162">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@9684286:1485247993876"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9684286:1485247993876" name="MDD000_Auth_Check" type="Decision" width="169" x="235" y="855">
+<exit_states>
+<exit_state name="other" target="Element@11935287:1479542502591"/>
+<exit_state name="MAX Error" target="Element@18984572:1485248464658"/>
+<exit_state name="OK : 계좌인증완료" target="Element@14167332:1485248639286">
+<bendpoint>
+<dim1 x="186" y="46"/>
+<dim2 x="-182" y="-56"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@18984572:1485248464658" name="COMMON_END" type="Page Connector" width="139" x="521" y="855">
+<page_connector target="Element@14146338:1474593841685">COMMON_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@3569178:1485248639286" name="MDD000_EUSocketOutput_A11OI50" src="Element.Utils.EUSocketOutput" type="Action Element" width="246" x="563" y="1298">
+<exit_states>
+<exit_state name="done" target="Element@11935287:1479542502591"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8648796:1485248639286" name="MDD000_VIP_Agent_Hold_A11OI50" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="244" x="565" y="1136">
+<exit_states>
+<exit_state name="done" target="Element@2529721:1485248639286"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8116107:1485248639286" name="MDD000_EUSocketInput_A11OI50" src="Element.Utils.EUSocketInput" type="Action Element" width="236" x="569" y="1051">
+<exit_states>
+<exit_state name="done" target="Element@8648796:1485248639286"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14167332:1485248639286" name="MDD000_EUStringSubString" src="Element.Strings.EUStringSubString" type="Action Element" width="204" x="585" y="957">
+<exit_states>
+<exit_state name="done" target="Element@8116107:1485248639286"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2529721:1485248639286" name="MDD000_VIPCheck_ENStockSocket_A11OI50" src="Element.Network.ENStockSocket" type="Decision Element" width="295" x="539" y="1216">
+<exit_states>
+<exit_state name="success" target="Element@3569178:1485248639286"/>
+<exit_state name="fail" target="Element@11935287:1479542502591">
+<bendpoint>
+<dim1 x="-200" y="-39"/>
+<dim2 x="166" y="-39"/>
+</bendpoint>
+</exit_state>
+<exit_state name="errcode" target="Element@11935287:1479542502591"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4023866:1485250180649" name="MDD000_Action_CV5" type="Action" width="168" x="240" y="2345">
+<exit_states>
+<exit_state name="done" target="Element@19071409:1485250180649"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31677106:1485250180649" name="APP_TO_ICM" type="Page Connector" width="128" x="260" y="2544">
+<page_connector target="Element@32381133:1474593800158">APP_TO_ICM<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@23701531:1485250180649" name="MDD000_VIP_Agent_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="230" x="210" y="1962">
+<exit_states>
+<exit_state name="success" target="Element@22504778:1485250180649"/>
+<exit_state name="fail" target="Element@22504778:1485250180649"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14878528:1485250180649" name="MDD000_ENStockSocket_A90OI01" src="Element.Network.ENStockSocket" type="Decision Element" width="239" x="206" y="1706">
+<exit_states>
+<exit_state name="success" target="Element@15802402:1485250180649"/>
+<exit_state name="fail" target="Element@15802402:1485250180649"/>
+<exit_state name="errcode" target="Element@15802402:1485250180649"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26971006:1485250180649" name="MDD000_MultiSessionValue_Agent_D" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="254" x="197" y="2257">
+<exit_states>
+<exit_state name="done" target="Element@4023866:1485250180649"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15802402:1485250180649" name="MDD000_EUSocketOutput_A90OI01" src="Element.Utils.EUSocketOutput" type="Action Element" width="246" x="202" y="1796">
+<exit_states>
+<exit_state name="done" target="Element@7647560:1485250180649"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26040769:1485250180649" name="MDD000_CellPhone_Input_A90OI01" src="Element.Utils.EUSocketInput" type="Action Element" width="245" x="30" y="1505">
+<exit_states>
+<exit_state name="done" target="Element@17790353:1485251364751"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22504778:1485250180649" name="MDD000_EUMultiOutputBlock_gradeCode" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="277" x="186" y="2056">
+<exit_states>
+<exit_state name="done" target="Element@12259648:1485250180649"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7647560:1485250180649" name="MDD000_VIP_Agent_DB_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="212" x="219" y="1879">
+<exit_states>
+<exit_state name="done" target="Element@23701531:1485250180649"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16759503:1485250180649" name="MDD000_NormalPhone_Input_A90OI01" src="Element.Utils.EUSocketInput" type="Action Element" width="265" x="354" y="1505">
+<exit_states>
+<exit_state name="done" target="Element@17790353:1485251364751"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12259648:1485250180649" name="MDD000_SETCV3" type="Action" width="147" x="251" y="2158">
+<exit_states>
+<exit_state name="done" target="Element@26971006:1485250180649"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21243838:1485250180649" name="MDD000_m_strPhoneNum1_Check" type="Decision" width="240" x="206" y="1427">
+<exit_states>
+<exit_state name="010" target="Element@26040769:1485250180649"/>
+<exit_state name="011" target="Element@26040769:1485250180649"/>
+<exit_state name="016" target="Element@26040769:1485250180649"/>
+<exit_state name="017" target="Element@26040769:1485250180649"/>
+<exit_state name="018" target="Element@26040769:1485250180649"/>
+<exit_state name="019" target="Element@26040769:1485250180649"/>
+<exit_state name="other" target="Element@16759503:1485250180649"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19071409:1485250180649" name="MDD000_EULogWrite_CV5" src="Element.Utils.EULogWrite" type="Action Element" width="195" x="226" y="2442">
+<exit_states>
+<exit_state name="done" target="Element@31677106:1485250180649"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17790353:1485251364751" name="MDD000_Hold_A90OI01" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="184" x="233" y="1608">
+<exit_states>
+<exit_state name="done" target="Element@14878528:1485250180649"/>
+</exit_states>
+</element>
+</page>

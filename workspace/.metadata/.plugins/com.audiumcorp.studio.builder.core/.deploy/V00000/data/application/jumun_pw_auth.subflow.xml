@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE call_flow SYSTEM "../../../../dtds/Callflow_1-1.dtd">
+<call_flow first_element="jumun_pw_auth" serial="0000" version="1.1">
+<events/>
+<element_def name="jumun_pw_auth">
+<subflow_start class="com.audium.server.voiceElement.SubflowStartElement">
+<static>jumun_pw_auth.xml</static>
+</subflow_start>
+<exit_state name="next">
+<next_element>jumun_pw_auth_m_iOrderPwdFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_No_Agreement_m_strDTMFErr_Y">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>jumun_pw_auth_No_Agreement_m_strDTMFErr_Y.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_NoMatch_Audio</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_No_Agreement_Ment">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>jumun_pw_auth_No_Agreement_Ment.xml</static>
+<invoke>dtmf</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>jumun_pw_auth_No_Agreement_Decision</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_NoMatch_Audio">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="jumun_pw_auth_NoMatch_Audio.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_No_Agreement_Ment</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_m_strArsProcSect_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="0 : 일치">
+<next_element>m_iOrderPwdFlag</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strOrderPwdSucces_1</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_EATTSMaker_3_m_strAccPwdErrCnt">
+<decision>
+<class src="Element.Audio.EATTSMaker">
+<static>jumun_pw_auth_EATTSMaker_3_m_strAccPwdErrCnt.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>jumun_pw_auth_TTSPlay_3_m_strAccPwdErrCnt</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>jumun_pw_auth_TTSPlay_3_m_strAccPwdErrCnt</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_H">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF_H.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_m_strDTMF_H_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_EUSocketInput_1_D20OI25A">
+<action>
+<class src="Element.Utils.EUSocketInput">
+<static>jumun_pw_auth_EUSocketInput_1_D20OI25A.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_Hold_1_D20OI25A</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_TTSPlay_5_m_strAccPwdErrCnt">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="jumun_pw_auth_TTSPlay_5_m_strAccPwdErrCnt.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_5_C00021</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_EATTSMaker_5_m_strAccPwdErrCnt">
+<decision>
+<class src="Element.Audio.EATTSMaker">
+<static>jumun_pw_auth_EATTSMaker_5_m_strAccPwdErrCnt.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>jumun_pw_auth_TTSPlay_5_m_strAccPwdErrCnt</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>jumun_pw_auth_TTSPlay_5_m_strAccPwdErrCnt</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_Hold_3_m_strAccPwdErrCnt">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_pw_auth_Hold_3_m_strAccPwdErrCnt.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_EATTSMaker_3_m_strAccPwdErrCnt</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_EUEncrypt">
+<action>
+<class src="Element.Utils.EUEncrypt">
+<static>jumun_pw_auth_EUEncrypt.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_EUSocketInput_D20OI25A</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_Hold_m_strAccPwdErrCnt">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_pw_auth_Hold_m_strAccPwdErrCnt.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_EATTSMaker_m_strAccPwdErrCnt</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_C00022">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_pw_auth_C00022.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_m_strAccountSect</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_Hold_0_D20OI25A">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_pw_auth_Hold_0_D20OI25A.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_ENStockSocket_0_D20OI25A</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_TTSPlay_3_m_strAccPwdErrCnt">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="jumun_pw_auth_TTSPlay_3_m_strAccPwdErrCnt.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_m_strAccountSect</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_ENStockSocket_0_D20OI25A">
+<decision>
+<class src="Element.Network.ENStockSocket">
+<static>jumun_pw_auth_ENStockSocket_0_D20OI25A.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>jumun_pw_auth_EUSocketOutput_0_D20OI25A</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>jumun_pw_auth_EUSocketOutput_0_D20OI25A</next_element>
+</exit_state>
+<exit_state name="errcode">
+<next_element>jumun_pw_auth_EUSocketOutput_0_D20OI25A</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_EUSocketOutput_1_D20OI25A">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>jumun_pw_auth_EUSocketOutput_1_D20OI25A.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_m_strAccPwdErrCnt_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_m_strDTMF_H_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>jumun_pw_auth_m_strDTMF_H_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="jumun_pw_auth_m_strDTMF_C_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>jumun_pw_auth_m_strDTMF_C_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="jumun_pw_auth_0_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>jumun_pw_auth_0_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="jumun_pw_auth_EATTSMaker_m_strAccPwdErrCnt">
+<decision>
+<class src="Element.Audio.EATTSMaker">
+<static>jumun_pw_auth_EATTSMaker_m_strAccPwdErrCnt.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>jumun_pw_auth_TTSPlay_m_strAccPwdErrCnt</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>jumun_pw_auth_TTSPlay_m_strAccPwdErrCnt</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_Decision">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="입력오류">
+<next_element>m_strDTMF_N</next_element>
+</exit_state>
+<exit_state name="# : 상위메뉴">
+<next_element>m_strDTMF_H</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strInArsOrderPwd</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_3_C00020">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_pw_auth_3_C00020.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_Hold_3_m_strAccPwdErrCnt</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_m_strAccPwdErrCnt_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="other">
+<next_element>jumun_pw_auth_C00020</next_element>
+</exit_state>
+<exit_state name="3회 미만">
+<next_element>jumun_pw_auth_3_C00020</next_element>
+</exit_state>
+<exit_state name="0 : 정상">
+<next_element>m_strDTMF_0</next_element>
+</exit_state>
+<exit_state name="5회 이상">
+<next_element>jumun_pw_auth_5_C00020</next_element>
+</exit_state>
+<exit_state name="공란">
+<next_element>m_strDTMF_0</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_m_iOrderPwdFlag">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="other">
+<next_element>jumun_pw_auth_m_strAccountSect</next_element>
+</exit_state>
+<exit_state name="1 : 인증">
+<next_element>jumun_pw_auth_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_m_strArsProcSect_0_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="0 : 일치">
+<next_element>jumun_pw_auth_m_strAccPwdErrCnt_Check</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>jumun_pw_auth_m_strAccPwdErrCnt_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_No_Agreenment_m_strDTMFErr_N">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>jumun_pw_auth_No_Agreenment_m_strDTMFErr_N.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_No_Agreement_Ment</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_EUSocketOutput_D20OI25A">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>jumun_pw_auth_EUSocketOutput_D20OI25A.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_m_strArsProcSect_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strOrderPwdSucces_0">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strOrderPwdSucces_0.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>m_strArsOrderPwd</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_ENStockSocket_1_D20OI25A">
+<decision>
+<class src="Element.Network.ENStockSocket">
+<static>jumun_pw_auth_ENStockSocket_1_D20OI25A.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>jumun_pw_auth_EUSocketOutput_1_D20OI25A</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>jumun_pw_auth_EUSocketOutput_1_D20OI25A</next_element>
+</exit_state>
+<exit_state name="errcode">
+<next_element>jumun_pw_auth_EUSocketOutput_1_D20OI25A</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strInArsOrderPwd">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strInArsOrderPwd.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_EUEncrypt</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_iOrderPwdFlag">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_iOrderPwdFlag.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>m_strOrderPwdSucces_0</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_maxerror">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_pw_auth_maxerror.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_No_Agreenment_m_strDTMFErr_N</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_N">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF_N.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_m_strDTMF_N_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_0">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF_0.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_0_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_5_C00020">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_pw_auth_5_C00020.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_Hold_5_m_strAccPwdErrCnt</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_m_strDTMF_N_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>jumun_pw_auth_m_strDTMF_N_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="m_strArsOrderPwd">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strArsOrderPwd.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_EUSocketInput_0_D20OI25A</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_C">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF_C.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_m_strDTMF_C_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_EUSocketInput_0_D20OI25A">
+<action>
+<class src="Element.Utils.EUSocketInput">
+<static>jumun_pw_auth_EUSocketInput_0_D20OI25A.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_Hold_0_D20OI25A</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_Hold_D20OI25A">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_pw_auth_Hold_D20OI25A.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_ENStockSocket_D20OI25A</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_EUSocketInput_D20OI25A">
+<action>
+<class src="Element.Utils.EUSocketInput">
+<static>jumun_pw_auth_EUSocketInput_D20OI25A.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_Hold_D20OI25A</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strOrderPwdSucces_1">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strOrderPwdSucces_1.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_EUSocketInput_1_D20OI25A</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_5_C00021">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_pw_auth_5_C00021.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_No_Agreenment_m_strDTMFErr_N</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_EUSocketOutput_0_D20OI25A">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>jumun_pw_auth_EUSocketOutput_0_D20OI25A.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_m_strArsProcSect_0_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_Hold_1_D20OI25A">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_pw_auth_Hold_1_D20OI25A.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_ENStockSocket_1_D20OI25A</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_ENStockSocket_D20OI25A">
+<decision>
+<class src="Element.Network.ENStockSocket">
+<static>jumun_pw_auth_ENStockSocket_D20OI25A.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>jumun_pw_auth_EUSocketOutput_D20OI25A</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>jumun_pw_auth_EUSocketOutput_D20OI25A</next_element>
+</exit_state>
+<exit_state name="errcode">
+<next_element>jumun_pw_auth_EUSocketOutput_D20OI25A</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_A">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF_A.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_m_strDTMF_A_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_Ment">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>jumun_pw_auth_Ment.xml</static>
+<invoke>dtmf</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>jumun_pw_auth_Decision</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_m_strAccountSect">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1 : 정상">
+<next_element>jumun_pw_auth_m_strDTMFErr_N</next_element>
+</exit_state>
+<exit_state name="2 : 초기화상태">
+<next_element>m_strDTMF_C</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>jumun_pw_auth_maxerror</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_m_strDTMFErr_N">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>jumun_pw_auth_m_strDTMFErr_N.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_pw_auth_Ment</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_No_Agreement_Decision">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="0 : 상담원연결">
+<next_element>m_strDTMF_A</next_element>
+</exit_state>
+<exit_state name="입력오류">
+<next_element>m_strDTMF_N</next_element>
+</exit_state>
+<exit_state name="# : 상위메뉴">
+<next_element>m_strDTMF_H</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>jumun_pw_auth_No_Agreement_m_strDTMFErr_Y</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_Hold_5_m_strAccPwdErrCnt">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_pw_auth_Hold_5_m_strAccPwdErrCnt.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_EATTSMaker_5_m_strAccPwdErrCnt</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_TTSPlay_m_strAccPwdErrCnt">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="jumun_pw_auth_TTSPlay_m_strAccPwdErrCnt.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_C00022</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_pw_auth_m_strDTMF_A_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>jumun_pw_auth_m_strDTMF_A_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="jumun_pw_auth_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>jumun_pw_auth_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="jumun_pw_auth_C00020">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_pw_auth_C00020.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_pw_auth_Hold_m_strAccPwdErrCnt</next_element>
+</exit_state>
+</element_def>
+</call_flow>

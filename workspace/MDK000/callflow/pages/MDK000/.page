@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@24302800:1474592998168" name="MDK000" version="6.0.1">
+<element height="46" id="Element@28864206:1474592998168" name="Start Of Call" start_of_call="true" type="Page Entry" width="117" x="249" y="-16">
+<exit_states>
+<exit_state name="next" target="Element@28236418:1474595478581"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28236418:1474595478581" name="MDF000_CVP Subdialog Start" src="com.audium.server.voiceElement.internal.CiscoSubdialogStartElement" type="Subdialog Start" width="214" x="201" y="66">
+<exit_states>
+<exit_state name="done" target="Element@1675200:1474619351704"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1675200:1474619351704" name="EUGetCallData_01" src="Element.Utils.EUGetCallData" type="Action Element" width="150" x="233" y="159">
+<exit_states>
+<exit_state name="done" target="Element@18183322:1477097696467"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26897054:1477097696467" name="MDK000_ment_MDK001" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="184" x="539" y="191">
+<exit_states>
+<exit_state name="done" target="Element@13480197:1477097696467"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18183322:1477097696467" name="MDK000_EUSetSvcCode" src="Element.Utils.EUSetSvcCode" type="Action Element" width="186" x="215" y="249">
+<exit_states>
+<exit_state name="done" target="Element@9601360:1477097941668"/>
+</exit_states>
+</element>
+<element height="60" id="Element@2155411:1477097696467" type="Comment" width="207" x="713" y="194">
+<comment><![CDATA[[MENTR/MDK001]
+당신의 평안한 노후 최고의 
+글로벌 자산관리 전문가에게 맡기세요.
+여기는 미래에셋증권 입니다.]]></comment>
+</element>
+<element height="46" id="Element@13480197:1477097696467" name="main_ment_MDK002" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="180" x="539" y="284">
+<exit_states>
+<exit_state name="done" target="Element@6794107:1477097941668"/>
+</exit_states>
+</element>
+<element height="90" id="Element@15299922:1477097696467" type="Comment" width="215" x="717" y="276">
+<comment><![CDATA[[MENTR/MDK002]
+본 서비스는 신용정보의 이용 및 
+보호에 관한 법률에 따라 
+미래에셋증권에서 운영하는 
+홍보 성 우편물, SMS, e-mail, 전화에 
+대한 수신거부 무료 전화 서비스 입니다.]]></comment>
+</element>
+<element height="46" id="Element@9601360:1477097941668" name="MDK000_m_strAccreditFlag_Check" type="Decision" width="244" x="186" y="336">
+<exit_states>
+<exit_state name="other" target="Element@26897054:1477097696467"/>
+<exit_state name="Y : 계좌인증완료" target="Element@18046929:1477098195760"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6794107:1477097941668" name="ACC" type="Page Connector" width="79" x="709" y="426">
+<page_connector target="Element@15823710:1477097915189">ACC<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@6162510:1477098195760" name="MDK000_EUSocketOutput_A11OUC1_01" src="Element.Utils.EUSocketOutput" type="Action Element" width="269" x="-170" y="384">
+<exit_states>
+<exit_state name="done" target="Element@2195210:1477113903470"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18046929:1477098195760" name="MDK000_EUSocketInput_A11OUC1_1" src="Element.Utils.EUSocketInput" type="Action Element" width="252" x="-166" y="146">
+<exit_states>
+<exit_state name="done" target="Element@359173:1477098195759"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30390416:1477098195760" name="MDF000_ENStockSocket_A11OUC1_1" src="Element.Network.ENStockSocket" type="Decision Element" width="256" x="-168" y="301">
+<exit_states>
+<exit_state name="success" target="Element@6162510:1477098195760"/>
+<exit_state name="fail" target="Element@2580011:1477099628042">
+<bendpoint>
+<dim1 x="-229" y="-25"/>
+<dim2 x="95" y="-30"/>
+</bendpoint>
+</exit_state>
+<exit_state name="errcode" target="Element@2580011:1477099628042">
+<bendpoint>
+<dim1 x="-235" y="35"/>
+<dim2 x="89" y="30"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@359173:1477098195759" name="MDK000_Hold_A11OUC1_1" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="200" x="-138" y="228">
+<exit_states>
+<exit_state name="done" target="Element@30390416:1477098195760"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14609322:1477098466993" name="MDK000_Call_dtmf_MDK003" type="Subflow Call" width="207" x="-140" y="657">
+<subflow_call subflow_name="dtmf" target="Element@31:1474594073385">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTR/MDK003.wav</data>
+<data name="MAXDIGIT">1</data>
+<data name="MINDIGIT">1</data>
+<data name="PATTERN">12*</data>
+<data name="OPTION">menu</data>
+<data name="NUM">z</data>
+<data name="ERR">1</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@32497616:1477098576711"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32497616:1477098576711" name="MDK000_Decision_MDK003" type="Decision" width="202" x="-138" y="752">
+<exit_states>
+<exit_state name="DTMF_실패" target="Element@29021133:1477098616041">
+<bendpoint>
+<dim1 x="218" y="-53"/>
+<dim2 x="-72" y="-51"/>
+</bendpoint>
+</exit_state>
+<exit_state name="1:맞음" target="Element@22197180:1477098718888"/>
+<exit_state name="*:다시듣기" target="Element@23714009:1477099089118">
+<bendpoint>
+<dim1 x="-165" y="-49"/>
+<dim2 x="-165" y="46"/>
+</bendpoint>
+</exit_state>
+<exit_state name="실패" target="Element@29021133:1477098616041">
+<bendpoint>
+<dim1 x="218" y="56"/>
+<dim2 x="-72" y="58"/>
+</bendpoint>
+</exit_state>
+<exit_state name="2:종료" target="Element@24442256:1477098633736"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29021133:1477098616041" name="COMMON_END" type="Page Connector" width="139" x="183" y="750">
+<page_connector target="Element@14146338:1474593841685">COMMON_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@24442256:1477098633736" name="COMMON_END" type="Page Connector" width="139" x="-302" y="865">
+<page_connector target="Element@14146338:1474593841685">COMMON_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@22197180:1477098718888" name="MDK000_Call_dtmf_MDK004" type="Subflow Call" width="207" x="86" y="935">
+<subflow_call subflow_name="dtmf" target="Element@31:1474594073385">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTR/MDK004.wav</data>
+<data name="MAXDIGIT">1</data>
+<data name="MINDIGIT">1</data>
+<data name="PATTERN">12345*</data>
+<data name="OPTION">menu</data>
+<data name="NUM">z</data>
+<data name="ERR">1</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@31470855:1477099012689"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26486348:1477098824928" name="main_SetValue_total" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="163" x="702" y="1906">
+<exit_states>
+<exit_state name="done" target="Element@32437308:1477102956056"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25726756:1477098824927" name="main_SetValue_post" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="164" x="-252" y="1906">
+<exit_states>
+<exit_state name="done" target="Element@32437308:1477102956056"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13289940:1477098824927" name="main_SetValue_phone" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="175" x="448" y="1906">
+<exit_states>
+<exit_state name="done" target="Element@32437308:1477102956056"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33495018:1477098824928" name="Entry_total_reject" type="Page Entry" width="145" x="714" y="1813">
+<exit_states>
+<exit_state name="next" target="Element@26486348:1477098824928"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9385335:1477098824928" name="Entry_post_reject" type="Page Entry" width="159" x="-246" y="1813">
+<exit_states>
+<exit_state name="next" target="Element@25726756:1477098824927"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22956131:1477098824928" name="Entry_sms_reject" type="Page Entry" width="147" x="-12" y="1813">
+<exit_states>
+<exit_state name="next" target="Element@5605627:1477098824928"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30730005:1477098824928" name="main_SetValue_email" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="171" x="219" y="1906">
+<exit_states>
+<exit_state name="done" target="Element@32437308:1477102956056"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5605627:1477098824928" name="main_SetValue_sms" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="165" x="-24" y="1906">
+<exit_states>
+<exit_state name="done" target="Element@32437308:1477102956056"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7183581:1477098824927" name="rejectReg_TR_A11OUC1_01" type="Page Connector" width="242" x="202" y="2156">
+<page_connector target="Element@11716923:1477098853849">rejectReg_TR_A11OUC1_01<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@14839487:1477098824928" name="Entry_email_reject" type="Page Entry" width="153" x="231" y="1813">
+<exit_states>
+<exit_state name="next" target="Element@30730005:1477098824928"/>
+</exit_states>
+</element>
+<element height="46" id="Element@234376:1477098824927" name="Entry_phone_reject" type="Page Entry" width="157" x="460" y="1813">
+<exit_states>
+<exit_state name="next" target="Element@13289940:1477098824927"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17352770:1477098836672" name="MDK000_audio_total_MDK006" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="215" x="440" y="1329">
+<exit_states>
+<exit_state name="done" target="Element@7994340:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10381316:1477098836672" name="MDK000_SetValue_sms_exist" src="Element.Utils.EUSetSessionValue" type="Action Element" width="215" x="-415" y="1417">
+<exit_states>
+<exit_state name="done" target="Element@29297680:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5940714:1477098836673" name="MDK000_audio_MDK008" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="195" x="-695" y="1345">
+<exit_states>
+<exit_state name="done" target="Element@31053826:1477098836673"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25510562:1477098836672" name="MDK000_audio_MDK010" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="186" x="-406" y="1343">
+<exit_states>
+<exit_state name="done" target="Element@10381316:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2386705:1477098836672" name="MDK000_audio_email_MDK011" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="220" x="50" y="1570">
+<exit_states>
+<exit_state name="done" target="Element@8720994:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21154498:1477098836673" name="MDK000_SetValue_email_exist" src="Element.Utils.EUSetSessionValue" type="Action Element" width="221" x="-135" y="1419">
+<exit_states>
+<exit_state name="done" target="Element@8270866:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31053826:1477098836673" name="MDK000_SetValue_post_exist" src="Element.Utils.EUSetSessionValue" type="Action Element" width="214" x="-705" y="1421">
+<exit_states>
+<exit_state name="done" target="Element@25989420:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16021910:1477098836673" name="main_Decision_POST" type="Decision" width="172" x="-594" y="1244">
+<exit_states>
+<exit_state name="등록" target="Element@5940714:1477098836673"/>
+<exit_state name="미등록" target="Element@16704769:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28373609:1477098836672" name="MDK000_audio_phone_MDK013" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="225" x="309" y="1570">
+<exit_states>
+<exit_state name="done" target="Element@33215371:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7994340:1477098836672" name="MDK000_SetValue_total_exist" src="Element.Utils.EUSetSessionValue" type="Action Element" width="213" x="439" y="1402">
+<exit_states>
+<exit_state name="done" target="Element@8938531:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26448043:1477098836672" name="MDK000_audio_total_MDK005" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="215" x="664" y="1574">
+<exit_states>
+<exit_state name="done" target="Element@6715067:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26157343:1477098836672" name="main_Decision_phone" type="Decision" width="174" x="256" y="1243">
+<exit_states>
+<exit_state name="등록" target="Element@29863504:1477098836672"/>
+<exit_state name="미등록" target="Element@28373609:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33215371:1477098836672" name="Entry_phone_reject" type="Page Connector" width="157" x="343" y="1655">
+<page_connector target="Element@234376:1477098824927">Entry_phone_reject<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@29297680:1477098836672" name="main_rejectReg_again_yn" type="Page Connector" width="201" x="-413" y="1497">
+<page_connector target="Element@15444432:1477100407113">main_rejectReg_again_yn<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@8938531:1477098836672" name="main_rejectReg_again_yn" type="Page Connector" width="201" x="425" y="1478">
+<page_connector target="Element@15444432:1477100407113">main_rejectReg_again_yn<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@6715067:1477098836672" name="Entry_total_reject" type="Page Connector" width="153" x="685" y="1655">
+<page_connector target="Element@33495018:1477098824928">Entry_total_reject<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@9224289:1477098836672" name="main_Decision_Email" type="Decision" width="171" x="-38" y="1243">
+<exit_states>
+<exit_state name="등록" target="Element@11152343:1477098836672"/>
+<exit_state name="미등록" target="Element@2386705:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9459756:1477098836672" name="main_rejectReg_again_yn" type="Page Connector" width="201" x="125" y="1496">
+<page_connector target="Element@15444432:1477100407113">main_rejectReg_again_yn<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@15804976:1477098836672" name="main_Decision_total" type="Decision" width="162" x="536" y="1243">
+<exit_states>
+<exit_state name="등록" target="Element@17352770:1477098836672"/>
+<exit_state name="미등록" target="Element@26448043:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16704769:1477098836672" name="MDK000_audio_MDK007" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="206" x="-522" y="1570">
+<exit_states>
+<exit_state name="done" target="Element@7123846:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7123846:1477098836672" name="Entry_post_reject" type="Page Connector" width="153" x="-501" y="1655">
+<page_connector target="Element@9385335:1477098824928">Entry_post_reject<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@8720994:1477098836672" name="Entry_email_reject" type="Page Connector" width="153" x="74" y="1655">
+<page_connector target="Element@14839487:1477098824928">Entry_email_reject<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@11152343:1477098836672" name="MDK000_audio_email_MDK012" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="220" x="-151" y="1334">
+<exit_states>
+<exit_state name="done" target="Element@21154498:1477098836673"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30675142:1477098836672" name="Entry_sms_reject" type="Page Connector" width="153" x="-217" y="1655">
+<page_connector target="Element@22956131:1477098824928">Entry_sms_reject<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@26820949:1477098836672" name="MDK000_SetValue_phone_exist" src="Element.Utils.EUSetSessionValue" type="Action Element" width="225" x="133" y="1413">
+<exit_states>
+<exit_state name="done" target="Element@9459756:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12992762:1477098836672" name="MDK000_audio_sms_MDK009" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="214" x="-251" y="1573">
+<exit_states>
+<exit_state name="done" target="Element@30675142:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8270866:1477098836672" name="main_rejectReg_again_yn" type="Page Connector" width="201" x="-130" y="1495">
+<page_connector target="Element@15444432:1477100407113">main_rejectReg_again_yn<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@29863504:1477098836672" name="MDK000_audio_phone_MDK014" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="225" x="134" y="1323">
+<exit_states>
+<exit_state name="done" target="Element@26820949:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25989420:1477098836672" name="main_rejectReg_again_yn" type="Page Connector" width="201" x="-719" y="1496">
+<page_connector target="Element@15444432:1477100407113">main_rejectReg_again_yn<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@16582082:1477098836672" name="main_Decision_SMS" type="Decision" width="166" x="-308" y="1243">
+<exit_states>
+<exit_state name="등록" target="Element@25510562:1477098836672"/>
+<exit_state name="미등록" target="Element@12992762:1477098836672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12027631:1477098853850" name="MDK000_audio_success_TTS_Play" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="248" x="1468" y="1898">
+<exit_states>
+<exit_state name="done" target="Element@21608770:1477100646884"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27476374:1477098853849" name="Entry_AGAIN" type="Page Connector" width="165" x="1550" y="2044">
+<page_connector target="Element@9382597:1477100430657">Entry_AGAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@11716923:1477098853849" name="rejectReg_TR_A11OUC1_01" type="Page Entry" width="201" x="1852" y="1206">
+<exit_states>
+<exit_state name="next" target="Element@27255769:1477102462131"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6931332:1477098853849" name="MDK000_Decision_rejectAgainQ_02" type="Decision" width="246" x="1825" y="2044">
+<exit_states>
+<exit_state name="1" target="Element@27476374:1477098853849"/>
+<exit_state name="2" target="Element@33252136:1477098853849"/>
+<exit_state name="*" target="Element@21608770:1477100646884">
+<bendpoint>
+<dim1 x="78" y="-47"/>
+<dim2 x="82" y="49"/>
+</bendpoint>
+</exit_state>
+<exit_state name="end" target="Element@33252136:1477098853849">
+<bendpoint>
+<dim1 x="115" y="53"/>
+<dim2 x="171" y="-43"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@19598970:1477098853849" name="TR_ERROR" type="Page Connector" width="148" x="2233" y="1453">
+<page_connector target="Element@31748893:1474616423378">TR_ERROR<config/>
+</page_connector>
+</element>
+<element height="45" id="Element@6058499:1477098853850" type="Comment" width="95" x="1895" y="1162">
+<comment><![CDATA[*******************
+ 거부 시 TR전송
+*******************]]></comment>
+</element>
+<element height="46" id="Element@33252136:1477098853849" name="COMMON_END" type="Page Connector" width="139" x="1879" y="2153">
+<page_connector target="Element@14146338:1474593841685">COMMON_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@5331252:1477098853850" name="MDK000_EATTSMaker_01" src="Element.Audio.EATTSMaker" type="Decision Element" width="194" x="1851" y="1851">
+<exit_states>
+<exit_state name="success" target="Element@12027631:1477098853850"/>
+<exit_state name="fail" target="Element@21608770:1477100646884"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33482876:1477098853850" name="MDK000_Action_make_success_ment" type="Action" width="262" x="1817" y="1772">
+<exit_states>
+<exit_state name="done" target="Element@5331252:1477098853850"/>
+</exit_states>
+</element>
+<element height="45" id="Element@9522716:1477098915201" type="Comment" width="100" x="972" y="639">
+<comment><![CDATA[********************
+ TR Error 처리
+********************]]></comment>
+</element>
+<element height="46" id="Element@27203254:1477098915201" type="Application Transfer" width="122" x="969" y="956">
+<app_transfer destination="Common">
+<from_session_data>
+<data name="m_CallKey"/>
+<data name="m_CstANI"/>
+<data name="m_QStartTime"/>
+<data name="m_EWT"/>
+<data name="m_ARSMaxErr"/>
+<data name="m_ARSTmInitial"/>
+<data name="m_ARSTmInter"/>
+<data name="m_MediaServer"/>
+<data name="m_SvcCode"/>
+<data name="m_EndType"/>
+<data name="m_PromptSvr"/>
+<data name="m_PreSvcCode"/>
+<data name="m_ErrCode"/>
+<data name="m_ErrSubCode"/>
+<data name="m_SubReturnCode"/>
+<data name="m_StartDate"/>
+<data name="m_StartTime"/>
+<data name="m_LogPath"/>
+<data name="m_TRCode"/>
+<data name="m_ErrMsg"/>
+<data name="m_NextMenu"/>
+<data name="m_CurrentMenu"/>
+<data name="m_Position"/>
+<data name="m_isStandAlone"/>
+<data name="c_BID"/>
+<data name="c_BIDPwd"/>
+<data name="c_SID"/>
+<data name="c_SecYN"/>
+<data name="c_Name"/>
+<data name="CV1"/>
+<data name="CV2"/>
+<data name="CV3"/>
+<data name="CV4"/>
+<data name="CV5"/>
+<data name="CV6"/>
+<data name="CV7"/>
+<data name="CV8"/>
+<data name="CV9"/>
+<data name="CV10"/>
+<data name="m_In1"/>
+<data name="m_In2"/>
+<data name="m_In3"/>
+<data name="m_In4"/>
+<data name="m_In5"/>
+<data name="m_Out1"/>
+<data name="m_Out2"/>
+<data name="m_Out3"/>
+<data name="m_Out4"/>
+<data name="m_Out5"/>
+</from_session_data>
+</app_transfer>
+</element>
+<element height="46" id="Element@17809062:1477098915201" name="Entry_TR_ERROR" type="Page Entry" width="190" x="935" y="691">
+<exit_states>
+<exit_state name="next" target="Element@25957079:1477098915201"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19466503:1477098915201" name="CE0000_SetCallData" src="Element.Utils.EUSetCallData" type="Action Element" width="162" x="949" y="874">
+<exit_states>
+<exit_state name="done" target="Element@27203254:1477098915201"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25957079:1477098915201" name="CE0000_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="147" x="956" y="782">
+<exit_states>
+<exit_state name="done" target="Element@19466503:1477098915201"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31470855:1477099012689" name="main_Decision_choice_reject" type="Decision" width="214" x="81" y="1085">
+<exit_states>
+<exit_state name="*" target="Element@22197180:1477098718888">
+<bendpoint>
+<dim1 x="-98" y="-113"/>
+<dim2 x="-111" y="94"/>
+</bendpoint>
+</exit_state>
+<exit_state name="1:우편물" target="Element@16021910:1477098836673"/>
+<exit_state name="2:SMS" target="Element@16582082:1477098836672"/>
+<exit_state name="3:Email" target="Element@9224289:1477098836672"/>
+<exit_state name="4:전화" target="Element@26157343:1477098836672"/>
+<exit_state name="5:전체" target="Element@15804976:1477098836672"/>
+<exit_state name="end" target="Element@7556115:1477099039640"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7556115:1477099039640" name="COMMON_END" type="Page Connector" width="139" x="-163" y="1002">
+<page_connector target="Element@14146338:1474593841685">COMMON_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@1815081:1477099089118" name="MDK000_EATTSMaker_1" src="Element.Audio.EATTSMaker" type="Decision Element" width="188" x="313" y="588">
+<exit_states>
+<exit_state name="success" target="Element@23714009:1477099089118"/>
+<exit_state name="fail" target="Element@14609322:1477098466993"/>
+</exit_states>
+</element>
+<element height="120" id="Element@10798243:1477099089118" type="Comment" width="103" x="540" y="524">
+<comment><![CDATA[[TTS]
+고객님께서는 
+홍보성 우편물, 
+홍보성 SMS, 
+홍보성 Email, 
+홍보성 전화
+수신거부처리가 
+등록되어 있습니다.]]></comment>
+</element>
+<element height="46" id="Element@23714009:1477099089118" name="MDK000_Audio_tts_rejectList" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="209" x="-142" y="560">
+<exit_states>
+<exit_state name="done" target="Element@14609322:1477098466993"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4363255:1477099110357" name="MDK000_Hold_TTS_1" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="168" x="323" y="506">
+<exit_states>
+<exit_state name="done" target="Element@1815081:1477099089118"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18248959:1477099129053" name="MDK000_Action_tts_rejectList" type="Action" width="212" x="301" y="407">
+<exit_states>
+<exit_state name="done" target="Element@4363255:1477099110357"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2580011:1477099628042" name="TR_ERROR" type="Page Connector" width="113" x="-441" y="307">
+<page_connector target="Element@31748893:1474616423378">TR_ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@20458233:1477100407113" name="main_Decision_rejectAgainQ" type="Decision" width="211" x="1183" y="1272">
+<exit_states>
+<exit_state name="1" target="Element@9262739:1477100407113"/>
+<exit_state name="*" target="Element@12981851:1477100534460">
+<bendpoint>
+<dim1 x="160" y="-52"/>
+<dim2 x="157" y="42"/>
+</bendpoint>
+</exit_state>
+<exit_state name="#" target="Element@14461663:1477100407113"/>
+<exit_state name="end" target="Element@22420228:1477100407113"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3111338:1477100407113" name="Entry_total_reject" type="Page Connector" width="153" x="1565" y="1523">
+<page_connector target="Element@33495018:1477098824928">Entry_total_reject<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@10485570:1477100407113" name="Entry_phone_reject" type="Page Connector" width="157" x="1383" y="1523">
+<page_connector target="Element@234376:1477098824927">Entry_phone_reject<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@15444432:1477100407113" name="main_rejectReg_again_yn" type="Page Entry" width="194" x="1192" y="1092">
+<exit_states>
+<exit_state name="next" target="Element@12981851:1477100534460"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19849387:1477100407113" name="Entry_post_reject" type="Page Connector" width="153" x="861" y="1523">
+<page_connector target="Element@9385335:1477098824928">Entry_post_reject<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@14461663:1477100407113" name="Entry_AGAIN" type="Page Connector" width="138" x="965" y="1270">
+<page_connector target="Element@9382597:1477100430657">Entry_AGAIN<config/>
+</page_connector>
+</element>
+<element height="45" id="Element@26238340:1477100407113" type="Comment" width="189" x="1187" y="1050">
+<comment><![CDATA[**********************************
+ 다시 거부 신청할건 지 물어보기 !!!
+**********************************]]></comment>
+</element>
+<element height="46" id="Element@21239857:1477100407112" name="Entry_sms_reject" type="Page Connector" width="153" x="1036" y="1523">
+<page_connector target="Element@22956131:1477098824928">Entry_sms_reject<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@22420228:1477100407113" name="COMMON_END" type="Page Connector" width="139" x="1506" y="1272">
+<page_connector target="Element@14146338:1474593841685">COMMON_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@9262739:1477100407113" name="main_Decision_choice_reject_type" type="Decision" width="244" x="1167" y="1365">
+<exit_states>
+<exit_state name="1:우편물" target="Element@19849387:1477100407113"/>
+<exit_state name="2:SMS" target="Element@21239857:1477100407112"/>
+<exit_state name="3:Email" target="Element@27454480:1477100407113"/>
+<exit_state name="4:전화" target="Element@10485570:1477100407113"/>
+<exit_state name="5:전체" target="Element@3111338:1477100407113"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27454480:1477100407113" name="Entry_email_reject" type="Page Connector" width="153" x="1212" y="1523">
+<page_connector target="Element@14839487:1477098824928">Entry_email_reject<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@9382597:1477100430657" name="Entry_AGAIN" type="Page Entry" width="122" x="375" y="819">
+<exit_states>
+<exit_state name="next" target="Element@22197180:1477098718888"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12981851:1477100534460" name="MDK000_Call_dtmf_MDK015" type="Subflow Call" width="207" x="1189" y="1178">
+<subflow_call subflow_name="dtmf" target="Element@31:1474594073385">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTR/MDK015.wav</data>
+<data name="MAXDIGIT">1</data>
+<data name="MINDIGIT">1</data>
+<data name="PATTERN">1#*</data>
+<data name="OPTION">menu</data>
+<data name="NUM">z</data>
+<data name="ERR">1</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@20458233:1477100407113"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21608770:1477100646884" name="MDK000_Call_dtmf_MDK016" type="Subflow Call" width="207" x="1846" y="1948">
+<subflow_call subflow_name="dtmf" target="Element@31:1474594073385">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTR/MDK016.wav</data>
+<data name="MAXDIGIT">1</data>
+<data name="MINDIGIT">1</data>
+<data name="PATTERN">12#*</data>
+<data name="OPTION">menu</data>
+<data name="NUM">z</data>
+<data name="ERR">1</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@6931332:1477098853849"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27255769:1477102462131" name="MDK000_EUSocketInput_A11OUC1_2" src="Element.Utils.EUSocketInput" type="Action Element" width="252" x="1826" y="1290">
+<exit_states>
+<exit_state name="done" target="Element@8422672:1477102462131"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8422672:1477102462131" name="MDK000_Hold_A11OUC1_2" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="200" x="1854" y="1372">
+<exit_states>
+<exit_state name="done" target="Element@21750420:1477102462131"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21750420:1477102462131" name="MDF000_ENStockSocket_A11OUC1_2" src="Element.Network.ENStockSocket" type="Decision Element" width="256" x="1824" y="1458">
+<exit_states>
+<exit_state name="success" target="Element@128392:1477115442127"/>
+<exit_state name="fail" target="Element@19598970:1477098853849">
+<bendpoint>
+<dim1 x="285" y="-50"/>
+<dim2 x="-69" y="-45"/>
+</bendpoint>
+</exit_state>
+<exit_state name="errcode" target="Element@19598970:1477098853849">
+<bendpoint>
+<dim1 x="278" y="39"/>
+<dim2 x="-76" y="44"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@32437308:1477102956056" name="main_SetValue_rejectFlag" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="227" x="210" y="2063">
+<exit_states>
+<exit_state name="done" target="Element@7183581:1477098824927"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2195210:1477113903470" name="MDK000_EUSocketOutput_A11OUC1_02" src="Element.Utils.EUSocketOutput" type="Action Element" width="269" x="-176" y="468">
+<exit_states>
+<exit_state name="done" target="Element@18248959:1477099129053"/>
+</exit_states>
+</element>
+<element height="46" id="Element@128392:1477115442127" name="MDK000_EUSocketOutput_A11OUC1_11" src="Element.Utils.EUSocketOutput" type="Action Element" width="269" x="1815" y="1582">
+<exit_states>
+<exit_state name="done" target="Element@24007388:1477115442127"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24007388:1477115442127" name="MDK000_EUSocketOutput_A11OUC1_12" src="Element.Utils.EUSocketOutput" type="Action Element" width="269" x="1815" y="1666">
+<exit_states>
+<exit_state name="done" target="Element@33482876:1477098853850"/>
+</exit_states>
+</element>
+</page>

@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@30337390:1470297254651" name="jumun_pw_auth" version="6.0.1">
+<element height="46" id="Element@31:1470297254651" name="jumun_pw_auth" type="Subflow Start" width="135" x="269" y="51">
+<exit_states>
+<exit_state name="next" target="Element@28580530:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13589532:1481256511846" name="jumun_pw_auth_5_C00020" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="195" x="1413" y="1899">
+<exit_states>
+<exit_state name="done" target="Element@27809692:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10433380:1481256511846" name="jumun_pw_auth_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="229" x="222" y="329">
+<exit_states>
+<exit_state name="done" target="Element@15964879:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2139782:1481256511846" name="jumun_pw_auth_ENStockSocket_D20OI25A" src="Element.Network.ENStockSocket" type="Decision Element" width="283" x="194" y="904">
+<exit_states>
+<exit_state name="success" target="Element@31923146:1481256511846"/>
+<exit_state name="fail" target="Element@31923146:1481256511846">
+<bendpoint>
+<dim1 x="61" y="44"/>
+<dim2 x="60" y="-48"/>
+</bendpoint>
+</exit_state>
+<exit_state name="errcode" target="Element@31923146:1481256511846">
+<bendpoint>
+<dim1 x="147" y="47"/>
+<dim2 x="146" y="-45"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@2329683:1481256511846" name="jumun_pw_auth_5_C00021" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="195" x="1413" y="2249">
+<exit_states>
+<exit_state name="done" target="Element@30522365:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22563538:1481256511846" name="m_strDTMF_0" src="Element.Utils.EUSetSessionValue" type="Action Element" width="123" x="461" y="1995">
+<exit_states>
+<exit_state name="done" target="Element@26763329:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30516792:1481256511846" name="jumun_pw_auth_m_strDTMF_H_Return" type="Subflow Return" width="255" x="1190" y="555"/>
+<element height="46" id="Element@5490272:1481256511846" name="jumun_pw_auth_Sect" type="Page Entry" width="163" x="-14" y="248">
+<exit_states>
+<exit_state name="next" target="Element@21273853:1481256511846"/>
+</exit_states>
+</element>
+<element height="60" id="Element@30226478:1481256511846" type="Comment" width="482" x="436" y="668">
+<comment><![CDATA[[D20OI25A_INPUT]
+0 : {Data.Session.m_strAccountNum} / 계좌번호
+1 : 3 / 비밀번호오류체크(0 : 초기화, 1 : 비밀번호 오류, 3 : 상태체크(맞는지 틀린지 조회) 
+2 : {Data.Session.m_strInArsOrdertempPwd} / 비밀번호]]></comment>
+</element>
+<element height="46" id="Element@20480187:1481256511846" name="jumun_pw_auth_EATTSMaker_3_m_strAccPwdErrCnt" src="Element.Audio.EATTSMaker" type="Decision Element" width="328" x="997" y="2166">
+<exit_states>
+<exit_state name="success" target="Element@9155895:1481256511846"/>
+<exit_state name="fail" target="Element@9155895:1481256511846"/>
+</exit_states>
+</element>
+<element height="30" id="Element@16575197:1481256511846" type="Comment" width="250" x="817" y="2339">
+<comment><![CDATA[[C00022] : 
+5회 오류 시 해당 계좌의 거래가 불가능합니다.]]></comment>
+</element>
+<element height="46" id="Element@6376959:1481256511846" name="jumun_pw_auth_EUSocketOutput_1_D20OI25A" src="Element.Utils.EUSocketOutput" type="Action Element" width="302" x="18" y="1693">
+<exit_states>
+<exit_state name="done" target="Element@25648760:1481256511846">
+<bendpoint>
+<dim1 x="-1" y="210"/>
+<dim2 x="-354" y="4"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="135" id="Element@11343151:1481256511846" type="Comment" width="180" x="695" y="1703">
+<comment><![CDATA[[D20OI25A_OUTPUT]
+sect : ARS비밀번호상태체크 
+   - 0 : 정상
+   - 1 : 미등록계좌 (times값 안옴)
+   - 2 : DB인증에러
+   - 3 : 틀림 
+   - 9 : 변경해야할주문비밀번호
+
+times : 주문비밀번호 오류체크]]></comment>
+</element>
+<element height="46" id="Element@21616005:1481256511846" name="jumun_pw_auth_C00022" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="183" x="701" y="2370">
+<exit_states>
+<exit_state name="done" target="Element@28168944:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23541457:1481256511846" name="m_strDTMF_auth_0" src="Element.Utils.EUSetSessionValue" type="Action Element" width="172" x="-38" y="157">
+<exit_states>
+<exit_state name="done" target="Element@20965260:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27185869:1481256511846" name="m_strDTMF_C" src="Element.Utils.EUSetSessionValue" type="Action Element" width="124" x="1190" y="601">
+<exit_states>
+<exit_state name="done" target="Element@10445583:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30974087:1481256511846" name="jumun_pw_auth_ENStockSocket_1_D20OI25A" src="Element.Network.ENStockSocket" type="Decision Element" width="295" x="22" y="1601">
+<exit_states>
+<exit_state name="success" target="Element@6376959:1481256511846"/>
+<exit_state name="fail" target="Element@6376959:1481256511846">
+<bendpoint>
+<dim1 x="61" y="44"/>
+<dim2 x="60" y="-48"/>
+</bendpoint>
+</exit_state>
+<exit_state name="errcode" target="Element@6376959:1481256511846">
+<bendpoint>
+<dim1 x="147" y="47"/>
+<dim2 x="146" y="-45"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@17815060:1481256511846" name="jumun_pw_auth_Hold_m_strAccPwdErrCnt" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="276" x="654" y="2125">
+<exit_states>
+<exit_state name="done" target="Element@18435538:1481256511831"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27940242:1481256511846" name="jumun_pw_auth_m_strArsProcSect_Check" type="Decision" width="271" x="200" y="1085">
+<exit_states>
+<exit_state name="other" target="Element@30928993:1481256511846"/>
+<exit_state name="0 : 일치" target="Element@31885521:1481256511846"/>
+</exit_states>
+</element>
+<element height="90" id="Element@14636005:1481256511846" type="Comment" width="248" x="716" y="575">
+<comment><![CDATA[주문비밀번호 5회 오류 입니다. 
+해당 계좌의 거래가 불가능하오니 
+신분증, 증권카드, 등록인감을 지참하시고 
+가까운 영업점에 내방하시면 됩니다. 
+영업점 위치는 홈페이지 및 고객지원센터에서 
+안내 해드리고 있습니다.]]></comment>
+</element>
+<element height="46" id="Element@19392785:1481256511846" name="jumun_pw_auth_TTSPlay_5_m_strAccPwdErrCnt" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="303" x="1359" y="2166">
+<exit_states>
+<exit_state name="done" target="Element@2329683:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25648760:1481256511846" name="jumun_pw_auth_m_strAccPwdErrCnt_Check" type="Decision" width="283" x="381" y="1899">
+<exit_states>
+<exit_state name="other" target="Element@4930282:1481256511846"/>
+<exit_state name="0 : 정상" target="Element@22563538:1481256511846"/>
+<exit_state name="1 : 1회 오류" target="Element@17371185:1481256511846">
+<bendpoint>
+<dim1 x="338" y="63"/>
+<dim2 x="-301" y="-30"/>
+</bendpoint>
+</exit_state>
+<exit_state name="2 : 2회 오류" target="Element@17371185:1481256511846"/>
+<exit_state name="3 : 3회 오류" target="Element@17371185:1481256511846">
+<bendpoint>
+<dim1 x="392" y="38"/>
+<dim2 x="-247" y="-55"/>
+</bendpoint>
+</exit_state>
+<exit_state name="4 : 4회 오류" target="Element@401739:1481256511846"/>
+<exit_state name="5 : 5회 이상" target="Element@13589532:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27809692:1481256511846" name="jumun_pw_auth_Hold_5_m_strAccPwdErrCnt" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="288" x="1366" y="1992">
+<exit_states>
+<exit_state name="done" target="Element@314597:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15964879:1481256511846" name="jumun_pw_auth_Ment" type="Subflow Call" width="168" x="252" y="401">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT3/343002.wav</data>
+<data name="MINDIGIT">8</data>
+<data name="MAXDIGIT">8</data>
+<data name="PATTERN">0123456789#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">num</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@20493185:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2503235:1481256511846" name="jumun_pw_ErrMsg_Play" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="175" x="175" y="2272">
+<exit_states>
+<exit_state name="done" target="Element@28168944:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4699932:1481256511846" name="jumun_pw_ERROR_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="178" x="174" y="2113">
+<exit_states>
+<exit_state name="done" target="Element@11527065:1481256511846"/>
+</exit_states>
+</element>
+<element height="15" id="Element@2211506:1481256511846" type="Comment" width="172" x="-72" y="1899">
+<comment><![CDATA[공란은 에러코드 플레이 해야 함]]></comment>
+</element>
+<element height="60" id="Element@14122357:1481256511846" type="Comment" width="218" x="599" y="314">
+<comment><![CDATA[[jumun_pw_auth_No_Agreement_Ment] :
+상담원 연결 0번, 
+상위메뉴로 가시려면 우물정자를
+눌러주십시오.]]></comment>
+</element>
+<element height="46" id="Element@7600725:1481256511846" name="m_strDTMF_A" src="Element.Utils.EUSetSessionValue" type="Action Element" width="124" x="1193" y="333">
+<exit_states>
+<exit_state name="done" target="Element@3663298:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26033722:1481256511846" name="jumun_pw_auth_No_Agreenment_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="321" x="786" y="248">
+<exit_states>
+<exit_state name="done" target="Element@3321740:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24034851:1481256511846" name="jumun_pw_auth_EUEncrypt" src="Element.Utils.EUEncrypt" type="Action Element" width="194" x="239" y="643">
+<exit_states>
+<exit_state name="done" target="Element@25502710:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26763329:1481256511846" name="jumun_pw_auth_0_Return" type="Subflow Return" width="187" x="429" y="2089"/>
+<element height="46" id="Element@17402326:1481256511846" name="jumun_pw_auth_m_strDTMF_N_Return" type="Subflow Return" width="255" x="1190" y="467"/>
+<element height="135" id="Element@19047742:1481256511846" type="Comment" width="180" x="7" y="864">
+<comment><![CDATA[[D20OI25A_OUTPUT]
+sect : ARS비밀번호상태체크 
+   - 0 : 정상
+   - 1 : 미등록계좌 (times값 안옴)
+   - 2 : DB인증에러
+   - 3 : 틀림 
+   - 9 : 변경해야할주문비밀번호
+
+times : 주문비밀번호 오류체크]]></comment>
+</element>
+<element height="46" id="Element@9155895:1481256511846" name="jumun_pw_auth_TTSPlay_3_m_strAccPwdErrCnt" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="303" x="1010" y="2249">
+<exit_states>
+<exit_state name="done" target="Element@14395846:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20965260:1481256511846" name="jumun_pw_auth_Return" type="Subflow Return" width="175" x="-283" y="157"/>
+<element height="46" id="Element@33350639:1481256511846" name="jumun_pw_auth_Hold_1_D20OI25A" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="240" x="49" y="1515">
+<exit_states>
+<exit_state name="done" target="Element@30974087:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28580530:1481256511846" name="jumun_pw_auth_m_iOrderPwdFlag" type="Decision" width="234" x="220" y="157">
+<exit_states>
+<exit_state name="1 : 인증" target="Element@23541457:1481256511846"/>
+<exit_state name="other" target="Element@21273853:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4477716:1481256511846" name="jumun_pw_auth_TTSPlay_m_strAccPwdErrCnt" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="291" x="647" y="2290">
+<exit_states>
+<exit_state name="done" target="Element@21616005:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3321740:1481256511846" name="jumun_pw_auth_No_Agreement_Ment" type="Subflow Call" width="253" x="819" y="320">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT7/752007.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">0#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@27479546:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9240781:1481256511846" name="jumun_pw_auth_Hold_3_m_strAccPwdErrCnt" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="288" x="1017" y="2084">
+<exit_states>
+<exit_state name="done" target="Element@20480187:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30928993:1481256511846" name="m_strOrderPwdSucces_1" src="Element.Utils.EUSetSessionValue" type="Action Element" width="181" x="79" y="1253">
+<exit_states>
+<exit_state name="done" target="Element@8048207:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28168944:1481256511846" name="jumun_pw_auth_Sect" type="Page Connector" width="163" x="711" y="2448">
+<page_connector target="Element@5490272:1481256511846">jumun_pw_auth_Sect<config/>
+</page_connector>
+</element>
+<element height="30" id="Element@7569550:1481256511846" type="Comment" width="206" x="1413" y="1871">
+<comment><![CDATA[[C00020] : 주문 비밀번호와 입력하신 
+번호가 일치하지 않습니다.]]></comment>
+</element>
+<element height="30" id="Element@20344620:1481256511846" type="Comment" width="206" x="1073" y="1956">
+<comment><![CDATA[[C00020] : 주문 비밀번호와 입력하신 
+번호가 일치하지 않습니다.]]></comment>
+</element>
+<element height="46" id="Element@10445583:1481256511846" name="jumun_pw_auth_m_strDTMF_C_Return" type="Subflow Return" width="254" x="1190" y="646"/>
+<element height="46" id="Element@27479546:1481256511846" name="jumun_pw_auth_No_Agreement_Decision" type="Decision" width="271" x="810" y="400">
+<exit_states>
+<exit_state name="# : 상위메뉴" target="Element@16239716:1481256511846"/>
+<exit_state name="other" target="Element@12372196:1481256511846"/>
+<exit_state name="입력오류" target="Element@2119274:1481256511846"/>
+<exit_state name="0 : 상담원연결" target="Element@7600725:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18435538:1481256511831" name="jumun_pw_auth_EATTSMaker_m_strAccPwdErrCnt" src="Element.Audio.EATTSMaker" type="Decision Element" width="316" x="634" y="2207">
+<exit_states>
+<exit_state name="success" target="Element@4477716:1481256511846"/>
+<exit_state name="fail" target="Element@4477716:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4629484:1481256511846" name="jumun_pw_auth_NoMatch_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="227" x="1190" y="247">
+<exit_states>
+<exit_state name="done" target="Element@3321740:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17371185:1481256511846" name="jumun_pw_auth_3_C00020" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="195" x="1064" y="1992">
+<exit_states>
+<exit_state name="done" target="Element@9240781:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21273853:1481256511846" name="jumun_pw_auth_m_strAccountSect" type="Decision" width="237" x="218" y="248">
+<exit_states>
+<exit_state name="other" target="Element@18035533:1481256511846"/>
+<exit_state name="1 : 정상" target="Element@10433380:1481256511846">
+<bendpoint>
+<dim1 x="-43" y="41"/>
+<dim2 x="-43" y="-40"/>
+</bendpoint>
+</exit_state>
+<exit_state name="2 : 초기화상태" target="Element@27185869:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30522365:1481256511846" name="jumun_pw_auth_Un_Service" type="Page Connector" width="198" x="1411" y="2346">
+<page_connector target="Element@2693669:1481256511846">jumun_pw_auth_Un_Service<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18035533:1481256511846" name="jumun_pw_auth_maxerror" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="188" x="505" y="248">
+<exit_states>
+<exit_state name="done" target="Element@26033722:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20493185:1481256511846" name="jumun_pw_auth_Decision" type="Decision" width="186" x="243" y="481">
+<exit_states>
+<exit_state name="# : 상위메뉴" target="Element@16239716:1481256511846"/>
+<exit_state name="other" target="Element@9169918:1481256511846"/>
+<exit_state name="입력오류" target="Element@2119274:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4930282:1481256511846" name="jumun_pw_auth_err_C00020" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="202" x="162" y="2032">
+<exit_states>
+<exit_state name="done" target="Element@4699932:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26271983:1481256511846" name="m_strArsOrderPwd" src="Element.Utils.EUSetSessionValue" type="Action Element" width="149" x="449" y="1337">
+<exit_states>
+<exit_state name="done" target="Element@10448323:1481256511846"/>
+</exit_states>
+</element>
+<element height="30" id="Element@8312587:1481256511846" type="Comment" width="285" x="1533" y="2046">
+<comment><![CDATA[[jumun_pw_auth_EATTSMaker_m_strAccPwdErrCnt] : 
+주문비밀번호 #### 회 오류 입니다.]]></comment>
+</element>
+<element height="46" id="Element@31923146:1481256511846" name="jumun_pw_auth_EUSocketOutput_D20OI25A" src="Element.Utils.EUSocketOutput" type="Action Element" width="290" x="191" y="996">
+<exit_states>
+<exit_state name="done" target="Element@27940242:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3663298:1481256511846" name="jumun_pw_auth_m_strDTMF_A_Return" type="Subflow Return" width="254" x="1190" y="377"/>
+<element height="15" id="Element@16274244:1481256511846" type="Comment" width="248" x="348" y="886">
+<comment><![CDATA[D20OI25A : 주문비밀번호 오류등록 및 초기화]]></comment>
+</element>
+<element height="45" id="Element@26523883:1481256511846" type="Comment" width="262" x="423" y="401">
+<comment><![CDATA[[343002]
+주문비밀번호 8자리를 눌러 주세요.
+상위메뉴로 가시려면 우물정자(#)를 눌러 주세요.]]></comment>
+</element>
+<element height="45" id="Element@5536980:1481256511846" type="Comment" width="246" x="1520" y="2205">
+<comment><![CDATA[[C00021] : 해당 계좌의 거래가 불가능하오니 
+신분증, 증권 카드, 등록인감을 지참하시고 
+가까운 영업점에 내방하시면 됩니다.]]></comment>
+</element>
+<element height="46" id="Element@31885521:1481256511846" name="m_iOrderPwdFlag" src="Element.Utils.EUSetSessionValue" type="Action Element" width="144" x="452" y="1170">
+<exit_states>
+<exit_state name="done" target="Element@17471214:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2119274:1481256511846" name="m_strDTMF_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="125" x="1190" y="422">
+<exit_states>
+<exit_state name="done" target="Element@17402326:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9169918:1481256511846" name="m_strInArsOrderPwd" src="Element.Utils.EUSetSessionValue" type="Action Element" width="159" x="256" y="560">
+<exit_states>
+<exit_state name="done" target="Element@24034851:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32531474:1481256511846" name="jumun_pw_auth_ENStockSocket_0_D20OI25A" src="Element.Network.ENStockSocket" type="Decision Element" width="295" x="376" y="1601">
+<exit_states>
+<exit_state name="success" target="Element@20570340:1481256511846"/>
+<exit_state name="fail" target="Element@20570340:1481256511846">
+<bendpoint>
+<dim1 x="61" y="44"/>
+<dim2 x="60" y="-48"/>
+</bendpoint>
+</exit_state>
+<exit_state name="errcode" target="Element@20570340:1481256511846">
+<bendpoint>
+<dim1 x="147" y="47"/>
+<dim2 x="146" y="-45"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@25502710:1481256511846" name="jumun_pw_auth_EUSocketInput_D20OI25A" src="Element.Utils.EUSocketInput" type="Action Element" width="280" x="196" y="731">
+<exit_states>
+<exit_state name="done" target="Element@33287233:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23968490:1481256511846" name="jumun_pw_auth_m_strArsProcSect_0_Check" type="Decision" width="283" x="381" y="1800">
+<exit_states>
+<exit_state name="other" target="Element@25648760:1481256511846">
+<bendpoint>
+<dim1 x="186" y="61"/>
+<dim2 x="186" y="-38"/>
+</bendpoint>
+</exit_state>
+<exit_state name="0 : 일치" target="Element@25648760:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16239716:1481256511846" name="m_strDTMF_H" src="Element.Utils.EUSetSessionValue" type="Action Element" width="125" x="1190" y="510">
+<exit_states>
+<exit_state name="done" target="Element@30516792:1481256511846"/>
+</exit_states>
+</element>
+<element height="30" id="Element@19901345:1481256511846" type="Comment" width="206" x="741" y="1996">
+<comment><![CDATA[[C00020] : 주문 비밀번호와 입력하신 
+번호가 일치하지 않습니다.]]></comment>
+</element>
+<element height="46" id="Element@401739:1481256511846" name="jumun_pw_auth_C00020" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="183" x="701" y="2033">
+<exit_states>
+<exit_state name="done" target="Element@17815060:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14395846:1481256511846" name="jumun_pw_auth_Sect" type="Page Connector" width="163" x="1080" y="2346">
+<page_connector target="Element@5490272:1481256511846">jumun_pw_auth_Sect<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@3861766:1481256511846" name="jumun_pw_auth_Hold_0_D20OI25A" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="240" x="403" y="1515">
+<exit_states>
+<exit_state name="done" target="Element@32531474:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2693669:1481256511846" name="jumun_pw_auth_Un_Service" type="Page Entry" width="198" x="847" y="151">
+<exit_states>
+<exit_state name="next" target="Element@26033722:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@314597:1481256511846" name="jumun_pw_auth_EATTSMaker_5_m_strAccPwdErrCnt" src="Element.Audio.EATTSMaker" type="Decision Element" width="328" x="1346" y="2084">
+<exit_states>
+<exit_state name="success" target="Element@19392785:1481256511846"/>
+<exit_state name="fail" target="Element@19392785:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20570340:1481256511846" name="jumun_pw_auth_EUSocketOutput_0_D20OI25A" src="Element.Utils.EUSocketOutput" type="Action Element" width="302" x="372" y="1693">
+<exit_states>
+<exit_state name="done" target="Element@23968490:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33287233:1481256511846" name="jumun_pw_auth_Hold_D20OI25A" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="228" x="222" y="818">
+<exit_states>
+<exit_state name="done" target="Element@2139782:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8048207:1481256511846" name="jumun_pw_auth_EUSocketInput_1_D20OI25A" src="Element.Utils.EUSocketInput" type="Action Element" width="292" x="23" y="1428">
+<exit_states>
+<exit_state name="done" target="Element@33350639:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11527065:1481256511846" name="jumun_pw_ErrMsg_TTS" src="Element.Audio.EATTSMaker" type="Decision Element" width="172" x="177" y="2191">
+<exit_states>
+<exit_state name="success" target="Element@2503235:1481256511846"/>
+<exit_state name="fail" target="Element@2503235:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10448323:1481256511846" name="jumun_pw_auth_EUSocketInput_0_D20OI25A" src="Element.Utils.EUSocketInput" type="Action Element" width="292" x="377" y="1428">
+<exit_states>
+<exit_state name="done" target="Element@3861766:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12372196:1481256511846" name="jumun_pw_auth_No_Agreement_m_strDTMFErr_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="312" x="1190" y="290">
+<exit_states>
+<exit_state name="done" target="Element@4629484:1481256511846"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17471214:1481256511846" name="m_strOrderPwdSucces_0" src="Element.Utils.EUSetSessionValue" type="Action Element" width="181" x="433" y="1253">
+<exit_states>
+<exit_state name="done" target="Element@26271983:1481256511846"/>
+</exit_states>
+</element>
+</page>

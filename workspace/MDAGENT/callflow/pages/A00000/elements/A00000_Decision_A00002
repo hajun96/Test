@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@2821891:1472709979572" name="A00000_Decision_A00002" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="A00000_Decision_A00002" default_exit_state="other">
+        <exit_state name="1 : 단순주문" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="1" />
+            </string>
+        </exit_state>
+        <exit_state name="2 : 일반업무 및 기타문의" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="2" />
+            </string>
+        </exit_state>
+        <exit_state name="3 : Qway 및 사이버 매체" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="3" />
+            </string>
+        </exit_state>
+        <exit_state name="4 : 계좌가 없는 고객" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="4" />
+            </string>
+        </exit_state>
+        <exit_state name="# : 상위메뉴" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="#" />
+            </string>
+        </exit_state>
+        <exit_state name="* : 다시듣기" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="*" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

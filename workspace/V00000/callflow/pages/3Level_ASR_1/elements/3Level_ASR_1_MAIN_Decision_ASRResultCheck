@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@14509763:1473728880467" name="3Level_ASR_1_MAIN_Decision_ASRResultCheck" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="1Level_ASR_1_MAIN_Decision_ASRResultCheck" default_exit_state="정상">
+        <exit_state name="묵음" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <session name="m_iSRsnrv" />
+                </data>
+                <data>
+                    <session name="iSRsnrMax" />
+                </data>
+            </number>
+        </exit_state>
+        <exit_state name="서버Fail" conjugate="and">
+            <number operator="less">
+                <data>
+                    <session name="m_iSRsnrv" />
+                </data>
+                <data>
+                    <session name="iSRsnrMin" />
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

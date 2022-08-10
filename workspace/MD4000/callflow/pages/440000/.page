@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@15555513:1470377333880" name="440000" version="6.0.1">
+<element height="46" id="Element@18942632:1470377333880" name="440000" type="Page Entry" width="92" x="362" y="16">
+<exit_states>
+<exit_state name="next" target="Element@24910315:1470873989112"/>
+</exit_states>
+</element>
+<element height="30" id="Element@1674126:1470873966102" type="Comment" width="143" x="432" y="144">
+<comment><![CDATA[[440001] : 주문가능수량 
+및 금액안내 서비스입니다.]]></comment>
+</element>
+<element height="46" id="Element@12211660:1470873966102" name="440000_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="188" x="315" y="362">
+<exit_states>
+<exit_state name="done" target="Element@22478309:1470873966102"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3601205:1470873966102" name="440000_Decision_440002" type="Decision" width="190" x="313" y="518">
+<exit_states>
+<exit_state name="0 : 상담원연결" target="Element@2826603:1470874298900"/>
+<exit_state name="false : MAX ERROR" target="Element@18687749:1474877673706"/>
+<exit_state name="* : 재청취" target="Element@22478309:1470873966102">
+<bendpoint>
+<dim1 x="-111" y="-52"/>
+<dim2 x="-110" y="39"/>
+</bendpoint>
+</exit_state>
+<exit_state name="# : 상위메뉴" target="Element@25658508:1470873966102"/>
+<exit_state name="other" target="Element@994334:1470873966102">
+<bendpoint>
+<dim1 x="169" y="-21"/>
+<dim2 x="-94" y="-21"/>
+</bendpoint>
+</exit_state>
+<exit_state name="1 : 매수가능금액조회" target="Element@24156347:1470874314453"/>
+<exit_state name="2 : 매도가능수량조회" target="Element@22601072:1470874323220"/>
+<exit_state name="9 : 이어받기" target="Element@29475495:1474629803671"/>
+</exit_states>
+</element>
+<element height="90" id="Element@26823909:1470873966102" type="Comment" width="259" x="41" y="296">
+<comment><![CDATA[[400002] : 
+매수가능금액 조회는 1번, 
+매도주문가능 수량은 2번, 
+상담원연결은 0번을 눌러 주십시오. 
+다시 듣고 싶으시면 별표를 
+상위메뉴로 가시려면 우물정자를 눌러 주십시오.]]></comment>
+</element>
+<element height="46" id="Element@22478309:1470873966102" name="440000_440002" type="Subflow Call" width="139" x="338" y="442">
+<subflow_call subflow_name="dtmf" target="Element@31:1470296185757">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT4/440002.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">*#0129</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@3601205:1470873966102"/>
+</exit_states>
+</element>
+<element height="46" id="Element@994334:1470873966102" name="END" type="Page Connector" width="79" x="89" y="466">
+<page_connector target="Element@10297583:1470377591180">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@26583535:1470873966102" name="440000_440001" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="338" y="175">
+<exit_states>
+<exit_state name="done" target="Element@3632074:1470877365100"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25658508:1470873966102" name="HIGH" type="Page Connector" width="79" x="89" y="511">
+<page_connector target="Element@25356680:1470377596624">HIGH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@24910315:1470873989112" name="440000_EUSetSvcCode" src="Element.Utils.EUSetSvcCode" type="Action Element" width="177" x="320" y="97">
+<exit_states>
+<exit_state name="done" target="Element@26583535:1470873966102"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2826603:1470874298900" name="AGENT" type="Page Connector" width="92" x="89" y="554">
+<page_connector target="Element@11579145:1470377591180">AGENT<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@24156347:1470874314453" name="441000" type="Page Connector" width="92" x="267" y="636">
+<page_connector target="Element@13620946:1470377341383">441000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@22601072:1470874323220" name="442000" type="Page Connector" width="92" x="510" y="635">
+<page_connector target="Element@362318:1470377347685">442000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@3632074:1470877365100" name="440000_m_iSRMoveFlag" src="Element.Utils.EUSetSessionValue" type="Action Element" width="183" x="316" y="267">
+<exit_states>
+<exit_state name="done" target="Element@12211660:1470873966102"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12551471:1474629803671" name="440000_NoMatch_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="184" x="861" y="456">
+<exit_states>
+<exit_state name="done" target="Element@29421521:1474629803671"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29475495:1474629803671" name="440000_DTMF" src="com.audium.server.voiceElement.digit.MBasicDigit" type="Voice Element" width="129" x="621" y="371">
+<exit_states>
+<exit_state name="done" target="Element@29402128:1474629803671"/>
+<exit_state name="max_nomatch" target="Element@12551471:1474629803671"/>
+<exit_state name="max_noinput" target="Element@30577159:1474629803671"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30577159:1474629803671" name="440000_NoInput_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="178" x="864" y="384">
+<exit_states>
+<exit_state name="done" target="Element@29421521:1474629803671"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5458067:1474629803671" name="440000_Decision_NoMent" type="Decision" width="192" x="590" y="509">
+<exit_states>
+<exit_state name="other" target="Element@12551471:1474629803671"/>
+<exit_state name="9 : 음성인식" target="Element@15975258:1474629851951"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29402128:1474629803671" name="440000_m_strDTMF" src="Element.Utils.EUSetSessionValue" type="Action Element" width="158" x="607" y="448">
+<exit_states>
+<exit_state name="done" target="Element@5458067:1474629803671"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29421521:1474629803671" name="440000_m_strDTMFErr_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="187" x="594" y="283">
+<exit_states>
+<exit_state name="done" target="Element@22478309:1470873966102"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15975258:1474629851951" name="VOICE" type="Page Connector" width="87" x="644" y="634">
+<page_connector target="Element@24244395:1470377591180">VOICE<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18687749:1474877673706" name="MAIN" type="Page Connector" width="81" x="89" y="410">
+<page_connector target="Element@14010915:1470377591180">MAIN<config/>
+</page_connector>
+</element>
+</page>

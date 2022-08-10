@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE call_flow SYSTEM "../../../../dtds/Callflow_1-1.dtd">
+<call_flow first_element="asr_input" serial="0000" version="1.1">
+<events/>
+<element_def name="asr_input">
+<subflow_start class="com.audium.server.voiceElement.SubflowStartElement">
+<static>asr_input.xml</static>
+</subflow_start>
+<exit_state name="next">
+<next_element>initValues</next_element>
+</exit_state>
+</element_def>
+<element_def name="EULogWrite_START">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>EULogWrite_START.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EUGetDateTime</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUGetDateTime">
+<action>
+<class src="Element.Utils.EUGetDateTime">
+<static>EUGetDateTime.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EUSetSessionValue_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_01">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_01.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EULogWrite_ASRFileName</next_element>
+</exit_state>
+</element_def>
+<element_def name="LogWrite_Fail">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>LogWrite_Fail.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EUSetMultiSessionValue_ServerFail</next_element>
+</exit_state>
+</element_def>
+<element_def name="initValues">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>initValues.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EULogWrite_START</next_element>
+</exit_state>
+</element_def>
+<element_def name="EULogWrite_ASRFileName">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>EULogWrite_ASRFileName.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Hold_Music_1</next_element>
+</exit_state>
+</element_def>
+<element_def name="Record_Voice">
+<voice class="com.audium.server.voiceElement.record.MRecord">
+<static>Record_Voice.xml</static>
+</voice>
+<exit_state name="max_noinput">
+<next_element>SetValue_ResultErr</next_element>
+</exit_state>
+<exit_state name="done">
+<next_element>Hold_Music</next_element>
+</exit_state>
+</element_def>
+<element_def name="Hold_Music">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>Hold_Music.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>EAASRChecker_vagel_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="Hold_Music_1">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>Hold_Music_1.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>Record_Voice</next_element>
+</exit_state>
+</element_def>
+<element_def name="DTMF_Subflow Return_SUCCESS">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>DTMF_Subflow Return_SUCCESS.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="EUSetMultiSessionValue_01">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>EUSetMultiSessionValue_01.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>DTMF_Subflow Return_SUCCESS</next_element>
+</exit_state>
+</element_def>
+<element_def name="EAASRChecker_vagel_01">
+<decision>
+<class src="Element.Audio.EAASRChecker_vagel">
+<static>EAASRChecker_vagel_01.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>LogWrite_Fail</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>EUSetMultiSessionValue_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_REG_FAIL_END">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>ASR_REG_FAIL_END.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="SetValue_ResultErr">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetValue_ResultErr.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>ASR_REG_FAIL_END</next_element>
+</exit_state>
+</element_def>
+<element_def name="Subflow Return_ASR_SERVER_FAIL">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>Subflow Return_ASR_SERVER_FAIL.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="EUSetMultiSessionValue_ServerFail">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>EUSetMultiSessionValue_ServerFail.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_ASR_SERVER_FAIL</next_element>
+</exit_state>
+</element_def>
+</call_flow>

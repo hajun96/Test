@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@12559420:1471311475568" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1471311475568" name="jumun_auth_credit" type="Subflow Start" width="149" x="207" y="30">
+<exit_states>
+<exit_state name="next" target="Element@8211386:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20430481:1476769620210" name="m_strContractTime2_IndexOf" src="Element.Strings.EUStringIndexOf" type="Action Element" width="205" x="174" y="2130">
+<exit_states>
+<exit_state name="done" target="Element@13207622:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32941232:1476769620210" name="jumun_auth_credit_EUSocketInput_C20OI22" src="Element.Utils.EUSocketInput" type="Action Element" width="285" x="134" y="177">
+<exit_states>
+<exit_state name="done" target="Element@24258464:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31888831:1476769620210" name="m_strDTMF_0" src="Element.Utils.EUSetSessionValue" type="Action Element" width="123" x="772" y="2162">
+<exit_states>
+<exit_state name="done" target="Element@26155992:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10478846:1476769620210" name="m_strDTMF_No_H" src="Element.Utils.EUSetSessionValue" type="Action Element" width="146" x="-524" y="1203">
+<exit_states>
+<exit_state name="done" target="Element@24317485:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29119467:1476769620210" name="jumun_auth_credit_m_strDTMF_H_Return" type="Subflow Return" width="269" x="974" y="704"/>
+<element height="46" id="Element@8211386:1476769620210" name="jumun_auth_credit_m_strCustSect_Check" type="Decision" width="285" x="134" y="102">
+<exit_states>
+<exit_state name="other" target="Element@32941232:1476769620210"/>
+<exit_state name="3 : ARS 미약정" target="Element@28724468:1476769620210">
+<bendpoint>
+<dim1 x="249" y="-31"/>
+<dim2 x="-182" y="-31"/>
+</bendpoint>
+</exit_state>
+<exit_state name="4 : ARS 미약정" target="Element@28724468:1476769620210">
+<bendpoint>
+<dim1 x="249" y="23"/>
+<dim2 x="-182" y="23"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@24099334:1476769620210" name="jumun_auth_credit_m_strDTMF_C_Return" type="Subflow Return" width="268" x="974" y="795"/>
+<element height="46" id="Element@18877504:1476769620210" name="jumun_auth_credit_No_m_strDTMFErr_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="270" x="-648" y="983">
+<exit_states>
+<exit_state name="done" target="Element@1973285:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30625703:1476769620210" name="jumun_auth_credit_ClearAccountInfo" src="Element.Utils.EUClearAccountInfo" type="Action Element" width="247" x="974" y="482">
+<exit_states>
+<exit_state name="done" target="Element@32641415:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7421611:1476769620210" name="jumun_auth_credit_No_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="264" x="-315" y="864">
+<exit_states>
+<exit_state name="done" target="Element@13238213:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23249168:1476769620210" name="jumun_auth_credit_No_Agreement_Ment" type="Subflow Call" width="267" x="576" y="396">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT1/121002.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">1#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@22517155:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19368045:1476769620210" name="jumun_auth_credit_m_strContractTime1_Check" type="Decision" width="300" x="-255" y="2043">
+<exit_states>
+<exit_state name="other" target="Element@7190785:1476769620210"/>
+<exit_state name="등록" target="Element@26028888:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23122658:1476769620210" name="jumun_auth_credit_ENStockSocket_C20OI22" src="Element.Network.ENStockSocket" type="Decision Element" width="288" x="135" y="332">
+<exit_states>
+<exit_state name="success" target="Element@28638295:1476769620210"/>
+<exit_state name="fail" target="Element@10995915:1476769620210"/>
+<exit_state name="errcode" target="Element@10995915:1476769620210"/>
+</exit_states>
+</element>
+<element height="75" id="Element@7144116:1476769620210" type="Comment" width="119" x="19" y="1297">
+<comment><![CDATA[[A11OI01_INPUT]
+0 : 
+1 : m_strAccountNum
+2 : 
+3 : m_strAccPwd]]></comment>
+</element>
+<element height="46" id="Element@12668635:1476769620210" name="jumun_auth_credit_No_Decision" type="Decision" width="221" x="-294" y="1014">
+<exit_states>
+<exit_state name="# : 상위메뉴" target="Element@10478846:1476769620210"/>
+<exit_state name="other" target="Element@18877504:1476769620210"/>
+<exit_state name="1 : 다른계좌인증" target="Element@17057679:1476769620210"/>
+<exit_state name="입력오류" target="Element@32902187:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31606481:1476769620210" name="jumun_auth_credit_m_strCreditFlag_LastCheck" type="Decision" width="296" x="686" y="2059">
+<exit_states>
+<exit_state name="other" target="Element@14481414:1476769620210"/>
+<exit_state name="신용약정" target="Element@31888831:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13238213:1476769620210" name="jumun_auth_credit_No_Ment" type="Subflow Call" width="203" x="-285" y="939">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/C00026.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">1#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@12668635:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3986753:1476769620210" name="jumun_auth_credit_StringReplace_Data" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="257" x="148" y="1871">
+<exit_states>
+<exit_state name="done" target="Element@30727186:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14010103:1476769620210" name="jumun_auth_credit_EUSocketInput_A11OI01" src="Element.Utils.EUSocketInput" type="Action Element" width="285" x="135" y="1283">
+<exit_states>
+<exit_state name="done" target="Element@13411789:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24909026:1476769620210" name="jumun_auth_NoMatch_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="206" x="974" y="396">
+<exit_states>
+<exit_state name="done" target="Element@23249168:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1354430:1476769620210" name="jumun_auth_C00025" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="162" x="-264" y="793">
+<exit_states>
+<exit_state name="done" target="Element@7421611:1476769620210"/>
+</exit_states>
+</element>
+<element height="45" id="Element@19405535:1476769620210" type="Comment" width="283" x="-29" y="753">
+<comment><![CDATA[[A01OI07_INPUT]
+0 : {Data.Session.m_strAccountNum} / 운영계좌번호
+1 : 0 / 조회구분]]></comment>
+</element>
+<element height="46" id="Element@10018069:1476769620210" name="m_strDTMF_H" src="Element.Utils.EUSetSessionValue" type="Action Element" width="125" x="974" y="659">
+<exit_states>
+<exit_state name="done" target="Element@29119467:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22517155:1476769620210" name="jumun_auth_credit_No_Agreement_Decision" type="Decision" width="285" x="567" y="494">
+<exit_states>
+<exit_state name="# : 상위메뉴" target="Element@10018069:1476769620210"/>
+<exit_state name="other" target="Element@18945942:1476769620210"/>
+<exit_state name="1 : 다른계좌인증" target="Element@30625703:1476769620210"/>
+<exit_state name="입력오류" target="Element@26452598:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17057679:1476769620210" name="jumun_auth_credit_No_ClearAccountInfo" src="Element.Utils.EUClearAccountInfo" type="Action Element" width="268" x="-646" y="1026">
+<exit_states>
+<exit_state name="done" target="Element@25890661:1476769620210"/>
+</exit_states>
+</element>
+<element height="30" id="Element@24204416:1476769620210" type="Comment" width="253" x="-290" y="755">
+<comment><![CDATA[[C00025] : 본 계좌는 신용 미약정 계좌입니다. 
+신용약정 후 이용이 가능합니다.]]></comment>
+</element>
+<element height="46" id="Element@33303339:1476769620210" name="jumun_auth_credit_m_strDTMF_N_Return" type="Subflow Return" width="269" x="974" y="616"/>
+<element height="46" id="Element@13411789:1476769620210" name="jumun_auth_credit_Hold_A11OI01" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="233" x="161" y="1357">
+<exit_states>
+<exit_state name="done" target="Element@18390835:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32641415:1476769620210" name="jumun_auth_credit_m_strDTMF_1_Return" type="Subflow Return" width="267" x="974" y="526"/>
+<element height="46" id="Element@7190785:1476769620210" name="jumun_auth_credit_m_strContract2_Check" type="Decision" width="274" x="140" y="2043">
+<exit_states>
+<exit_state name="other" target="Element@31606481:1476769620210"/>
+<exit_state name="기본대출약정" target="Element@20430481:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14481414:1476769620210" name="jumun_auth_C00025_2" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="174" x="747" y="1951">
+<exit_states>
+<exit_state name="done" target="Element@18834904:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30727186:1476769620210" name="jumun_auth_credit_m_strContract1_Check" type="Decision" width="274" x="140" y="1950">
+<exit_states>
+<exit_state name="other" target="Element@7190785:1476769620210"/>
+<exit_state name="신용약정" target="Element@5229379:1476769620210"/>
+</exit_states>
+</element>
+<element height="15" id="Element@19065599:1476769620210" type="Comment" width="155" x="102" y="312">
+<comment><![CDATA[C20OI22 : 주문계좌상태체크]]></comment>
+</element>
+<element height="46" id="Element@19503456:1476769620210" name="jumun_auth_credit_m_strAccountType_Check" type="Decision" width="296" x="130" y="793">
+<exit_states>
+<exit_state name="other" target="Element@1354430:1476769620210"/>
+<exit_state name="022 : 위탁계좌" target="Element@14010103:1476769620210">
+<bendpoint>
+<dim1 x="-131" y="253"/>
+<dim2 x="-130" y="-237"/>
+</bendpoint>
+</exit_state>
+<exit_state name="020" target="Element@14010103:1476769620210">
+<bendpoint>
+<dim1 x="116" y="257"/>
+<dim2 x="117" y="-233"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@26028888:1476769620210" name="m_strCreditFlag_1" src="Element.Utils.EUSetSessionValue" type="Action Element" width="145" x="-178" y="2123">
+<exit_states>
+<exit_state name="done" target="Element@7190785:1476769620210"/>
+</exit_states>
+</element>
+<element height="15" id="Element@15406134:1476769620210" type="Comment" width="76" x="148" y="1933">
+<comment><![CDATA[신용약정 비교]]></comment>
+</element>
+<element height="46" id="Element@12594559:1476769620210" name="jumun_auth_credit_No" type="Page Entry" width="170" x="-548" y="864">
+<exit_states>
+<exit_state name="next" target="Element@7421611:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24258464:1476769620210" name="jumun_auth_credit_Hold_C20OI22" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="233" x="163" y="251">
+<exit_states>
+<exit_state name="done" target="Element@23122658:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24669362:1476769620210" name="jumun_auth_credit_m_strCreditFlag_Check" type="Decision" width="275" x="139" y="2308">
+<exit_states>
+<exit_state name="other" target="Element@8514767:1476769620210"/>
+<exit_state name="1 : 신용약정" target="Element@9923138:1476769620210"/>
+</exit_states>
+</element>
+<element height="30" id="Element@7743631:1476769620210" type="Comment" width="198" x="58" y="148">
+<comment><![CDATA[[C20OI22_INPUT]
+0 : {Data.Session.m_strAccountNum}]]></comment>
+</element>
+<element height="46" id="Element@32902187:1476769620210" name="m_strDTMF_No_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="146" x="-524" y="1115">
+<exit_states>
+<exit_state name="done" target="Element@24530958:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9923138:1476769620210" name="m_strCreditFlag_3" src="Element.Utils.EUSetSessionValue" type="Action Element" width="145" x="472" y="2253">
+<exit_states>
+<exit_state name="done" target="Element@31606481:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1973285:1476769620210" name="jumun_auth_No_NoMatch_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="235" x="-613" y="940">
+<exit_states>
+<exit_state name="done" target="Element@13238213:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8514767:1476769620210" name="m_strCreditFlag_2" src="Element.Utils.EUSetSessionValue" type="Action Element" width="145" x="472" y="2200">
+<exit_states>
+<exit_state name="done" target="Element@31606481:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5735418:1476769620210" name="jumun_auth_credit_m_strContract1_EUStringReplace" src="Element.Strings.EUStringReplace" type="Action Element" width="328" x="113" y="1599">
+<exit_states>
+<exit_state name="done" target="Element@26854272:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26452598:1476769620210" name="m_strDTMF_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="125" x="974" y="571">
+<exit_states>
+<exit_state name="done" target="Element@33303339:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5229379:1476769620210" name="m_strContractTime1_IndexOf" src="Element.Strings.EUStringIndexOf" type="Action Element" width="205" x="-207" y="1950">
+<exit_states>
+<exit_state name="done" target="Element@19368045:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28724468:1476769620210" name="jumun_auth_credit_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="243" x="590" y="321">
+<exit_states>
+<exit_state name="done" target="Element@23249168:1476769620210"/>
+</exit_states>
+</element>
+<element height="30" id="Element@7263430:1476769620210" type="Comment" width="141" x="109" y="382">
+<comment><![CDATA[[C20OI22_OUTPUT]
+Sect : m_strAccountStatus]]></comment>
+</element>
+<element height="285" id="Element@27790975:1476769620210" type="Comment" width="222" x="-135" y="1437">
+<comment><![CDATA[[A11OI01_OUTPUT]
+Sect2	구분2    
+RegDate2	등록일자2
+-----------------------------------
+0번째 Grid의 Sect2,RegDate2 = 신용약정
+1번째 Grid의 Sect2,RegDate2 = 대출약정
+예;
+"신   용  약   정                           "
+"등록(2011/05/19)    "
+"기본  대출  약정                           "
+"등록(2011/05/19)    "
+-----------------------------
+m_strContract1
+m_strContractTime1
+m_strContract2
+m_strContractTime2
+
+모두 " " 없애주어야 함
+때문에 Replace 사용]]></comment>
+</element>
+<element height="46" id="Element@26854272:1476769620210" name="jumun_auth_credit_m_strContractTime1_EUStringReplace" src="Element.Strings.EUStringReplace" type="Action Element" width="354" x="100" y="1661">
+<exit_states>
+<exit_state name="done" target="Element@17942467:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25890661:1476769620210" name="jumun_auth_credit_m_strDTMF_No_1_Return" type="Subflow Return" width="288" x="-666" y="1070"/>
+<element height="60" id="Element@16364491:1476769620210" type="Comment" width="180" x="-81" y="934">
+<comment><![CDATA[[jumun_auth_credit_No_Ment] : 
+다른 계좌로 인증하시려면 1번, 
+상위메뉴로 가시려면 우물정자를 
+눌러 주십시오.]]></comment>
+</element>
+<element height="90" id="Element@1209195:1476769620210" type="Comment" width="235" x="830" y="306">
+<comment><![CDATA[[Jumun_Auth_Cash_No_Agreement_Ment] : 
+본 계좌는 ARS 주문 미약정 계좌입니다. 
+ARS 주문 약정 후 이용이 가능합니다. 
+다른 계좌로 인증하시려면 1번, 
+상위메뉴로 가시려면 우물정자를 
+눌러 주십시오.]]></comment>
+</element>
+<element height="210" id="Element@28772076:1476769620210" type="Comment" width="248" x="-49" y="-117">
+<comment><![CDATA[[계좌인증 후 아래 변수를 가지고 있는 상태]
+m_strCallKey	콜키
+m_strAccBranchNum	지점번호
+m_strAccWorkNum	업무구분
+m_strAccSerialNum	일련번호
+m_strAccreditFlag	인증여부 구분
+m_strAnyNum	발신전화번호
+m_strArsProcSect	처리구분
+m_strArsCustSect	고객구분
+m_strAccPwdErrCnt	비밀번호 오류 횟수
+m_strCustomNum	주민등록번호
+m_strCustomId	고객ID
+m_strAccountSect	비밀번호구분
+m_strArsOrderPwd	주문비밀번호]]></comment>
+</element>
+<element height="46" id="Element@24317485:1476769620210" name="jumun_auth_credit_No_m_strDTMF_H_Return" type="Subflow Return" width="290" x="-668" y="1248"/>
+<element height="46" id="Element@13207622:1476769620210" name="jumun_auth_credit_m_strContractTime2_Check" type="Decision" width="300" x="127" y="2223">
+<exit_states>
+<exit_state name="other" target="Element@31606481:1476769620210"/>
+<exit_state name="등록" target="Element@24669362:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28638295:1476769620210" name="jumun_auth_credit_EUSocketOutput_C20OI22" src="Element.Utils.EUSocketOutput" type="Action Element" width="295" x="130" y="415">
+<exit_states>
+<exit_state name="done" target="Element@26823598:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24902654:1476769620210" name="jumun_auth_credit_EUSocketOutput_A11OI01" src="Element.Utils.EUSocketOutput" type="Action Element" width="295" x="130" y="1521">
+<exit_states>
+<exit_state name="done" target="Element@5735418:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17942467:1476769620210" name="jumun_auth_credit_m_strContract2_EUStringReplace" src="Element.Strings.EUStringReplace" type="Action Element" width="328" x="113" y="1730">
+<exit_states>
+<exit_state name="done" target="Element@31102255:1476769620210"/>
+</exit_states>
+</element>
+<element height="15" id="Element@20916524:1476769620210" type="Comment" width="76" x="147" y="2027">
+<comment><![CDATA[담보약정 비교]]></comment>
+</element>
+<element height="46" id="Element@24530958:1476769620210" name="jumun_auth_credit_m_strDTMF_No_N_Return" type="Subflow Return" width="290" x="-668" y="1160"/>
+<element height="30" id="Element@25666867:1476769620210" type="Comment" width="253" x="730" y="1913">
+<comment><![CDATA[[C00025] : 본 계좌는 신용 미약정 계좌입니다. 
+신용약정 후 이용이 가능합니다.]]></comment>
+</element>
+<element height="46" id="Element@18834904:1476769620210" name="jumun_auth_credit_No" type="Page Connector" width="170" x="1045" y="1951">
+<page_connector target="Element@12594559:1476769620210">jumun_auth_credit_No<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18945942:1476769620210" name="jumun_auth_credit_m_strDTMFErr_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="241" x="974" y="439">
+<exit_states>
+<exit_state name="done" target="Element@24909026:1476769620210"/>
+</exit_states>
+</element>
+<element height="15" id="Element@22853917:1476769620210" type="Comment" width="155" x="109" y="1270">
+<comment><![CDATA[A11OI01 : 신용계좌약정체크]]></comment>
+</element>
+<element height="46" id="Element@26155992:1476769620210" name="jumun_auth_credit_m_strDTMF_0_Return" type="Subflow Return" width="267" x="700" y="2253"/>
+<element height="46" id="Element@26823598:1476769620210" name="jumun_auth_credit_m_strAccountStatus_Check" type="Decision" width="299" x="129" y="498">
+<exit_states>
+<exit_state name="other" target="Element@28724468:1476769620210"/>
+<exit_state name="0 : 정상" target="Element@19503456:1476769620210"/>
+<exit_state name="2 : 정상" target="Element@19503456:1476769620210">
+<bendpoint>
+<dim1 x="129" y="162"/>
+<dim2 x="129" y="-133"/>
+</bendpoint>
+</exit_state>
+<exit_state name="7 : 제휴대출계좌" target="Element@6489234:1481096639723"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31102255:1476769620210" name="jumun_auth_credit_m_strContractTime2_EUStringReplace" src="Element.Strings.EUStringReplace" type="Action Element" width="354" x="100" y="1799">
+<exit_states>
+<exit_state name="done" target="Element@3986753:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10995915:1476769620210" name="m_strDTMF_C" src="Element.Utils.EUSetSessionValue" type="Action Element" width="124" x="974" y="750">
+<exit_states>
+<exit_state name="done" target="Element@24099334:1476769620210"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18390835:1476769620210" name="jumun_auth_credit_ENStockSocket_A11OI01" src="Element.Network.ENStockSocket" type="Decision Element" width="288" x="133" y="1438">
+<exit_states>
+<exit_state name="success" target="Element@24902654:1476769620210"/>
+<exit_state name="fail" target="Element@10995915:1476769620210"/>
+<exit_state name="errcode" target="Element@10995915:1476769620210"/>
+</exit_states>
+</element>
+<element height="30" id="Element@22863797:1481096639723" type="Comment" width="213" x="521" y="714">
+<comment><![CDATA[[C00045] : 제휴대출계좌 입니다.
+해당 계좌는 ARS 서비스 불가능 합니다.]]></comment>
+</element>
+<element height="46" id="Element@6489234:1481096639723" name="MENTC_C00045" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="138" x="517" y="657">
+<exit_states>
+<exit_state name="done" target="Element@10018069:1476769620210"/>
+</exit_states>
+</element>
+</page>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@30040880:1472170380624" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1472170380624" name="test" type="Subflow Start" width="69" x="356" y="51">
+<exit_states>
+<exit_state name="next" target="Element@6403527:1472172883480"/>
+</exit_states>
+</element>
+<element height="105" id="Element@4228861:1472172883480" type="Comment" width="260" x="513" y="77">
+<comment><![CDATA[[테스트 하기위해 하드코딩 필요한 변수]
+m_iHolidayFlag : 휴무일 체크 플래그
+ - 1 : 휴무일 
+ - other : 근무일
+m_strSelectStartTime3 : 장시작 시간
+m_strSelectEndTime3 : 장마감 시간
+----------------------------------------------------]]></comment>
+</element>
+<element height="46" id="Element@6403527:1472172883480" name="m_iHolidayFlag" src="Element.Utils.EUSetSessionValue" type="Action Element" width="132" x="325" y="149">
+<exit_states>
+<exit_state name="done" target="Element@7951648:1472462527317"/>
+</exit_states>
+</element>
+<element height="180" id="Element@25305457:1472172883480" type="Comment" width="285" x="512" y="184">
+<comment><![CDATA[[DB SELECT 로 종목명 가져와야하는 것을 
+전문OUTPUT (m_strItemName)으로 가져온 엘리멘트]
+121000_01_TTS
+121000_05_TTS
+121000_06_TTS
+122000_01_TTS
+122000_05_TTS
+122000_06_TTS
+----------------------------------------------------
+123000_m_strMitemName
+124000_m_strMitemName 하드코딩 해 둠
+125000_m_strMitemName 하드코딩 해 둠]]></comment>
+</element>
+<element height="46" id="Element@11686270:1472172883480" name="test_Return" type="Subflow Return" width="109" x="336" y="551"/>
+<element height="46" id="Element@7662870:1472462527317" name="m_strSelectEndTime8" src="Element.Utils.EUSetSessionValue" type="Action Element" width="164" x="309" y="467">
+<exit_states>
+<exit_state name="done" target="Element@11686270:1472172883480"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7951648:1472462527317" name="_m_strSelectStartTime8" src="Element.Utils.EUSetSessionValue" type="Action Element" width="174" x="304" y="396">
+<exit_states>
+<exit_state name="done" target="Element@7662870:1472462527317"/>
+</exit_states>
+</element>
+</page>

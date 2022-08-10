@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@15669780:1476857103813" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1476857103813" name="mirae_acc" type="Subflow Start" width="103" x="230" y="-50">
+<exit_states>
+<exit_state name="next" target="Element@26877349:1476867408174"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3292821:1476867408174" name="mirae_acc_Decision_C0036" type="Decision" width="195" x="196" y="564">
+<exit_states>
+<exit_state name="other" target="Element@12135927:1476867408174"/>
+<exit_state name="false : MAX ERROR" target="Element@29589487:1476867408174"/>
+<exit_state name="* : 주문비밀번호변경" target="Element@29589487:1476867408174"/>
+<exit_state name="# : 계속주문" target="Element@29589487:1476867408174"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23416625:1476867408174" name="mirae_acc_C00036" type="Subflow Call" width="151" x="216" y="488">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/C00036.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">*#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@3292821:1476867408174"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29589487:1476867408174" name="mirae_acc_m_strDTMF_Return" type="Subflow Return" width="209" x="501" y="564"/>
+<element height="46" id="Element@26877349:1476867408174" name="mirae_acc_yyyyMMdd" src="Element.Utils.EUGetDateTime" type="Action Element" width="168" x="207" y="36">
+<exit_states>
+<exit_state name="done" target="Element@17854137:1476867408174"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12135927:1476867408174" name="mirae_acc_m_strDTMFErr_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="195" x="-45" y="564">
+<exit_states>
+<exit_state name="done" target="Element@24693527:1476867408174"/>
+</exit_states>
+</element>
+<element height="120" id="Element@30753168:1476867408174" type="Comment" width="203" x="379" y="438">
+<comment><![CDATA[[MENTC/C00036]
+미래에셋증권 계좌로 주문시 
+주문 비밀번호를 변경해야 하며, 
+초기비밀번호는 숫자 1, 8자리로 
+되어 있으며, 2017년 3월 31까지 
+변경 하셔야 합니다. 주문비밀번호 
+변경은 별표, 계속 주문은 우물정자를 
+눌러 주십시오.]]></comment>
+</element>
+<element height="46" id="Element@11194183:1476867408174" name="mirae_acc_m_strAccountNum_Length" src="Element.Strings.EUStringLength" type="Action Element" width="251" x="166" y="169">
+<exit_states>
+<exit_state name="done" target="Element@949038:1476867408174"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22910050:1476867408174" name="mirae_acc_m_strDTMF" src="Element.Utils.EUSetSessionValue" type="Action Element" width="169" x="521" y="180">
+<exit_states>
+<exit_state name="done" target="Element@29589487:1476867408174"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17854137:1476867408174" name="mirae_acc_20170331_Check" type="Decision" width="202" x="190" y="100">
+<exit_states>
+<exit_state name="other" target="Element@22910050:1476867408174"/>
+<exit_state name="공지기간" target="Element@11194183:1476867408174"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24693527:1476867408174" name="mirae_acc_NoMatch_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="195" x="-45" y="488">
+<exit_states>
+<exit_state name="done" target="Element@23416625:1476867408174"/>
+</exit_states>
+</element>
+<element height="46" id="Element@949038:1476867408174" name="mirae_acc_m_strAccountNum_Length_Check" type="Decision" width="289" x="147" y="246">
+<exit_states>
+<exit_state name="other" target="Element@22910050:1476867408174"/>
+<exit_state name="미래에셋증권계좌" target="Element@8538176:1480381441255"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12114096:1476867408174" name="mirae_acc_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="197" x="193" y="410">
+<exit_states>
+<exit_state name="done" target="Element@23416625:1476867408174"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8538176:1480381441255" name="mirae_acc_m_strAccountSect" type="Decision" width="205" x="189" y="329">
+<exit_states>
+<exit_state name="other" target="Element@22910050:1476867408174"/>
+<exit_state name="2 : 초기화상태" target="Element@12114096:1476867408174"/>
+</exit_states>
+</element>
+</page>

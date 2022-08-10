@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@16830309:1469433189303" name="dtmf_MaxError_Compare" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="MaxError_Compare" default_exit_state="maxerror">
+        <exit_state name="retry" conjugate="and">
+            <number operator="less">
+                <data>
+                    <session name="g_nCount" />
+                </data>
+                <data>
+                    <session name="m_ARSMaxErr" />
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

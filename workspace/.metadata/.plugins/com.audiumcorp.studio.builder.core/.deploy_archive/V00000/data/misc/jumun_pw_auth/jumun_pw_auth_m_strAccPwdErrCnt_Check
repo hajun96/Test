@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE knowledge_base SYSTEM "../../../../../dtds/DecisionKnowledgeBase.dtd">
+<knowledge_base>
+    <rule default_exit_state="other" name="jumun_pw_auth_m_strAccPwdErrCnt_Check">
+        <exit_state conjugate="and" name="0 : 정상">
+            <string operator="equal">
+                <data>
+                    <session name="m_strAccPwdErrCnt"/>
+                </data>
+                <constant_string value="0"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="공란">
+            <string operator="equal">
+                <data>
+                    <session name="m_strAccPwdErrCnt"/>
+                </data>
+                <constant_string value=" "/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="3회 미만">
+            <number operator="less">
+                <data>
+                    <session name="m_strAccPwdErrCnt"/>
+                </data>
+                <constant_number value="3"/>
+            </number>
+        </exit_state>
+        <exit_state conjugate="and" name="5회 이상">
+            <number operator="greater_equal">
+                <data>
+                    <session name="m_strAccPwdErrCnt"/>
+                </data>
+                <constant_number value="5"/>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>

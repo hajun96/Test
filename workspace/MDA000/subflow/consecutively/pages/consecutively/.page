@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@12014340:1478328916693" name="consecutively" version="6.0.1">
+<element height="46" id="Element@31:1478328916693" name="consecutively" type="Subflow Start" width="122" x="225" y="30">
+<exit_states>
+<exit_state name="next" target="Element@11963602:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5597444:1478328993735" name="consecutively_TODAY_yyyyMMdd" src="Element.Utils.EUGetDateTime" type="Action Element" width="256" x="158" y="372">
+<exit_states>
+<exit_state name="done" target="Element@13205050:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22482479:1478328993735" name="consecutively_EUMultiOutputBlockdb" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="270" x="152" y="1471">
+<exit_states>
+<exit_state name="done" target="Element@11679373:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26305018:1478328993735" name="consecutively_EULogWrite_Start" src="Element.Utils.EULogWrite" type="Action Element" width="239" x="166" y="604">
+<exit_states>
+<exit_state name="done" target="Element@25376844:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1809083:1478328993735" name="consecutively_countTmp_Set" src="Element.Utils.EUSetSessionValue" type="Action Element" width="224" x="534" y="1397">
+<exit_states>
+<exit_state name="done" target="Element@3747119:1478330172585"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25301670:1478328993735" name="consecutively_EUSetMultiSessionValue_Init" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="298" x="138" y="1152">
+<exit_states>
+<exit_state name="done" target="Element@4947855:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8277961:1478328993735" name="consecutively_MultiSessionValue_Query" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="282" x="145" y="525">
+<exit_states>
+<exit_state name="done" target="Element@26305018:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25376844:1478328993735" name="consecutively_DB_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="194" x="188" y="779">
+<exit_states>
+<exit_state name="done" target="Element@31800242:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@232220:1478328993735" name="consecutively_EUMultiOutputBlock" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="256" x="159" y="937">
+<exit_states>
+<exit_state name="done" target="Element@10615045:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13205050:1478328993735" name="consecutively_TODAY_HHmm" src="Element.Utils.EUGetDateTime" type="Action Element" width="236" x="168" y="450">
+<exit_states>
+<exit_state name="done" target="Element@8277961:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4947855:1478328993735" name="consecutively_Decision_CheckCount" type="Decision" width="264" x="155" y="1238">
+<exit_states>
+<exit_state name="next" target="Element@22482479:1478328993735"/>
+<exit_state name="end" target="Element@14024532:1478329856761"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11963602:1478328993735" name="SubStr_DNIS" src="Element.Strings.EUStringSubString" type="Action Element" width="119" x="227" y="125">
+<exit_states>
+<exit_state name="done" target="Element@14114181:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11679373:1478328993735" name="consecutively_countTmp_PlusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="251" x="521" y="1471">
+<exit_states>
+<exit_state name="done" target="Element@1809083:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16876752:1478328993735" name="consecutively_Decision_CheckNumber" type="Decision" width="275" x="149" y="287">
+<exit_states>
+<exit_state name="Y:1588-6800" target="Element@5597444:1478328993735">
+<bendpoint>
+<dim1 x="4" y="39"/>
+<dim2 x="4" y="-46"/>
+</bendpoint>
+<bendpoint>
+<dim1 x="4" y="48"/>
+<dim2 x="4" y="-37"/>
+</bendpoint>
+</exit_state>
+<exit_state name="other" target="Element@23171869:1478328993735">
+<bendpoint>
+<dim1 x="603" y="394"/>
+<dim2 x="243" y="-378"/>
+</bendpoint>
+</exit_state>
+<exit_state name="Y:1588-9200" target="Element@5597444:1478328993735"/>
+<exit_state name="Y:1588-9300" target="Element@5597444:1478328993735"/>
+<exit_state name="Y:1588-3322" target="Element@5597444:1478328993735"/>
+<exit_state name="Y:1644-9200" target="Element@5597444:1478328993735"/>
+<exit_state name="Y:1644-9300" target="Element@5597444:1478328993735"/>
+<exit_state name="Y:1577-9301" target="Element@5597444:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31800242:1478328993735" name="consecutively_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="212" x="181" y="853">
+<exit_states>
+<exit_state name="success" target="Element@232220:1478328993735"/>
+<exit_state name="fail" target="Element@14024532:1478329856761"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23171869:1478328993735" name="consecutively_Subflow Return" type="Subflow Return" width="230" x="531" y="1059"/>
+<element height="46" id="Element@10615045:1478328993735" name="consecutively_Decision_COUNT" type="Decision" width="238" x="168" y="1059">
+<exit_states>
+<exit_state name="건수있음" target="Element@25301670:1478328993735"/>
+<exit_state name="없음" target="Element@23171869:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14114181:1478328993735" name="consecutively_EUSetSessionValue_dnisTmp" src="Element.Utils.EUSetSessionValue" type="Action Element" width="299" x="137" y="203">
+<exit_states>
+<exit_state name="done" target="Element@16876752:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14024532:1478329856761" name="consecutively_m_iSqlSelectCnt" type="Decision" width="214" x="-150" y="1238">
+<exit_states>
+<exit_state name="1" target="Element@14967559:1478331441176"/>
+<exit_state name="2" target="Element@11529547:1478331486240"/>
+<exit_state name="3" target="Element@17741163:1478331501415"/>
+<exit_state name="other" target="Element@12036455:1478331712441"/>
+<exit_state name="4" target="Element@23400648:1478331527655"/>
+<exit_state name="5" target="Element@28138532:1478331547510"/>
+<exit_state name="6" target="Element@10255345:1478331568607"/>
+<exit_state name="7" target="Element@15167589:1478331584829"/>
+<exit_state name="8" target="Element@1474719:1478331628460"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3747119:1478330172585" name="consecutively_m_iCnt_PlusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="214" x="539" y="1318">
+<exit_states>
+<exit_state name="done" target="Element@29721458:1478330172585"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29721458:1478330172585" name="consecutively_m_iCnt_Set" src="Element.Utils.EUSetSessionValue" type="Action Element" width="187" x="552" y="1238">
+<exit_states>
+<exit_state name="done" target="Element@4947855:1478328993735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14967559:1478331441176" name="consecutively_1_ment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="167" x="-424" y="1028">
+<exit_states>
+<exit_state name="done" target="Element@26988056:1478331654891"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11529547:1478331486240" name="consecutively_2_ment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="167" x="-424" y="1097">
+<exit_states>
+<exit_state name="done" target="Element@26988056:1478331654891"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17741163:1478331501415" name="consecutively_3_ment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="167" x="-424" y="1168">
+<exit_states>
+<exit_state name="done" target="Element@26988056:1478331654891"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23400648:1478331527655" name="consecutively_4_ment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="167" x="-424" y="1238">
+<exit_states>
+<exit_state name="done" target="Element@26988056:1478331654891"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28138532:1478331547510" name="consecutively_5_ment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="167" x="-424" y="1303">
+<exit_states>
+<exit_state name="done" target="Element@26988056:1478331654891"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10255345:1478331568607" name="consecutively_6_ment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="167" x="-424" y="1367">
+<exit_states>
+<exit_state name="done" target="Element@26988056:1478331654891"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15167589:1478331584829" name="consecutively_7_ment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="167" x="-424" y="1431">
+<exit_states>
+<exit_state name="done" target="Element@26988056:1478331654891"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1474719:1478331628460" name="consecutively_8_ment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="167" x="-424" y="1500">
+<exit_states>
+<exit_state name="done" target="Element@26988056:1478331654891"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26988056:1478331654891" name="consecutively_Subflow_ment Return" type="Subflow Return" width="259" x="-782" y="1250"/>
+<element height="46" id="Element@12036455:1478331712441" name="consecutively_other_ment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="188" x="-435" y="955">
+<exit_states>
+<exit_state name="done" target="Element@26988056:1478331654891"/>
+</exit_states>
+</element>
+</page>

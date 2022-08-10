@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@14580160:1479880060317" name="page1" version="6.0.1">
+<element height="46" id="Element@4173460:1479880060317" name="Start Of Call" start_of_call="true" type="Page Entry" width="117" x="231" y="-89">
+<exit_states>
+<exit_state name="next" target="Element@2499744:1479880140448"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12019342:1479880133912" name="EUGetCallData_01" src="Element.Utils.EUGetCallData" type="Action Element" width="150" x="213" y="91">
+<exit_states>
+<exit_state name="done" target="Element@6016044:1479896175983"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2499744:1479880140448" name="CVP Subdialog Start_01" src="com.audium.server.voiceElement.internal.CiscoSubdialogStartElement" type="Subdialog Start" width="182" x="197" y="-4">
+<exit_states>
+<exit_state name="done" target="Element@12019342:1479880133912"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18727786:1479896082200" name="ENOracleDB_01" src="Element.DataBase.ENOracleDB" type="Decision Element" width="138" x="220" y="525">
+<exit_states>
+<exit_state name="success" target="Element@32210728:1479896810247"/>
+<exit_state name="fail" target="Element@24850669:1479896954013"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5149278:1479896105612" name="Hold_01" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="93" x="242" y="433">
+<exit_states>
+<exit_state name="done" target="Element@18727786:1479896082200"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6016044:1479896175983" name="EUStringSubString_01" src="Element.Strings.EUStringSubString" type="Action Element" width="170" x="205" y="197">
+<exit_states>
+<exit_state name="done" target="Element@31194848:1479898720410"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32210728:1479896810247" name="EUOutputBlock_01" src="Element.Utils.EUOutputBlock" type="Action Element" width="151" x="211" y="629">
+<exit_states>
+<exit_state name="done" target="Element@18195948:1479952779495"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3187350:1479896890398" name="END_Return" src="com.audium.server.voiceElement.internal.CiscoSubdialogReturnElement" type="Subdialog Return" width="117" x="224" y="897">
+<exit_states>
+<exit_state name="done"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24850669:1479896954013" name="EFINIReader_01" src="Element.File.EFINIReader" type="Action Element" width="138" x="440" y="528">
+<exit_states>
+<exit_state name="done" target="Element@18195948:1479952779495"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31194848:1479898720410" name="EUSetMultiSessionValue_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="189" y="317">
+<exit_states>
+<exit_state name="done" target="Element@5149278:1479896105612"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18195948:1479952779495" name="SetCV1" type="Action" width="103" x="235" y="723">
+<exit_states>
+<exit_state name="done" target="Element@4075363:1479953048578"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4075363:1479953048578" name="EUSetMultiSessionValue_02" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="183" y="807">
+<exit_states>
+<exit_state name="done" target="Element@3187350:1479896890398"/>
+</exit_states>
+</element>
+</page>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@12123163:1473502425219" name="344000_Decision_344022" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="334000_Decision_334016" default_exit_state="other">
+        <exit_state name="* : 종목코드 입력" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="*" />
+            </string>
+        </exit_state>
+        <exit_state name="false : MAXError" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="false" />
+            </string>
+        </exit_state>
+        <exit_state name="# : 상위메뉴" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="#" />
+            </string>
+        </exit_state>
+        <exit_state name="0 : 다른계좌 주문" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="0" />
+            </string>
+        </exit_state>
+        <exit_state name="1 : 체결내역SMS전송" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="1" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

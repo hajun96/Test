@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@25234583:1473658986474" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1473658986474" name="dtmf_one_digit" type="Subflow Start" width="130" x="170" y="108">
+<exit_states>
+<exit_state name="next" target="Element@29770328:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10854001:1473658990433" name="DTMF_Decision_01" type="Decision" width="157" x="1094" y="398">
+<exit_states>
+<exit_state name="true" target="Element@22402216:1473658990433"/>
+<exit_state name="false" target="Element@21315933:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29770328:1473658990433" name="EUSetSessionValue_01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="136" y="203">
+<exit_states>
+<exit_state name="done" target="Element@19774467:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24099878:1473658990433" name="DTMF_EUCountIncrement" src="Element.Utils.EUCountIncrement" type="Action Element" width="195" x="1068" y="317">
+<exit_states>
+<exit_state name="done" target="Element@10854001:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21315933:1473658990433" name="EUSetMultiSessionValue_02" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="1052" y="502">
+<exit_states>
+<exit_state name="done" target="Element@27860963:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17199989:1473658990433" name="DTMF_Digits" src="com.audium.server.voiceElement.digit.MBasicDigit" type="Voice Element" width="151" x="348" y="322">
+<exit_states>
+<exit_state name="done" target="Element@31088196:1473658990433"/>
+<exit_state name="max_nomatch" target="Element@8796182:1473658990433"/>
+<exit_state name="max_noinput" target="Element@23257358:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33393411:1473658990433" name="DTMF_NOMatch" type="Page Entry" width="143" x="623" y="179">
+<exit_states>
+<exit_state name="next" target="Element@8796182:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31088196:1473658990433" name="DTMF_Decision_04" type="Decision" width="157" x="348" y="441">
+<exit_states>
+<exit_state name="정상" target="Element@11638235:1473658990433"/>
+<exit_state name="비정상" target="Element@11113930:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11638235:1473658990433" name="DTMF_EULogWrite_04" src="Element.Utils.EULogWrite" type="Action Element" width="172" x="195" y="583">
+<exit_states>
+<exit_state name="done" target="Element@15032658:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26379848:1473658990433" name="DTMF_Subflow Return_02" type="Subflow Return" width="205" x="177" y="750"/>
+<element height="46" id="Element@23257358:1473658990433" name="DTMF_EULogWrite_02" src="Element.Utils.EULogWrite" type="Action Element" width="172" x="592" y="345">
+<exit_states>
+<exit_state name="done" target="Element@11409182:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11113930:1473658990433" name="DTMF_NOMatch" type="Page Connector" width="143" x="503" y="583">
+<page_connector target="Element@33393411:1473658990433">DTMF_NOMatch<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@7111000:1473658990433" name="DTMF_Subflow Return_01" type="Subflow Return" width="193" x="1066" y="683"/>
+<element height="46" id="Element@15032658:1473658990433" name="EUSetMultiSessionValue_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="186" y="661">
+<exit_states>
+<exit_state name="done" target="Element@26379848:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6763019:1473658990433" name="EULogWrite_01" src="Element.Utils.EULogWrite" type="Action Element" width="132" x="165" y="321">
+<exit_states>
+<exit_state name="done" target="Element@17199989:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27860963:1473658990433" name="DTMF_EULogWrite_05" src="Element.Utils.EULogWrite" type="Action Element" width="172" x="1075" y="590">
+<exit_states>
+<exit_state name="done" target="Element@7111000:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22402216:1473658990433" name="DTMF_RETRY_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="168" x="813" y="462">
+<exit_states>
+<exit_state name="done" target="Element@33332678:1473658990433"/>
+</exit_states>
+</element>
+<element height="132" id="Element@22573261:1473658990433" type="Comment" width="366" x="515" y="4">
+<comment><![CDATA[*************************************************************
+*
+* <Subflow> DTMF 한자리 입력
+*
+* Input Data -> MENT (멘트파일명)
+* Output Data -> DTMF 결과 (Session Data : digitvalue)
+
+성공 : DTMF 값
+5회오류 : "false"
+
+*************************************************************]]></comment>
+</element>
+<element height="46" id="Element@19774467:1473658990433" name="DTMF_EUCountClear" src="Element.Utils.EUCountClear" type="Action Element" width="169" x="348" y="206">
+<exit_states>
+<exit_state name="done" target="Element@6763019:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11409182:1473658990433" name="DTMF_NOInput_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="173" x="809" y="363">
+<exit_states>
+<exit_state name="done" target="Element@24099878:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33332678:1473658990433" name="EUSetSessionValue_02" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="598" y="454">
+<exit_states>
+<exit_state name="done" target="Element@17199989:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8796182:1473658990433" name="DTMF_EULogWrite_01" src="Element.Utils.EULogWrite" type="Action Element" width="172" x="602" y="250">
+<exit_states>
+<exit_state name="done" target="Element@30172426:1473658990433"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30172426:1473658990433" name="DTMF_NOMatch_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="181" x="821" y="254">
+<exit_states>
+<exit_state name="done" target="Element@24099878:1473658990433"/>
+</exit_states>
+</element>
+</page>

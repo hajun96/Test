@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@4384769:1482122795132" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1482122795132" name="menu" type="Subflow Start" width="81" x="245" y="-74">
+<exit_states>
+<exit_state name="next" target="Element@13131069:1482153533332"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6928789:1482122807764" name="menu_m_strDTMF" src="Element.Utils.EUSetSessionValue" type="Action Element" width="153" x="592" y="500">
+<exit_states>
+<exit_state name="done" target="Element@18279312:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31712850:1482122807764" name="menu_m_iCnt_PlusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="181" x="367" y="1268">
+<exit_states>
+<exit_state name="done" target="Element@12671034:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5383278:1482122807764" name="menu_EUMultiOutputBlock" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="198" x="185" y="897">
+<exit_states>
+<exit_state name="done" target="Element@27649778:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25536351:1482122807764" name="menu_HHmmss" src="Element.Utils.EUGetDateTime" type="Action Element" width="140" x="491" y="117">
+<exit_states>
+<exit_state name="done" target="Element@28278256:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28278256:1482122807764" name="menu_StockTime_Check" type="Decision" width="190" x="469" y="201">
+<exit_states>
+<exit_state name="장시작전" target="Element@20088423:1482122807764"/>
+<exit_state name="장종료" target="Element@20088423:1482122807764">
+<bendpoint>
+<dim1 x="32" y="122"/>
+<dim2 x="62" y="-104"/>
+</bendpoint>
+</exit_state>
+<exit_state name="other" target="Element@25645691:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12671034:1482122807764" name="menu_m_iCnt_Increment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="189" x="362" y="1199">
+<exit_states>
+<exit_state name="done" target="Element@14133548:1482122807764"/>
+</exit_states>
+</element>
+<element height="15" id="Element@29586673:1482122807764" type="Comment" width="215" x="486" y="835">
+<comment><![CDATA[DB 조회 실패시 INI파일 읽게 변경 할 것]]></comment>
+</element>
+<element height="46" id="Element@26970874:1482122807764" name="menu_m_iHolidayFlag_Check" type="Decision" width="216" x="178" y="117">
+<exit_states>
+<exit_state name="평일" target="Element@25536351:1482122807764"/>
+<exit_state name="1 : 휴무일" target="Element@10730086:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10730086:1482122807764" name="menu_day_tp_HO" src="Element.Utils.EUSetSessionValue" type="Action Element" width="148" x="42" y="301">
+<exit_states>
+<exit_state name="done" target="Element@14008655:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20088423:1482122807764" name="menu_day_tp_DE" src="Element.Utils.EUSetSessionValue" type="Action Element" width="147" x="384" y="301">
+<exit_states>
+<exit_state name="done" target="Element@14008655:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19045796:1482122807764" name="menu_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="120" x="223" y="1268">
+<exit_states>
+<exit_state name="done" target="Element@13448016:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14008655:1482122807764" name="menu_SQL_Log" src="Element.Utils.EULogWrite" type="Action Element" width="139" x="217" y="400">
+<exit_states>
+<exit_state name="done" target="Element@25574246:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18279312:1482122807764" name="menu_DTMF_Subflow Return" type="Subflow Return" width="213" x="562" y="599"/>
+<element height="46" id="Element@1434935:1482122807764" name="menu_DB_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="135" x="216" y="591">
+<exit_states>
+<exit_state name="done" target="Element@24886662:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19277299:1482122807764" name="menu_Return" type="Subflow Return" width="124" x="-167" y="971"/>
+<element height="46" id="Element@14133548:1482122807764" name="menu_EUMultiOutputBlock_DBData" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="245" x="162" y="1118">
+<exit_states>
+<exit_state name="done" target="Element@20453999:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25645691:1482122807764" name="menu_day_tp_DP" src="Element.Utils.EUSetSessionValue" type="Action Element" width="147" x="213" y="301">
+<exit_states>
+<exit_state name="done" target="Element@14008655:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14499223:1482122807764" name="menu_m_strDBError_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="168" x="-189" y="807">
+<exit_states>
+<exit_state name="done" target="Element@19277299:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24886662:1482122807764" name="menu_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="158" x="207" y="667">
+<exit_states>
+<exit_state name="success" target="Element@7688671:1482122807764"/>
+<exit_state name="fail" target="Element@14499223:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16157728:1482122807764" name="menu_m_iSqlSelectCnt_MinusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="244" x="166" y="1048">
+<exit_states>
+<exit_state name="done" target="Element@14133548:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27649778:1482122807764" name="menu_m_iSqlSelectCnt_0_Check" type="Decision" width="234" x="171" y="971">
+<exit_states>
+<exit_state name="other" target="Element@14499223:1482122807764"/>
+<exit_state name="탄력적메뉴존재" target="Element@16157728:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25574246:1482122807764" name="menu_dtmf_Digit" src="com.audium.server.voiceElement.digit.MBasicDigit" type="Voice Element" width="143" x="215" y="500">
+<exit_states>
+<exit_state name="done" target="Element@6928789:1482122807764"/>
+<exit_state name="max_nomatch" target="Element@6928789:1482122807764">
+<bendpoint>
+<dim1 x="144" y="42"/>
+<dim2 x="-142" y="42"/>
+</bendpoint>
+</exit_state>
+<exit_state name="max_noinput" target="Element@1434935:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7688671:1482122807764" name="menu_m_iCnt" src="Element.Utils.EUSetSessionValue" type="Action Element" width="127" x="222" y="744">
+<exit_states>
+<exit_state name="done" target="Element@5383278:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13448016:1482122807764" name="menu_m_iSqlSelectCnt_Check" type="Decision" width="222" x="174" y="1366">
+<exit_states>
+<exit_state name="other" target="Element@31712850:1482122807764"/>
+<exit_state name="탄력적메뉴가져오기완료" target="Element@19277299:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20453999:1482122807764" name="menu_Audio_Log" src="Element.Utils.EULogWrite" type="Action Element" width="147" x="211" y="1199">
+<exit_states>
+<exit_state name="done" target="Element@19045796:1482122807764"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13131069:1482153533332" name="menu_m_strDTMF_Init" src="Element.Utils.EUSetSessionValue" type="Action Element" width="169" x="201" y="27">
+<exit_states>
+<exit_state name="done" target="Element@26970874:1482122807764"/>
+</exit_states>
+</element>
+</page>

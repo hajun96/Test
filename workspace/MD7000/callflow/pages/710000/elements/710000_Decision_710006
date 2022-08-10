@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@32242243:1470792398647" name="710000_Decision_710006" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="710000_Decision_710006" default_exit_state="other">
+        <exit_state name="1 : 증권카드" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="1" />
+            </string>
+        </exit_state>
+        <exit_state name="2 : 인감" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="2" />
+            </string>
+        </exit_state>
+        <exit_state name="false : MAX ERROR" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="false" />
+            </string>
+        </exit_state>
+        <exit_state name="# : 상위메뉴" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="#" />
+            </string>
+        </exit_state>
+        <exit_state name="3 : 통장" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="3" />
+            </string>
+        </exit_state>
+        <exit_state name="4 : OTP카드" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="4" />
+            </string>
+        </exit_state>
+        <exit_state name="5 : 보안카드" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="5" />
+            </string>
+        </exit_state>
+        <exit_state name="6 : 공인인증서" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="6" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

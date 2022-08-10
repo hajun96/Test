@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@279376:1435625163541" name="COMMON" version="6.0.1">
+<element height="46" id="Element@19806721:1435625177971" name="Flag_busy" type="Flag" width="108" x="713" y="567">
+<exit_states>
+<exit_state name="done" target="Element@7531730:1435625177971"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16523838:1435625177971" name="Flag_done" type="Flag" width="108" x="1084" y="343">
+<exit_states>
+<exit_state name="done" target="Element@7531730:1435625177971"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7531730:1435625177971" type="Hang Up" width="98" x="1089" y="567"/>
+<element height="46" id="Element@13625051:1435625177971" name="LogWrite_Transfer_01" src="Element.Utils.EULogWrite" type="Action Element" width="169" x="684" y="246">
+<exit_states>
+<exit_state name="done" target="Element@20804052:1435625177971"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20804052:1435625177971" name="Transfer_01" src="com.audium.server.voiceElement.transfer.MTransfer" type="Voice Element" width="115" x="710" y="343">
+<exit_states>
+<exit_state name="done" target="Element@16523838:1435625177971"/>
+<exit_state name="busy" target="Element@19806721:1435625177971"/>
+<exit_state name="noanswer" target="Element@18476280:1435625177971"/>
+<exit_state name="phone_error" target="Element@19668264:1435625177971"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18476280:1435625177971" name="Flag_normal" type="Flag" width="119" x="898" y="417">
+<exit_states>
+<exit_state name="done" target="Element@7531730:1435625177971"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19668264:1435625177971" name="Flag_error" type="Flag" width="106" x="831" y="485">
+<exit_states>
+<exit_state name="done" target="Element@7531730:1435625177971"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5121020:1435628382778" name="EUSetSessionValue_02" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="477" y="435">
+<exit_states>
+<exit_state name="done" target="Element@15631131:1435628382778"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3508077:1435628382778" name="HUNT" type="Page Entry" width="156" x="489" y="339">
+<exit_states>
+<exit_state name="next" target="Element@5121020:1435628382778"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15631131:1435628382778" name="Decision_isDead" type="Decision" width="144" x="695" y="120">
+<exit_states>
+<exit_state name="standalone MODE" target="Element@13625051:1435625177971"/>
+<exit_state name="Other" target="Element@6957129:1435631415435"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4291790:1435630948199" name="END" type="Page Entry" width="75" x="218" y="143">
+<exit_states>
+<exit_state name="next" target="Element@7214921:1435630948199"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7214921:1435630948199" name="Decision_isDead_02" type="Decision" width="162" x="175" y="247">
+<exit_states>
+<exit_state name="Standalone MODE" target="Element@29024729:1435630948199"/>
+<exit_state name="Other" target="Element@2517028:1482413847325"/>
+</exit_states>
+</element>
+<element height="45" id="Element@20444320:1435630948199" type="Comment" width="52" x="226" y="88">
+<comment><![CDATA[**********
+ Call END
+**********]]></comment>
+</element>
+<element height="46" id="Element@29024729:1435630948199" type="Hang Up" width="98" x="309" y="350"/>
+<element height="46" id="Element@6957129:1435631415435" name="LogWrite_Transfer_02" src="Element.Utils.EULogWrite" type="Action Element" width="169" x="359" y="-31">
+<exit_states>
+<exit_state name="done" target="Element@2517028:1482413847325"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2517028:1482413847325" name="Subdialog_Return" type="Subflow Call" width="148" x="297" y="39">
+<subflow_call subflow_name="SubdialogReturn" target="Element@31:1481200587946">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@25110022:1482413847325"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25110022:1482413847325" name="END_Return" src="com.audium.server.voiceElement.internal.CiscoSubdialogReturnElement" type="Subdialog Return" width="117" x="75" y="35">
+<exit_states>
+<exit_state name="done"/>
+</exit_states>
+</element>
+</page>

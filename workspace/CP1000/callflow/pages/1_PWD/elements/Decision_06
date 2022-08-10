@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@10194903:1475047720317" name="Decision_06" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="Decision_06" default_exit_state="Other">
+        <exit_state name="5회에러" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <session name="secret_no_err_times" />
+                </data>
+                <constant_number value="4" />
+            </number>
+        </exit_state>
+        <exit_state name="4회에러" conjugate="and">
+            <number operator="equal">
+                <data>
+                    <session name="secret_no_err_times" />
+                </data>
+                <constant_number value="4" />
+            </number>
+        </exit_state>
+        <exit_state name="3회에러" conjugate="and">
+            <number operator="equal">
+                <data>
+                    <session name="secret_no_err_times" />
+                </data>
+                <constant_number value="3" />
+            </number>
+        </exit_state>
+        <exit_state name="2회에러" conjugate="and">
+            <number operator="equal">
+                <data>
+                    <session name="secret_no_err_times" />
+                </data>
+                <constant_string value="2" />
+            </number>
+        </exit_state>
+        <exit_state name="1회에러" conjugate="and">
+            <number operator="equal">
+                <data>
+                    <session name="secret_no_err_times" />
+                </data>
+                <constant_string value="1" />
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

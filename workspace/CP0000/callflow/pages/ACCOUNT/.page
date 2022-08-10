@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@2311889:1486450058495" name="ACCOUNT" version="6.0.1">
+<element height="46" id="Element@33451646:1486450058495" name="ACCOUNT" type="Page Entry" width="106" x="300" y="30">
+<exit_states>
+<exit_state name="next" target="Element@741664:1486450177364"/>
+</exit_states>
+</element>
+<element height="46" id="Element@741664:1486450177364" name="720002" type="Subflow Call" width="92" x="307" y="112">
+<subflow_call subflow_name="dtmf_accountTerm_digit" target="Element@31:1478067862834">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT7/720002.wav</data>
+<data name="MINDIGIT">11</data>
+<data name="MAXDIGIT">12</data>
+<data name="TERMCHAR">#</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@16171335:1486450177364"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16171335:1486450177364" name="720002_Check" type="Decision" width="130" x="288" y="197">
+<exit_states>
+<exit_state name="MAXERROR" target="Element@25697355:1486450295484"/>
+<exit_state name="정상입력" target="Element@11060629:1486450313424"/>
+</exit_states>
+</element>
+<element height="15" id="Element@30713529:1486450259543" type="Comment" width="353" x="370" y="93">
+<comment><![CDATA[720002 : 계좌번호 11자리 또는 12자리와 우물정자를 눌러주세요]]></comment>
+</element>
+<element height="46" id="Element@25697355:1486450295484" name="DTMF_MAX_ERROR" type="Page Connector" width="164" x="512" y="197">
+<page_connector target="Element@16054767:1473062321146">DTMF_MAX_ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@27921091:1486450313424" name="Return_AEMS" type="Page Connector" width="164" x="271" y="400">
+<page_connector target="Element@4655813:1473062436718">Return_AEMS<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@11060629:1486450313424" name="Account_Auth" src="Element.Utils.EUSetSessionValue" type="Action Element" width="126" x="290" y="285">
+<exit_states>
+<exit_state name="done" target="Element@27921091:1486450313424"/>
+</exit_states>
+</element>
+</page>

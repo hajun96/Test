@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@6370019:1476517635950" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1476517635950" name="initMenuPlay" type="Subflow Start" width="120" x="226" y="19">
+<exit_states>
+<exit_state name="next" target="Element@1382332:1476517658039"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1382332:1476517658039" name="initMenu_DB_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="150" x="211" y="105">
+<exit_states>
+<exit_state name="done" target="Element@18520256:1476517658040"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18520256:1476517658040" name="initMenu_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="168" x="202" y="196">
+<exit_states>
+<exit_state name="success" target="Element@13194606:1476517658040"/>
+<exit_state name="fail" target="Element@23558634:1476518385805">
+<bendpoint>
+<dim1 x="307" y="136"/>
+<dim2 x="300" y="-186"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@510198:1476517658040" name="Decision_COUNT" type="Decision" width="176" x="198" y="407">
+<exit_states>
+<exit_state name="건수있음" target="Element@23558634:1476518385805"/>
+<exit_state name="없음" target="Element@23558634:1476518385805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13194606:1476517658040" name="initMenu_EUMultiOutputBlock" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="212" x="180" y="306">
+<exit_states>
+<exit_state name="done" target="Element@510198:1476517658040"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23558634:1476518385805" name="Subflow Return_01" type="Subflow Return" width="152" x="205" y="518"/>
+</page>

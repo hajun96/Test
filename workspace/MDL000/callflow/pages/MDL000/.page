@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@24302800:1474592998168" name="MDL000" version="6.0.1">
+<element height="46" id="Element@28864206:1474592998168" name="Start Of Call" start_of_call="true" type="Page Entry" width="117" x="240" y="-232">
+<exit_states>
+<exit_state name="next" target="Element@28236418:1474595478581"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27102620:1474593048954" name="MDL000_SvcCode" src="Element.Utils.EUSetSvcCode" type="Action Element" width="188" x="205" y="5">
+<exit_states>
+<exit_state name="done" target="Element@23218360:1474593101536"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23218360:1474593101536" name="MDL000_Audio_MDLE01" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="190" x="204" y="88">
+<exit_states>
+<exit_state name="done" target="Element@13217338:1481517852068"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28236418:1474595478581" name="MDF000_CVP Subdialog Start" src="com.audium.server.voiceElement.internal.CiscoSubdialogStartElement" type="Subdialog Start" width="214" x="192" y="-150">
+<exit_states>
+<exit_state name="done" target="Element@1675200:1474619351704"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1675200:1474619351704" name="EUGetCallData_01" src="Element.Utils.EUGetCallData" type="Action Element" width="150" x="224" y="-75">
+<exit_states>
+<exit_state name="done" target="Element@27102620:1474593048954"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20869287:1474682221360" name="MDF000_Decision_dtmf" type="Decision" width="179" x="209" y="773">
+<exit_states>
+<exit_state name="DTMF_실패" target="Element@23134226:1474682221360">
+<bendpoint>
+<dim1 x="-118" y="58"/>
+<dim2 x="95" y="70"/>
+</bendpoint>
+</exit_state>
+<exit_state name="*:다시듣기" target="Element@30137311:1474682221360">
+<bendpoint>
+<dim1 x="151" y="-43"/>
+<dim2 x="150" y="56"/>
+</bendpoint>
+</exit_state>
+<exit_state name="실패" target="Element@23134226:1474682221360"/>
+<exit_state name="1:영문상담원연결" target="Element@18835295:1476165753995"/>
+<exit_state name="2:중국어상담원연결" target="Element@9385821:1476165761603"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30137311:1474682221360" name="MDL000_Call_dtmf_MDLE04_MDLC04" type="Subflow Call" width="257" x="170" y="674">
+<subflow_call subflow_name="dtmf" target="Element@31:1474594073385">
+<config>
+<argument_data>
+<data name="MENTC">{Data.Session.m_MediaServer}/MENTR/MDLC04.wav</data>
+<data name="MENTE">{Data.Session.m_MediaServer}/MENTR/MDLE04.wav</data>
+<data name="MAXDIGIT">1</data>
+<data name="MINDIGIT">1</data>
+<data name="PATTERN">12*</data>
+<data name="OPTION">menu</data>
+<data name="NUM">z</data>
+<data name="ERR">1</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@20869287:1474682221360"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23134226:1474682221360" name="COMMON_END" type="Page Connector" width="139" x="-143" y="749">
+<page_connector target="Element@14146338:1474593841685">COMMON_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@13652224:1476165483865" name="COMMON_END" type="Page Connector" width="139" x="-353" y="364">
+<page_connector target="Element@14146338:1474593841685">COMMON_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@14307414:1476165483865" name="MDL000_Audio_MDLE02" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="188" x="-153" y="255">
+<exit_states>
+<exit_state name="done" target="Element@11201398:1481517985268"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15669036:1476165483865" name="MDL000_Decision_workingTimeCheck" type="Decision" width="264" x="167" y="492">
+<exit_states>
+<exit_state name="업무시간" target="Element@30137311:1474682221360"/>
+<exit_state name="업무시간외" target="Element@24751667:1476165495761"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24751667:1476165495761" name="MDL000_Audio_MDLE03" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="185" x="-152" y="492">
+<exit_states>
+<exit_state name="done" target="Element@30964819:1481518056898"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18835295:1476165753995" name="MDL000_Audio_MDLE08" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="186" x="38" y="938">
+<exit_states>
+<exit_state name="done" target="Element@30700282:1479542199647"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9385821:1476165761603" name="MDL000_Audio_MDLC08" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="187" x="349" y="938">
+<exit_states>
+<exit_state name="done" target="Element@22396730:1479542280502"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25261839:1476165848852" name="COMMON_AGENT_J" type="Page Connector" width="168" x="-260" y="1116">
+<page_connector target="Element@7091893:1474594672044">COMMON_AGENT_J<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@2549335:1476165850475" name="COMMON_AGENT_K" type="Page Connector" width="170" x="697" y="1160">
+<page_connector target="Element@15019916:1476165801269">COMMON_AGENT_K<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@14629783:1479540621204" name="MDL000_Call_WorkingTime" type="Subflow Call" width="202" x="198" y="364">
+<subflow_call subflow_name="workingTime" target="Element@31:1475044263277">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@15669036:1476165483865"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21318719:1479542199647" name="Black_Customer_m_iSqlSelectCnt_Check" type="Decision" width="282" x="-9" y="1293">
+<exit_states>
+<exit_state name="other" target="Element@25261839:1476165848852"/>
+<exit_state name="진상" target="Element@25376882:1479542328905"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30700282:1479542199647" name="Black_Customer_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="218" x="23" y="1025">
+<exit_states>
+<exit_state name="success" target="Element@13153919:1479542199647"/>
+<exit_state name="fail" target="Element@25261839:1476165848852"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13153919:1479542199647" name="Black_Customer_EUMultiOutputBlock" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="258" x="3" y="1128">
+<exit_states>
+<exit_state name="done" target="Element@9501260:1479542199647"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9501260:1479542199647" name="Black_Customer_Log" src="Element.Utils.EULogWrite" type="Action Element" width="169" x="47" y="1202">
+<exit_states>
+<exit_state name="done" target="Element@21318719:1479542199647"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14901688:1479542280502" name="Black_Customer_Log_2" src="Element.Utils.EULogWrite" type="Action Element" width="181" x="397" y="1193">
+<exit_states>
+<exit_state name="done" target="Element@16190146:1479542280502"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16190146:1479542280502" name="Black_Customer_m_iSqlSelectCnt_Check_2" type="Decision" width="294" x="340" y="1289">
+<exit_states>
+<exit_state name="other" target="Element@2549335:1476165850475"/>
+<exit_state name="진상" target="Element@27525645:1479542413530"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2399075:1479542280502" name="Black_Customer_EUMultiOutputBlock_2" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="270" x="352" y="1119">
+<exit_states>
+<exit_state name="done" target="Element@14901688:1479542280502"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22396730:1479542280502" name="Black_Customer_ENOracleDB_2" src="Element.DataBase.ENOracleDB" type="Decision Element" width="230" x="372" y="1045">
+<exit_states>
+<exit_state name="success" target="Element@2399075:1479542280502"/>
+<exit_state name="fail" target="Element@2549335:1476165850475"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25376882:1479542328905" name="COMMON_END" type="Page Connector" width="139" x="62" y="1393">
+<page_connector target="Element@14146338:1474593841685">COMMON_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@27525645:1479542413530" name="COMMON_END" type="Page Connector" width="139" x="418" y="1433">
+<page_connector target="Element@14146338:1474593841685">COMMON_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@13217338:1481517852068" name="MDL000_Audio_MDLC01" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="187" x="205" y="174">
+<exit_states>
+<exit_state name="done" target="Element@20247209:1482415159069"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11201398:1481517985268" name="MDL000_Audio_MDLC02" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="187" x="-153" y="323">
+<exit_states>
+<exit_state name="done" target="Element@13652224:1476165483865"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30964819:1481518056898" name="MDL000_Audio_MDLC03" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="187" x="-153" y="415">
+<exit_states>
+<exit_state name="done" target="Element@13652224:1476165483865"/>
+</exit_states>
+</element>
+<element height="30" id="Element@15204276:1481518771211" type="Comment" width="547" x="336" y="632">
+<comment><![CDATA[MDLE04 : For English press 1, for Chinese press 2. (영어안내는 1번, 중국어안내는 2번을 눌러주세요.)
+MDLC04 : 英文服务请按1，中文服务请按2。(영어안내는 1번, 중국어안내는 2번을 눌러주세요.)]]></comment>
+</element>
+<element height="15" id="Element@17761706:1481521170789" type="Comment" width="616" x="413" y="104">
+<comment><![CDATA[MDLE01 : Welcome to the customer center of MiraeAsset Daewoo. (안녕하십니까, 미래에셋대우 고객센터입니다.)]]></comment>
+</element>
+<element height="15" id="Element@28557815:1481521185756" type="Comment" width="509" x="410" y="189">
+<comment><![CDATA[MDLC01 : 欢迎进入未来资产大宇证券服务中心。(안녕하십니까, 미래에셋대우 고객센터입니다.]]></comment>
+</element>
+<element height="46" id="Element@20247209:1482415159069" name="Holiday_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="122" x="238" y="229">
+<exit_states>
+<exit_state name="done" target="Element@19358201:1482415159069"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19358201:1482415159069" name="EDHolidayCheck_01" src="Element.Decision.EDHolidayCheck" type="Decision Element" width="158" x="220" y="291">
+<exit_states>
+<exit_state name="yes" target="Element@14307414:1476165483865"/>
+<exit_state name="no" target="Element@14629783:1479540621204"/>
+</exit_states>
+</element>
+</page>

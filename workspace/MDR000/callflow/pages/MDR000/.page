@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@17404801:1482480381508" name="MDR000" version="6.0.1">
+<element height="46" id="Element@6527449:1482480381508" name="Start Of Call" start_of_call="true" type="Page Entry" width="116" x="220" y="30">
+<exit_states>
+<exit_state name="next" target="Element@32305228:1482480610280"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32305228:1482480610280" name="MDR000_CVP Subdialog Start" src="com.audium.server.voiceElement.internal.CiscoSubdialogStartElement" type="Subdialog Start" width="214" x="171" y="125">
+<exit_states>
+<exit_state name="done" target="Element@22988586:1482480632946"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22624108:1482480632946" name="MDR000_Audio_MDR001" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="197" x="180" y="387">
+<exit_states>
+<exit_state name="done" target="Element@18535784:1482486980370"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4567262:1482480632946" name="MDR000_EUSetSvcCode" src="Element.Utils.EUSetSvcCode" type="Action Element" width="181" x="188" y="295">
+<exit_states>
+<exit_state name="done" target="Element@22624108:1482480632946"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22988586:1482480632946" name="MDR000_EUGetCallData" src="Element.Utils.EUGetCallData" type="Action Element" width="180" x="188" y="217">
+<exit_states>
+<exit_state name="done" target="Element@4567262:1482480632946"/>
+</exit_states>
+</element>
+<element height="135" id="Element@5768155:1482480808044" type="Comment" width="147" x="-39" y="-97">
+<comment><![CDATA[[시나리오정보]
+작성자 : 배은희
+작성일 : 2016년 12월 23일
+메뉴명 : 자산관리센터
+서비스코드 : MDR000
+
+[세션변수 사용내역]
+m_strDTMF : DTMF 입력값
+m_EndType : End 타입]]></comment>
+</element>
+<element height="46" id="Element@27995938:1482481173412" name="MDR000_Audio_MDR002" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="188" x="519" y="624">
+<exit_states>
+<exit_state name="done" target="Element@10228679:1482482212321"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29485470:1482481413897" name="MDR000_Call_WorkingTime" type="Subflow Call" width="202" x="176" y="720">
+<subflow_call subflow_name="workingTime" target="Element@31:1482481647928">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@17195231:1482481413897"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17195231:1482481413897" name="Holiday_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="122" x="216" y="801">
+<exit_states>
+<exit_state name="done" target="Element@6843477:1482481852819"/>
+</exit_states>
+</element>
+<element height="60" id="Element@28181489:1482481509088" type="Comment" width="251" x="752" y="617">
+<comment><![CDATA[[MDR002] 
+죄송합니다. 지금은 운영시간이 아닙니다. 
+자산관리센터의 운영시간은 평일 오전8시부터 
+오후6시까지입니다. 감사합니다.]]></comment>
+</element>
+<element height="46" id="Element@6843477:1482481852819" name="MDR000_Decision_workingTimeCheck" type="Decision" width="265" x="145" y="906">
+<exit_states>
+<exit_state name="업무시간" target="Element@19519678:1482482515585"/>
+<exit_state name="업무시간외" target="Element@27995938:1482481173412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10228679:1482482212321" name="COMMON_END" type="Page Connector" width="157" x="535" y="720">
+<page_connector target="Element@31925164:1482481926669">COMMON_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@19519678:1482482515585" name="COMMON_AGENT" type="Page Connector" width="157" x="199" y="1017">
+<page_connector target="Element@32098365:1482482083356">COMMON_AGENT<config/>
+</page_connector>
+</element>
+<element height="60" id="Element@2505535:1482482601432" type="Comment" width="251" x="380" y="379">
+<comment><![CDATA[[MDR001] 
+당신의 평안한 노후 
+최고의 글로벌 자산관리 전문가에게 맡기세요. 
+여기는 미래에셋대우 자산관리센터 입니다.]]></comment>
+</element>
+<element height="46" id="Element@18535784:1482486980370" name="Holiday_Hold_1" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="134" x="211" y="518">
+<exit_states>
+<exit_state name="done" target="Element@11582760:1482486980370"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11582760:1482486980370" name="EDHolidayCheck_01" src="Element.Decision.EDHolidayCheck" type="Decision Element" width="158" x="199" y="624">
+<exit_states>
+<exit_state name="yes" target="Element@27995938:1482481173412"/>
+<exit_state name="no" target="Element@29485470:1482481413897"/>
+</exit_states>
+</element>
+</page>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@22012695:1475127505857" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1475127505857" name="market_time" type="Subflow Start" width="116" x="237" y="-99">
+<exit_states>
+<exit_state name="next" target="Element@11093155:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24610301:1476951235385" name="market_time_EUMultiOutputBlock_DBData" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="276" x="158" y="609">
+<exit_states>
+<exit_state name="done" target="Element@33409984:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20414141:1476951235385" name="market_time_ROW_CNT_MinusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="236" x="178" y="539">
+<exit_states>
+<exit_state name="done" target="Element@24610301:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18592923:1476951235385" name="market_time_return" type="Subflow Return" width="153" x="-121" y="469"/>
+<element height="46" id="Element@14603119:1476951235385" name="market_time_m_iCnt" src="Element.Utils.EUSetSessionValue" type="Action Element" width="170" x="211" y="324">
+<exit_states>
+<exit_state name="done" target="Element@17518367:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24548214:1476951235385" name="market_time_m_iRepeat_PlustOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="229" x="548" y="691">
+<exit_states>
+<exit_state name="done" target="Element@4993795:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11093155:1476951235385" name="market_time_EUCountClear" src="Element.Utils.EUCountClear" type="Action Element" width="195" x="198" y="-7">
+<exit_states>
+<exit_state name="done" target="Element@28115260:1478652983482"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32395151:1476951235385" name="market_time_m_iCnt_PlusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="208" x="558" y="858">
+<exit_states>
+<exit_state name="done" target="Element@24350235:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33409984:1476951235385" name="market_time_ROW_CNT_Check" type="Decision" width="214" x="188" y="858">
+<exit_states>
+<exit_state name="other" target="Element@32395151:1476951235385"/>
+<exit_state name="시간가져오기완료" target="Element@18592923:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21738624:1476951235385" name="market_time_EUMultiOutputBlock_ROW_CNT" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="290" x="151" y="469">
+<exit_states>
+<exit_state name="done" target="Element@20414141:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4993795:1476951235385" name="market_time_m_iRepeat_Increment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="235" x="545" y="610">
+<exit_states>
+<exit_state name="done" target="Element@24610301:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24350235:1476951235385" name="market_time_m_iCnt_Increment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="218" x="553" y="777">
+<exit_states>
+<exit_state name="done" target="Element@24548214:1476951235385"/>
+</exit_states>
+</element>
+<element height="15" id="Element@30091450:1476951235385" type="Comment" width="36" x="173" y="-69">
+<comment><![CDATA[장시간]]></comment>
+</element>
+<element height="46" id="Element@6405736:1476951235385" name="market_time_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="186" x="202" y="252">
+<exit_states>
+<exit_state name="success" target="Element@14603119:1476951235385"/>
+<exit_state name="fail" target="Element@18592923:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17518367:1476951235385" name="market_time_m_iRepeat" src="Element.Utils.EUSetSessionValue" type="Action Element" width="176" x="208" y="397">
+<exit_states>
+<exit_state name="done" target="Element@21738624:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14233030:1476951235385" name="market_time_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="147" x="222" y="190">
+<exit_states>
+<exit_state name="done" target="Element@6405736:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28115260:1478652983482" name="market_time_dtmf_Digit" src="com.audium.server.voiceElement.digit.MBasicDigit" type="Voice Element" width="178" x="206" y="85">
+<exit_states>
+<exit_state name="done" target="Element@19670181:1478652983482"/>
+<exit_state name="max_nomatch" target="Element@19670181:1478652983482">
+<bendpoint>
+<dim1 x="144" y="42"/>
+<dim2 x="-142" y="42"/>
+</bendpoint>
+</exit_state>
+<exit_state name="max_noinput" target="Element@14233030:1476951235385"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18472621:1478652983482" name="market_time_DTMF_Subflow Return" type="Subflow Return" width="269" x="553" y="184"/>
+<element height="46" id="Element@19670181:1478652983482" name="market_time_m_strDTMF" src="Element.Utils.EUSetSessionValue" type="Action Element" width="210" x="583" y="85">
+<exit_states>
+<exit_state name="done" target="Element@18472621:1478652983482"/>
+</exit_states>
+</element>
+</page>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@5646149:1473659625572" name="COMMON" version="6.0.1">
+<element height="46" id="Element@618223:1473659661589" name="Decision" type="Decision" width="99" x="284" y="296">
+<exit_states>
+<exit_state name="Y" target="Element@22167345:1473659661589"/>
+<exit_state name="Other" target="Element@28395875:1473659661589"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26533295:1473659661589" name="End_Return" src="com.audium.server.voiceElement.internal.CiscoSubdialogReturnElement" type="Subdialog Return" width="114" x="203" y="475">
+<exit_states>
+<exit_state name="done"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4794465:1473659661589" name="MAX_ERROR" type="Page Entry" width="143" x="32" y="119">
+<exit_states>
+<exit_state name="next" target="Element@32304672:1473659661589"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16384949:1473659661589" name="ERROR" type="Page Entry" width="91" x="583" y="334">
+<exit_states>
+<exit_state name="next" target="Element@16741860:1473659661589"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24403370:1473659661589" type="Hang Up" width="98" x="59" y="415"/>
+<element height="46" id="Element@32304672:1473659661589" name="C00002" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="141" x="29" y="206">
+<exit_states>
+<exit_state name="done" target="Element@368343:1473659661589"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16741860:1473659661589" name="C00027" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="93" x="579" y="440">
+<exit_states>
+<exit_state name="done" target="Element@3875757:1481197581521"/>
+</exit_states>
+</element>
+<element height="46" id="Element@368343:1473659661589" name="END_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="131" x="268" y="221">
+<exit_states>
+<exit_state name="done" target="Element@618223:1473659661589"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28395875:1473659661589" name="LogWrite_END_N" src="Element.Utils.EULogWrite" type="Action Element" width="144" x="261" y="359">
+<exit_states>
+<exit_state name="done" target="Element@3875757:1481197581521"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11622434:1473659661589" name="END" type="Page Entry" width="84" x="291" y="120">
+<exit_states>
+<exit_state name="next" target="Element@368343:1473659661589"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6694295:1473659661589" name="VOICE" type="Page Entry" width="87" x="584" y="224">
+<exit_states>
+<exit_state name="next" target="Element@3875757:1481197581521"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3010348:1473659661589" name="FINISH" type="Page Entry" width="97" x="429" y="538">
+<exit_states>
+<exit_state name="next" target="Element@3875757:1481197581521"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22167345:1473659661589" name="LogWrite_END_Y" src="Element.Utils.EULogWrite" type="Action Element" width="143" x="37" y="296">
+<exit_states>
+<exit_state name="done" target="Element@24403370:1473659661589"/>
+</exit_states>
+</element>
+<element height="45" id="Element@11720647:1473659661589" type="Comment" width="62" x="493" y="383">
+<comment><![CDATA[[C00027] : 
+지연처리 
+중입니다.]]></comment>
+</element>
+<element height="46" id="Element@2221765:1473660039020" name="ARS" type="Page Entry" width="97" x="919" y="159">
+<exit_states>
+<exit_state name="next" target="Element@14037603:1473660049113"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14037603:1473660049113" name="EUSetMultiSessionValue_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="865" y="257">
+<exit_states>
+<exit_state name="done" target="Element@4889890:1473660065960"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4889890:1473660065960" name="FINISH" type="Page Connector" width="88" x="921" y="367">
+<page_connector target="Element@3010348:1473659661589">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@5122506:1473660082058" name="CallBack" type="Page Entry" width="100" x="1155" y="160">
+<exit_states>
+<exit_state name="next" target="Element@26852644:1473660082058"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28240171:1473660082058" name="FINISH" type="Page Connector" width="88" x="1162" y="352">
+<page_connector target="Element@3010348:1473659661589">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@26852644:1473660082058" name="EUSetMultiSessionValue_02" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="1101" y="258">
+<exit_states>
+<exit_state name="done" target="Element@28240171:1473660082058"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3875757:1481197581521" name="Subdialog_Return" type="Subflow Call" width="148" x="407" y="444">
+<subflow_call subflow_name="SubdialogReturn" target="Element@31:1481197582722">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@26533295:1473659661589"/>
+</exit_states>
+</element>
+</page>

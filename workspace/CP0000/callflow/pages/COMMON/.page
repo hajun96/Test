@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@13961046:1473062311621" name="COMMON" version="6.0.1">
+<element height="46" id="Element@25177024:1473062321146" name="EUSetSessionValue_04" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="23" y="169">
+<exit_states>
+<exit_state name="done" target="Element@28855832:1473062321146"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17777397:1473062321146" name="EULogWrite_04" src="Element.Utils.EULogWrite" type="Action Element" width="132" x="47" y="83">
+<exit_states>
+<exit_state name="done" target="Element@25177024:1473062321146"/>
+</exit_states>
+</element>
+<element height="30" id="Element@21290311:1473062321146" type="Comment" width="131" x="215" y="181">
+<comment><![CDATA[DTMF ERROR 
+MSG : type코드 | U001 |]]></comment>
+</element>
+<element height="46" id="Element@16054767:1473062321146" name="DTMF_MAX_ERROR" type="Page Entry" width="164" x="28" y="-2">
+<exit_states>
+<exit_state name="next" target="Element@17777397:1473062321146"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28855832:1473062321146" name="Return_AEMS" type="Page Connector" width="127" x="49" y="256">
+<page_connector target="Element@4655813:1473062436718">Return_AEMS<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@25488493:1473062436718" name="Digits_03" src="com.audium.server.voiceElement.digit.MBasicDigit" type="Voice Element" width="100" x="-404" y="291">
+<exit_states>
+<exit_state name="done" target="Element@8521052:1473062436718"/>
+<exit_state name="max_nomatch" target="Element@8521052:1473062436718"/>
+<exit_state name="max_noinput" target="Element@8521052:1473062436718"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8521052:1473062436718" name="EUSetMultiSessionValue_09" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="-454" y="379">
+<exit_states>
+<exit_state name="done" target="Element@748066:1479882762696"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4655813:1473062436718" name="Return_AEMS" type="Page Entry" width="127" x="-416" y="4">
+<exit_states>
+<exit_state name="next" target="Element@13479073:1473062976082"/>
+</exit_states>
+</element>
+<element height="45" id="Element@13339694:1473062436718" type="Comment" width="113" x="-222" y="40">
+<comment><![CDATA[계좌번호 유무체크
+계좌번호 존재 : yes
+계좌번호 미존재 : no]]></comment>
+</element>
+<element height="46" id="Element@19573994:1473062436718" name="Audio_03" skipped="true" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="101" x="-565" y="292">
+<exit_states>
+<exit_state name="done" target="Element@8521052:1473062436718"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29231541:1473062436718" name="ENAEMSSocket_02" src="Element.Network.ENAEMSSocket" type="Action Element" width="168" x="-438" y="199">
+<exit_states>
+<exit_state name="done" target="Element@25488493:1473062436718"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13479073:1473062976082" name="Return_HOLD_01" type="Subflow Call" width="142" x="-425" y="109">
+<subflow_call subflow_name="HOLD" target="Element@31:1473062979763">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@29231541:1473062436718"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17148750:1476253432849" name="End_Return" src="com.audium.server.voiceElement.internal.CiscoSubdialogReturnElement" type="Subdialog Return" width="114" x="-411" y="562">
+<exit_states>
+<exit_state name="done"/>
+</exit_states>
+</element>
+<element height="46" id="Element@748066:1479882762696" name="Audio_01" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="101" x="-405" y="472">
+<exit_states>
+<exit_state name="done" target="Element@8657162:1481264639760"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8147724:1481197731775" name="Subdialog_Return" type="Subflow Call" width="148" x="-191" y="559">
+<subflow_call subflow_name="SubdialogReturn" target="Element@31:1481197732570">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@17148750:1476253432849"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8657162:1481264639760" name="EUSetMultiSessionValue_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="-220" y="470">
+<exit_states>
+<exit_state name="done" target="Element@8147724:1481197731775"/>
+</exit_states>
+</element>
+</page>

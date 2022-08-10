@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@4059842:1438566104603" name="4_5_ACCOUNT" version="6.0.1">
+<element height="46" id="Element@17604794:1438566104603" name="5_retire_new_pwd" type="Page Entry" width="150" x="721" y="14">
+<exit_states>
+<exit_state name="next" target="Element@16615535:1479708866428"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14653286:1438566140842" name="5_Decision_DTMF_ACCOUNT" type="Decision" width="217" x="664" y="174">
+<exit_states>
+<exit_state name="END" target="Element@21806983:1438566140842"/>
+<exit_state name="정상" target="Element@2841383:1480040017825"/>
+<exit_state name="#" target="Element@29462686:1479708866428"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21806983:1438566140842" name="DTMF_ERROR" type="Page Connector" width="131" x="1071" y="277">
+<page_connector target="Element@12532467:1434335156542">DTMF_ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@10171390:1438566140842" name="SUCCESS" type="Page Connector" width="108" x="804" y="773">
+<page_connector target="Element@5252528:1435888925133">SUCCESS<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@29877148:1472193297357" name="5_DTMF_retire_newpwd" type="Subflow Call" width="197" x="674" y="90">
+<subflow_call subflow_name="dtmf" target="Element@31:1472189229287">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/CP1005.wav</data>
+<data name="MINDIGIT">4</data>
+<data name="MAXDIGIT">8</data>
+<data name="PATTERN">0123456789#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">numsharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@14653286:1438566140842"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15673542:1472193363400" name="5_SetValue_ACCOUNT_Succ" src="Element.Utils.EUSetSessionValue" type="Action Element" width="230" x="658" y="571">
+<exit_states>
+<exit_state name="done" target="Element@10171390:1438566140842"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25693608:1475055901675" name="4_retire_pwd" type="Page Entry" width="120" x="39" y="10">
+<exit_states>
+<exit_state name="next" target="Element@13072649:1481019272085"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27370662:1475055956553" name="4_DTMF_retire_pwd" type="Subflow Call" width="160" x="19" y="356">
+<subflow_call subflow_name="dtmf" target="Element@31:1472189229287">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/CP1004.wav</data>
+<data name="MINDIGIT">4</data>
+<data name="MAXDIGIT">8</data>
+<data name="PATTERN">0123456789#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">numsharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@11453358:1479708917717"/>
+</exit_states>
+</element>
+<element height="46" id="Element@495731:1479708844308" name="4_retire_pwd_SetVar_ErrorValue_INIT" src="Element.Utils.EUSetSessionValue" type="Action Element" width="257" x="-29" y="242">
+<exit_states>
+<exit_state name="done" target="Element@27370662:1475055956553"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25961940:1479708844308" name="4_retire_pwd_SetVar_ErrorValue_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="261" x="-402" y="284">
+<exit_states>
+<exit_state name="done" target="Element@27370662:1475055956553"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29462686:1479708866428" name="5_retire_new_pwd_SetVar_ErrorValue_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="272" x="1029" y="148">
+<exit_states>
+<exit_state name="done" target="Element@29877148:1472193297357"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16615535:1479708866428" name="5_retire_new_pwd_SetVar_ErrorValue_INIT" src="Element.Utils.EUSetSessionValue" type="Action Element" width="287" x="1026" y="49">
+<exit_states>
+<exit_state name="done" target="Element@29877148:1472193297357"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11453358:1479708917717" name="4_Decision_DTMF_ACCOUNT" type="Decision" width="217" x="-9" y="445">
+<exit_states>
+<exit_state name="END" target="Element@12473818:1479708927127"/>
+<exit_state name="정상" target="Element@4325453:1481019194699"/>
+<exit_state name="#" target="Element@25961940:1479708844308"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12473818:1479708927127" name="DTMF_ERROR" type="Page Connector" width="131" x="-330" y="425">
+<page_connector target="Element@12532467:1434335156542">DTMF_ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@29260493:1479709018748" name="4_SetValue_ACCOUNT_Succ" src="Element.Utils.EUSetSessionValue" type="Action Element" width="213" x="718" y="1017">
+<exit_states>
+<exit_state name="done" target="Element@10171390:1438566140842"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5297097:1480039818558" name="5_DTMF_retire_newpwd_2" type="Subflow Call" width="236" x="654" y="276">
+<subflow_call subflow_name="dtmf" target="Element@31:1472189229287">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/CP1011.wav</data>
+<data name="MINDIGIT">4</data>
+<data name="MAXDIGIT">8</data>
+<data name="PATTERN">0123456789#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">numsharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@33056747:1480039827294"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33056747:1480039827294" name="5_Decision_DTMF_ACCOUNT_2" type="Decision" width="269" x="638" y="360">
+<exit_states>
+<exit_state name="END" target="Element@21806983:1438566140842"/>
+<exit_state name="정상" target="Element@4333654:1480040323270"/>
+<exit_state name="#" target="Element@7613623:1480039856044"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7613623:1480039856044" name="5_retire_new_pwd_SetVar_ErrorValue_Y_2" src="Element.Utils.EUSetSessionValue" type="Action Element" width="284" x="295" y="312">
+<exit_states>
+<exit_state name="done" target="Element@5297097:1480039818558"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19115755:1480039856044" name="5_retire_new_pwd_SetVar_ErrorValue_INIT_2" src="Element.Utils.EUSetSessionValue" type="Action Element" width="299" x="288" y="223">
+<exit_states>
+<exit_state name="done" target="Element@5297097:1480039818558"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2841383:1480040017825" name="5_retire_SetVar_dtmfTmp" src="Element.Utils.EUSetSessionValue" type="Action Element" width="189" x="343" y="132">
+<exit_states>
+<exit_state name="done" target="Element@19115755:1480039856044"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4333654:1480040323270" name="5_retire_Decision_DTMF_2" type="Decision" width="247" x="649" y="482">
+<exit_states>
+<exit_state name="정상" target="Element@15673542:1472193363400"/>
+<exit_state name="실패" target="Element@7613623:1480039856044"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4325453:1481019194699" name="EUEncrypt_02" src="Element.Utils.EUEncrypt" type="Action Element" width="127" x="-183" y="533">
+<exit_states>
+<exit_state name="done" target="Element@29280903:1481019489339"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13072649:1481019272085" name="4_retire_pwd_EUStringTokenizer_01" src="Element.Strings.EUStringTokenizer" type="Action Element" width="248" x="-346" y="56">
+<exit_states>
+<exit_state name="done" target="Element@24030894:1481019334155"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24030894:1481019334155" name="EUMultiOutputBlock_01" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="10" y="126">
+<exit_states>
+<exit_state name="done" target="Element@495731:1479708844308"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29280903:1481019489339" name="4_EUSocketInput_01" src="Element.Utils.EUSocketInput" type="Action Element" width="201" x="-444" y="594">
+<exit_states>
+<exit_state name="done" target="Element@10107801:1481019489339"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29660691:1481019489339" name="4_ENStockSocket_01" src="Element.Network.ENStockSocket" type="Decision Element" width="206" x="-435" y="711">
+<exit_states>
+<exit_state name="success" target="Element@22600480:1481019489339"/>
+<exit_state name="fail" target="Element@22600480:1481019489339">
+<bendpoint>
+<dim1 x="-147" y="47"/>
+<dim2 x="-147" y="-58"/>
+</bendpoint>
+</exit_state>
+<exit_state name="errcode" target="Element@22600480:1481019489339">
+<bendpoint>
+<dim1 x="229" y="51"/>
+<dim2 x="229" y="-54"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@22600480:1481019489339" name="4_EUSocketOutput_01" src="Element.Utils.EUSocketOutput" type="Action Element" width="210" x="-437" y="816">
+<exit_states>
+<exit_state name="done" target="Element@21170323:1481019668437"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10107801:1481019489339" name="4_Hold_TTS_0" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="129" x="-158" y="640">
+<exit_states>
+<exit_state name="done" target="Element@29660691:1481019489339"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21170323:1481019668437" name="4_Decision_CHECK_TR_RESULT" type="Decision" width="234" x="-189" y="937">
+<exit_states>
+<exit_state name="0:비밀번호미등록" target="Element@1337336:1481169445512">
+<bendpoint>
+<dim1 x="-43" y="-131"/>
+<dim2 x="-200" y="38"/>
+</bendpoint>
+</exit_state>
+<exit_state name="1:비밀번호체크성공" target="Element@29260493:1479709018748"/>
+<exit_state name="2:비밀번호체크실패" target="Element@1337336:1481169445512"/>
+<exit_state name="실패" target="Element@32436496:1481169445512">
+<bendpoint>
+<dim1 x="191" y="-56"/>
+<dim2 x="34" y="113"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@1337336:1481169445512" name="4_Hold_TTS_02" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="175" x="208" y="530">
+<exit_states>
+<exit_state name="done" target="Element@32436496:1481169445512"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32436496:1481169445512" name="4_EATTSMaker_02" src="Element.Audio.EATTSMaker" type="Decision Element" width="195" x="198" y="607">
+<exit_states>
+<exit_state name="success" target="Element@21744184:1481169445512"/>
+<exit_state name="fail" target="Element@21744184:1481169445512">
+<bendpoint>
+<dim1 x="209" y="71"/>
+<dim2 x="52" y="-54"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@21744184:1481169445512" name="4_Bargein2" src="com.audium.server.voiceElement.digit.MBasicDigit" type="Voice Element" width="151" x="377" y="732">
+<exit_states>
+<exit_state name="done" target="Element@13192513:1481169445512"/>
+<exit_state name="max_nomatch" target="Element@13192513:1481169445512">
+<bendpoint>
+<dim1 x="-83" y="65"/>
+<dim2 x="-83" y="-53"/>
+</bendpoint>
+</exit_state>
+<exit_state name="max_noinput" target="Element@13192513:1481169445512">
+<bendpoint>
+<dim1 x="99" y="60"/>
+<dim2 x="99" y="-58"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@13192513:1481169445512" name="4_Audio_06" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="152" x="376" y="823">
+<exit_states>
+<exit_state name="done" target="Element@9352177:1481169509624">
+<bendpoint>
+<dim1 x="286" y="-63"/>
+<dim2 x="282" y="303"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@9352177:1481169509624" name="4_retire_pwd_SetVar_ErrorValue_K" src="Element.Utils.EUSetSessionValue" type="Action Element" width="242" x="333" y="421">
+<exit_states>
+<exit_state name="done" target="Element@27370662:1475055956553"/>
+</exit_states>
+</element>
+</page>

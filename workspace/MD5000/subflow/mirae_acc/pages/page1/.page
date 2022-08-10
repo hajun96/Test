@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@13039285:1476866460097" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1476866460097" name="mirae_acc" type="Subflow Start" width="103" x="238" y="-109">
+<exit_states>
+<exit_state name="next" target="Element@20621819:1476866466305"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13683271:1476866466305" name="mirae_acc_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="197" x="192" y="407">
+<exit_states>
+<exit_state name="done" target="Element@7195258:1476866466305"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31217809:1476866466305" name="mirae_acc_m_strAccountNum_Length" src="Element.Strings.EUStringLength" type="Action Element" width="251" x="165" y="107">
+<exit_states>
+<exit_state name="done" target="Element@15530498:1476866466305"/>
+</exit_states>
+</element>
+<element height="90" id="Element@26217247:1476866466305" type="Comment" width="282" x="-91" y="386">
+<comment><![CDATA[[MENTC/C00038]
+이체서비스를 위해서는 주문비밀번호 변경을 
+해야 합니다. 초기 비밀번호는 숫자 1, 8개로 되어 
+있습니다. 주문비밀번호 변경은 별표, 이미 변경하신 
+고객은 1번, 상위메뉴는 우물정자, 상담직원 
+연결은 0번을 눌러주십시오.]]></comment>
+</element>
+<element height="46" id="Element@12727266:1476866466305" name="mirae_acc_m_strDTMF" src="Element.Utils.EUSetSessionValue" type="Action Element" width="169" x="520" y="177">
+<exit_states>
+<exit_state name="done" target="Element@1088882:1476866466305"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15530498:1476866466305" name="mirae_acc_m_strAccountNum_Length_Check" type="Decision" width="289" x="146" y="184">
+<exit_states>
+<exit_state name="other" target="Element@12727266:1476866466305"/>
+<exit_state name="미래에셋증권계좌" target="Element@7948950:1480381471535"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19621924:1476866466305" name="mirae_acc_20170331_Check" type="Decision" width="202" x="189" y="38">
+<exit_states>
+<exit_state name="other" target="Element@12727266:1476866466305"/>
+<exit_state name="공지기간" target="Element@31217809:1476866466305"/>
+</exit_states>
+</element>
+<element height="46" id="Element@538313:1476866466305" name="mirae_acc_Decision_C0036" type="Decision" width="195" x="195" y="561">
+<exit_states>
+<exit_state name="other" target="Element@30027618:1476866466305"/>
+<exit_state name="false : MAX ERROR" target="Element@1088882:1476866466305"/>
+<exit_state name="* : 주문비밀번호변경" target="Element@1088882:1476866466305">
+<bendpoint>
+<dim1 x="163" y="68"/>
+<dim2 x="-149" y="68"/>
+</bendpoint>
+</exit_state>
+<exit_state name="# : 계속주문" target="Element@1088882:1476866466305">
+<bendpoint>
+<dim1 x="164" y="-40"/>
+<dim2 x="-148" y="-40"/>
+</bendpoint>
+</exit_state>
+<exit_state name="1 : 이미변경고객" target="Element@1088882:1476866466305">
+<bendpoint>
+<dim1 x="168" y="31"/>
+<dim2 x="-144" y="31"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@20621819:1476866466305" name="mirae_acc_yyyyMMdd" src="Element.Utils.EUGetDateTime" type="Action Element" width="168" x="206" y="-26">
+<exit_states>
+<exit_state name="done" target="Element@19621924:1476866466305"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7195258:1476866466305" name="mirae_acc_C00038" type="Subflow Call" width="151" x="215" y="485">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/C00038.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">01*#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@538313:1476866466305"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30027618:1476866466305" name="mirae_acc_m_strDTMFErr_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="195" x="-46" y="561">
+<exit_states>
+<exit_state name="done" target="Element@21292265:1476866466305"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21292265:1476866466305" name="mirae_acc_NoMatch_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="195" x="-46" y="485">
+<exit_states>
+<exit_state name="done" target="Element@7195258:1476866466305"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1088882:1476866466305" name="mirae_acc_m_strDTMF_Return" type="Subflow Return" width="209" x="500" y="561"/>
+<element height="46" id="Element@7948950:1480381471535" name="mirae_acc_m_strAccountSect" type="Decision" width="205" x="188" y="302">
+<exit_states>
+<exit_state name="other" target="Element@12727266:1476866466305"/>
+<exit_state name="2 : 초기화상태" target="Element@13683271:1476866466305">
+<bendpoint>
+<dim1 x="-4" y="41"/>
+<dim2 x="-4" y="-64"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+</page>

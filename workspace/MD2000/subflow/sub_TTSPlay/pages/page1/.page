@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@8785800:1472632301013" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1472632301013" name="sub_TTSPlay" type="Subflow Start" width="126" x="230" y="30">
+<exit_states>
+<exit_state name="next" target="Element@21240302:1472632302479"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21240302:1472632302479" name="TTS_HOLD_01" type="Subflow Call" width="142" x="222" y="136">
+<subflow_call subflow_name="HOLD" target="Element@31:1472631659960">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@8519025:1472632302479"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8519025:1472632302479" name="EATTSMaker_01" src="Element.Audio.EATTSMaker" type="Decision Element" width="185" x="200" y="227">
+<exit_states>
+<exit_state name="success" target="Element@2500826:1472632302479"/>
+<exit_state name="fail" target="Element@2500826:1472632302479"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2500826:1472632302479" name="TTS_01" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="134" x="226" y="321">
+<exit_states>
+<exit_state name="done" target="Element@9834833:1472632349446"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9834833:1472632349446" name="Subflow Return_01" type="Subflow Return" width="153" x="216" y="428"/>
+</page>

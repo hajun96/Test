@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE knowledge_base SYSTEM "../../../../../dtds/DecisionKnowledgeBase.dtd">
+<knowledge_base>
+    <rule default_exit_state="그외" name="Decision_stockTimeCheck">
+        <exit_state conjugate="and" name="8시 이전">
+            <number operator="less">
+                <data>
+                    <session name="timeResult"/>
+                </data>
+                <constant_number value="800"/>
+            </number>
+        </exit_state>
+        <exit_state conjugate="and" name="10시 이전">
+            <number operator="less">
+                <data>
+                    <session name="timeResult"/>
+                </data>
+                <constant_number value="1000"/>
+            </number>
+        </exit_state>
+        <exit_state conjugate="and" name="14시 이전">
+            <number operator="less">
+                <data>
+                    <session name="timeResult"/>
+                </data>
+                <constant_number value="1400"/>
+            </number>
+        </exit_state>
+        <exit_state conjugate="and" name="16시 이전">
+            <number operator="less">
+                <data>
+                    <session name="timeResult"/>
+                </data>
+                <constant_number value="1600"/>
+            </number>
+        </exit_state>
+        <exit_state conjugate="and" name="19시 이전">
+            <number operator="less">
+                <data>
+                    <session name="timeResult"/>
+                </data>
+                <constant_number value="1900"/>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>

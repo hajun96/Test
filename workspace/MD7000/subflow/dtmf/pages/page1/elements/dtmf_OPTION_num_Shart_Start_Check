@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@26972002:1479456623390" name="dtmf_OPTION_num_Shart_Start_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="dtmf_OPTION_num_Shart_Start_Check" default_exit_state="other">
+        <exit_state name="* : NoMatch" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <element name="dtmf_Digit" variable="value" />
+                </data>
+                <constant_string value="*" />
+            </string>
+        </exit_state>
+        <exit_state name="# : NoMatch" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <element name="dtmf_Digit" variable="value" />
+                </data>
+                <constant_string value="#" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE knowledge_base SYSTEM "../../../../../dtds/DecisionKnowledgeBase.dtd">
+<knowledge_base>
+    <rule default_exit_state="maxerror" name="stock_code_MaxError_Compare">
+        <exit_state conjugate="and" name="retry">
+            <number operator="less">
+                <data>
+                    <session name="g_nCount"/>
+                </data>
+                <data>
+                    <session name="m_ARSMaxErr"/>
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>

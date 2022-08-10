@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@7427444:1469614832280" name="520000_m_strFtrnAmt_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="520000_m_strFtrnAmt_Check" default_exit_state="other">
+        <exit_state name="출금가능금액초과" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <session name="m_strFtrnAmt" />
+                </data>
+                <data>
+                    <session name="m_strOamptEnblAmt" />
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

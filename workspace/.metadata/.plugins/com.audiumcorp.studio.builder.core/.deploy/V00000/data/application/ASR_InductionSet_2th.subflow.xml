@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE call_flow SYSTEM "../../../../dtds/Callflow_1-1.dtd">
+<call_flow first_element="ASR_InductionSet_2th" serial="0000" version="1.1">
+<events/>
+<element_def name="ASR_InductionSet_2th">
+<subflow_start class="com.audium.server.voiceElement.SubflowStartElement">
+<static>ASR_InductionSet_2th.xml</static>
+</subflow_start>
+<exit_state name="next">
+<next_element>EUGetDateTime</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0024">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0024.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_01">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_01.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EUGetDateTime_random</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0015">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0015.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="Decision_menu4">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="6.코스닥지수">
+<next_element>EUSetSessionValue_SRA0020</next_element>
+</exit_state>
+<exit_state name="2.보유종목현재가">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="1.보유종목현재가">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="8.체결내역">
+<next_element>EUSetSessionValue_SRA0017</next_element>
+</exit_state>
+<exit_state name="3.종목조회">
+<next_element>EUSetSessionValue_SRA0014</next_element>
+</exit_state>
+<exit_state name="7.체결내역">
+<next_element>EUSetSessionValue_SRA0017</next_element>
+</exit_state>
+<exit_state name="5.종합주가지수">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="4.종목조회">
+<next_element>EUSetSessionValue_SRA0014</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="0.잔고확인">
+<next_element>EUSetSessionValue_SRA0022</next_element>
+</exit_state>
+<exit_state name="9.잔고확인">
+<next_element>EUSetSessionValue_SRA0022</next_element>
+</exit_state>
+</element_def>
+<element_def name="Subflow Return_01">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>Subflow Return_01.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="Math_01">
+<action>
+<class src="com.audium.server.action.math.MathAction">
+<static>Math_01.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EUSetSessionValue_02</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0025">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0025.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0020">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0020.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="Decision_menu3">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="2.보유종목현재가">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="1.보유종목현재가">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="6.종합주가지수">
+<next_element>EUSetSessionValue_SRA0019</next_element>
+</exit_state>
+<exit_state name="3.종목조회">
+<next_element>EUSetSessionValue_SRA0014</next_element>
+</exit_state>
+<exit_state name="0.체결내역">
+<next_element>EUSetSessionValue_SRA0017</next_element>
+</exit_state>
+<exit_state name="9.체결내역">
+<next_element>EUSetSessionValue_SRA0017</next_element>
+</exit_state>
+<exit_state name="8.코스닥지수">
+<next_element>EUSetSessionValue_SRA0020</next_element>
+</exit_state>
+<exit_state name="5.종합주가지수">
+<next_element>EUSetSessionValue_SRA0019</next_element>
+</exit_state>
+<exit_state name="4.종목조회">
+<next_element>EUSetSessionValue_SRA0014</next_element>
+</exit_state>
+<exit_state name="7.코스닥지수">
+<next_element>EUSetSessionValue_SRA0020</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0016">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0016.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0023">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0023.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0026">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0026.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="Decision_menu5">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="2.보유종목현재가">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="1.보유종목현재가">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="6.종합주가지수">
+<next_element>EUSetSessionValue_SRA0019</next_element>
+</exit_state>
+<exit_state name="3.종목조회">
+<next_element>EUSetSessionValue_SRA0014</next_element>
+</exit_state>
+<exit_state name="8.코스닥지수">
+<next_element>EUSetSessionValue_SRA0020</next_element>
+</exit_state>
+<exit_state name="5.종합주가지수">
+<next_element>EUSetSessionValue_SRA0019</next_element>
+</exit_state>
+<exit_state name="4.종목조회">
+<next_element>EUSetSessionValue_SRA0014</next_element>
+</exit_state>
+<exit_state name="7.코스닥지수">
+<next_element>EUSetSessionValue_SRA0020</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="0.잔고확인">
+<next_element>EUSetSessionValue_SRA0022</next_element>
+</exit_state>
+<exit_state name="9.잔고확인">
+<next_element>EUSetSessionValue_SRA0022</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0019">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0019.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0018">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0018.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="Decision_menu1">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="6.코스닥지수">
+<next_element>EUSetSessionValue_SRA0020</next_element>
+</exit_state>
+<exit_state name="2.보유종목현재가">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="0.분실신고">
+<next_element>EUSetSessionValue_SRA0023</next_element>
+</exit_state>
+<exit_state name="1.보유종목현재가">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="3.종목조회">
+<next_element>EUSetSessionValue_SRA0014</next_element>
+</exit_state>
+<exit_state name="5.종합주가지수">
+<next_element>EUSetSessionValue_SRA0019</next_element>
+</exit_state>
+<exit_state name="8.잔고확인">
+<next_element>EUSetSessionValue_SRA0022</next_element>
+</exit_state>
+<exit_state name="4.종목조회">
+<next_element>EUSetSessionValue_SRA0014</next_element>
+</exit_state>
+<exit_state name="9.분실신고">
+<next_element>EUSetSessionValue_SRA0023</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="7.잔고확인">
+<next_element>EUSetSessionValue_SRA0022</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0021">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0021.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_02">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_02.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_stockTimeCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0014">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0014.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0022">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0022.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUGetDateTime">
+<action>
+<class src="Element.Utils.EUGetDateTime">
+<static>EUGetDateTime.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EUSetSessionValue_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUGetDateTime_random">
+<action>
+<class src="Element.Utils.EUGetDateTime">
+<static>EUGetDateTime_random.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Math_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="Decision_menu2">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="6.코스닥지수">
+<next_element>EUSetSessionValue_SRA0020</next_element>
+</exit_state>
+<exit_state name="2.보유종목현재가">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="1.보유종목현재가">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="3.종목조회">
+<next_element>EUSetSessionValue_SRA0014</next_element>
+</exit_state>
+<exit_state name="8.사자주문">
+<next_element>EUSetSessionValue_SRA0016</next_element>
+</exit_state>
+<exit_state name="9.주문취소">
+<next_element>EUSetSessionValue_SRA0024</next_element>
+</exit_state>
+<exit_state name="5.종합주가지수">
+<next_element>EUSetSessionValue_SRA0019</next_element>
+</exit_state>
+<exit_state name="4.종목조회">
+<next_element>EUSetSessionValue_SRA0014</next_element>
+</exit_state>
+<exit_state name="7.팔자주문">
+<next_element>EUSetSessionValue_SRA0015</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>EUSetSessionValue_SRA0021</next_element>
+</exit_state>
+<exit_state name="0.주문정정">
+<next_element>EUSetSessionValue_SRA0018</next_element>
+</exit_state>
+</element_def>
+<element_def name="Decision_stockTimeCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="16시 이전">
+<next_element>Decision_menu4</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>Decision_menu1</next_element>
+</exit_state>
+<exit_state name="19시 이전">
+<next_element>Decision_menu5</next_element>
+</exit_state>
+<exit_state name="8시 이전">
+<next_element>Decision_menu1</next_element>
+</exit_state>
+<exit_state name="10시 이전">
+<next_element>Decision_menu2</next_element>
+</exit_state>
+<exit_state name="14시 이전">
+<next_element>Decision_menu3</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSessionValue_SRA0017">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>EUSetSessionValue_SRA0017.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+</call_flow>

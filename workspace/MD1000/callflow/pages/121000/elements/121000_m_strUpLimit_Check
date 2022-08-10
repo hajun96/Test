@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@27062214:1470294240144" name="121000_m_strUpLimit_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="123000_m_strUpLimit_Check" default_exit_state="other">
+        <exit_state name="상한가 없음" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strUpLimit" />
+                </data>
+                <constant_string value="0" />
+            </string>
+        </exit_state>
+        <exit_state name="상한가 초과" conjugate="and">
+            <number operator="less">
+                <data>
+                    <session name="m_strUpLimit" />
+                </data>
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

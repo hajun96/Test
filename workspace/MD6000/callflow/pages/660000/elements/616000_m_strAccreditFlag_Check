@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@27651891:1473407084748" name="616000_m_strAccreditFlag_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="616000_m_strAccreditFlag_Check" default_exit_state="other">
+        <exit_state name="Y : 계좌인증완료" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strAccreditFlag" />
+                </data>
+                <constant_string value="Y" />
+            </string>
+        </exit_state>
+        <exit_state name="B : 사고계좌" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strAccreditFlag" />
+                </data>
+                <constant_string value="B" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

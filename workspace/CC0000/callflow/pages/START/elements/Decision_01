@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@13132071:1480915148059" name="Decision_01" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="Decision_01" default_exit_state="OTHER">
+        <exit_state name="고객번호없음" conjugate="and">
+            <boolean check_existence="yes" value="false">
+                <data>
+                    <session name="m_strCustNO" />
+                </data>
+            </boolean>
+            <boolean check_existence="yes" value="false">
+                <data>
+                    <session name="m_strCustGrpNo" />
+                </data>
+            </boolean>
+        </exit_state>
+        <exit_state name="DataLen:0" conjugate="and">
+            <number operator="equal">
+                <data>
+                    <element name="EUStringLength_01" variable="value" />
+                </data>
+                <constant_number value="0" />
+            </number>
+            <number operator="equal">
+                <data>
+                    <element name="EUStringLength_02" variable="value" />
+                </data>
+                <constant_number value="0" />
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

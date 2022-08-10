@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@9677686:1475131010726" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1475131010726" name="market_time" type="Subflow Start" width="116" x="248" y="-66">
+<exit_states>
+<exit_state name="next" target="Element@12157146:1480751903503"/>
+</exit_states>
+</element>
+<element height="46" id="Element@153270:1476880551526" name="market_time_m_iCnt_PlusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="208" x="568" y="868">
+<exit_states>
+<exit_state name="done" target="Element@25877311:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9630381:1476880551526" name="market_time_EUMultiOutputBlock_ROW_CNT" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="290" x="161" y="479">
+<exit_states>
+<exit_state name="done" target="Element@31162714:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@810418:1476880551526" name="market_time_ROW_CNT_Check" type="Decision" width="214" x="198" y="868">
+<exit_states>
+<exit_state name="other" target="Element@153270:1476880551526"/>
+<exit_state name="시간가져오기완료" target="Element@22386725:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7844122:1476880551526" name="market_time_EUMultiOutputBlock_DBData" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="276" x="168" y="619">
+<exit_states>
+<exit_state name="done" target="Element@810418:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22386725:1476880551526" name="market_time_return" type="Subflow Return" width="153" x="-111" y="479"/>
+<element height="46" id="Element@12402390:1476880551526" name="market_time_m_iRepeat_Increment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="235" x="555" y="620">
+<exit_states>
+<exit_state name="done" target="Element@7844122:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@621635:1476880551526" name="market_time_m_iRepeat_PlustOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="229" x="558" y="701">
+<exit_states>
+<exit_state name="done" target="Element@12402390:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24799298:1476880551526" name="market_time_EUCountClear" src="Element.Utils.EUCountClear" type="Action Element" width="195" x="208" y="132">
+<exit_states>
+<exit_state name="done" target="Element@22211262:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20979330:1476880551526" name="market_time_m_iRepeat" src="Element.Utils.EUSetSessionValue" type="Action Element" width="176" x="218" y="407">
+<exit_states>
+<exit_state name="done" target="Element@9630381:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31162714:1476880551526" name="market_time_ROW_CNT_MinusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="236" x="188" y="549">
+<exit_states>
+<exit_state name="done" target="Element@7844122:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25294430:1476880551526" name="market_time_m_iCnt" src="Element.Utils.EUSetSessionValue" type="Action Element" width="170" x="221" y="334">
+<exit_states>
+<exit_state name="done" target="Element@20979330:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25877311:1476880551526" name="market_time_m_iCnt_Increment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="218" x="563" y="787">
+<exit_states>
+<exit_state name="done" target="Element@621635:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22211262:1476880551526" name="market_time_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="147" x="232" y="200">
+<exit_states>
+<exit_state name="done" target="Element@11624870:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11624870:1476880551526" name="market_time_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="186" x="213" y="262">
+<exit_states>
+<exit_state name="success" target="Element@25294430:1476880551526"/>
+<exit_state name="fail" target="Element@16949160:1479622250311"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16949160:1479622250311" name="EFINIReader_startTime_01" src="Element.File.EFINIReader" type="Action Element" width="197" x="-143" y="104">
+<exit_states>
+<exit_state name="done" target="Element@23435406:1479622250311"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7324286:1479622250311" name="EFINIReader_endTime_01" src="Element.File.EFINIReader" type="Action Element" width="194" x="-142" y="265">
+<exit_states>
+<exit_state name="done" target="Element@21623010:1479622250311"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23435406:1479622250311" name="EFINIReader_startTime_02" src="Element.File.EFINIReader" type="Action Element" width="197" x="-143" y="191">
+<exit_states>
+<exit_state name="done" target="Element@7324286:1479622250311"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21623010:1479622250311" name="EFINIReader_endTime_02" src="Element.File.EFINIReader" type="Action Element" width="194" x="-142" y="352">
+<exit_states>
+<exit_state name="done" target="Element@22386725:1476880551526"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12157146:1480751903503" name="Holiday_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="122" x="245" y="14">
+<exit_states>
+<exit_state name="done" target="Element@12225397:1480751903503"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12225397:1480751903503" name="EDHolidayCheck_01" src="Element.Decision.EDHolidayCheck" type="Decision Element" width="158" x="227" y="79">
+<exit_states>
+<exit_state name="yes" target="Element@24799298:1476880551526"/>
+<exit_state name="no" target="Element@24799298:1476880551526"/>
+</exit_states>
+</element>
+</page>

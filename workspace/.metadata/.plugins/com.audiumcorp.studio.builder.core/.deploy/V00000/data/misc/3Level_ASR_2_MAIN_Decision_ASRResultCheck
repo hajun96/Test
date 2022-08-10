@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE knowledge_base SYSTEM "../../../../dtds/DecisionKnowledgeBase.dtd">
+<knowledge_base>
+    <rule default_exit_state="실패" name="3Level_ASR_2_MAIN_Decision_ASRResultCheck">
+        <exit_state conjugate="and" name="정상">
+            <string operator="equal">
+                <data>
+                    <session name="subflowResult"/>
+                </data>
+                <constant_string value="0"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="서버실패">
+            <string operator="equal">
+                <data>
+                    <session name="subflowResult"/>
+                </data>
+                <constant_string value="-3"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="서버실패">
+            <string operator="equal">
+                <data>
+                    <session name="subflowResult"/>
+                </data>
+                <constant_string value="-4"/>
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>

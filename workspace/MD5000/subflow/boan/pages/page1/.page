@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@24673073:1471840667923" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1471840667923" name="boan" type="Subflow Start" width="77" x="222" y="-94">
+<exit_states>
+<exit_state name="next" target="Element@7182086:1471840690622"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14037533:1471840690622" name="boan_FAIL" type="Page Connector" width="105" x="474" y="-32">
+<page_connector target="Element@30759473:1471845646372">boan_FAIL<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@7182086:1471840690622" name="boan_m_strSecuSect_Check" type="Decision" width="198" x="162" y="114">
+<exit_states>
+<exit_state name="other" target="Element@19139368:1483584525930"/>
+<exit_state name="1 : OTP" target="Element@26625459:1471840920333"/>
+<exit_state name="2 : 보안카드" target="Element@29925619:1471854691143"/>
+<exit_state name="5 : OTP and 보안카드" target="Element@26625459:1471840920333">
+<bendpoint>
+<dim1 x="-187" y="32"/>
+<dim2 x="35" y="-73"/>
+</bendpoint>
+</exit_state>
+<exit_state name="6 : 스마트OTP" target="Element@3326237:1471995307863"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26625459:1471840920333" name="m_strSecuSect" src="Element.Utils.EUSetSessionValue" type="Action Element" width="128" x="-169" y="233">
+<exit_states>
+<exit_state name="done" target="Element@16440321:1471840977007"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16440321:1471840977007" name="m_strSecuPwd1" src="Element.Utils.EUSetSessionValue" type="Action Element" width="135" x="-173" y="303">
+<exit_states>
+<exit_state name="done" target="Element@6055780:1471841009735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6055780:1471841009735" name="m_strSecuPwd2" src="Element.Utils.EUSetSessionValue" type="Action Element" width="135" x="-173" y="373">
+<exit_states>
+<exit_state name="done" target="Element@22275711:1471841053024"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22275711:1471841053024" name="m_strSecuCardRndn1" src="Element.Utils.EUSetSessionValue" type="Action Element" width="165" x="-188" y="448">
+<exit_states>
+<exit_state name="done" target="Element@9133300:1471841083085"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9133300:1471841083085" name="m_strSecuCardRndn2" src="Element.Utils.EUSetSessionValue" type="Action Element" width="165" x="-188" y="522">
+<exit_states>
+<exit_state name="done" target="Element@11501169:1471841128307"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11501169:1471841128307" name="OTP_DTMF" type="Subflow Call" width="109" x="-160" y="604">
+<subflow_call subflow_name="dtmf" target="Element@31:1470468553268">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTS/S40001.wav</data>
+<data name="MINDIGIT">6</data>
+<data name="MAXDIGIT">7</data>
+<data name="PATTERN">0123456789#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">sharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@4105398:1471841400400"/>
+</exit_states>
+</element>
+<element height="30" id="Element@27899388:1471841234236" type="Comment" width="231" x="-357" y="570">
+<comment><![CDATA[[S40001] : OTP카드 전원을 눌러 생성되는 
+6자리와 우물정자를 눌러주세요.]]></comment>
+</element>
+<element height="46" id="Element@4105398:1471841400400" name="m_strOTPPwd" src="Element.Utils.EUSetSessionValue" type="Action Element" width="124" x="-168" y="691">
+<exit_states>
+<exit_state name="done" target="Element@15786097:1471841711758"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27872501:1471841711758" name="boan_OTP_EUSocketOutput_AC4OU07" src="Element.Utils.EUSocketOutput" type="Action Element" width="256" x="-234" y="1132">
+<exit_states>
+<exit_state name="done" target="Element@12367980:1471845467932"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15786097:1471841711758" name="boan_OTP_EUSocketInput_AC4OU07" src="Element.Utils.EUSocketInput" type="Action Element" width="246" x="-229" y="852">
+<exit_states>
+<exit_state name="done" target="Element@33265885:1471841711758"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22733303:1471841711758" name="boan_OTP_ENStockSocket_AC4OU07" src="Element.Network.ENStockSocket" type="Decision Element" width="249" x="-230" y="1037">
+<exit_states>
+<exit_state name="success" target="Element@27872501:1471841711758"/>
+<exit_state name="fail" target="Element@3498567:1471841971546"/>
+<exit_state name="errcode" target="Element@3498567:1471841971546"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33265885:1471841711758" name="boan_OTP_Hold_AC4OU07" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="194" x="-203" y="946">
+<exit_states>
+<exit_state name="done" target="Element@22733303:1471841711758"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3498567:1471841971546" name="boan_OTP_m_strErrorCode_AC4OU07" src="Element.Utils.EUSocketOutput" type="Action Element" width="250" x="-768" y="1037">
+<exit_states>
+<exit_state name="done" target="Element@4758892:1471842082518"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4758892:1471842082518" name="boan_OTP_m_strErrorCode_Check" type="Decision" width="229" x="-758" y="1132">
+<exit_states>
+<exit_state name="08574 : 비밀번호오류" target="Element@27872501:1471841711758"/>
+<exit_state name="other" target="Element@18860219:1471845679677"/>
+</exit_states>
+</element>
+<element height="75" id="Element@25268811:1471842222177" type="Comment" width="428" x="-664" y="937">
+<comment><![CDATA[[AC4OU07_OUTPUT]
+ErrOccrCnt : 오류발생건수(오류발생횟수)
+RspnCd : 응답코드
+  - "0000" 정상, 
+  - "1201","1202","1203","1205","1206"=일시적인 OTP인증센터 장애중입니다.]]></comment>
+</element>
+<element height="120" id="Element@14596234:1471842387730" type="Comment" width="255" x="-491" y="799">
+<comment><![CDATA[[AC4OU07_INPUT]
+AcntNo_Disable		Disable Attr
+AcntNo		계좌번호    
+Pwd_Disable		Disable Attr
+Pwd		비밀번호    
+OtpCrtfctnCd_Disable		Disable Attr
+OtpCrtfctnCd		OTP인증코드 
+Rrno		주민등록번호]]></comment>
+</element>
+<element height="46" id="Element@12367980:1471845467932" name="boan_OTP_m_strProcRsltSect_Check" type="Decision" width="242" x="-227" y="1220">
+<exit_states>
+<exit_state name="0000 : 성공" target="Element@29657798:1471845615143"/>
+<exit_state name="other" target="Element@23366861:1471849637754"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6813647:1471845555803" name="boan_SUCCESS" type="Page Entry" width="133" x="972" y="-36">
+<exit_states>
+<exit_state name="next" target="Element@17177372:1471996341257"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29657798:1471845615143" name="boan_SUCCESS" type="Page Connector" width="133" x="-173" y="1321">
+<page_connector target="Element@6813647:1471845555803">boan_SUCCESS<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@30759473:1471845646372" name="boan_FAIL" type="Page Entry" width="105" x="972" y="54">
+<exit_states>
+<exit_state name="next" target="Element@18493849:1471996292429"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18860219:1471845679677" name="boan_FAIL" type="Page Connector" width="105" x="-696" y="1220">
+<page_connector target="Element@30759473:1471845646372">boan_FAIL<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@23366861:1471849637754" name="boan_OTP_m_strErrOccrCnt_Check" type="Decision" width="234" x="-760" y="1321">
+<exit_states>
+<exit_state name="other" target="Element@14685880:1471850316014"/>
+<exit_state name="9회 이하" target="Element@7649484:1472122260147"/>
+</exit_states>
+</element>
+<element height="30" id="Element@25955246:1471849670308" type="Comment" width="196" x="-727" y="1282">
+<comment><![CDATA[[boan_OTP_m_strErrOccrCnt_Check] 
+: 오류횟수비교]]></comment>
+</element>
+<element height="46" id="Element@26355851:1471849723294" name="boan_HIGH" type="Page Entry" width="111" x="972" y="141">
+<exit_states>
+<exit_state name="next" target="Element@6675226:1471996292429"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1384339:1471849941264" name="boan_OTP_Hold_9_less" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="171" x="-729" y="1549">
+<exit_states>
+<exit_state name="done" target="Element@13378651:1471849941264"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13378651:1471849941264" name="boan_OTP_EATTSMaker_9_less" src="Element.Audio.EATTSMaker" type="Decision Element" width="211" x="-749" y="1642">
+<exit_states>
+<exit_state name="success" target="Element@13506105:1471849941264"/>
+<exit_state name="fail" target="Element@13506105:1471849941264">
+<bendpoint>
+<dim1 x="65" y="45"/>
+<dim2 x="56" y="-48"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@13506105:1471849941264" name="boan_OTP_Play_9_less" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="171" x="-729" y="1753">
+<exit_states>
+<exit_state name="done" target="Element@14543025:1471850269780"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13529323:1471850235698" name="OTP" type="Page Entry" width="72" x="-334" y="233">
+<exit_states>
+<exit_state name="next" target="Element@26625459:1471840920333"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14543025:1471850269780" name="OTP" type="Page Connector" width="104" x="-695" y="1853">
+<page_connector target="Element@13529323:1471850235698">OTP<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@14685880:1471850316014" name="boan_OTP_S40004" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="151" x="-456" y="1422">
+<exit_states>
+<exit_state name="done" target="Element@33408544:1471850419977"/>
+</exit_states>
+</element>
+<element height="60" id="Element@28831493:1471850378470" type="Comment" width="240" x="-442" y="1340">
+<comment><![CDATA[[S40004] : OTP 비밀번호 10회 오류입니다. 
+OTP이용이 불가능하오니 신분증, 증권 카드, 
+등록인감을 지참하시고 가까운 영업점에 
+내방하시면 됩니다.]]></comment>
+</element>
+<element height="46" id="Element@33408544:1471850419977" name="boan_HIGH" type="Page Connector" width="111" x="-436" y="1515">
+<page_connector target="Element@26355851:1471849723294">boan_HIGH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@29925619:1471854691143" name="boan_Card_Hold_m_strSecuCardRndn1" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="258" x="132" y="233">
+<exit_states>
+<exit_state name="done" target="Element@12508286:1471854691143"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12508286:1471854691143" name="boan_Card_TTS_m_strSecuCardRndn1" src="Element.Audio.EATTSMaker" type="Decision Element" width="251" x="135" y="303">
+<exit_states>
+<exit_state name="success" target="Element@21631382:1471854691143"/>
+<exit_state name="fail" target="Element@21631382:1471854691143">
+<bendpoint>
+<dim1 x="111" y="68"/>
+<dim2 x="98" y="-68"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@21631382:1471854691143" name="boan_Card_m_strSecuCardRndn1_Play" type="Subflow Call" width="254" x="133" y="373">
+<subflow_call subflow_name="dtmf" target="Element@31:1470468553268">
+<config>
+<argument_data>
+<data name="MENT">{Data.Element.boan_Card_TTS_m_strSecuCardRndn1.value}</data>
+<data name="MINDIGIT">2</data>
+<data name="MAXDIGIT">2</data>
+<data name="PATTERN">0123456789</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">num</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@2629903:1471855956247"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2629903:1471855956247" name="boan_Card_m_strDTMF_Check_1" type="Decision" width="223" x="148" y="448">
+<exit_states>
+<exit_state name="other" target="Element@16062434:1471856045480"/>
+<exit_state name="false : MAXError" target="Element@32870527:1471856026621"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32870527:1471856026621" name="boan_FAIL" type="Page Connector" width="105" x="490" y="448">
+<page_connector target="Element@30759473:1471845646372">boan_FAIL<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@16062434:1471856045480" name="boan_Card_m_strSecuPwd1" src="Element.Utils.EUSetSessionValue" type="Action Element" width="197" x="161" y="522">
+<exit_states>
+<exit_state name="done" target="Element@30632207:1471856203274"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9869657:1471856203274" name="boan_Card_TTS_m_strSecuCardRndn2" src="Element.Audio.EATTSMaker" type="Decision Element" width="251" x="134" y="671">
+<exit_states>
+<exit_state name="success" target="Element@26309120:1471856203258"/>
+<exit_state name="fail" target="Element@26309120:1471856203258">
+<bendpoint>
+<dim1 x="111" y="68"/>
+<dim2 x="98" y="-68"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@30632207:1471856203274" name="boan_Card_Hold_m_strSecuCardRndn2" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="258" x="130" y="601">
+<exit_states>
+<exit_state name="done" target="Element@9869657:1471856203274"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9347216:1471856203258" name="boan_FAIL" type="Page Connector" width="105" x="22" y="816">
+<page_connector target="Element@30759473:1471845646372">boan_FAIL<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@3424477:1471856203258" name="boan_Card_m_strDTMF_Check_2" type="Decision" width="223" x="148" y="816">
+<exit_states>
+<exit_state name="other" target="Element@30367657:1471856203258"/>
+<exit_state name="false : MAXError" target="Element@9347216:1471856203258"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26309120:1471856203258" name="boan_Card_m_strSecuCardRndn2_Play" type="Subflow Call" width="254" x="132" y="741">
+<subflow_call subflow_name="dtmf" target="Element@31:1470468553268">
+<config>
+<argument_data>
+<data name="MENT">{Data.Element.boan_Card_TTS_m_strSecuCardRndn2.value}</data>
+<data name="MINDIGIT">2</data>
+<data name="MAXDIGIT">2</data>
+<data name="PATTERN">0123456789</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">num</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@3424477:1471856203258"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30367657:1471856203258" name="boan_Card_m_strSecuPwd2" src="Element.Utils.EUSetSessionValue" type="Action Element" width="197" x="161" y="890">
+<exit_states>
+<exit_state name="done" target="Element@14692834:1471856353659"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14692834:1471856353659" name="boan_Card_m_strSecuPwd1_EUEncrypt" src="Element.Utils.EUEncrypt" type="Action Element" width="256" x="131" y="978">
+<exit_states>
+<exit_state name="done" target="Element@14084809:1471856397101"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14084809:1471856397101" name="boan_Card_m_strSecuPwd2_EUEncrypt" src="Element.Utils.EUEncrypt" type="Action Element" width="256" x="131" y="1053">
+<exit_states>
+<exit_state name="done" target="Element@4807849:1471856469650"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21202646:1471856469650" name="boan_Card_ENStockSocket_T33OU24" src="Element.Network.ENStockSocket" type="Decision Element" width="249" x="134" y="1281">
+<exit_states>
+<exit_state name="success" target="Element@2237969:1471856469650"/>
+<exit_state name="fail" target="Element@2640473:1471856575680"/>
+<exit_state name="errcode" target="Element@2640473:1471856575680"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2237969:1471856469650" name="boan_Card_EUSocketOutput_T33OU24" src="Element.Utils.EUSocketOutput" type="Action Element" width="256" x="131" y="1355">
+<exit_states>
+<exit_state name="done" target="Element@6084240:1471856708302"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32581423:1471856469650" name="boan_Card_Hold_T33OU24" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="194" x="162" y="1206">
+<exit_states>
+<exit_state name="done" target="Element@21202646:1471856469650"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4807849:1471856469650" name="boan_Card_EUSocketInput_T33OU24" src="Element.Utils.EUSocketInput" type="Action Element" width="246" x="136" y="1133">
+<exit_states>
+<exit_state name="done" target="Element@32581423:1471856469650"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7895385:1471856575680" name="boan_FAIL" type="Page Connector" width="105" x="543" y="1462">
+<page_connector target="Element@30759473:1471845646372">boan_FAIL<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@2640473:1471856575680" name="boan_Card_m_strErrorCode_T33OU24" src="Element.Utils.EUSocketOutput" type="Action Element" width="250" x="471" y="1281">
+<exit_states>
+<exit_state name="done" target="Element@23512416:1471856575680"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23512416:1471856575680" name="boan_Card_m_strErrorCode_Check" type="Decision" width="232" x="480" y="1355">
+<exit_states>
+<exit_state name="other" target="Element@7895385:1471856575680"/>
+<exit_state name="21260 : 비밀번호오류" target="Element@2237969:1471856469650"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6084240:1471856708302" name="boan_Card_m_strProcRsltSect_Check" type="Decision" width="245" x="136" y="1441">
+<exit_states>
+<exit_state name="other" target="Element@16753080:1471856826694"/>
+<exit_state name="1 : 성공" target="Element@29657798:1471845615143"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16753080:1471856826694" name="boan_Card_m_strErrOccrCnt_Check" type="Decision" width="237" x="140" y="1539">
+<exit_states>
+<exit_state name="other" target="Element@19917686:1471856898770"/>
+<exit_state name="4회이하" target="Element@31572304:1472122137520"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19917686:1471856898770" name="boan_Card_S40005" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="154" x="447" y="1539">
+<exit_states>
+<exit_state name="done" target="Element@21708648:1471856898770"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21708648:1471856898770" name="boan_HIGH" type="Page Connector" width="111" x="467" y="1634">
+<page_connector target="Element@26355851:1471849723294">boan_HIGH<config/>
+</page_connector>
+</element>
+<element height="60" id="Element@26809699:1471856898770" type="Comment" width="284" x="281" y="1482">
+<comment><![CDATA[[S40005] : 보안카드번호 5회 오류입니다. 
+보안카드 이용이 불가능하오니, 신분증, 증권 카드, 
+등록인감을 지참하시고 가까운 영업점에 내방하시면 
+됩니다.]]></comment>
+</element>
+<element height="46" id="Element@18665534:1471856995732" name="boan_Card_Play_4_less" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="170" x="173" y="1965">
+<exit_states>
+<exit_state name="done" target="Element@6459612:1471995196369"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15078025:1471856995732" name="boan_Card_Hold_4_less" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="174" x="171" y="1804">
+<exit_states>
+<exit_state name="done" target="Element@13309484:1471856995732"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13309484:1471856995732" name="boan_Card_EATTSMaker_4_less" src="Element.Audio.EATTSMaker" type="Decision Element" width="214" x="151" y="1890">
+<exit_states>
+<exit_state name="success" target="Element@18665534:1471856995732"/>
+<exit_state name="fail" target="Element@18665534:1471856995732">
+<bendpoint>
+<dim1 x="65" y="45"/>
+<dim2 x="56" y="-48"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@10439268:1471995156652" name="BoanCard" type="Page Entry" width="102" x="-8" y="233">
+<exit_states>
+<exit_state name="next" target="Element@29925619:1471854691143"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6459612:1471995196369" name="BoanCard" type="Page Connector" width="111" x="202" y="2042">
+<page_connector target="Element@10439268:1471995156652">BoanCard<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18543820:1471995307863" name="boan_Smart_ENStockSocket_AC4OU54" src="Element.Network.ENStockSocket" type="Decision Element" width="259" x="802" y="373">
+<exit_states>
+<exit_state name="success" target="Element@12422145:1471995307863"/>
+<exit_state name="fail" target="Element@18108739:1471995439948"/>
+<exit_state name="errcode" target="Element@18108739:1471995439948"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12422145:1471995307863" name="boan_Smart_EUSocketOutput_AC4OU54" src="Element.Utils.EUSocketOutput" type="Action Element" width="266" x="799" y="448">
+<exit_states>
+<exit_state name="done" target="Element@22552138:1471995615089"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2395228:1471995307863" name="boan_Smart_Hold_AC4OU54" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="204" x="833" y="303">
+<exit_states>
+<exit_state name="done" target="Element@18543820:1471995307863"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3326237:1471995307863" name="boan_Smart_EUSocketInput_AC4OU54" src="Element.Utils.EUSocketInput" type="Action Element" width="256" x="805" y="233">
+<exit_states>
+<exit_state name="done" target="Element@2395228:1471995307863"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18108739:1471995439948" name="boan_FAIL" type="Page Connector" width="105" x="590" y="373">
+<page_connector target="Element@30759473:1471845646372">boan_FAIL<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@22552138:1471995615089" name="boan_Smart_S40002" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="161" x="851" y="522">
+<exit_states>
+<exit_state name="done" target="Element@29100362:1471995710593"/>
+</exit_states>
+</element>
+<element height="45" id="Element@4346191:1471995660080" type="Comment" width="257" x="596" y="519">
+<comment><![CDATA[[S40002] : 소지하신 스마트OTP에 안내해 
+드리는 PIN번호를  입력하시어 OTP 비밀번호를 
+생성하여 주십시요.]]></comment>
+</element>
+<element height="46" id="Element@29100362:1471995710593" name="boan_Smart_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="145" x="859" y="601">
+<exit_states>
+<exit_state name="done" target="Element@32789071:1471995710593"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32789071:1471995710593" name="boan_Smart_EATTSMaker_TTS" src="Element.Audio.EATTSMaker" type="Decision Element" width="209" x="827" y="671">
+<exit_states>
+<exit_state name="success" target="Element@21495574:1471995710593"/>
+<exit_state name="fail" target="Element@21495574:1471995710593"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21495574:1471995710593" name="boan_Smart_Play" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="141" x="861" y="741">
+<exit_states>
+<exit_state name="done" target="Element@21160878:1471995958541"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21160878:1471995958541" name="OTP" type="Page Connector" width="72" x="895" y="828">
+<page_connector target="Element@13529323:1471850235698">OTP<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18493849:1471996292429" name="m_strDTMF_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="125" x="1129" y="54">
+<exit_states>
+<exit_state name="done" target="Element@11422449:1471996292429"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6675226:1471996292429" name="m_strDTMF_H" src="Element.Utils.EUSetSessionValue" type="Action Element" width="125" x="1129" y="142">
+<exit_states>
+<exit_state name="done" target="Element@18063035:1471996292429"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11422449:1471996292429" name="boan_m_strDTMF_N_Return" type="Subflow Return" width="197" x="1129" y="99"/>
+<element height="46" id="Element@18063035:1471996292429" name="boan_m_strDTMF_H_Return" type="Subflow Return" width="197" x="1129" y="187"/>
+<element height="46" id="Element@17177372:1471996341257" name="boan_m_strDTMF_0" src="Element.Utils.EUSetSessionValue" type="Action Element" width="155" x="1129" y="-36">
+<exit_states>
+<exit_state name="done" target="Element@1262782:1471996341257"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1262782:1471996341257" name="boan_m_strDTMF_0_Return" type="Subflow Return" width="195" x="1129" y="9"/>
+<element height="46" id="Element@31572304:1472122137520" name="boan_Card_EUStringTrimNum_m_strErrOccrCnt" src="Element.Strings.EUStringTrimNum" type="Action Element" width="301" x="108" y="1634">
+<exit_states>
+<exit_state name="done" target="Element@7634871:1472122197718"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7634871:1472122197718" name="boan_Card_m_strErrOccrCnt" src="Element.Utils.EUSetSessionValue" type="Action Element" width="199" x="159" y="1709">
+<exit_states>
+<exit_state name="done" target="Element@15078025:1471856995732"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24636719:1472122260147" name="boan_OTP_m_strErrOccrCnt" src="Element.Utils.EUSetSessionValue" type="Action Element" width="196" x="-741" y="1479">
+<exit_states>
+<exit_state name="done" target="Element@1384339:1471849941264"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7649484:1472122260147" name="boan_OTP_EUStringTrimNum_m_strErrOccrCnt" src="Element.Strings.EUStringTrimNum" type="Action Element" width="298" x="-792" y="1404">
+<exit_states>
+<exit_state name="done" target="Element@24636719:1472122260147"/>
+</exit_states>
+</element>
+<element height="270" id="Element@33207589:1472169704615" type="Comment" width="481" x="410" y="1004">
+<comment><![CDATA[[T33OU24_INPUT]
+SecuSect		보안구분 : 1.OTP,  2.보안카드, 3.이체비밀번호
+Rrno		주민등록번호 : 출금계좌의 주민등록번호
+AcntNo_Disable		Disable Attr          
+AcntNo		계좌번호              
+Pwd_Disable		Disable Attr          
+Pwd		비밀번호              
+SecuCardNo		보안카드번호          
+SecuCardSeq1		보안카드일련번호1     
+SecuCardSeq2		보안카드일련번호2     
+SecuCardCdPwd1_Disable		Disable Attr          
+SecuCardCdPwd1		보안카드코드비밀번호1 : 암호화된 보안카드 앞 2자리
+SecuCardCdPwd2_Disable		Disable Attr          
+SecuCardCdPwd2		보안카드코드비밀번호2 : 암호화된 보안카드 뒷 2자리
+CardStatSect		카드상태구분          
+ErrOccrCnt		오류발생건수          
+DataCntn		데이터내용            
+ProcRsltSect		처리결과구분]]></comment>
+</element>
+<element height="46" id="Element@19139368:1483584525930" name="boan_m_strSvcCode_Check" type="Decision" width="196" x="429" y="113">
+<exit_states>
+<exit_state name="other" target="Element@14037533:1471840690622"/>
+<exit_state name="대체보안매체스킵" target="Element@22935801:1483584608960"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22935801:1483584608960" name="boan_SUCCESS" type="Page Connector" width="133" x="791" y="113">
+<page_connector target="Element@6813647:1471845555803">boan_SUCCESS<config/>
+</page_connector>
+</element>
+</page>

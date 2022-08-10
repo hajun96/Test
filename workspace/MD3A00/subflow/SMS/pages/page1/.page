@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@13361867:1472451909719" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1472451909719" name="SMS" type="Subflow Start" width="75" x="371" y="48">
+<exit_states>
+<exit_state name="next" target="Element@17829376:1472451922136"/>
+</exit_states>
+</element>
+<element height="30" id="Element@6106737:1472451922136" type="Comment" width="179" x="163" y="257">
+<comment><![CDATA[[C00031]
+문자메세지 체결통보 등록입니다.]]></comment>
+</element>
+<element height="46" id="Element@4298542:1472451922136" name="SMS_Decision_C00032" type="Decision" width="174" x="321" y="567">
+<exit_states>
+<exit_state name="false : MAX ERROR" target="Element@2909896:1472451922136"/>
+<exit_state name="other" target="Element@24054408:1472451922136"/>
+<exit_state name="* : 취소" target="Element@21041625:1472452273584"/>
+<exit_state name="# : 상위메뉴" target="Element@26484416:1472451922136"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28712248:1472451922136" name="SMS_C00032__m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="222" x="297" y="376">
+<exit_states>
+<exit_state name="done" target="Element@20473909:1472451922136"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16057557:1472451922136" name="SMS_m_strDTMFErr_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="167" x="726" y="774">
+<exit_states>
+<exit_state name="done" target="Element@7062419:1472451922136"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30146983:1472451922136" name="SMS_SetNum" src="Element.Utils.EUSetSessionValue" type="Action Element" width="124" x="579" y="158">
+<exit_states>
+<exit_state name="done" target="Element@15185165:1472453664569"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25588285:1472451922136" name="SMS_C00031" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="123" x="347" y="248">
+<exit_states>
+<exit_state name="done" target="Element@28712248:1472451922136"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7062419:1472451922136" name="SMS_C00017" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="123" x="748" y="699">
+<exit_states>
+<exit_state name="done" target="Element@20473909:1472451922136">
+<bendpoint>
+<dim1 x="-1" y="-228"/>
+<dim2 x="400" y="-2"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@18638708:1472451922136" name="SMS_m_strDTMF_Length_Check" type="Decision" width="221" x="298" y="773">
+<exit_states>
+<exit_state name="other" target="Element@3389869:1472453062204"/>
+<exit_state name="길이초과" target="Element@16057557:1472451922136"/>
+<exit_state name="길이작음" target="Element@16057557:1472451922136">
+<bendpoint>
+<dim1 x="224" y="-57"/>
+<dim2 x="-190" y="-58"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="15" id="Element@17259780:1472451922136" type="Comment" width="54" x="1178" y="2043">
+<comment><![CDATA[Comment]]></comment>
+</element>
+<element height="46" id="Element@26484416:1472451922136" name="SMS_HIGH" type="Page Connector" width="116" x="82" y="571">
+<page_connector target="Element@29609973:1472452081902">SMS_HIGH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@24054408:1472451922136" name="SMS_m_strDTMF_Length" src="Element.Strings.EUStringLength" type="Action Element" width="183" x="317" y="663">
+<exit_states>
+<exit_state name="done" target="Element@18638708:1472451922136"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2909896:1472451922136" name="SMS_MAXERROR" type="Page Connector" width="142" x="602" y="566">
+<page_connector target="Element@22245444:1472452168087">SMS_MAXERROR<config/>
+</page_connector>
+</element>
+<element height="60" id="Element@8430558:1472451922136" type="Comment" width="196" x="543" y="412">
+<comment><![CDATA[[C00032] 
+연락 받기를 원하시는 휴대폰번호와 
+우물정자를 눌러주세요. 
+취소하시려면 별표를 눌러주세요.]]></comment>
+</element>
+<element height="46" id="Element@17829376:1472451922136" name="EzPassFlag" type="Decision" width="115" x="351" y="158">
+<exit_states>
+<exit_state name="1 : 등록고객" target="Element@30146983:1472451922136"/>
+<exit_state name="other" target="Element@25588285:1472451922136"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20473909:1472451922136" name="SMS_C00032" type="Subflow Call" width="123" x="347" y="473">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/C00032.wav</data>
+<data name="MINDIGIT">10</data>
+<data name="MAXDIGIT">12</data>
+<data name="PATTERN">0123456789*#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">sharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@4298542:1472451922136"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29609973:1472452081902" name="SMS_HIGH" type="Page Entry" width="116" x="1102" y="28">
+<exit_states>
+<exit_state name="next" target="Element@12173274:1472452081902"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12173274:1472452081902" name="SMS_m_strDTMF_H" src="Element.Utils.EUSetSessionValue" type="Action Element" width="155" x="1102" y="72">
+<exit_states>
+<exit_state name="done" target="Element@14851399:1472452081902"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14851399:1472452081902" name="SMS_m_strDTMF_H_Return" type="Subflow Return" width="195" x="1102" y="117"/>
+<element height="46" id="Element@22245444:1472452168087" name="SMS_MAXERROR" type="Page Entry" width="158" x="1102" y="192">
+<exit_states>
+<exit_state name="next" target="Element@27530452:1472452168087"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5879203:1472452168087" name="SMS_m_strDTMF_E_Return" type="Subflow Return" width="192" x="1102" y="281"/>
+<element height="46" id="Element@27530452:1472452168087" name="SMS_m_strDTMF_E" src="Element.Utils.EUSetSessionValue" type="Action Element" width="174" x="1102" y="236">
+<exit_states>
+<exit_state name="done" target="Element@5879203:1472452168087"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18366801:1472452219751" name="SMS_m_strDTMF_C" src="Element.Utils.EUSetSessionValue" type="Action Element" width="154" x="874" y="73">
+<exit_states>
+<exit_state name="done" target="Element@30223440:1472452219751"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30223440:1472452219751" name="SMS_m_strDTMF_C_Return" type="Subflow Return" width="194" x="874" y="118"/>
+<element height="46" id="Element@23611410:1472452219751" name="SMS_CanCel" type="Page Entry" width="118" x="874" y="29">
+<exit_states>
+<exit_state name="next" target="Element@18366801:1472452219751"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21041625:1472452273584" name="SMS_CanCel" type="Page Connector" width="118" x="82" y="630">
+<page_connector target="Element@23611410:1472452219751">SMS_CanCel<config/>
+</page_connector>
+</element>
+<element height="30" id="Element@11611403:1472452706108" type="Comment" width="99" x="886" y="703">
+<comment><![CDATA[[C00017]
+잘못누르셨습니다.]]></comment>
+</element>
+<element height="90" id="Element@25338427:1472452751704" type="Comment" width="223" x="66" y="-22">
+<comment><![CDATA[<<주문체결내역 SMS전송 Subflow>>
+
+* Return 값 : 
+  - m_strDTMF == C    //SMS통보 cancel
+  - m_strDTMF == H    //상위메뉴 이동
+  - m_strDTMF == E    //MAX ERROR]]></comment>
+</element>
+<element height="46" id="Element@3389869:1472453062204" name="SMS_Set_DialNum" src="Element.Utils.EUSetSessionValue" type="Action Element" width="154" x="331" y="863">
+<exit_states>
+<exit_state name="done" target="Element@33223070:1472453128438"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33223070:1472453128438" name="SMS_Hold_01" type="Subflow Call" width="125" x="346" y="945">
+<subflow_call subflow_name="Hold" target="Element@31:1471824511405">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@15544384:1472453128438"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25843467:1472453128438" name="SMS_PhoneNm_Play" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="161" x="328" y="1106">
+<exit_states>
+<exit_state name="done" target="Element@17622635:1472453422432"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15544384:1472453128438" name="SMS_PhoneNm_TTS" src="Element.Audio.EATTSMaker" type="Decision Element" width="158" x="329" y="1018">
+<exit_states>
+<exit_state name="success" target="Element@25843467:1472453128438"/>
+<exit_state name="fail" target="Element@25843467:1472453128438"/>
+</exit_states>
+</element>
+<element height="30" id="Element@22598807:1472453128438" type="Comment" width="209" x="510" y="1204">
+<comment><![CDATA[[C00033] 
+맞으면 1번, 틀리면 별표를 눌러주세요.]]></comment>
+</element>
+<element height="30" id="Element@844029:1472453128438" type="Comment" width="160" x="519" y="1103">
+<comment><![CDATA[[TTS]
+연락 받으실 번호가 ####번이]]></comment>
+</element>
+<element height="46" id="Element@34541:1472453361264" name="SMS_Input_PhoneNum" type="Page Entry" width="174" x="62" y="376">
+<exit_states>
+<exit_state name="next" target="Element@28712248:1472451922136"/>
+</exit_states>
+</element>
+<element height="46" id="Element@622675:1472453393834" name="SMS_Input_PhoneNum" type="Page Connector" width="174" x="62" y="1284">
+<page_connector target="Element@34541:1472453361264">SMS_Input_PhoneNum<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@17622635:1472453422432" name="SMS_C00033" type="Subflow Call" width="150" x="333" y="1203">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/C00033.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">*1</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@29971842:1472453422432"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24619868:1472453422432" name="SMS_MAXERROR" type="Page Connector" width="142" x="690" y="1278">
+<page_connector target="Element@22245444:1472452168087">SMS_MAXERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@29971842:1472453422432" name="SMS_Decision_C00033" type="Decision" width="190" x="313" y="1287">
+<exit_states>
+<exit_state name="false : MAX ERROR" target="Element@24619868:1472453422432"/>
+<exit_state name="* : 틀림" target="Element@622675:1472453393834"/>
+<exit_state name="1 : SMS등록" target="Element@20856184:1472453740261"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15801223:1472453634744" name="SMS_PhoneNum_Play" type="Page Entry" width="168" x="79" y="945">
+<exit_states>
+<exit_state name="next" target="Element@33223070:1472453128438"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15185165:1472453664569" name="SMS_PhoneNum_Play" type="Page Connector" width="168" x="557" y="245">
+<page_connector target="Element@15801223:1472453634744">SMS_PhoneNum_Play<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@20293231:1472453740261" name="SMS_EUSocketOutput_D20OU15A" src="Element.Utils.EUSocketOutput" type="Action Element" width="246" x="285" y="1699">
+<exit_states>
+<exit_state name="done" target="Element@14943172:1472454265355"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26120822:1472453740261" name="SMS_Hold_D20OU15A" type="Subflow Call" width="191" x="313" y="1485">
+<subflow_call subflow_name="Hold" target="Element@31:1471566916914">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@20031681:1472453740261"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20856184:1472453740261" name="SMS_EUSocketInput_D20OU15A" src="Element.Utils.EUSocketInput" type="Action Element" width="236" x="290" y="1387">
+<exit_states>
+<exit_state name="done" target="Element@26120822:1472453740261"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20031681:1472453740261" name="SMS_ENStockSocket_D20OU15A" src="Element.Network.ENStockSocket" type="Decision Element" width="239" x="289" y="1616">
+<exit_states>
+<exit_state name="success" target="Element@20293231:1472453740261"/>
+<exit_state name="fail" target="Element@18951711:1472453835633"/>
+<exit_state name="errcode" target="Element@18951711:1472453835633">
+<bendpoint>
+<dim1 x="207" y="-46"/>
+<dim2 x="-171" y="-52"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="45" id="Element@22745209:1472453835633" type="Comment" width="211" x="836" y="1616">
+<comment><![CDATA[[C00034] 
+체결내역 통보 등록을 실패하였습니다. 
+입력하신 번호를 확인하여 주세요.]]></comment>
+</element>
+<element height="46" id="Element@18951711:1472453835633" name="SMS_C00034" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="123" x="709" y="1616">
+<exit_states>
+<exit_state name="done" target="Element@17481835:1472453932981"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32666313:1472453913954" name="SMS_Start" type="Page Entry" width="105" x="589" y="50">
+<exit_states>
+<exit_state name="next" target="Element@17829376:1472451922136"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17481835:1472453932981" name="SMS_Start" type="Page Connector" width="105" x="718" y="1699">
+<page_connector target="Element@32666313:1472453913954">SMS_Start<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@14943172:1472454265355" name="SMS_Hold_02" type="Subflow Call" width="125" x="346" y="1811">
+<subflow_call subflow_name="Hold" target="Element@31:1471824511405">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@28535963:1472454265355"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10440616:1472454265355" name="SMS_DialNum_Play" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="155" x="331" y="1972">
+<exit_states>
+<exit_state name="done" target="Element@11270298:1472454542280"/>
+</exit_states>
+</element>
+<element height="60" id="Element@30187300:1472454265355" type="Comment" width="205" x="514" y="1969">
+<comment><![CDATA[[TTS]
+고객님께서 등록하신 ###번으로,
+주문번호 ###번에 대한 체결내역 통보
+등록되었습니다.]]></comment>
+</element>
+<element height="46" id="Element@28535963:1472454265355" name="SMS_DialNum_TTS" src="Element.Audio.EATTSMaker" type="Decision Element" width="152" x="332" y="1884">
+<exit_states>
+<exit_state name="success" target="Element@10440616:1472454265355"/>
+<exit_state name="fail" target="Element@10440616:1472454265355"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26263740:1472454465849" name="SMS_m_strDTMF_0" src="Element.Utils.EUSetSessionValue" type="Action Element" width="153" x="874" y="236">
+<exit_states>
+<exit_state name="done" target="Element@6136455:1472454465849"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6136455:1472454465849" name="SMS_m_strDTMF_0_Return" type="Subflow Return" width="193" x="874" y="281"/>
+<element height="46" id="Element@4489595:1472454465849" name="SMS_Success" type="Page Entry" width="122" x="874" y="192">
+<exit_states>
+<exit_state name="next" target="Element@26263740:1472454465849"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11270298:1472454542280" name="SMS_Success" type="Page Connector" width="122" x="347" y="2060">
+<page_connector target="Element@4489595:1472454465849">SMS_Success<config/>
+</page_connector>
+</element>
+</page>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE knowledge_base SYSTEM "../../../../../dtds/DecisionKnowledgeBase.dtd">
+<knowledge_base>
+    <rule default_exit_state="other" name="dtmf_Length_Check">
+        <exit_state conjugate="and" name="초과">
+            <number operator="greater">
+                <data>
+                    <element name="dtmf_Length" variable="value"/>
+                </data>
+                <data>
+                    <element name="dtmf" variable="MAXDIGIT"/>
+                </data>
+            </number>
+        </exit_state>
+        <exit_state conjugate="and" name="미만">
+            <number operator="less">
+                <data>
+                    <element name="dtmf_Length" variable="value"/>
+                </data>
+                <data>
+                    <element name="dtmf" variable="MINDIGIT"/>
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>

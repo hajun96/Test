@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@7311529:1473554980142" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1473554980142" name="QuickCodeCompare" type="Subflow Start" width="164" x="224" y="-201">
+<exit_states>
+<exit_state name="next" target="Element@26069547:1474950083820"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27604318:1473560076573" name="Decision_QuickCode_1" type="Decision" width="179" x="662" y="153">
+<exit_states>
+<exit_state name="상담원연결:0" target="Element@13620588:1473581193570"/>
+<exit_state name="이체:6" target="Element@13620588:1473581193570"/>
+<exit_state name="분실신고 등:8" target="Element@13620588:1473581193570"/>
+<exit_state name="주식시황안내:2" target="Element@13620588:1473581193570"/>
+<exit_state name="단축계좌저장:75" target="Element@10761009:1473581196004"/>
+<exit_state name="그외" target="Element@16187793:1486626543954"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17286772:1473560125198" name="Decision_QuickCode_CompareType" type="Decision" width="254" x="179" y="1">
+<exit_states>
+<exit_state name="음성인식" target="Element@27604318:1473560076573"/>
+<exit_state name="그외" target="Element@16187793:1486626543954"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10015306:1473562528251" name="Subflow Return_END" type="Subflow Return" width="188" x="741" y="1205"/>
+<element height="46" id="Element@19522856:1473581089613" name="Exist" type="Page Entry" width="97" x="691" y="1026">
+<exit_states>
+<exit_state name="next" target="Element@28132167:1473581104215"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17522300:1473581097694" name="NotExist" type="Page Entry" width="130" x="890" y="1017">
+<exit_states>
+<exit_state name="next" target="Element@24829045:1473581108661"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28132167:1473581104215" name="SetValue_Exist" src="Element.Utils.EUSetSessionValue" type="Action Element" width="134" x="673" y="1108">
+<exit_states>
+<exit_state name="done" target="Element@10015306:1473562528251"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24829045:1473581108661" name="SetValue_NotExist" src="Element.Utils.EUSetSessionValue" type="Action Element" width="153" x="879" y="1109">
+<exit_states>
+<exit_state name="done" target="Element@10015306:1473562528251"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29268942:1473581155148" name="Exist" type="Page Connector" width="78" x="712" y="408">
+<page_connector target="Element@19522856:1473581089613">Exist<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@12308715:1473581180310" name="NotExist" type="Page Connector" width="97" x="257" y="744">
+<page_connector target="Element@17522300:1473581097694">NotExist<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@13620588:1473581193570" name="Exist" type="Page Connector" width="78" x="1006" y="67">
+<page_connector target="Element@19522856:1473581089613">Exist<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@10761009:1473581196004" name="NotExist" type="Page Connector" width="97" x="946" y="284">
+<page_connector target="Element@17522300:1473581097694">NotExist<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@26069547:1474950083820" name="QuickCodeComp_StartLog" src="Element.Utils.EULogWrite" type="Action Element" width="198" x="207" y="-96">
+<exit_states>
+<exit_state name="done" target="Element@17286772:1473560125198"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12616435:1486626543954" name="m_strQuickDigit_7_Menu_Check" type="Decision" width="229" x="191" y="647">
+<exit_states>
+<exit_state name="other" target="Element@12308715:1473581180310"/>
+<exit_state name="007 : 사고신고 및 부가서비스" target="Element@29268942:1473581155148"/>
+<exit_state name="071 : 분실신고" target="Element@29268942:1473581155148"/>
+<exit_state name="072 : 분실신고조회" target="Element@29268942:1473581155148"/>
+<exit_state name="073 : 사기자금지급정지" target="Element@29268942:1473581155148"/>
+<exit_state name="074 : 각종비밀번호변경" target="Element@29268942:1473581155148"/>
+<exit_state name="741 : ARS주문비밀번호변경" target="Element@29268942:1473581155148"/>
+<exit_state name="742 : 계좌비밀번호변경" target="Element@29268942:1473581155148"/>
+<exit_state name="075 : 일괄및방문계좌확인" target="Element@29268942:1473581155148"/>
+<exit_state name="751 : CMA방문개설확인" target="Element@29268942:1473581155148"/>
+<exit_state name="752 : 일괄계좌카드사용등록" target="Element@29268942:1473581155148"/>
+<exit_state name="753 : 일괄계좌유선이체약정확인" target="Element@29268942:1473581155148"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13967598:1486626543954" name="m_strQuickDigit_5_Menu_Check" type="Decision" width="229" x="191" y="485">
+<exit_states>
+<exit_state name="other" target="Element@8902946:1486626543954"/>
+<exit_state name="005 : 이체서비스" target="Element@29268942:1473581155148"/>
+<exit_state name="051 : 은행으로이체" target="Element@29268942:1473581155148"/>
+<exit_state name="052 : 당사계좌간이체" target="Element@29268942:1473581155148"/>
+<exit_state name="053 : 입출금내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="531 : 당일입출금내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="532 : 일자별입출금내역조회" target="Element@29268942:1473581155148"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4401151:1486626543954" name="m_strQuickDigit_4_Menu_Check" type="Decision" width="229" x="191" y="408">
+<exit_states>
+<exit_state name="other" target="Element@13967598:1486626543954"/>
+<exit_state name="040 : 잔고및거래내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="041 : 실시간잔고" target="Element@29268942:1473581155148"/>
+<exit_state name="042 : 펀드평가금액조회" target="Element@29268942:1473581155148"/>
+<exit_state name="043 : 보유종목현재가조회" target="Element@29268942:1473581155148"/>
+<exit_state name="044 : 주문가능수량및금액조회" target="Element@29268942:1473581155148"/>
+<exit_state name="441 : 매수가능금액" target="Element@29268942:1473581155148"/>
+<exit_state name="442 : 매도가능수량" target="Element@29268942:1473581155148"/>
+<exit_state name="045 : 일자별거래내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="451 : 매매내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="452 : 입출금내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="046 : 신용잔고조회" target="Element@29268942:1473581155148"/>
+<exit_state name="461 : 신용통합잔고" target="Element@29268942:1473581155148"/>
+<exit_state name="462 : 융자일별신용잔고" target="Element@29268942:1473581155148"/>
+<exit_state name="463 : 담보유지비율조회" target="Element@29268942:1473581155148"/>
+</exit_states>
+</element>
+<element height="46" id="Element@505365:1486626543954" name="m_strQuickDigit_3_Menu_Check" type="Decision" width="229" x="191" y="325">
+<exit_states>
+<exit_state name="other" target="Element@4401151:1486626543954"/>
+<exit_state name="003 : 주문및체결내역" target="Element@29268942:1473581155148"/>
+<exit_state name="031 : 현금주문" target="Element@29268942:1473581155148"/>
+<exit_state name="311 : 현금매도" target="Element@29268942:1473581155148"/>
+<exit_state name="312 : 현금매수" target="Element@29268942:1473581155148"/>
+<exit_state name="313 : 현금정정" target="Element@29268942:1473581155148"/>
+<exit_state name="314 : 현금취소" target="Element@29268942:1473581155148"/>
+<exit_state name="032 : 신용주문" target="Element@29268942:1473581155148"/>
+<exit_state name="321 : 자기융자매도상환" target="Element@29268942:1473581155148"/>
+<exit_state name="322 : 담보융자매도상환" target="Element@29268942:1473581155148"/>
+<exit_state name="323 : 자기융자매수" target="Element@29268942:1473581155148"/>
+<exit_state name="324 : 신용정정" target="Element@29268942:1473581155148"/>
+<exit_state name="325 : 신용취소" target="Element@29268942:1473581155148"/>
+<exit_state name="033 : 시간외주문" target="Element@29268942:1473581155148"/>
+<exit_state name="331 : 시간외현금매도" target="Element@29268942:1473581155148"/>
+<exit_state name="332 : 시간외현금매수" target="Element@29268942:1473581155148"/>
+<exit_state name="333 : 시간외자기융자매도상환" target="Element@29268942:1473581155148"/>
+<exit_state name="334 : 시간외담보융자매도상환" target="Element@29268942:1473581155148"/>
+<exit_state name="335 : 시간외자기융자매수" target="Element@29268942:1473581155148"/>
+<exit_state name="336 : 시간외취소" target="Element@29268942:1473581155148"/>
+<exit_state name="034 : 시간외단일가주문" target="Element@29268942:1473581155148"/>
+<exit_state name="341 : 시간외단일가현금매도" target="Element@29268942:1473581155148"/>
+<exit_state name="342 : 시간외단일가현금매수" target="Element@29268942:1473581155148"/>
+<exit_state name="343 : 시간외단일가자기융자매도상환" target="Element@29268942:1473581155148"/>
+<exit_state name="344 : 시간외단일가담보융자매도상환" target="Element@29268942:1473581155148"/>
+<exit_state name="345 : 시간외단일가자기융자매수" target="Element@29268942:1473581155148"/>
+<exit_state name="346 : 시간외단일가정정" target="Element@29268942:1473581155148"/>
+<exit_state name="347 : 시간외단일가취소" target="Element@29268942:1473581155148"/>
+<exit_state name="035 : 펀드주문" target="Element@29268942:1473581155148"/>
+<exit_state name="351 : 펀드매도" target="Element@29268942:1473581155148"/>
+<exit_state name="352 : 펀드추가매수" target="Element@29268942:1473581155148"/>
+<exit_state name="353 : 펀드취소주문" target="Element@29268942:1473581155148"/>
+<exit_state name="354 : 펀드주문및체결내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="036 : 내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="361 : 전체내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="362 : 체결내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="363 : 미체결내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="364 : 종목별체결내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="365 : 전일체결내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="037 : 예약주문" target="Element@29268942:1473581155148"/>
+<exit_state name="371 : 예약현금매도" target="Element@29268942:1473581155148"/>
+<exit_state name="372 : 예약현금매수" target="Element@29268942:1473581155148"/>
+<exit_state name="373 : 예약취소" target="Element@29268942:1473581155148"/>
+<exit_state name="374 : 예약주문내역" target="Element@29268942:1473581155148"/>
+<exit_state name="375 : 처리결과조회" target="Element@29268942:1473581155148"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8902946:1486626543954" name="m_strQuickDigit_6_Menu_Check" type="Decision" width="222" x="195" y="568">
+<exit_states>
+<exit_state name="other" target="Element@12616435:1486626543954"/>
+<exit_state name="006 : 청약및조회" target="Element@29268942:1473581155148"/>
+<exit_state name="061 : 청약신청" target="Element@29268942:1473581155148"/>
+<exit_state name="062 : 청약취소" target="Element@29268942:1473581155148"/>
+<exit_state name="063 : 청약내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="064 : 청약경쟁률조회" target="Element@29268942:1473581155148"/>
+<exit_state name="065 : 청약일정조회" target="Element@29268942:1473581155148"/>
+<exit_state name="066 : 당월청약자격조회" target="Element@29268942:1473581155148"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27551119:1486626543954" name="m_strQuickDigit_2_Menu_Check" type="Decision" width="229" x="191" y="239">
+<exit_states>
+<exit_state name="other" target="Element@505365:1486626543954"/>
+<exit_state name="002 : 시세및지수조회" target="Element@29268942:1473581155148"/>
+<exit_state name="021 : 현재가및호가잔량" target="Element@29268942:1473581155148"/>
+<exit_state name="022 : 국내지수" target="Element@29268942:1473581155148"/>
+<exit_state name="221 : 종합주가지수" target="Element@29268942:1473581155148"/>
+<exit_state name="222 : 코스닥주가지수" target="Element@29268942:1473581155148"/>
+<exit_state name="223 : 코스피200지수" target="Element@29268942:1473581155148"/>
+<exit_state name="023 : 해외지수" target="Element@29268942:1473581155148"/>
+<exit_state name="231 : 다우존스산업지수" target="Element@29268942:1473581155148"/>
+<exit_state name="232 : 나스닥종합지수" target="Element@29268942:1473581155148"/>
+<exit_state name="233 : SP500지수" target="Element@29268942:1473581155148"/>
+<exit_state name="234 : 일본니케이지수" target="Element@29268942:1473581155148"/>
+<exit_state name="235 : 홍콩항세지수" target="Element@29268942:1473581155148"/>
+<exit_state name="236 : 홍콩H지수" target="Element@29268942:1473581155148"/>
+<exit_state name="237 : 중국상해종합지수" target="Element@29268942:1473581155148"/>
+<exit_state name="238 : 인도붐베이지수" target="Element@29268942:1473581155148"/>
+<exit_state name="024 : 선물시세" target="Element@29268942:1473581155148"/>
+<exit_state name="025 : 옵션시세" target="Element@29268942:1473581155148"/>
+<exit_state name="251 : 콜옵션현재가" target="Element@29268942:1473581155148"/>
+<exit_state name="252 : 풋옵션현재가" target="Element@29268942:1473581155148"/>
+<exit_state name="026 : 시간외단일현재가" target="Element@29268942:1473581155148"/>
+<exit_state name="027 : 투자자별매매동향" target="Element@29268942:1473581155148"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16187793:1486626543954" name="m_strQuickDigit_1_Menu_Check" type="Decision" width="229" x="191" y="155">
+<exit_states>
+<exit_state name="other" target="Element@27551119:1486626543954"/>
+<exit_state name="001 : 빠른말안내" target="Element@29268942:1473581155148"/>
+<exit_state name="011 : 빠른시세조회" target="Element@29268942:1473581155148"/>
+<exit_state name="111 : 빠른현재가조회" target="Element@29268942:1473581155148"/>
+<exit_state name="112 : 빠른종합주가지수" target="Element@29268942:1473581155148"/>
+<exit_state name="113 : 빠른코스닥주가지수" target="Element@29268942:1473581155148"/>
+<exit_state name="114 : 빠른시간외단일현재가" target="Element@29268942:1473581155148"/>
+<exit_state name="012 : 빠른주문및체결내역" target="Element@29268942:1473581155148"/>
+<exit_state name="121 : 빠른현금매도" target="Element@29268942:1473581155148"/>
+<exit_state name="122 : 빠른현금매수" target="Element@29268942:1473581155148"/>
+<exit_state name="123 : 빠른정정" target="Element@29268942:1473581155148"/>
+<exit_state name="124 : 빠른취소" target="Element@29268942:1473581155148"/>
+<exit_state name="125 : 빠른주문체결내역조회" target="Element@29268942:1473581155148"/>
+<exit_state name="013 : 빠른실시간잔고" target="Element@29268942:1473581155148"/>
+</exit_states>
+</element>
+</page>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@23951645:1476670223041" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1476670223041" name="autoMenuMng" type="Subflow Start" width="131" x="-253" y="-81">
+<exit_states>
+<exit_state name="next" target="Element@24351093:1476670707636"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5423904:1476670707636" name="END" type="Page Connector" width="86" x="-199" y="158">
+<page_connector target="Element@23252970:1476671015446">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@24351093:1476670707636" name="Decision_CheckServiceCode" type="Decision" width="216" x="-98" y="8">
+<exit_states>
+<exit_state name="other" target="Element@5423904:1476670707636"/>
+<exit_state name="MDA000" target="Element@9591292:1476671057921">
+<bendpoint>
+<dim1 x="239" y="73"/>
+<dim2 x="-10" y="-92"/>
+</bendpoint>
+</exit_state>
+<exit_state name="MD2000:시세" target="Element@9591292:1476671057921"/>
+<exit_state name="MD3000:주문/체결내역" target="Element@9591292:1476671057921">
+<bendpoint>
+<dim1 x="20" y="176"/>
+<dim2 x="-229" y="11"/>
+</bendpoint>
+</exit_state>
+<exit_state name="MD1000:빠른말 안내" target="Element@9591292:1476671057921">
+<bendpoint>
+<dim1 x="326" y="49"/>
+<dim2 x="77" y="-116"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@23252970:1476671015446" name="END" type="Page Entry" width="96" x="-325" y="152">
+<exit_states>
+<exit_state name="next" target="Element@4202982:1476671015446"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4202982:1476671015446" name="Subflow Return" type="Subflow Return" width="135" x="-344" y="249"/>
+<element height="46" id="Element@28311657:1476671057921" name="END" type="Page Connector" width="86" x="-97" y="343">
+<page_connector target="Element@23252970:1476671015446">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@9591292:1476671057921" name="autoMenuMng_EULogWrite_Start" src="Element.Utils.EULogWrite" type="Action Element" width="232" x="143" y="173">
+<exit_states>
+<exit_state name="done" target="Element@5355754:1476671057921"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29142062:1476671057921" name="autoMenuMng_EUMultiOutputBlock" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="247" x="135" y="422">
+<exit_states>
+<exit_state name="done" target="Element@30147052:1476671057921"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5355754:1476671057921" name="autoMenuMng_DB_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="184" x="167" y="254">
+<exit_states>
+<exit_state name="done" target="Element@21180087:1476671057921"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21180087:1476671057921" name="autoMenuMng_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="207" x="155" y="334">
+<exit_states>
+<exit_state name="success" target="Element@29142062:1476671057921"/>
+<exit_state name="fail" target="Element@28311657:1476671057921"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30147052:1476671057921" name="Decision_COUNT" type="Decision" width="176" x="171" y="510">
+<exit_states>
+<exit_state name="건수있음" target="Element@23863210:1476705447186"/>
+<exit_state name="없음" target="Element@9732678:1476705450711"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23863210:1476705447186" name="END" type="Page Connector" width="86" x="-16" y="464">
+<page_connector target="Element@23252970:1476671015446">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@9732678:1476705450711" name="END" type="Page Connector" width="86" x="7" y="569">
+<page_connector target="Element@23252970:1476671015446">END<config/>
+</page_connector>
+</element>
+</page>

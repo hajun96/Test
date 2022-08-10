@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE knowledge_base SYSTEM "../../../../dtds/DecisionKnowledgeBase.dtd">
+<knowledge_base>
+    <rule default_exit_state="3회초과" name="ASR_MAIN_MOVE_Decision_ErrCheck3">
+        <exit_state conjugate="and" name="1회">
+            <string operator="equal">
+                <data>
+                    <session name="asrErrCnt"/>
+                </data>
+                <constant_string value="0"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="2회">
+            <string operator="equal">
+                <data>
+                    <session name="asrErrCnt"/>
+                </data>
+                <constant_string value="1"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="3회">
+            <string operator="equal">
+                <data>
+                    <session name="asrErrCnt"/>
+                </data>
+                <constant_string value="2"/>
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>

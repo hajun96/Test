@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@31811444:1469433189303" name="dtmf_Length_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="dtmf_Length_Check" default_exit_state="other">
+        <exit_state name="초과" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <element name="dtmf_Length" variable="value" />
+                </data>
+                <data>
+                    <element name="dtmf" variable="MAXDIGIT" />
+                </data>
+            </number>
+        </exit_state>
+        <exit_state name="미만" conjugate="and">
+            <number operator="less">
+                <data>
+                    <element name="dtmf_Length" variable="value" />
+                </data>
+                <data>
+                    <element name="dtmf" variable="MINDIGIT" />
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

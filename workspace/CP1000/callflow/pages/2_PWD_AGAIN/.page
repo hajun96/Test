@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@14451326:1429518115058" name="2_PWD_AGAIN" version="6.0.1">
+<element height="46" id="Element@16466570:1429518115058" name="2_PWD_AGAIN" type="Page Entry" width="131" x="494" y="3">
+<exit_states>
+<exit_state name="next" target="Element@1143206:1479708641180"/>
+</exit_states>
+</element>
+<element height="165" id="Element@19999869:1429523919783" type="Comment" width="239" x="213" y="-76">
+<comment><![CDATA[**************************************
+*
+* <Page> 2_password
+* 
+* password 입력 받아서 BCTI(=ISPS)에 전송 
+*
+* 만든날짜:2015-04-20
+*
+* 
+*
+**************************************]]></comment>
+</element>
+<element height="46" id="Element@25964494:1472516062156" name="DTMF_ERROR" type="Page Connector" width="131" x="200" y="317">
+<page_connector target="Element@12532467:1434335156542">DTMF_ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@7662420:1472516062156" name="2_DTMF_PWD_AGAIN_01" type="Subflow Call" width="189" x="465" y="174">
+<subflow_call subflow_name="dtmf" target="Element@31:1472189229287">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/CP1002.wav</data>
+<data name="MINDIGIT">4</data>
+<data name="MAXDIGIT">8</data>
+<data name="PATTERN">0123456789#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">numsharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@393225:1472516062156"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31933765:1472516062156" name="SUCCESS" type="Page Connector" width="108" x="463" y="869">
+<page_connector target="Element@5252528:1435888925133">SUCCESS<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@32276248:1472516062156" name="2_SetValue_PWD_AGAIN_Succ" src="Element.Utils.EUSetSessionValue" type="Action Element" width="222" x="406" y="781">
+<exit_states>
+<exit_state name="done" target="Element@31933765:1472516062156"/>
+</exit_states>
+</element>
+<element height="46" id="Element@393225:1472516062156" name="2_Decision_DTMF_PWD_AGAIN_01" type="Decision" width="244" x="437" y="317">
+<exit_states>
+<exit_state name="END" target="Element@25964494:1472516062156"/>
+<exit_state name="정상" target="Element@21144964:1479865711641"/>
+<exit_state name="#" target="Element@1856305:1479708619205"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1856305:1479708619205" name="2_PWD_SetVar_ErrorValue_Y_01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="228" x="746" y="200">
+<exit_states>
+<exit_state name="done" target="Element@7662420:1472516062156"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1143206:1479708641180" name="2_PWD_SetVar_ErrorValue_INIT" src="Element.Utils.EUSetSessionValue" type="Action Element" width="225" x="447" y="85">
+<exit_states>
+<exit_state name="done" target="Element@7662420:1472516062156"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24412372:1479865650356" name="2_DTMF_PWD_AGAIN_02" type="Subflow Call" width="189" x="527" y="533">
+<subflow_call subflow_name="dtmf" target="Element@31:1472189229287">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/CP1013.wav</data>
+<data name="MINDIGIT">4</data>
+<data name="MAXDIGIT">8</data>
+<data name="PATTERN">0123456789#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">numsharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@13705712:1479865957272"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17083398:1479865691299" name="2_PWD_Decision_DTMF_2" type="Decision" width="195" x="683" y="672">
+<exit_states>
+<exit_state name="정상" target="Element@32276248:1472516062156"/>
+<exit_state name="실패" target="Element@28953541:1479865691299"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28953541:1479865691299" name="2_PWD_SetVar_ErrorValue_Y_02" src="Element.Utils.EUSetSessionValue" type="Action Element" width="228" x="837" y="553">
+<exit_states>
+<exit_state name="done" target="Element@24412372:1479865650356"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17493961:1479865691299" name="2_PWD_SetVar_ErrorValue_INIT_01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="243" x="651" y="437">
+<exit_states>
+<exit_state name="done" target="Element@24412372:1479865650356"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21144964:1479865711641" name="2_PWD_SetVar_dtmfTmp" src="Element.Utils.EUSetSessionValue" type="Action Element" width="187" x="367" y="447">
+<exit_states>
+<exit_state name="done" target="Element@17493961:1479865691299"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13705712:1479865957272" name="2_Decision_DTMF_PWD_AGAIN_02" type="Decision" width="244" x="346" y="640">
+<exit_states>
+<exit_state name="END" target="Element@9430922:1479865971000"/>
+<exit_state name="정상" target="Element@17083398:1479865691299"/>
+<exit_state name="#" target="Element@28953541:1479865691299"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9430922:1479865971000" name="DTMF_ERROR" type="Page Connector" width="131" x="159" y="610">
+<page_connector target="Element@12532467:1434335156542">DTMF_ERROR<config/>
+</page_connector>
+</element>
+</page>

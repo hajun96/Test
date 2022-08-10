@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@3135776:1469602583264" name="312000_m_strDnLimit_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="312000_m_strDnLimit_Check" default_exit_state="other">
+        <exit_state name="하한가없음" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDnLimit" />
+                </data>
+                <constant_string value="0" />
+            </string>
+        </exit_state>
+        <exit_state name="하한가미만" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <session name="m_strDnLimit" />
+                </data>
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

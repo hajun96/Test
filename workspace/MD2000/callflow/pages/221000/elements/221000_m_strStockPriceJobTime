@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@15090372:1469442076004" name="221000_m_strStockPriceJobTime" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="221000_m_strStockPriceJobTime" default_exit_state="other">
+        <exit_state name="자료시간 없음" conjugate="or">
+            <string operator="equal">
+                <data>
+                    <session name="m_strStockPriceJobTime" />
+                </data>
+                <constant_string value="0" />
+            </string>
+            <string operator="equal">
+                <data>
+                    <element name="221000_EUStringLength_01" variable="value" />
+                </data>
+                <constant_string value="0" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

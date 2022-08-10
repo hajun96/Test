@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@13943168:1475301698410" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1475301698410" name="stockname" type="Subflow Start" width="108" x="240" y="26">
+<exit_states>
+<exit_state name="next" target="Element@18356555:1475301705335"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18356555:1475301705335" name="stockname_EULogWrite_Query" src="Element.Utils.EULogWrite" type="Action Element" width="212" x="192" y="107">
+<exit_states>
+<exit_state name="done" target="Element@29170734:1475301705335"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8967255:1475301705335" name="stockname_Subflow Return" type="Subflow Return" width="196" x="-79" y="423"/>
+<element height="46" id="Element@9717283:1475301705335" name="stockname_EULogWrite" src="Element.Utils.EULogWrite" type="Action Element" width="175" x="209" y="423">
+<exit_states>
+<exit_state name="done" target="Element@8967255:1475301705335"/>
+</exit_states>
+</element>
+<element height="15" id="Element@8725603:1475301705335" type="Comment" width="48" x="189" y="22">
+<comment><![CDATA[종목이름]]></comment>
+</element>
+<element height="46" id="Element@29170734:1475301705335" name="stockname_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="228" y="179">
+<exit_states>
+<exit_state name="done" target="Element@19712297:1475301705335"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21685241:1475301705335" name="stockname_EUMultiOutputBlock" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="222" x="186" y="338">
+<exit_states>
+<exit_state name="done" target="Element@9717283:1475301705335"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19712297:1475301705335" name="stockname_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="178" x="208" y="248">
+<exit_states>
+<exit_state name="success" target="Element@21685241:1475301705335"/>
+<exit_state name="fail" target="Element@8967255:1475301705335">
+<bendpoint>
+<dim1 x="-280" y="1"/>
+<dim2 x="-2" y="-174"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+</page>

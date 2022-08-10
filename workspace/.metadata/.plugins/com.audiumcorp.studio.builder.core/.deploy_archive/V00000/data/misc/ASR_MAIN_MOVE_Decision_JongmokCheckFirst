@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE knowledge_base SYSTEM "../../../../dtds/DecisionKnowledgeBase.dtd">
+<knowledge_base>
+    <rule default_exit_state="그외" name="ASR_MAIN_Decision_JongmokCheckFirst">
+        <exit_state conjugate="and" name="KOSPI">
+            <string operator="equal">
+                <data>
+                    <session name="m_strItemCode"/>
+                </data>
+                <constant_string value="KOSPI"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="KOSDAQ">
+            <string operator="equal">
+                <data>
+                    <session name="m_strItemCode"/>
+                </data>
+                <constant_string value="KOSDAQ"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="000000:이외단어발생">
+            <string operator="equal">
+                <data>
+                    <session name="m_strItemCode"/>
+                </data>
+                <constant_string value="000000"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="000001:욕하는발성">
+            <string operator="equal">
+                <data>
+                    <session name="m_strItemCode"/>
+                </data>
+                <constant_string value="000001"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="000002:머뭇거림">
+            <string operator="equal">
+                <data>
+                    <session name="m_strItemCode"/>
+                </data>
+                <constant_string value="000002"/>
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@12226318:1433051273872" name="page1" version="6.0.1">
+<element height="46" id="Element@10707719:1433051273872" name="Start Of Call" start_of_call="true" type="Page Entry" width="117" x="455" y="28">
+<exit_states>
+<exit_state name="next" target="Element@13053712:1433230541833"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13053712:1433230541833" name="CVP Subdialog Start_01" src="com.audium.server.voiceElement.internal.CiscoSubdialogStartElement" type="Subdialog Start" width="182" x="423" y="113">
+<exit_states>
+<exit_state name="done" target="Element@9423242:1480049659906"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11803848:1435558460783" name="SetMultiValue" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="127" x="450" y="279">
+<exit_states>
+<exit_state name="done" target="Element@7964528:1435575286389"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7964528:1435575286389" name="Action_01" type="Action" width="104" x="462" y="366">
+<exit_states>
+<exit_state name="done" target="Element@10211344:1435575420175"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10211344:1435575420175" name="EULogWrite_END" src="Element.Utils.EULogWrite" type="Action Element" width="145" x="211" y="365">
+<exit_states>
+<exit_state name="done" target="Element@32452196:1480052322341"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20664571:1435576394959" name="SetSvcCode" src="Element.Utils.EUSetSvcCode" type="Action Element" width="119" x="224" y="274">
+<exit_states>
+<exit_state name="done" target="Element@11803848:1435558460783"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33485042:1439555548202" type="Application Transfer" width="62" x="487" y="678">
+<app_transfer destination="{Data.Session.APPNAME}">
+<from_session_data>
+<data name="CV1"/>
+<data name="CV2"/>
+<data name="CV3"/>
+<data name="CV4"/>
+<data name="CV5"/>
+<data name="CV6"/>
+<data name="CV7"/>
+<data name="CV8"/>
+<data name="CV9"/>
+<data name="CV10"/>
+<data name="m_strCallkey"/>
+<data name="m_strAnyNum"/>
+<data name="m_strCustomNum"/>
+<data name="m_strAccountNum"/>
+<data name="m_strAccPwdNum"/>
+<data name="m_strEndType"/>
+<data name="m_strCallInQ"/>
+<data name="m_strEWT"/>
+<data name="m_strAccreditFlag"/>
+<data name="m_strProcSect"/>
+<data name="m_strCustSect"/>
+<data name="m_strPwdErrCnt"/>
+<data name="m_strAccountType"/>
+<data name="m_strAccountSect"/>
+<data name="m_strAgtType"/>
+<data name="m_iSRPlayFlag"/>
+<data name="m_strItemCode"/>
+<data name="m_isStandAlone"/>
+</from_session_data>
+</app_transfer>
+</element>
+<element height="46" id="Element@9423242:1480049659906" name="EUGetCallData_01" src="Element.Utils.EUGetCallData" type="Action Element" width="150" x="439" y="189">
+<exit_states>
+<exit_state name="done" target="Element@20664571:1435576394959"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32452196:1480052322341" name="EUSetMultiSessionValue_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="180" y="482">
+<exit_states>
+<exit_state name="done" target="Element@12926388:1480052360406"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12926388:1480052360406" name="EUSetMultiSessionValue_02" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="180" y="575">
+<exit_states>
+<exit_state name="done" target="Element@2464827:1481601325620"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2464827:1481601325620" name="Subdialog_Return" type="Subflow Call" width="148" x="210" y="678">
+<subflow_call subflow_name="SubdialogReturn" target="Element@31:1481200587946">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@33485042:1439555548202"/>
+</exit_states>
+</element>
+</page>

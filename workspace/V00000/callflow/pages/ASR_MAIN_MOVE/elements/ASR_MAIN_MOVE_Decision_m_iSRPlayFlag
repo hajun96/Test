@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@32939152:1473583522700" name="ASR_MAIN_MOVE_Decision_m_iSRPlayFlag" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="ASR_MAIN_MOVE_Decision_m_iSRPlayFlag" default_exit_state="그외">
+        <exit_state name="처음진입" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_isRPlayFlag" />
+                </data>
+                <constant_string value="N" />
+            </string>
+        </exit_state>
+        <exit_state name="음성인식했었음" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_isRPlayFlag" />
+                </data>
+                <constant_string value="Y" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

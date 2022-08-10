@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@30613538:1478929930503" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1478929930503" name="checkBrEmStatus" type="Subflow Start" width="150" x="379" y="34">
+<exit_states>
+<exit_state name="next" target="Element@3976780:1478930095624"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13655849:1478929961234" name="A00000_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="119" x="391" y="419">
+<exit_states>
+<exit_state name="done" target="Element@21822691:1478930229597"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9653595:1478929995538" name="EUSocketInput_01" src="Element.Utils.EUSocketInput" type="Action Element" width="149" x="179" y="333">
+<exit_states>
+<exit_state name="done" target="Element@13655849:1478929961234"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1703658:1478930048451" name="Decision_01" type="Decision" width="117" x="398" y="208">
+<exit_states>
+<exit_state name="계좌번호존재" target="Element@18048239:1479967402784"/>
+<exit_state name="other" target="Element@7540382:1478930536328"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3976780:1478930095624" name="EUStringLength_01" src="Element.Strings.EUStringLength" type="Action Element" width="154" x="379" y="116">
+<exit_states>
+<exit_state name="done" target="Element@1703658:1478930048451"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21822691:1478930229597" name="ENStockSocket_01" src="Element.Network.ENStockSocket" type="Decision Element" width="154" x="379" y="517">
+<exit_states>
+<exit_state name="success" target="Element@3072386:1478930258802"/>
+<exit_state name="fail" target="Element@7540382:1478930536328"/>
+<exit_state name="errcode" target="Element@7540382:1478930536328"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3072386:1478930258802" name="EUSocketOutput_01" src="Element.Utils.EUSocketOutput" type="Action Element" width="158" x="377" y="616">
+<exit_states>
+<exit_state name="done" target="Element@10210870:1478930737724"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7540382:1478930536328" name="EUSetSessionValue_01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="620" y="651">
+<exit_states>
+<exit_state name="done" target="Element@4254201:1478930603439"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28398195:1478930583128" name="Subflow Return_01" type="Subflow Return" width="153" x="952" y="216"/>
+<element height="46" id="Element@33021068:1478930590398" name="FINISH" type="Page Entry" width="97" x="983" y="125">
+<exit_states>
+<exit_state name="next" target="Element@28398195:1478930583128"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4254201:1478930603439" name="FINISH" type="Page Connector" width="88" x="913" y="892">
+<page_connector target="Element@33021068:1478930590398">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@27089799:1478930633859" name="A00000_Hold_ISPS" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="152" x="381" y="894">
+<exit_states>
+<exit_state name="done" target="Element@24081388:1479971838980"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10210870:1478930737724" name="EUStringLength_02" src="Element.Strings.EUStringLength" type="Action Element" width="154" x="378" y="702">
+<exit_states>
+<exit_state name="done" target="Element@2252971:1478930755258"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2252971:1478930755258" name="Decision_02" type="Decision" width="117" x="398" y="796">
+<exit_states>
+<exit_state name="직원사번존재" target="Element@27089799:1478930633859"/>
+<exit_state name="other" target="Element@7540382:1478930536328"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2786852:1478932119750" name="EUMultiOutputBlock_01" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="372" y="1087">
+<exit_states>
+<exit_state name="done" target="Element@12924850:1478932219275"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12924850:1478932219275" name="Decision_03" type="Decision" width="117" x="648" y="1084">
+<exit_states>
+<exit_state name="통화가능" target="Element@2013280:1478932280692"/>
+<exit_state name="통화불가" target="Element@7540382:1478930536328"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2013280:1478932280692" name="EUSetMultiSessionValue_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="600" y="1192">
+<exit_states>
+<exit_state name="done" target="Element@4254201:1478930603439"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18048239:1479967402784" name="EUStringSubString_01" src="Element.Strings.EUStringSubString" type="Action Element" width="170" x="167" y="226">
+<exit_states>
+<exit_state name="done" target="Element@9653595:1478929995538"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24081388:1479971838980" name="ENISPSSocketV2_01" src="Element.Network.ENISPSSocketV2" type="Action Element" width="164" x="377" y="986">
+<exit_states>
+<exit_state name="done" target="Element@2786852:1478932119750"/>
+</exit_states>
+</element>
+</page>

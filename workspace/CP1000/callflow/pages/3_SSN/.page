@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@28120518:1429518133637" name="3_SSN" version="6.0.1">
+<element height="46" id="Element@7383343:1429518133637" name="3_SSN" type="Page Entry" width="93" x="283" y="53">
+<exit_states>
+<exit_state name="next" target="Element@13594978:1479708700386"/>
+</exit_states>
+</element>
+<element height="105" id="Element@10740626:1429579025499" type="Comment" width="115" x="127" y="33">
+<comment><![CDATA[***********************
+*
+* <Page> 5_jumin
+* 
+* 주민번호입력
+*
+***********************]]></comment>
+</element>
+<element height="60" id="Element@23866560:1429579089022" type="Comment" width="139" x="56" y="174">
+<comment><![CDATA[[C50005] 
+귀하의 주민등록번호 
+13자리를 누르신 후 
+우물정자를 눌러주십시오.]]></comment>
+</element>
+<element height="46" id="Element@5207526:1434354223392" name="3_Decision_DTMF_SSN_01" type="Decision" width="200" x="225" y="260">
+<exit_states>
+<exit_state name="END" target="Element@24546322:1434354223392"/>
+<exit_state name="정상" target="Element@13491715:1435886859752"/>
+<exit_state name="#" target="Element@18672066:1479708700386"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24546322:1434354223392" name="DTMF_ERROR" type="Page Connector" width="131" x="35" y="262">
+<page_connector target="Element@12532467:1434335156542">DTMF_ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@13491715:1435886859752" name="3_DTMF_SSN_ValidCheck_01" src="Element.Decision.EDSSN_ValidCheck" type="Decision Element" width="215" x="556" y="350">
+<exit_states>
+<exit_state name="valid" target="Element@5181094:1435889502256"/>
+<exit_state name="invalid" target="Element@24133115:1436516278920"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5181094:1435889502256" name="3_SetValue_SSN_Succ" src="Element.Utils.EUSetSessionValue" type="Action Element" width="184" x="233" y="350">
+<exit_states>
+<exit_state name="done" target="Element@25896335:1435889502256"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25896335:1435889502256" name="SUCCESS" type="Page Connector" width="117" x="266" y="439">
+<page_connector target="Element@5252528:1435888925133">SUCCESS<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@7852246:1435890092670" name="SSN_FAIL" type="Page Connector" width="117" x="605" y="658">
+<page_connector target="Element@28677838:1475060889212">SSN_FAIL<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@8882183:1436063466057" name="5_jumin_invalid" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="153" x="587" y="563">
+<exit_states>
+<exit_state name="done" target="Element@7852246:1435890092670"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24133115:1436516278920" name="5_jumin_Bargein" src="com.audium.server.voiceElement.digit.MBasicDigit" type="Voice Element" width="142" x="592" y="457">
+<exit_states>
+<exit_state name="done" target="Element@8882183:1436063466057"/>
+<exit_state name="max_nomatch" target="Element@8882183:1436063466057">
+<bendpoint>
+<dim1 x="87" y="59"/>
+<dim2 x="87" y="-47"/>
+</bendpoint>
+</exit_state>
+<exit_state name="max_noinput" target="Element@8882183:1436063466057">
+<bendpoint>
+<dim1 x="-80" y="55"/>
+<dim2 x="-80" y="-51"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@26768384:1472192286674" name="3_DTMF_SSN_01" type="Subflow Call" width="188" x="231" y="168">
+<subflow_call subflow_name="dtmf" target="Element@31:1472189229287">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/CP1003.wav</data>
+<data name="MINDIGIT">13</data>
+<data name="MAXDIGIT">13</data>
+<data name="PATTERN">0123456789#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">numsharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@5207526:1434354223392"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13594978:1479708700386" name="3_SSN_SetVar_ErrorValue_INIT" src="Element.Utils.EUSetSessionValue" type="Action Element" width="224" x="557" y="122">
+<exit_states>
+<exit_state name="done" target="Element@26768384:1472192286674"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18672066:1479708700386" name="3_SSN_SetVar_ErrorValue_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="209" x="564" y="225">
+<exit_states>
+<exit_state name="done" target="Element@26768384:1472192286674"/>
+</exit_states>
+</element>
+</page>

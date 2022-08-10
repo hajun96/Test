@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@1125538:1471393548340" name="START" version="6.0.1">
+<element height="46" id="Element@10506305:1471393548340" name="Start Of Call" start_of_call="true" type="Page Entry" width="117" x="257" y="30">
+<exit_states>
+<exit_state name="next" target="Element@28358578:1471393624955"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28358578:1471393624955" name="CVP Subdialog Start_01" src="com.audium.server.voiceElement.internal.CiscoSubdialogStartElement" type="Subdialog Start" width="182" x="225" y="124">
+<exit_states>
+<exit_state name="done" target="Element@10615184:1471393661677"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10615184:1471393661677" name="CC0000_EUGetCallData_01" src="Element.Utils.EUGetCallData" type="Action Element" width="198" x="217" y="220">
+<exit_states>
+<exit_state name="done" target="Element@25858389:1471393668198"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25858389:1471393668198" name="CC0000_EUSetSvcCode_01" src="Element.Utils.EUSetSvcCode" type="Action Element" width="201" x="215" y="314">
+<exit_states>
+<exit_state name="done" target="Element@29890497:1471394893924"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29890497:1471394893924" name="CC0000_Call_01" type="Subflow Call" width="138" x="247" y="407">
+<subflow_call subflow_name="dtmf_phoneNumInput" target="Element@31:1471394898307">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/CC0001.wav</data>
+<data name="TERMCHAR">#</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@15247744:1471394988285"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15247744:1471394988285" name="CC0000_Decision_01" type="Decision" width="165" x="233" y="504">
+<exit_states>
+<exit_state name="MAXERROR" target="Element@8519531:1471395085439"/>
+<exit_state name="정상입력" target="Element@7539322:1471407757277"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30489210:1471395079511" name="DTMF_MAX_ERROR" type="Page Connector" width="164" x="479" y="1003">
+<page_connector target="Element@22986349:1471395040746">DTMF_MAX_ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@8519531:1471395085439" name="DTMF_MAX_ERROR" type="Page Connector" width="164" x="467" y="509">
+<page_connector target="Element@22986349:1471395040746">DTMF_MAX_ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@5320227:1471407587319" name="CC0000_EATTSMaker_01" src="Element.Audio.EATTSMaker" type="Decision Element" width="191" x="223" y="707">
+<exit_states>
+<exit_state name="success" target="Element@12051615:1471407794155"/>
+<exit_state name="fail" target="Element@12051615:1471407794155"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30647243:1471407725906" name="CC0000_Call_03" type="Subflow Call" width="138" x="252" y="907">
+<subflow_call subflow_name="dtmf_one_digit" target="Element@31:1471407732833">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/CC0003.wav</data>
+<data name="PATTERN">12</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@24844876:1471478292356"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7539322:1471407757277" name="HOLD_01" type="Subflow Call" width="100" x="272" y="610">
+<subflow_call subflow_name="HOLD" target="Element@31:1471407764516">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@5320227:1471407587319"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12051615:1471407794155" name="CC0000_ment_01" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="148" x="245" y="815">
+<exit_states>
+<exit_state name="done" target="Element@28762174:1480922302448"/>
+</exit_states>
+</element>
+<element height="12" id="Element@14787471:1471407856070" type="Comment" width="55" x="621" y="2216">
+<comment><![CDATA[Comment]]></comment>
+</element>
+<element height="46" id="Element@24844876:1471478292356" name="CC0000_Decision_02" type="Decision" width="165" x="234" y="1002">
+<exit_states>
+<exit_state name="1 : 맞음" target="Element@13372880:1480915201394"/>
+<exit_state name="2 : 틀림" target="Element@29890497:1471394893924">
+<bendpoint>
+<dim1 x="-387" y="-288"/>
+<dim2 x="-387" y="307"/>
+</bendpoint>
+</exit_state>
+<exit_state name="MAXERROR" target="Element@30489210:1471395079511"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25161508:1471478378593" name="CC0000_ment_03" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="144" x="799" y="1449">
+<exit_states>
+<exit_state name="done" target="Element@22163153:1471478419434"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22163153:1471478419434" name="END" type="Page Connector" width="75" x="834" y="1571">
+<page_connector target="Element@2748397:1471395040746">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@8777105:1479104791885" name="ENOracleDB_01" src="Element.DataBase.ENOracleDB" type="Decision Element" width="138" x="801" y="1308">
+<exit_states>
+<exit_state name="success" target="Element@25161508:1471478378593"/>
+<exit_state name="fail" target="Element@25161508:1471478378593"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13132071:1480915148059" name="Decision_01" type="Decision" width="117" x="468" y="1197">
+<exit_states>
+<exit_state name="고객번호없음" target="Element@32838239:1481515290009">
+<bendpoint>
+<dim1 x="-28" y="53"/>
+<dim2 x="-34" y="-48"/>
+</bendpoint>
+</exit_state>
+<exit_state name="OTHER" target="Element@32838239:1481515290009">
+<bendpoint>
+<dim1 x="-107" y="-26"/>
+<dim2 x="107" y="-27"/>
+</bendpoint>
+</exit_state>
+<exit_state name="DataLen:0" target="Element@32838239:1481515290009">
+<bendpoint>
+<dim1 x="-97" y="38"/>
+<dim2 x="117" y="37"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@13372880:1480915201394" name="EUStringLength_01" src="Element.Strings.EUStringLength" type="Action Element" width="154" x="236" y="1103">
+<exit_states>
+<exit_state name="done" target="Element@1849076:1480915256945"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1849076:1480915256945" name="EUStringLength_02" src="Element.Strings.EUStringLength" type="Action Element" width="154" x="450" y="1102">
+<exit_states>
+<exit_state name="done" target="Element@13132071:1480915148059"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23116236:1480915600843" name="HOLD_02" type="Subflow Call" width="100" x="550" y="1497">
+<subflow_call subflow_name="HOLD" target="Element@31:1480915602652">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@9097499:1480915919672"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32656450:1480915641059" name="EUSocketInput_01" src="Element.Utils.EUSocketInput" type="Action Element" width="149" x="526" y="1398">
+<exit_states>
+<exit_state name="done" target="Element@23116236:1480915600843"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27432738:1480915805060" name="EUStringSubString_01" src="Element.Strings.EUStringSubString" type="Action Element" width="170" x="515" y="1296">
+<exit_states>
+<exit_state name="done" target="Element@32656450:1480915641059"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9097499:1480915919672" name="ENStockSocket_01" src="Element.Network.ENStockSocket" type="Decision Element" width="154" x="528" y="1595">
+<exit_states>
+<exit_state name="success" target="Element@31268560:1480915935084"/>
+<exit_state name="fail" target="Element@31268560:1480915935084"/>
+<exit_state name="errcode" target="Element@31268560:1480915935084"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31268560:1480915935084" name="EUSocketOutput_01" src="Element.Utils.EUSocketOutput" type="Action Element" width="158" x="527" y="1694">
+<exit_states>
+<exit_state name="done" target="Element@5422314:1481515455557"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6392626:1480916008715" name="HOLD_03" type="Subflow Call" width="100" x="827" y="1194">
+<subflow_call subflow_name="HOLD" target="Element@31:1480915602652">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@8777105:1479104791885"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28762174:1480922302448" name="EUSetMultiSessionValue_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="439" y="901">
+<exit_states>
+<exit_state name="done" target="Element@30647243:1471407725906"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32838239:1481515290009" name="EUStringLength_03" src="Element.Strings.EUStringLength" type="Action Element" width="154" x="235" y="1198">
+<exit_states>
+<exit_state name="done" target="Element@4161483:1481515329134"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4161483:1481515329134" name="Decision_02" type="Decision" width="117" x="254" y="1302">
+<exit_states>
+<exit_state name="미인증고객" target="Element@568872:1481515912715"/>
+<exit_state name="인증고객" target="Element@27432738:1480915805060"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6625504:1481515442780" name="CallBack" type="Page Entry" width="100" x="828" y="1101">
+<exit_states>
+<exit_state name="next" target="Element@6392626:1480916008715"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5422314:1481515455557" name="CallBack" type="Page Connector" width="100" x="552" y="1803">
+<page_connector target="Element@6625504:1481515442780">CallBack<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@2514515:1481515508940" name="EUSocketInput_02" src="Element.Utils.EUSocketInput" type="Action Element" width="149" x="239" y="1499">
+<exit_states>
+<exit_state name="done" target="Element@6742250:1481515950092"/>
+</exit_states>
+</element>
+<element height="46" id="Element@568872:1481515912715" name="Action_01" type="Action" width="103" x="262" y="1400">
+<exit_states>
+<exit_state name="done" target="Element@2514515:1481515508940"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6742250:1481515950092" name="HOLD_04" type="Subflow Call" width="100" x="261" y="1597">
+<subflow_call subflow_name="HOLD" target="Element@31:1480915602652">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@32608929:1481515966223"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32608929:1481515966223" name="ENStockSocket_02" src="Element.Network.ENStockSocket" type="Decision Element" width="154" x="239" y="1694">
+<exit_states>
+<exit_state name="success" target="Element@4916963:1481515989342"/>
+<exit_state name="fail" target="Element@4916963:1481515989342"/>
+<exit_state name="errcode" target="Element@4916963:1481515989342"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4916963:1481515989342" name="EUSocketOutput_02" src="Element.Utils.EUSocketOutput" type="Action Element" width="158" x="233" y="1803">
+<exit_states>
+<exit_state name="done" target="Element@5422314:1481515455557"/>
+</exit_states>
+</element>
+</page>

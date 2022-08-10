@@ -1,0 +1,259 @@
+package TTS.S2.S223000;
+
+import java.util.Hashtable;
+
+import com.audium.server.AudiumException;
+import com.audium.server.session.ActionElementData;
+import com.audium.server.voiceElement.ActionElementBase;
+
+public class TTS_223_4 extends ActionElementBase{
+
+	@Override
+	public void doAction(String arg0, ActionElementData actionAPI)
+			throws AudiumException {
+		// TODO Auto-generated method stub
+		
+		// TR 통신 후 결과값이 존재하는 Hashtable 을 가져온다.
+		Hashtable table = (Hashtable) actionAPI.getSessionData("g_objHostRecv");
+		
+		
+		StringBuffer sb = new StringBuffer();
+		
+		String m_strStockPriceJobDate = (String) table.get("A1_JobDate3");
+		String m_strStockPriceJobTime = (String) table.get("A1_JobTime3");
+		String m_strStockPriceCurrentAmt = (String) table.get("A1_Current3");
+		String m_strStockPriceFluctFlag =  (String) table.get("A1_FluctBit3");
+		String m_strStockPriceFluctAmt =   (String) table.get("A1_FluctAmt3");
+		String m_strStockPriceVol =    (String) table.get("A1_Volume3");
+		String m_strStockPriceTrdAmt = (String) table.get("A1_TrdAmt3");
+		String m_strStockPriceUpCnt =  (String) table.get("A1_UpCnt3");
+		String m_strStockPriceUpLimitCnt = (String) table.get("A1_UpLimitCnt3");
+		String m_strStockPriceDnCnt =  (String) table.get("A1_DnCnt3");
+		String m_strStockPriceDnLimitCnt = (String) table.get("A1_DnLimitCnt3");
+		String m_strStockPriceUnChgCnt = (String) table.get("A1_UnchgCnt3");
+		
+		
+		String m_strStockPriceFluctAmt_1  = m_strStockPriceFluctAmt.substring(0, 4);
+		String m_strStockPriceFluctAmt_2 = m_strStockPriceFluctAmt.substring(5);
+		m_strStockPriceFluctAmt_1 = trimNum(m_strStockPriceFluctAmt_1);
+		
+		String m_strStockPriceCurrentAmt_1 = m_strStockPriceCurrentAmt.substring(0, 6);
+		String m_strStockPriceCurrentAmt_2 = m_strStockPriceCurrentAmt.substring(7);
+		m_strStockPriceCurrentAmt_1 = trimNum(m_strStockPriceCurrentAmt_1);
+		
+		// [코스피200주가지수 거래량 계산]
+	    m_strStockPriceVol = trimNum(m_strStockPriceVol);
+		long l_m_strStockPriceVol3 = Long.parseLong(m_strStockPriceVol) * 1000;
+		m_strStockPriceVol = String.valueOf(l_m_strStockPriceVol3);
+		// [코스피200주가지수 거래대금 계산]
+		m_strStockPriceTrdAmt = trimNum(m_strStockPriceTrdAmt); 
+		Long m_lStockPriceTrdAmt3 = Long.parseLong(m_strStockPriceTrdAmt) * 1000000;
+		m_strStockPriceTrdAmt = String.valueOf(m_lStockPriceTrdAmt3);
+		
+		m_strStockPriceUpCnt = trimNum(m_strStockPriceUpCnt);
+		m_strStockPriceDnCnt = trimNum(m_strStockPriceDnCnt);
+		m_strStockPriceUnChgCnt = trimNum(m_strStockPriceUnChgCnt);
+		m_strStockPriceUpLimitCnt = trimNum(m_strStockPriceUpLimitCnt);
+		m_strStockPriceDnLimitCnt = trimNum(m_strStockPriceDnLimitCnt);
+        
+		String m_strNowTime = (String) actionAPI.getSessionData("m_strNowTime");               // 현재시간  
+		
+		String HH = m_strNowTime.substring(0, 2);	//시
+		HH = trimNum(HH);
+		String mm = m_strNowTime.substring(2, 4);	//분
+		mm = trimNum(mm);
+
+		
+		
+		sb.append(", 코스피 200 지수는,").append(HH).append("시, ")
+		.append(mm).append(", 분, ")
+		.append(", 현재, ");
+		
+		if(m_strStockPriceFluctFlag.equals("5")) {
+			sb.append(m_strStockPriceFluctAmt_1).append(",쩜,[").append(m_strStockPriceFluctAmt_2).append("]");
+			sb.append(", 포인트 내린, ");
+		} else if(m_strStockPriceFluctFlag.equals("0") || m_strStockPriceFluctFlag.equals("9")) {
+			sb.append(", 보합인, ");
+		} else if(m_strStockPriceFluctFlag.equals("1")){
+			sb.append(m_strStockPriceFluctAmt_1).append(",쩜,[").append(m_strStockPriceFluctAmt_2).append("]");
+			sb.append(", 포인트 오른, ");
+		} else if(m_strStockPriceFluctFlag.equals("2")){
+			sb.append(", 상한까로, ");
+		} else if(m_strStockPriceFluctFlag.equals("3")){
+			sb.append(", 기세상승으로, ");
+		} else if(m_strStockPriceFluctFlag.equals("4")){
+			sb.append(", 기세상한으로, ");
+		} else if(m_strStockPriceFluctFlag.equals("6")){
+			sb.append(", 하한까로, ");
+		}else if(m_strStockPriceFluctFlag.equals("7")){
+			sb.append(", 기세하락으로, ");
+		}else if(m_strStockPriceFluctFlag.equals("8")){
+			sb.append(", 기세하한으로, ");
+		}
+		
+		sb.append(m_strStockPriceCurrentAmt_1).append(",쩜,[").append(m_strStockPriceCurrentAmt_2).append("] 포인트 이고,");
+		sb.append(", 거래량은, ");
+		sb.append(m_strStockPriceVol).append(", 주, 이며,");
+		sb.append(", 거래대금은, ");
+		sb.append(m_strStockPriceTrdAmt).append(", 원, 입니다.");
+			
+		
+		
+		
+		if(m_strStockPriceUpCnt != null && Integer.parseInt(m_strStockPriceUpCnt) > 0) {
+			sb.append(", 상승종목,").append(m_strStockPriceUpCnt).append(", 종목,");
+		} else {
+			sb.append(", 상승종목, 없고,");
+		}
+		
+		if(m_strStockPriceDnCnt != null && Integer.parseInt(m_strStockPriceDnCnt) > 0) {
+			sb.append(", 하락종목,").append(m_strStockPriceDnCnt).append(", 종목,");
+		} else {
+			sb.append(", 하락종목, 없고,");
+		}
+		
+		if(m_strStockPriceUnChgCnt != null && Integer.parseInt(m_strStockPriceUnChgCnt) > 0) {
+			sb.append(", 보합종목,").append(m_strStockPriceUnChgCnt).append(", 종목,");
+		} else {
+			sb.append(", 보합종목, 없고,");
+		}
+		
+		if(m_strStockPriceUpLimitCnt != null && Integer.parseInt(m_strStockPriceUpLimitCnt) > 0) {
+			sb.append(", 상한까,").append(m_strStockPriceUpLimitCnt).append(", 종목,");
+		} else {
+			sb.append(", 상한까, 없고,");
+		}
+		
+		if(m_strStockPriceDnLimitCnt != null && Integer.parseInt(m_strStockPriceDnLimitCnt) > 0) {
+			sb.append(", 하한까,").append(m_strStockPriceDnLimitCnt).append(", 종목입니다.,");
+		} else {
+			sb.append(", 하한까, 없습니다,");
+		}
+		
+		
+		
+		// 멘트를 만들기 위한 String 데이터를 ment 라는 이름의 Session Data 로 저장한다.
+		actionAPI.setSessionData("ment", sb.toString());
+		
+		
+	}
+	
+
+	private String convertHour(String HH) {
+		// TODO Auto-generated method stub
+		if(HH == null || HH.isEmpty()) {
+			return "";
+		}
+		
+		int time = Integer.parseInt(HH);
+		if(time <= 12){
+			return HH;
+		}
+		
+		time = time - 12;
+		
+		switch (time) {
+		case 1:
+			HH = "한시";
+			break;
+		case 2: 
+			HH = "두시";
+			break;
+		case 3:
+			HH = "세시";
+			break;
+		case 4:
+			HH = "네시";
+			break;
+		case 5:
+			HH = "다섯시";
+			break;
+		case 6:
+			HH = "여섯시";
+			break;
+		case 7:
+			HH = "일곱시";
+			break;
+		case 8:
+			HH = "여덟시";
+			break;
+		case 9:
+			HH = "아홉시";
+			break;
+		case 10:
+			HH = "열시";
+			break;
+		case 11:
+			HH = "열한시";
+			break;
+		case 12:
+			HH = "열두시";
+			break;
+		default:
+			break;
+		}
+		
+		return HH;
+	}
+
+
+	private String trimNum(String num) {
+		if(num == null) return "0";
+
+		boolean isMinus = false;
+		String result = "";
+
+		if(num.startsWith("-")) {
+			num = num.substring(1);
+			isMinus = true;
+		}
+
+		int index = num.indexOf(".");
+
+		if (index == -1) {
+			for (int i = 0; i < num.length(); i++) {
+				if (!num.substring(i, i + 1).equals("0")) {
+					result = num.substring(i);
+					break;
+				}
+			}
+
+		} else {
+
+			String temp1 = num.substring(0, index);
+			String temp2 = num.substring(index + 1, num.length());
+
+			for (int i = 0; i < temp1.length(); i++) {
+				if (!temp1.substring(i, i + 1).equals("0")) {
+					result = temp1.substring(i);
+					break;
+				}
+			}
+
+			String result2 = "";
+			for (int i = temp2.length(); i > 0; i--) {
+				if (!temp2.substring(i - 1, i).equals("0")) {
+					result2 = temp2.substring(0, i);
+					break;
+				}
+			}
+			if (result2.length() != 0) {
+				result = result + "." + result2;
+			}
+
+		}
+		if(result.isEmpty()) {
+			return "0";
+		}
+
+		if(result.startsWith("."))
+			result  = "0" + result;
+
+		if(isMinus){
+			result = "-" + result;
+		}
+		return result;
+	}
+
+
+}

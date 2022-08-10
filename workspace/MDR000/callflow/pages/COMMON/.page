@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@26634619:1482481926669" name="COMMON" version="6.0.1">
+<element height="46" id="Element@31925164:1482481926669" name="COMMON_END" type="Page Entry" width="136" x="261" y="-4">
+<exit_states>
+<exit_state name="next" target="Element@18897157:1482481946996"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32641134:1482481946996" name="LogWrite_END_Y" src="Element.Utils.EULogWrite" type="Action Element" width="143" x="28" y="166">
+<exit_states>
+<exit_state name="done" target="Element@30323294:1482481946996"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18897157:1482481946996" name="END_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="131" x="264" y="82">
+<exit_states>
+<exit_state name="done" target="Element@11828946:1482481946996"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30323294:1482481946996" type="Hang Up" width="98" x="51" y="310"/>
+<element height="46" id="Element@28152918:1482481946996" name="LogWrite_END_N" src="Element.Utils.EULogWrite" type="Action Element" width="144" x="257" y="254">
+<exit_states>
+<exit_state name="done" target="Element@32080782:1482481953189"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11828946:1482481946996" name="Decision" type="Decision" width="99" x="280" y="166">
+<exit_states>
+<exit_state name="Y" target="Element@32641134:1482481946996"/>
+<exit_state name="Other" target="Element@28152918:1482481946996"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32080782:1482481953189" name="Subdialog_Return" type="Subflow Call" width="148" x="255" y="340">
+<subflow_call subflow_name="SubdialogReturn" target="Element@31:1481200587946">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@29102291:1482481953189"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29102291:1482481953189" name="ICM_Return" src="com.audium.server.voiceElement.internal.CiscoSubdialogReturnElement" type="Subdialog Return" width="117" x="271" y="436">
+<exit_states>
+<exit_state name="done"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32098365:1482482083356" name="COMMON_AGENT" type="Page Entry" width="149" x="533" y="-2">
+<exit_states>
+<exit_state name="next" target="Element@14312000:1482482390317"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14312000:1482482390317" name="MultiSessionValue_EndType_A" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="211" x="502" y="79">
+<exit_states>
+<exit_state name="done" target="Element@7356655:1482482453060"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7356655:1482482453060" name="LogWrite_MDR000_Agent" src="Element.Utils.EULogWrite" type="Action Element" width="190" x="513" y="166">
+<exit_states>
+<exit_state name="done" target="Element@32080782:1482481953189"/>
+</exit_states>
+</element>
+</page>

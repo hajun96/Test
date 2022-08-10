@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@3616282:1476508422727" name="notificationDetail" version="6.0.1">
+<element height="46" id="Element@31:1476508422727" name="notificationDetail" type="Subflow Start" width="142" x="298" y="-572">
+<exit_states>
+<exit_state name="next" target="Element@30363545:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30363545:1476508431379" name="SubStr_DNIS" src="Element.Strings.EUStringSubString" type="Action Element" width="121" x="309" y="-497">
+<exit_states>
+<exit_state name="done" target="Element@14496201:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28485481:1476508431379" name="notificationDetail_DB_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="194" x="270" y="157">
+<exit_states>
+<exit_state name="done" target="Element@855693:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32485817:1476508431379" name="notificationDetail_MultiSessionValue_Query" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="292" x="227" y="-97">
+<exit_states>
+<exit_state name="done" target="Element@20351643:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3848535:1476508431379" name="notificationDetail_EATTSMaker_TTS" src="Element.Audio.EATTSMaker" type="Decision Element" width="252" x="250" y="1174">
+<exit_states>
+<exit_state name="success" target="Element@946555:1478326259804"/>
+<exit_state name="fail" target="Element@946555:1478326259804"/>
+</exit_states>
+</element>
+<element height="46" id="Element@855693:1476508431379" name="notificationDetail_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="217" x="263" y="231">
+<exit_states>
+<exit_state name="success" target="Element@4818856:1476508431379"/>
+<exit_state name="fail" target="Element@18719201:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14496201:1476508431379" name="notificationDetail_EUSetSessionValue_dnisTmp" src="Element.Utils.EUSetSessionValue" type="Action Element" width="315" x="219" y="-419">
+<exit_states>
+<exit_state name="done" target="Element@66134:1476510899106"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20351643:1476508431379" name="notificationDetail_EULogWrite_Start" src="Element.Utils.EULogWrite" type="Action Element" width="242" x="248" y="-18">
+<exit_states>
+<exit_state name="done" target="Element@20261745:1478324188880"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4818856:1476508431379" name="notificationDetail_EUMultiOutputBlock" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="257" x="241" y="315">
+<exit_states>
+<exit_state name="done" target="Element@13354102:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28146841:1476508431379" name="notificationDetail_TODAY_HHmm" src="Element.Utils.EUGetDateTime" type="Action Element" width="236" x="250" y="-172">
+<exit_states>
+<exit_state name="done" target="Element@32485817:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24030422:1476508431379" name="notificationDetail_Hold_TTS" type="Subflow Call" width="202" x="270" y="1101">
+<subflow_call subflow_name="hold" target="Element@31:1471424516106">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@3848535:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13354102:1476508431379" name="notificationDetail_Decision_COUNT" type="Decision" width="245" x="250" y="437">
+<exit_states>
+<exit_state name="건수있음" target="Element@3994327:1476511606657"/>
+<exit_state name="없음" target="Element@18719201:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18719201:1476508431379" name="notificationDetail_Subflow Return" type="Subflow Return" width="232" x="613" y="437"/>
+<element height="46" id="Element@17756155:1476508431379" name="notificationDetail_TODAY_yyyyMMdd" src="Element.Utils.EUGetDateTime" type="Action Element" width="258" x="240" y="-250">
+<exit_states>
+<exit_state name="done" target="Element@28146841:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@633197:1476508998175" name="notificationDetail_Decision_CheckCount" type="Decision" width="271" x="237" y="616">
+<exit_states>
+<exit_state name="next" target="Element@33013582:1476509457156"/>
+<exit_state name="end" target="Element@2361180:1476509044877">
+<bendpoint>
+<dim1 x="-186" y="2"/>
+<dim2 x="-181" y="-311"/>
+</bendpoint>
+<bendpoint>
+<dim1 x="-186" y="312"/>
+<dim2 x="-181" y="-1"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@2361180:1476509044877" name="notificationDetail_EUStringAppend_endMent" src="Element.Strings.EUStringAppend" type="Action Element" width="293" x="225" y="929">
+<exit_states>
+<exit_state name="done" target="Element@27403924:1478652801554"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1928508:1476509069612" name="notificationDetail_countTmp_PlusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="258" x="603" y="849">
+<exit_states>
+<exit_state name="done" target="Element@7093794:1476509129810"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7093794:1476509129810" name="notificationDetail_countTmp_Set" src="Element.Utils.EUSetSessionValue" type="Action Element" width="228" x="616" y="616">
+<exit_states>
+<exit_state name="done" target="Element@633197:1476508998175"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29716063:1476509241094" name="notificationDetail_EUStringAppend_ment" src="Element.Strings.EUStringAppend" type="Action Element" width="272" x="235" y="775">
+<exit_states>
+<exit_state name="done" target="Element@7540562:1476511645153"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33013582:1476509457156" name="notificationDetail_EUMultiOutputBlockdb" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="271" x="234" y="696">
+<exit_states>
+<exit_state name="done" target="Element@29716063:1476509241094"/>
+</exit_states>
+</element>
+<element height="46" id="Element@66134:1476510899106" name="notificationDetail_Decision_CheckNumber" type="Decision" width="283" x="231" y="-335">
+<exit_states>
+<exit_state name="Y:1588-6800" target="Element@17756155:1476508431379"/>
+<exit_state name="other" target="Element@18719201:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3994327:1476511606657" name="notificationDetail_EUSetMultiSessionValue_Init" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="308" x="220" y="530">
+<exit_states>
+<exit_state name="done" target="Element@633197:1476508998175"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7540562:1476511645153" name="notificationDetail_EUStringAppend_pattern" src="Element.Strings.EUStringAppend" type="Action Element" width="282" x="230" y="849">
+<exit_states>
+<exit_state name="done" target="Element@1928508:1476509069612"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29906116:1478324188880" name="notificationDetail_DTMF_Subflow Return" type="Subflow Return" width="272" x="593" y="157"/>
+<element height="46" id="Element@20261745:1478324188880" name="notificationDetail_dtmf_Digit" src="com.audium.server.voiceElement.digit.MBasicDigit" type="Voice Element" width="206" x="264" y="58">
+<exit_states>
+<exit_state name="done" target="Element@3425701:1478324188880"/>
+<exit_state name="max_nomatch" target="Element@3425701:1478324188880">
+<bendpoint>
+<dim1 x="144" y="42"/>
+<dim2 x="-142" y="42"/>
+</bendpoint>
+</exit_state>
+<exit_state name="max_noinput" target="Element@28485481:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3425701:1478324188880" name="notificationDetail_m_strDTMF" src="Element.Utils.EUSetSessionValue" type="Action Element" width="212" x="623" y="58">
+<exit_states>
+<exit_state name="done" target="Element@29906116:1478324188880"/>
+</exit_states>
+</element>
+<element height="46" id="Element@946555:1478326259804" name="notificationDetail_TTS_Play" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="202" x="272" y="1252">
+<exit_states>
+<exit_state name="done" target="Element@18719201:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27403924:1478652801554" name="notificationDetail_TTS_dtmf_Digit" src="com.audium.server.voiceElement.digit.MBasicDigit" type="Voice Element" width="253" x="237" y="1017">
+<exit_states>
+<exit_state name="done" target="Element@1037791:1478652801554"/>
+<exit_state name="max_nomatch" target="Element@1037791:1478652801554">
+<bendpoint>
+<dim1 x="144" y="42"/>
+<dim2 x="-142" y="42"/>
+</bendpoint>
+</exit_state>
+<exit_state name="max_noinput" target="Element@24030422:1476508431379"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1037791:1478652801554" name="notificationDetail_TTS_m_strDTMF" src="Element.Utils.EUSetSessionValue" type="Action Element" width="257" x="-128" y="1046">
+<exit_states>
+<exit_state name="done" target="Element@14921572:1478652801554"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14921572:1478652801554" name="notificationDetail_TTS_DTMF_Subflow Return" type="Subflow Return" width="316" x="-158" y="1145"/>
+</page>

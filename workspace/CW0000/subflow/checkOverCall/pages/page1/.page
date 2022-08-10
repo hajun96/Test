@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@7011348:1478932972723" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1478932972723" name="checkOverCall" type="Subflow Start" width="132" x="400" y="-204">
+<exit_states>
+<exit_state name="next" target="Element@10986919:1482306869783"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14702537:1478932982520" name="FINISH" type="Page Connector" width="89" x="731" y="682">
+<page_connector target="Element@4221856:1478934965877">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@15101916:1478932982520" name="CW0000_time_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="157" x="388" y="135">
+<exit_states>
+<exit_state name="done" target="Element@10718770:1478932982520"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12195226:1478932982520" name="CW0000_ROW_CNT_0_Check" type="Decision" width="212" x="371" y="500">
+<exit_states>
+<exit_state name="0 : 데이터없음" target="Element@28018417:1478935375484"/>
+<exit_state name="other" target="Element@3403109:1478934989542"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9422918:1478932982520" name="CW0000_m_iCnt" src="Element.Utils.EUSetSessionValue" type="Action Element" width="140" x="400" y="310">
+<exit_states>
+<exit_state name="done" target="Element@27618291:1478932982520"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10718770:1478932982520" name="CW0000_checkOverCallDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="199" x="370" y="222">
+<exit_states>
+<exit_state name="success" target="Element@9422918:1478932982520"/>
+<exit_state name="fail" target="Element@9422918:1478932982520"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27618291:1478932982520" name="CW0000_EUMultiOutputBlock_ROW_CNT" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="274" x="337" y="401">
+<exit_states>
+<exit_state name="done" target="Element@32831546:1484620239067"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12068306:1478934961197" name="Subflow Return_01" type="Subflow Return" width="153" x="907" y="159"/>
+<element height="46" id="Element@4221856:1478934965877" name="FINISH" type="Page Entry" width="97" x="934" y="72">
+<exit_states>
+<exit_state name="next" target="Element@12068306:1478934961197"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3403109:1478934989542" name="Decision_01" type="Decision" width="117" x="418" y="590">
+<exit_states>
+<exit_state name="센터연결" target="Element@29272601:1478935139799"/>
+<exit_state name="지점연결" target="Element@28018417:1478935375484"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29272601:1478935139799" name="EUSetMultiSessionValue_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="372" y="680">
+<exit_states>
+<exit_state name="done" target="Element@14702537:1478932982520"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22945384:1478935147708" name="EUSetMultiSessionValue_02" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="666" y="592">
+<exit_states>
+<exit_state name="done" target="Element@14702537:1478932982520"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28018417:1478935375484" name="EUStringSubString_01" src="Element.Strings.EUStringSubString" type="Action Element" width="170" x="690" y="517">
+<exit_states>
+<exit_state name="done" target="Element@22945384:1478935147708"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10986919:1482306869783" name="Decision_02" type="Decision" width="117" x="410" y="-128">
+<exit_states>
+<exit_state name="주문" target="Element@1324069:1482307295125"/>
+<exit_state name="일반업무" target="Element@20267485:1482307431637"/>
+<exit_state name="사이버" target="Element@13885662:1482307455364"/>
+<exit_state name="기타업무" target="Element@28803275:1482307570770"/>
+<exit_state name="진상" target="Element@26896937:1482307587524"/>
+<exit_state name="other" target="Element@1324069:1482307295125"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1324069:1482307295125" name="EUSetMulti_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="129" x="144" y="-33">
+<exit_states>
+<exit_state name="done" target="Element@15101916:1478932982520"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20267485:1482307431637" name="EUSetMulti_02" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="129" x="505" y="-33">
+<exit_states>
+<exit_state name="done" target="Element@15101916:1478932982520"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13885662:1482307455364" name="EUSetMulti_03" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="129" x="656" y="-33">
+<exit_states>
+<exit_state name="done" target="Element@15101916:1478932982520"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28803275:1482307570770" name="EUSetMulti_07" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="129" x="398" y="37">
+<exit_states>
+<exit_state name="done" target="Element@15101916:1478932982520"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26896937:1482307587524" name="EUSetMulti_08" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="129" x="286" y="-26">
+<exit_states>
+<exit_state name="done" target="Element@15101916:1478932982520"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32831546:1484620239067" name="EUStringLength_01" src="Element.Strings.EUStringLength" type="Action Element" width="154" x="164" y="505">
+<exit_states>
+<exit_state name="done" target="Element@12195226:1478932982520"/>
+</exit_states>
+</element>
+</page>

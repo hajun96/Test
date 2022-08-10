@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE call_flow SYSTEM "../../../../dtds/Callflow_1-1.dtd">
+<call_flow first_element="stock_code" serial="0000" version="1.1">
+<events/>
+<element_def name="stock_code">
+<subflow_start class="com.audium.server.voiceElement.SubflowStartElement">
+<static>stock_code.xml</static>
+</subflow_start>
+<exit_state name="next">
+<next_element>stock_code_m_strItemSelectFlag_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_ENStockSocket_J14OI512">
+<decision>
+<class src="Element.Network.ENStockSocket">
+<static>stock_code_ENStockSocket_J14OI512.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>stock_code_EUSocketInput_J14OI512_2</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>stock_code_EUSocketOutput_J14OI512_Current</next_element>
+</exit_state>
+<exit_state name="errcode">
+<next_element>stock_code_EUSocketInput_J14OI512_2</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_m_strDTMF_false_Log">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>stock_code_m_strDTMF_false_Log.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_m_strDTMF_false_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_EUSocketOutput_J11OI714_2_Expect">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>stock_code_EUSocketOutput_J11OI714_2_Expect.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_EUSocketOutput_J11OI714_2_Current</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_m_strDTMF_C_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>stock_code_m_strDTMF_C_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="stock_code_m_strDTMFErr_Y">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>stock_code_m_strDTMFErr_Y.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_MaxError_Compare</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_Hold_J14OI512_2">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>stock_code_Hold_J14OI512_2.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>stock_code_ENStockSocket_J14OI512_2</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_EUSocketOutput_J11OI714_Expect">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>stock_code_EUSocketOutput_J11OI714_Expect.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_EUSocketOutput_J11OI714_Current</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_J11OI714_GridData_Initialization">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>stock_code_J11OI714_GridData_Initialization.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_EUSocketInput_J11OI714</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_EUSocketOutput_J14OI512_2_Current">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>stock_code_EUSocketOutput_J14OI512_2_Current.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_EUSocketOutput_J14OI512_2_Expect</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_C">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF_C.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_m_strDTMF_C_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strItemSect_m_strItemCode_J11OI714">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>m_strItemSect_m_strItemCode_J11OI714.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>m_strDTMF_0</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_ENStockSocket_J11OI714">
+<decision>
+<class src="Element.Network.ENStockSocket">
+<static>stock_code_ENStockSocket_J11OI714.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>stock_code_EUSocketInput_J11OI714_2</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>stock_code_EUSocketOutput_J11OI714_Expect</next_element>
+</exit_state>
+<exit_state name="errcode">
+<next_element>stock_code_EUSocketInput_J11OI714_2</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_m_strItemSelectFlag_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="other">
+<next_element>stock_code_J11OI714_GridData_Initialization</next_element>
+</exit_state>
+<exit_state name="시간외">
+<next_element>stock_code_J14OI512_GridData_Initialization</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_EUSocketOutput_J14OI512_Expect">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>stock_code_EUSocketOutput_J14OI512_Expect.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_J14OI512_A_CNT_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_ENStockSocket_J11OI714_2">
+<decision>
+<class src="Element.Network.ENStockSocket">
+<static>stock_code_ENStockSocket_J11OI714_2.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>stock_code_m_strDTMFErr_Y</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>stock_code_EUSocketOutput_J11OI714_2_Expect</next_element>
+</exit_state>
+<exit_state name="errcode">
+<next_element>stock_code_m_strDTMFErr_Y</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_EUSocketInput_J14OI512">
+<action>
+<class src="Element.Utils.EUSocketInput">
+<static>stock_code_EUSocketInput_J14OI512.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_Hold_J14OI512</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_Hold_J11OI714">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>stock_code_Hold_J11OI714.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>stock_code_ENStockSocket_J11OI714</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_J14OI512_GridData_Initialization">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>stock_code_J14OI512_GridData_Initialization.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_EUSocketInput_J14OI512</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_ENStockSocket_J14OI512_2">
+<decision>
+<class src="Element.Network.ENStockSocket">
+<static>stock_code_ENStockSocket_J14OI512_2.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>stock_code_m_strDTMFErr_Y</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>stock_code_EUSocketOutput_J14OI512_2_Current</next_element>
+</exit_state>
+<exit_state name="errcode">
+<next_element>stock_code_m_strDTMFErr_Y</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_m_strDTMF_false">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>stock_code_m_strDTMF_false.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_m_strDTMF_false_Log</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_0">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF_0.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_m_strDTMF_0_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_MaxError_NoTTS">
+<voice class="com.audium.server.voiceElement.digit.MBasicDigit">
+<static>stock_code_MaxError_NoTTS.xml</static>
+</voice>
+<exit_state name="max_noinput">
+<next_element>stock_code_MaxError_Sorry</next_element>
+</exit_state>
+<exit_state name="max_nomatch">
+<next_element>stock_code_MaxError_Sorry</next_element>
+</exit_state>
+<exit_state name="done">
+<next_element>stock_code_MaxError_Sorry</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_Hold_J14OI512">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>stock_code_Hold_J14OI512.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>stock_code_ENStockSocket_J14OI512</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_m_strDTMF_false_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>stock_code_m_strDTMF_false_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="stock_code_MaxError_Retry">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="stock_code_MaxError_Retry.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>stock_code_m_strDTMF_false</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_C00028">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="stock_code_C00028.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>m_strDTMF_C</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_EUSocketOutput_J14OI512_Current">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>stock_code_EUSocketOutput_J14OI512_Current.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_EUSocketOutput_J14OI512_Expect</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_EUSocketOutput_J14OI512_2_Expect">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>stock_code_EUSocketOutput_J14OI512_2_Expect.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_J14OI512_A_CNT_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_J14OI512_A_CNT_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="유효함">
+<next_element>m_strItemSect_m_strItemCode_J14OI512</next_element>
+</exit_state>
+<exit_state name="유효하지않음">
+<next_element>stock_code_m_strDTMFErr_Y</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_MaxError_Log">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>stock_code_MaxError_Log.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_MaxError_NoTTS</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_MaxError_Sorry">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="stock_code_MaxError_Sorry.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>stock_code_MaxError_Retry</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_EUSocketInput_J11OI714">
+<action>
+<class src="Element.Utils.EUSocketInput">
+<static>stock_code_EUSocketInput_J11OI714.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_Hold_J11OI714</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_m_strDTMF_0_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>stock_code_m_strDTMF_0_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="stock_code_MaxError_Compare">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="retry">
+<next_element>stock_code_C00028</next_element>
+</exit_state>
+<exit_state name="maxerror">
+<next_element>stock_code_MaxError_Log</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strItemSect_m_strItemCode_J14OI512">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>m_strItemSect_m_strItemCode_J14OI512.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>m_strDTMF_0</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_J11OI714_A_CNT_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="유효함">
+<next_element>m_strItemSect_m_strItemCode_J11OI714</next_element>
+</exit_state>
+<exit_state name="유효하지않음">
+<next_element>stock_code_m_strDTMFErr_Y</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_EUSocketOutput_J11OI714_2_Current">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>stock_code_EUSocketOutput_J11OI714_2_Current.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_J11OI714_A_CNT_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_EUSocketOutput_J11OI714_Current">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>stock_code_EUSocketOutput_J11OI714_Current.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_J11OI714_A_CNT_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_Hold_J11OI714_2">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>stock_code_Hold_J11OI714_2.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>stock_code_ENStockSocket_J11OI714_2</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_EUSocketInput_J14OI512_2">
+<action>
+<class src="Element.Utils.EUSocketInput">
+<static>stock_code_EUSocketInput_J14OI512_2.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_Hold_J14OI512_2</next_element>
+</exit_state>
+</element_def>
+<element_def name="stock_code_EUSocketInput_J11OI714_2">
+<action>
+<class src="Element.Utils.EUSocketInput">
+<static>stock_code_EUSocketInput_J11OI714_2.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>stock_code_Hold_J11OI714_2</next_element>
+</exit_state>
+</element_def>
+</call_flow>

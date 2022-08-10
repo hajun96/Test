@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@511325:1426745170114" name="BranchPhonePadMain" version="6.0.1">
+<element height="46" id="Element@20557006:1426745170114" name="Start Of Call" start_of_call="true" type="Page Entry" width="117" x="349" y="-75">
+<exit_states>
+<exit_state name="next" target="Element@7763427:1429517757130"/>
+</exit_states>
+</element>
+<element height="165" id="Element@12721210:1426839025702" type="Comment" width="190" x="47" y="-83">
+<comment><![CDATA[**************************************
+*
+* <Application> CP1000
+* 
+* 지점 폰패드 시나리오
+*
+* 만든날짜:2015-03-20
+*
+* purpose : 지점 폰패드 입력
+*
+**************************************]]></comment>
+</element>
+<element height="46" id="Element@26429873:1427154512110" name="EUOutputBlock_02" src="Element.Utils.EUOutputBlock" type="Action Element" width="158" x="900" y="525">
+<exit_states>
+<exit_state name="done" target="Element@23450839:1427183269481"/>
+</exit_states>
+</element>
+<element height="45" id="Element@13317769:1427154512110" type="Comment" width="235" x="878" y="200">
+<comment><![CDATA[<ISPS통신>
+폰패드 서비스 코드와 고객정보를 가져온다.
+C043^001^ivrdn^agentdn]]></comment>
+</element>
+<element height="46" id="Element@32425662:1427154512110" name="EUOutputBlock_result" src="Element.Utils.EUOutputBlock" type="Action Element" width="170" x="639" y="370">
+<exit_states>
+<exit_state name="done" target="Element@9123654:1427183229841"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9123654:1427183229841" name="EUOutputBlock_01" src="Element.Utils.EUOutputBlock" type="Action Element" width="156" x="900" y="370">
+<exit_states>
+<exit_state name="done" target="Element@26429873:1427154512110"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23450839:1427183269481" name="Decision_isps_req" type="Decision" width="171" x="591" y="525">
+<exit_states>
+<exit_state name="success" target="Element@26821721:1429518261089"/>
+<exit_state name="unknown" target="Element@15987562:1435889160241">
+<bendpoint>
+<dim1 x="-148" y="-59"/>
+<dim2 x="82" y="-62"/>
+</bendpoint>
+</exit_state>
+<exit_state name="not exist data" target="Element@15987562:1435889160241"/>
+<exit_state name="timeout" target="Element@15987562:1435889160241">
+<bendpoint>
+<dim1 x="-182" y="58"/>
+<dim2 x="124" y="68"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="120" id="Element@28320504:1427184317475" type="Comment" width="96" x="777" y="432">
+<comment><![CDATA[<ISPS통신>
+리턴 결과 체크
+timeout	
+ → 통신 타임아웃
+unknown	
+ → 기타에러
+not exist data 	
+ → 연동 실패]]></comment>
+</element>
+<element height="15" id="Element@31555009:1427193978303" type="Comment" width="85" x="588" y="987">
+<comment><![CDATA[Empty for scroll]]></comment>
+</element>
+<element height="46" id="Element@4176970:1427343616923" name="ENISPSSocket_Get_PhonePadInfo" src="Element.Network.ENISPSSocket" type="Action Element" width="241" x="856" y="250">
+<exit_states>
+<exit_state name="done" target="Element@32425662:1427154512110"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7763427:1429517757130" name="CVP Subdialog Start_01" src="com.audium.server.voiceElement.internal.CiscoSubdialogStartElement" type="Subdialog Start" width="182" x="316" y="11">
+<exit_states>
+<exit_state name="done" target="Element@25347479:1472187248454"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26821721:1429518261089" name="branchMenu" type="Decision" width="205" x="574" y="738">
+<exit_states>
+<exit_state name="1" target="Element@938763:1429518358777"/>
+<exit_state name="2" target="Element@7755806:1429518357466"/>
+<exit_state name="3" target="Element@7681972:1472193018038"/>
+<exit_state name="4" target="Element@29784249:1472193035555"/>
+<exit_state name="5" target="Element@27843528:1472193025962"/>
+<exit_state name="6" target="Element@20850707:1472193098151"/>
+<exit_state name="Other" target="Element@7165007:1435930739460"/>
+<exit_state name="7" target="Element@21622582:1479367954868"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7755806:1429518357466" name="2_PWD_AGAIN" type="Page Connector" width="155" x="312" y="755">
+<page_connector target="Element@16466570:1429518115058">2_PWD_AGAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@938763:1429518358777" name="1_PWD" type="Page Connector" width="118" x="331" y="683">
+<page_connector target="Element@9364917:1429518091345">1_PWD<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18087819:1432359711573" name="Audio_Delay" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="120" x="168" y="265">
+<exit_states>
+<exit_state name="done" target="Element@31917099:1432626253430"/>
+</exit_states>
+</element>
+<element height="15" id="Element@6869594:1432433004760" type="Comment" width="85" x="1213" y="692">
+<comment><![CDATA[Empty for scroll]]></comment>
+</element>
+<element height="46" id="Element@31917099:1432626253430" name="EUSetSessionValue_01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="410" y="267">
+<exit_states>
+<exit_state name="done" target="Element@8054989:1472192804447"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15987562:1435889160241" name="ISPS_FAIL" type="Page Connector" width="108" x="288" y="525">
+<page_connector target="Element@32801188:1435889133050">ISPS_FAIL<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@7520928:1435906286996" name="SetSvcCode" src="Element.Utils.EUSetSvcCode" type="Action Element" width="153" x="331" y="179">
+<exit_states>
+<exit_state name="done" target="Element@18087819:1432359711573"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7165007:1435930739460" name="ISPS_FAIL" type="Page Connector" width="108" x="937" y="728">
+<page_connector target="Element@32801188:1435889133050">ISPS_FAIL<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@25347479:1472187248454" name="EUGetCallData" src="Element.Utils.EUGetCallData" type="Action Element" width="150" x="335" y="91">
+<exit_states>
+<exit_state name="done" target="Element@7520928:1435906286996"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8054989:1472192804447" name="Hold_Call_01" type="Subflow Call" width="121" x="656" y="193">
+<subflow_call subflow_name="Hold" target="Element@31:1472192811810">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@4176970:1427343616923"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7681972:1472193018038" name="3_SSN" type="Page Connector" width="155" x="319" y="848">
+<page_connector target="Element@7383343:1429518133637">3_SSN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@27843528:1472193025962" name="5_retire_new_pwd" type="Page Connector" width="164" x="714" y="852">
+<page_connector target="Element@17604794:1438566104603">5_retire_new_pwd<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@29784249:1472193035555" name="4_retire_pwd" type="Page Connector" width="164" x="517" y="851">
+<page_connector target="Element@25693608:1475055901675">4_retire_pwd<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@20850707:1472193098151" name="6_retire_change_pwd" type="Page Connector" width="198" x="912" y="850">
+<page_connector target="Element@30738159:1477964540737">6_retire_change_pwd<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@21622582:1479367954868" name="7_test" type="Page Connector" width="198" x="814" y="649">
+<page_connector target="Element@1514417:1479367940019">7_test<config/>
+</page_connector>
+</element>
+</page>

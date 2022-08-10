@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@32377018:1475131540754" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1475131540754" name="bankName" type="Subflow Start" width="108" x="230" y="30">
+<exit_states>
+<exit_state name="next" target="Element@15686892:1475131710605"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12561611:1475131710605" name="Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="76" x="254" y="187">
+<exit_states>
+<exit_state name="done" target="Element@32079432:1475131710605"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6506153:1475131710605" name="EULogWrite_01" src="Element.Utils.EULogWrite" type="Action Element" width="131" x="226" y="488">
+<exit_states>
+<exit_state name="done" target="Element@28575116:1475131710605"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30949829:1475131710605" name="EUMultiOutputBlock_01" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="203" y="333">
+<exit_states>
+<exit_state name="done" target="Element@6401024:1475131710605"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15686892:1475131710605" name="EULogWrite_Query" src="Element.Utils.EULogWrite" type="Action Element" width="149" x="217" y="103">
+<exit_states>
+<exit_state name="done" target="Element@12561611:1475131710605"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6401024:1475131710605" name="EUMultiOutputBlock_02" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="203" y="415">
+<exit_states>
+<exit_state name="done" target="Element@6506153:1475131710605"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28575116:1475131710605" name="Subflow Return_01" type="Subflow Return" width="152" x="-19" y="488"/>
+<element height="15" id="Element@12971906:1475131710605" type="Comment" width="48" x="56" y="29">
+<comment><![CDATA[은행코드]]></comment>
+</element>
+<element height="46" id="Element@32079432:1475131710605" name="ENOracleDB_01" src="Element.DataBase.ENOracleDB" type="Decision Element" width="134" x="225" y="249">
+<exit_states>
+<exit_state name="success" target="Element@30949829:1475131710605"/>
+<exit_state name="fail" target="Element@28575116:1475131710605">
+<bendpoint>
+<dim1 x="-236" y="-1"/>
+<dim2 x="-1" y="-240"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+</page>

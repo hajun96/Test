@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@20159510:1475042283114" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1475042283113" name="HolidayYN" type="Subflow Start" width="109" x="223" y="96">
+<exit_states>
+<exit_state name="next" target="Element@5946878:1475042336299"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16164729:1475042304008" name="ENOracleDB_01" src="Element.DataBase.ENOracleDB" type="Decision Element" width="138" x="208" y="308">
+<exit_states>
+<exit_state name="success" target="Element@8221249:1475042618827"/>
+<exit_state name="fail" target="Element@15317697:1475042758837"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5946878:1475042336299" name="EUGetDateTime_Today_YYYMMDD" src="Element.Utils.EUGetDateTime" type="Action Element" width="249" x="153" y="204">
+<exit_states>
+<exit_state name="done" target="Element@16164729:1475042304008"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8961849:1475042571293" name="Subflow Return_01" type="Subflow Return" width="153" x="201" y="553"/>
+<element height="46" id="Element@8221249:1475042618827" name="EUMultiOutputBlock_01" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="367" y="413">
+<exit_states>
+<exit_state name="done" target="Element@8961849:1475042571293"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15317697:1475042758837" name="EUSetMultiSessionValue_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="-1" y="413">
+<exit_states>
+<exit_state name="done" target="Element@8961849:1475042571293"/>
+</exit_states>
+</element>
+</page>

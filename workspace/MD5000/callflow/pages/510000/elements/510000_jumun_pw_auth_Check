@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@2078683:1471658079709" name="510000_jumun_pw_auth_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="121000_jumun_pw_auth_Check" default_exit_state="other">
+        <exit_state name="0 : 성공" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="0" />
+            </string>
+        </exit_state>
+        <exit_state name="A : 상담원연결" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="A" />
+            </string>
+        </exit_state>
+        <exit_state name="N : 입력오류" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="N" />
+            </string>
+        </exit_state>
+        <exit_state name="H : 상위메뉴" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="H" />
+            </string>
+        </exit_state>
+        <exit_state name="C : 주문비밀번호 초기화" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="C" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

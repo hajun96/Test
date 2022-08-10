@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@3403109:1478934989542" name="Decision_01" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="Decision_01" default_exit_state="지점연결">
+        <exit_state name="센터연결" conjugate="or">
+            <number operator="less_equal">
+                <data>
+                    <session name="m_strCallInQ" />
+                </data>
+                <data>
+                    <session name="waitCnt" />
+                </data>
+            </number>
+            <string operator="equal">
+                <data>
+                    <element name="EUStringLength_01" variable="value" />
+                </data>
+                <constant_string value="0" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

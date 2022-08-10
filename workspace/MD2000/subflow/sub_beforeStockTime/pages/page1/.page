@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@25280606:1471589031810" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1471589031810" name="sub_beforeStockTime" type="Subflow Start" width="172" x="226" y="-48">
+<exit_states>
+<exit_state name="next" target="Element@3777609:1471748804469"/>
+</exit_states>
+</element>
+<element height="105" id="Element@31076690:1471589035257" type="Comment" width="189" x="468" y="22">
+<comment><![CDATA[###########################
+
+
+장시작전 예상지수확인
+
+
+###########################]]></comment>
+</element>
+<element height="46" id="Element@11145091:1471589139585" name="Subflow Return_01" type="Subflow Return" width="153" x="924" y="74"/>
+<element height="46" id="Element@11742421:1471589146120" name="END" type="Page Entry" width="97" x="934" y="-56">
+<exit_states>
+<exit_state name="next" target="Element@17724078:1471748825970"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27580814:1471589156757" name="END" type="Page Connector" width="75" x="53" y="245">
+<page_connector target="Element@11742421:1471589146120">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@9641987:1471589242572" name="EUGetDateTime_01" src="Element.Utils.EUGetDateTime" type="Action Element" width="157" x="233" y="245">
+<exit_states>
+<exit_state name="done" target="Element@15128778:1479184207436"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25628981:1471590827942" name="EUSocketInput_01" src="Element.Utils.EUSocketInput" type="Action Element" width="149" x="237" y="547">
+<exit_states>
+<exit_state name="done" target="Element@6867551:1471591136051"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14225921:1471591077864" name="EUGetDateTime_02" src="Element.Utils.EUGetDateTime" type="Action Element" width="157" x="233" y="450">
+<exit_states>
+<exit_state name="done" target="Element@25628981:1471590827942"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6867551:1471591136051" name="HOLD" type="Subflow Call" width="90" x="267" y="646">
+<subflow_call subflow_name="HOLD" target="Element@31:1471591138484">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@14198372:1471591162273"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14198372:1471591162273" name="ENStockSocket_01" src="Element.Network.ENStockSocket" type="Decision Element" width="154" x="235" y="738">
+<exit_states>
+<exit_state name="success" target="Element@2619163:1471748383151"/>
+<exit_state name="fail" target="Element@19970116:1473036714535"/>
+<exit_state name="errcode" target="Element@19970116:1473036714535"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2619163:1471748383151" name="EUSocketOutput_01" src="Element.Utils.EUSocketOutput" type="Action Element" width="158" x="233" y="824">
+<exit_states>
+<exit_state name="done" target="Element@31727517:1471748867724"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28460722:1471748396294" name="END" type="Page Connector" width="75" x="666" y="819">
+<page_connector target="Element@11742421:1471589146120">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@3777609:1471748804469" name="EUSetSessionValue_01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="222" y="47">
+<exit_states>
+<exit_state name="done" target="Element@9679236:1479184722781"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17724078:1471748825970" name="EUSetSessionValue_02" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="903" y="7">
+<exit_states>
+<exit_state name="done" target="Element@11145091:1471589139585"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26579859:1471748846769" name="EUSetSessionValue_03" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="906" y="154">
+<exit_states>
+<exit_state name="done" target="Element@11145091:1471589139585"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16189066:1471748858034" name="SUCCESS" type="Page Entry" width="127" x="938" y="233">
+<exit_states>
+<exit_state name="next" target="Element@26579859:1471748846769"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31727517:1471748867724" name="SUCCESS" type="Page Connector" width="108" x="258" y="912">
+<page_connector target="Element@16189066:1471748858034">SUCCESS<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@19970116:1473036714535" name="EUSocketInput_02" src="Element.Utils.EUSocketInput" type="Action Element" width="149" x="458" y="644">
+<exit_states>
+<exit_state name="done" target="Element@26153700:1473036739619"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26153700:1473036739619" name="HOLD_01" type="Subflow Call" width="134" x="466" y="728">
+<subflow_call subflow_name="HOLD" target="Element@31:1471591138484">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@28507741:1473036749010"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28507741:1473036749010" name="ENStockSocket_02" src="Element.Network.ENStockSocket" type="Decision Element" width="154" x="456" y="818">
+<exit_states>
+<exit_state name="success" target="Element@2619163:1471748383151"/>
+<exit_state name="fail" target="Element@28460722:1471748396294"/>
+<exit_state name="errcode" target="Element@28460722:1471748396294"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15128778:1479184207436" name="m_strSelectTime8_Check" type="Decision" width="182" x="221" y="343">
+<exit_states>
+<exit_state name="other" target="Element@14225921:1471591077864"/>
+<exit_state name="장시작전 예상지수 시작시간전" target="Element@27580814:1471589156757"/>
+<exit_state name="장시작전 예상지수 종료시간후" target="Element@27580814:1471589156757">
+<bendpoint>
+<dim1 x="-217" y="8"/>
+<dim2 x="-4" y="106"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@9679236:1479184722781" name="m_iHolidayFlag" type="Decision" width="132" x="246" y="140">
+<exit_states>
+<exit_state name="other" target="Element@9641987:1471589242572"/>
+<exit_state name="휴무일" target="Element@27580814:1471589156757"/>
+</exit_states>
+</element>
+</page>

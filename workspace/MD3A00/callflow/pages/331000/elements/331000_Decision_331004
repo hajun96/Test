@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@9332027:1469781234610" name="331000_Decision_331004" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="331000_Decision_331004" default_exit_state="other">
+        <exit_state name="false : MAX ERROR" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="false" />
+            </string>
+        </exit_state>
+        <exit_state name="* : 틀림" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="*" />
+            </string>
+        </exit_state>
+        <exit_state name="#만입력" conjugate="and">
+            <string operator="starts_with">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="#" />
+            </string>
+        </exit_state>
+        <exit_state name="0으로시작" conjugate="and">
+            <string operator="starts_with">
+                <data>
+                    <session name="m_strDTMF" />
+                </data>
+                <constant_string value="0" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

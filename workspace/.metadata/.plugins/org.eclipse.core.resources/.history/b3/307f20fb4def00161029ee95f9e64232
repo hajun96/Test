@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@17162193:1472630183847" name="asr_input" version="6.0.1">
+<element height="46" id="Element@31:1472630183845" name="asr_input" type="Subflow Start" width="116" x="126" y="-9">
+<exit_states>
+<exit_state name="next" target="Element@4526638:1472630892869"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10960661:1472630892869" name="EULogWrite_START" src="Element.Utils.EULogWrite" type="Action Element" width="166" x="99" y="181">
+<exit_states>
+<exit_state name="done" target="Element@20580360:1472630892869"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20580360:1472630892869" name="EUGetDateTime" src="Element.Utils.EUGetDateTime" type="Action Element" width="139" x="114" y="294">
+<exit_states>
+<exit_state name="done" target="Element@1142955:1472630892869"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1142955:1472630892869" name="EUSetSessionValue_01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="-155" y="334">
+<exit_states>
+<exit_state name="done" target="Element@16519569:1472630892869"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8998815:1472630892869" name="LogWrite_Fail" src="Element.Utils.EULogWrite" type="Action Element" width="124" x="-303" y="558">
+<exit_states>
+<exit_state name="done" target="Element@20222516:1474348191642"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4526638:1472630892869" name="initValues" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="149" x="109" y="85">
+<exit_states>
+<exit_state name="done" target="Element@10960661:1472630892869"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16519569:1472630892869" name="EULogWrite_ASRFileName" src="Element.Utils.EULogWrite" type="Action Element" width="198" x="85" y="390">
+<exit_states>
+<exit_state name="done" target="Element@17059008:1472630892869"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3901203:1472630892869" name="ASR_REG_FAIL" type="Page Connector" width="147" x="-154" y="474">
+<page_connector target="Element@4335975:1472630892869">ASR_REG_FAIL<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@4335975:1472630892869" name="ASR_REG_FAIL" type="Page Entry" width="147" x="617" y="343">
+<exit_states>
+<exit_state name="next" target="Element@12746005:1473555760118"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32440063:1472630892869" name="Record_Voice" src="com.audium.server.voiceElement.record.MRecord" type="Voice Element" width="152" x="108" y="474">
+<exit_states>
+<exit_state name="done" target="Element@1694859:1472717784703"/>
+<exit_state name="max_noinput" target="Element@3901203:1472630892869"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27738988:1472630892869" name="Hold_Music" skipped="true" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="116" x="411" y="474">
+<exit_states>
+<exit_state name="done" target="Element@1694859:1472717784703"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17059008:1472630892869" name="Hold_Music_1" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="128" x="405" y="390">
+<exit_states>
+<exit_state name="done" target="Element@32440063:1472630892869"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30000001:1472630892869" name="DTMF_Subflow Return_SUCCESS" type="Subflow Return" width="239" x="64" y="759"/>
+<element height="46" id="Element@14466505:1472687621013" name="EUSetMultiSessionValue_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="80" y="671">
+<exit_states>
+<exit_state name="done" target="Element@30000001:1472630892869"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1694859:1472717784703" name="EAASRChecker_vagel_01" src="Element.Audio.EAASRChecker_vagel" type="Decision Element" width="191" x="88" y="557">
+<exit_states>
+<exit_state name="success" target="Element@14466505:1472687621013"/>
+<exit_state name="fail" target="Element@8998815:1472630892869"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18489317:1473032521930" name="ASR_INPUT_AGAIN" type="Page Entry" width="159" x="389" y="285">
+<exit_states>
+<exit_state name="next" target="Element@20580360:1472630892869"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8291237:1473554440488" name="ASR_REG_FAIL_END" type="Subflow Return" width="167" x="604" y="563"/>
+<element height="46" id="Element@12746005:1473555760118" name="SetValue_ResultErr" src="Element.Utils.EUSetSessionValue" type="Action Element" width="207" x="584" y="462">
+<exit_states>
+<exit_state name="done" target="Element@8291237:1473554440488"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20233143:1473562581008" name="Subflow Return_ASR_SERVER_FAIL" type="Subflow Return" width="250" x="-366" y="749"/>
+<element height="46" id="Element@20222516:1474348191642" name="EUSetMultiSessionValue_ServerFail" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="251" x="-367" y="664">
+<exit_states>
+<exit_state name="done" target="Element@20233143:1473562581008"/>
+</exit_states>
+</element>
+</page>

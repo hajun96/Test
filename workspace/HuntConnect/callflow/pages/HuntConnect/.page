@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@9412674:1431328741727" name="HuntConnect" version="6.0.1">
+<element height="46" id="Element@18423853:1431328741727" name="Start Of Call" start_of_call="true" type="Page Entry" width="117" x="308" y="118">
+<exit_states>
+<exit_state name="next" target="Element@29763170:1482413702833"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5433599:1431329261959" name="Decision_Hunt_number" type="Decision" width="179" x="277" y="471">
+<exit_states>
+<exit_state name="그외" target="Element@28850556:1435627026886"/>
+<exit_state name="사이버지점" target="Element@31522632:1431405548354"/>
+<exit_state name="증권영업팀" target="Element@24434972:1431405571318"/>
+<exit_state name="코스콤통합콜센터" target="Element@11175977:1431405573002"/>
+<exit_state name="자산관리센터" target="Element@13915112:1431405573283"/>
+<exit_state name="업무혁신팀" target="Element@17562526:1431405570163"/>
+<exit_state name="대표전화교환" target="Element@6818798:1431405572737"/>
+</exit_states>
+</element>
+<element height="60" id="Element@22036886:1431330366710" type="Comment" width="165" x="111" y="58">
+<comment><![CDATA[*********************************
+ Session 변수 huntType를
+ element huntType에 넣는다.
+*********************************]]></comment>
+</element>
+<element height="46" id="Element@6274014:1431330518530" name="EUSetSessionValue_01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="276" y="287">
+<exit_states>
+<exit_state name="done" target="Element@9515033:1433896948409"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16305869:1431404204390" name="EULogWrite_01" src="Element.Utils.EULogWrite" type="Action Element" width="132" x="301" y="377">
+<exit_states>
+<exit_state name="done" target="Element@5433599:1431329261959"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31522632:1431405548354" name="set01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="79" x="-57" y="329">
+<exit_states>
+<exit_state name="done" target="Element@6470666:1431405743464"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17562526:1431405570163" name="set02" src="Element.Utils.EUSetSessionValue" type="Action Element" width="79" x="-57" y="394">
+<exit_states>
+<exit_state name="done" target="Element@6470666:1431405743464"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24434972:1431405571318" name="set06" src="Element.Utils.EUSetSessionValue" type="Action Element" width="79" x="-57" y="664">
+<exit_states>
+<exit_state name="done" target="Element@6470666:1431405743464"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6818798:1431405572737" name="set03" src="Element.Utils.EUSetSessionValue" type="Action Element" width="79" x="-57" y="458">
+<exit_states>
+<exit_state name="done" target="Element@6470666:1431405743464"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11175977:1431405573002" name="set05" src="Element.Utils.EUSetSessionValue" type="Action Element" width="79" x="-57" y="592">
+<exit_states>
+<exit_state name="done" target="Element@6470666:1431405743464"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13915112:1431405573283" name="set04" src="Element.Utils.EUSetSessionValue" type="Action Element" width="79" x="-57" y="524">
+<exit_states>
+<exit_state name="done" target="Element@6470666:1431405743464"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6470666:1431405743464" name="HUNT" type="Page Connector" width="83" x="-338" y="500">
+<page_connector target="Element@3508077:1435628382778">HUNT<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@12409524:1432445595376" name="setELSE" src="Element.Utils.EUSetSessionValue" type="Action Element" width="98" x="318" y="687">
+<exit_states>
+<exit_state name="done" target="Element@15088099:1435628353653"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13421827:1433896731507" name="Entry_Branch" type="Page Entry" width="125" x="-128" y="792">
+<exit_states>
+<exit_state name="next" target="Element@27756690:1433896731507"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25111918:1433896731507" name="SubString_code" src="Element.Strings.EUStringSubString" type="Action Element" width="138" x="-134" y="973">
+<exit_states>
+<exit_state name="done" target="Element@16816759:1433896731507"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32990614:1433896731507" name="EDTimeCheck_N" src="Element.Decision.EDTimeCheck" type="Decision Element" width="149" x="362" y="1206">
+<exit_states>
+<exit_state name="valid" target="Element@19824842:1433896731507"/>
+<exit_state name="invalid" target="Element@611990:1433896731507"/>
+</exit_states>
+</element>
+<element height="46" id="Element@611990:1433896731507" name="SetValue_02" src="Element.Utils.EUSetSessionValue" type="Action Element" width="118" x="497" y="1278">
+<exit_states>
+<exit_state name="done" target="Element@7390505:1433896835184"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27756690:1433896731507" name="EULogWrite_Branch" src="Element.Utils.EULogWrite" type="Action Element" width="160" x="-145" y="876">
+<exit_states>
+<exit_state name="done" target="Element@25111918:1433896731507"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23962487:1433896731507" name="Flag_TODO_TR" type="Flag" width="136" x="150" y="1053">
+<exit_states>
+<exit_state name="done" target="Element@18060268:1433896731507"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16816759:1433896731507" name="SetMultiValue_initData" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="174" x="103" y="974">
+<exit_states>
+<exit_state name="done" target="Element@10300513:1433896731507"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10300513:1433896731507" name="EULogWrite_BrCode" src="Element.Utils.EULogWrite" type="Action Element" width="162" x="-146" y="1053">
+<exit_states>
+<exit_state name="done" target="Element@23962487:1433896731507"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6158563:1433896731507" name="GetDateTime_CurrentTime" src="Element.Utils.EUGetDateTime" type="Action Element" width="199" x="337" y="1129">
+<exit_states>
+<exit_state name="done" target="Element@32990614:1433896731507"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5532545:1433896731507" name="EULogWrite_INI Value" src="Element.Utils.EULogWrite" type="Action Element" width="171" x="614" y="1067">
+<exit_states>
+<exit_state name="done" target="Element@6158563:1433896731507"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19824842:1433896731507" name="SetValue_01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="118" x="246" y="1282">
+<exit_states>
+<exit_state name="done" target="Element@7390505:1433896835184"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18060268:1433896731507" name="EFINIReader_01" src="Element.File.EFINIReader" type="Action Element" width="138" x="367" y="1053">
+<exit_states>
+<exit_state name="done" target="Element@5532545:1433896731507"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27266073:1433896835184" name="ENISPSSocket_SetInfomation" src="Element.Network.ENISPSSocket" type="Action Element" width="214" x="329" y="1422">
+<exit_states>
+<exit_state name="done" target="Element@8026006:1433896835184"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8026006:1433896835184" name="SetValue_ENDTYPE" src="Element.Utils.EUSetSessionValue" type="Action Element" width="170" x="351" y="1491">
+<exit_states>
+<exit_state name="done" target="Element@17488316:1435630992877"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7390505:1433896835184" name="ISPS_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="135" x="369" y="1354">
+<exit_states>
+<exit_state name="done" target="Element@27266073:1433896835184"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9515033:1433896948409" name="CheckBranch_Decision" type="Decision" width="181" x="566" y="310">
+<exit_states>
+<exit_state name="지점인입" target="Element@32302517:1433896948409"/>
+<exit_state name="else" target="Element@16305869:1431404204390"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32302517:1433896948409" name="Entry_Branch" type="Page Connector" width="156" x="560" y="406">
+<page_connector target="Element@13421827:1433896731507">Entry_Branch<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@28850556:1435627026886" name="Decision_SvcNumCheck" type="Decision" width="189" x="272" y="590">
+<exit_states>
+<exit_state name="그외" target="Element@12409524:1432445595376"/>
+<exit_state name="경찰청핫라인(MN)" target="Element@25667028:1435628206513"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25667028:1435628206513" name="set_MB" src="Element.Utils.EUSetSessionValue" type="Action Element" width="92" x="752" y="441">
+<exit_states>
+<exit_state name="done" target="Element@9892316:1435628300113"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22297187:1435628216622" name="set_MC" skipped="true" src="Element.Utils.EUSetSessionValue" type="Action Element" width="93" x="751" y="519">
+<exit_states>
+<exit_state name="done" target="Element@9892316:1435628300113"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19515413:1435628221427" name="set_MD" skipped="true" src="Element.Utils.EUSetSessionValue" type="Action Element" width="92" x="752" y="585">
+<exit_states>
+<exit_state name="done" target="Element@9892316:1435628300113"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11347412:1435628238634" name="set_MH" skipped="true" src="Element.Utils.EUSetSessionValue" type="Action Element" width="92" x="764" y="662">
+<exit_states>
+<exit_state name="done" target="Element@9892316:1435628300113"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27251935:1435628243501" name="set_MN" skipped="true" src="Element.Utils.EUSetSessionValue" type="Action Element" width="93" x="751" y="737">
+<exit_states>
+<exit_state name="done" target="Element@9892316:1435628300113"/>
+</exit_states>
+</element>
+<element height="56" id="Element@9892316:1435628300113" name="HUNT" type="Page Connector" width="83" x="1012" y="569">
+<page_connector target="Element@3508077:1435628382778">HUNT<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@15088099:1435628353653" name="HUNT" type="Page Connector" width="96" x="319" y="780">
+<page_connector target="Element@3508077:1435628382778">HUNT<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@17488316:1435630992877" name="END" type="Page Connector" width="75" x="399" y="1571">
+<page_connector target="Element@4291790:1435630948199">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@29763170:1482413702833" name="EUGetCallData" src="Element.Utils.EUGetCallData" type="Action Element" width="127" x="303" y="208">
+<exit_states>
+<exit_state name="done" target="Element@6274014:1431330518530"/>
+</exit_states>
+</element>
+</page>

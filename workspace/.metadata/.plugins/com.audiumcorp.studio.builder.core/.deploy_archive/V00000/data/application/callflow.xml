@@ -1,0 +1,3780 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE call_flow SYSTEM "../../../../dtds/Callflow_1-1.dtd">
+<call_flow first_element="V00000_CVP Subdialog Start" serial="0000" version="1.1">
+<events/>
+<element_def name="V00000_EUGetCallData">
+<action>
+<class src="Element.Utils.EUGetCallData">
+<static>V00000_EUGetCallData.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EUSetSvcCode_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="V00000_CVP Subdialog Start">
+<voice class="com.audium.server.voiceElement.internal.CiscoSubdialogStartElement">
+<static>V00000_CVP Subdialog Start.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>V00000_EUGetCallData</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetSvcCode_01">
+<action>
+<class src="Element.Utils.EUSetSvcCode">
+<static>EUSetSvcCode_01.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EUSetMultiSetValue_APP_Global_variable</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSetMultiSetValue_APP_Global_variable">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>EUSetMultiSetValue_APP_Global_variable.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_Decision_m_iSRPlayFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Audio_V00000">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_Audio_V00000.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_SetMultiVar_Init</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Audio_V00001">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_Audio_V00001.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_SetMultiVar_Init</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Call_ASR1">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>ASR_MAIN_Call_ASR1.xml</static>
+<invoke>asr_input</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ASR_MAIN_Decision_ASRResultCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_TimeDivide">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1,3,5:현재가">
+<next_element>ASR_MAIN_Audio_VC1000</next_element>
+</exit_state>
+<exit_state name="7:종합지수">
+<next_element>ASR_MAIN_Audio_VC1001</next_element>
+</exit_state>
+<exit_state name="6:보유종목현재가">
+<next_element>ASR_MAIN_Audio_VC1005</next_element>
+</exit_state>
+<exit_state name="4:실시간잔고">
+<next_element>ASR_MAIN_Audio_VC1004</next_element>
+</exit_state>
+<exit_state name="2:체결내역/0,8:그외">
+<next_element>ASR_MAIN_Audio_VC1003</next_element>
+</exit_state>
+<exit_state name="9:코스닥">
+<next_element>ASR_MAIN_Audio_VC1002</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Call_DateRandom">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>ASR_MAIN_Call_DateRandom.xml</static>
+<invoke>GetTimeRandomValue</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ASR_MAIN_Decision_TimeDivide</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Audio_VC1000">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_Audio_VC1000.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_Audio_V00002</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Audio_VC1001">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_Audio_VC1001.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_Audio_V00002</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Audio_VC1002">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_Audio_VC1002.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_Audio_V00002</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Audio_VC1003">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_Audio_VC1003.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_Audio_V00002</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Audio_VC1004">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_Audio_VC1004.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_Audio_V00002</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Audio_VC1005">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_Audio_VC1005.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_Audio_V00002</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Audio_V00002">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_Audio_V00002.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_Call_ASR1</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_FileSize">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="작음">
+<next_element>ASR_MAIN_Decision_ErrCheck2</next_element>
+</exit_state>
+<exit_state name="초과">
+<next_element>ASR_MAIN_Decision_ErrCheck</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>ASR_MAIN_SetVar_asrCodeToItemCode</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_ASRResultCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="작음">
+<next_element>ASR_MAIN_Decision_FileSize</next_element>
+</exit_state>
+<exit_state name="묵음">
+<next_element>ASR_MAIN_Decision_FileSize</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>ASR_MAIN_Decision_FileSize</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_ErrCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>ASR_MAIN_Audio_ASR_Big</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>ASR_MAIN_Audio_ASR_Big</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>ASR_MAIN_Audio_ASR_Big</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_ErrCheck2">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>ASR_MAIN_Audio_ASR_Small</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>ASR_MAIN_Audio_ASR_Small</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>ASR_MAIN_Audio_ASR_Small</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Audio_ASR_Big">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_Audio_ASR_Big.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Audio_ASR_Small">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_Audio_ASR_Small.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_MenuType">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>ASR_MAIN_Decision_JongmokCheckFirst</next_element>
+</exit_state>
+<exit_state name="Q:3단계메뉴비교">
+<next_element>ASR_MAIN_Decision_Level3</next_element>
+</exit_state>
+<exit_state name="T:1단계메뉴비교">
+<next_element>ASR_MAIN_Decision_Level1</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_Level1">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>1Level_ASR_1_SetVar_initASRErrCnt</next_element>
+</exit_state>
+<exit_state name="T027:종목명"/>
+<exit_state name="T001:주문">
+<next_element>1Level_ASR_1_SetVar_initASRErrCnt</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_SetVar_asrCodeToItemCode">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>ASR_MAIN_SetVar_asrCodeToItemCode.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>ASR_MAIN_Decision_MenuType</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_Level3">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>ASR_MAIN_SubStr_3char</next_element>
+</exit_state>
+<exit_state name="Q033:코스닥지수">
+<next_element>COMMON_VC0005</next_element>
+</exit_state>
+<exit_state name="Q032:종합지수">
+<next_element>COMMON_VC0004</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Call_QuickCodeCompare">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>ASR_MAIN_Call_QuickCodeCompare.xml</static>
+<invoke>QuickCodeCompare</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ASR_MAIN_Decision_QuickCodeCompareResult</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_QuickCodeCompareResult">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="N:미존재">
+<next_element>ASR_MAIN_Decision_ErrCheck3</next_element>
+</exit_state>
+<exit_state name="Y:존재">
+<next_element>ASR_MAIN_SetVar_initASRErrCnt3</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_SetMultiVar_initType">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>ASR_MAIN_SetMultiVar_initType.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>ASR_MAIN_Call_QuickCodeCompare</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_SubStr_3char">
+<action>
+<class src="Element.Strings.EUStringSubString">
+<static>ASR_MAIN_SubStr_3char.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>ASR_MAIN_SetMultiVar_initType</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_ErrCheck3">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Call_jongmokCodeCheck">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>ASR_MAIN_Call_jongmokCodeCheck.xml</static>
+<invoke>stock_code</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ASR_MAIN_Decision_JongmokCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_JongmokCheckFirst">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="000002:머뭇거림">
+<next_element>ASR_MAIN_Decision_ErrCheck4</next_element>
+</exit_state>
+<exit_state name="KOSDAQ">
+<next_element>COMMON_VC0004</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>ASR_MAIN_Call_jongmokCodeCheck</next_element>
+</exit_state>
+<exit_state name="000001:욕하는발성">
+<next_element>ASR_MAIN_Decision_ErrCheck4</next_element>
+</exit_state>
+<exit_state name="000000:이외단어발생">
+<next_element>ASR_MAIN_Decision_ErrCheck4</next_element>
+</exit_state>
+<exit_state name="KOSPI">
+<next_element>COMMON_VC0005</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_JongmokCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="C:에러">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="0:유효함">
+<next_element>COMMON_VC0003</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_ErrCheck4">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Call_INC_ErrFlag">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>ASR_MAIN_Call_INC_ErrFlag.xml</static>
+<invoke>GetTimeRandomValue</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ASR_MAIN_Call_DateRandom</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_SetMultiVar_Init">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>ASR_MAIN_SetMultiVar_Init.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>ASR_MAIN_Call_DateRandom</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_Decision_m_iSRPlayFlag">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>ASR_MAIN_Audio_V00000</next_element>
+</exit_state>
+<exit_state name="음성인식했었음">
+<next_element>ASR_MAIN_Audio_V00001</next_element>
+</exit_state>
+<exit_state name="처음진입">
+<next_element>ASR_MAIN_Audio_V00000</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Call_jongmokCodeCheck">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>ASR_MAIN_MOVE_Call_jongmokCodeCheck.xml</static>
+<invoke>stock_code</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ASR_MAIN_MOVE_Decision_JongmokCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_m_iSRPlayFlag">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>ASR_MAIN_MOVE_Audio_V00000</next_element>
+</exit_state>
+<exit_state name="음성인식했었음">
+<next_element>ASR_MAIN_MOVE_Audio_V00001</next_element>
+</exit_state>
+<exit_state name="처음진입">
+<next_element>ASR_MAIN_MOVE_Audio_V00000</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Audio_ASR_Big">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_MOVE_Audio_ASR_Big.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_SetVar_asrCodeToItemCode">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>ASR_MAIN_MOVE_SetVar_asrCodeToItemCode.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_Decision_MenuType</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_ASRResultCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="서버실패">
+<next_element>COMMON_Audio_VC0007_2</next_element>
+</exit_state>
+<exit_state name="실패">
+<next_element>ASR_MAIN_MOVE_Decision_ErrCheck5</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>ASR_MAIN_MOVE_Decision_FileSize</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Audio_ASR_Small">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_MOVE_Audio_ASR_Small.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_JongmokCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="C:에러">
+<next_element>ASR_MAIN_MOVE_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>ASR_MAIN_MOVE_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="0:유효함">
+<next_element>COMMON_VC0003</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_MenuType">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>ASR_MAIN_MOVE_Decision_JongmokCheckFirst</next_element>
+</exit_state>
+<exit_state name="Q:3단계메뉴비교">
+<next_element>ASR_MAIN_MOVE_Decision_Level3</next_element>
+</exit_state>
+<exit_state name="T:1단계메뉴비교">
+<next_element>ASR_MAIN_MOVE_Decision_Level1</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Audio_V00002">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_MOVE_Audio_V00002.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_Call_ASR1</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_QuickCodeCompareResult">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="else:미존재">
+<next_element>ASR_MAIN_MOVE_Decision_ErrCheck3</next_element>
+</exit_state>
+<exit_state name="N:미존재">
+<next_element>ASR_MAIN_MOVE_Decision_ErrCheck3</next_element>
+</exit_state>
+<exit_state name="Y:존재">
+<next_element>3Level_ASR_2_SetVar_initASRErrCnt3</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_SetMultiVar_initType">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>ASR_MAIN_MOVE_SetMultiVar_initType.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_Call_QuickCodeCompare</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Call_ASR1">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>ASR_MAIN_MOVE_Call_ASR1.xml</static>
+<invoke>asr_input</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ASR_MAIN_MOVE_Decision_ASRResultCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_ErrCheck4">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>ASR_MAIN_MOVE_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0007</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>ASR_MAIN_MOVE_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>ASR_MAIN_MOVE_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Audio_V00001">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_MOVE_Audio_V00001.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_SetMultiVar_Init</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_ErrCheck3">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>ASR_MAIN_MOVE_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0007</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>ASR_MAIN_MOVE_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>ASR_MAIN_MOVE_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_ErrCheck2">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>ASR_MAIN_MOVE_Audio_ASR_Small</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0007</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>ASR_MAIN_MOVE_Audio_ASR_Small</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>ASR_MAIN_MOVE_Audio_ASR_Small</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Audio_V00000">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_MOVE_Audio_V00000.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_SetMultiVar_Init</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_Level1">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>1Level_ASR_2_SetVar_initASRErrCnt</next_element>
+</exit_state>
+<exit_state name="T027:종목명"/>
+<exit_state name="T001:주문">
+<next_element>1Level_ASR_2_SetVar_initASRErrCnt</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_ErrCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>ASR_MAIN_MOVE_Audio_ASR_Big</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0007</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>ASR_MAIN_MOVE_Audio_ASR_Big</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>ASR_MAIN_MOVE_Audio_ASR_Big</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_JongmokCheckFirst">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="000002:머뭇거림">
+<next_element>ASR_MAIN_MOVE_Decision_ErrCheck4</next_element>
+</exit_state>
+<exit_state name="KOSDAQ">
+<next_element>COMMON_VC0004</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>ASR_MAIN_MOVE_Call_jongmokCodeCheck</next_element>
+</exit_state>
+<exit_state name="000001:욕하는발성">
+<next_element>ASR_MAIN_MOVE_Decision_ErrCheck4</next_element>
+</exit_state>
+<exit_state name="000000:이외단어발생">
+<next_element>ASR_MAIN_MOVE_Decision_ErrCheck4</next_element>
+</exit_state>
+<exit_state name="KOSPI">
+<next_element>COMMON_VC0005</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_SubStr_3char">
+<action>
+<class src="Element.Strings.EUStringSubString">
+<static>ASR_MAIN_MOVE_SubStr_3char.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_SetMultiVar_initType</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Call_QuickCodeCompare">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>ASR_MAIN_MOVE_Call_QuickCodeCompare.xml</static>
+<invoke>QuickCodeCompare</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ASR_MAIN_MOVE_Decision_QuickCodeCompareResult</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_Level3">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>ASR_MAIN_MOVE_SubStr_3char</next_element>
+</exit_state>
+<exit_state name="Q222:코스닥지수">
+<next_element>COMMON_VC0005</next_element>
+</exit_state>
+<exit_state name="Q221:종합지수">
+<next_element>COMMON_VC0004</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_iSRNoCountCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="3회이상">
+<next_element>COMMON_Audio_VC0007</next_element>
+</exit_state>
+<exit_state name="1회">
+<next_element>ASR_MAIN_MOVE_Call_menu2th</next_element>
+</exit_state>
+<exit_state name="0회">
+<next_element>ASR_MAIN_MOVE_Call_menu1th</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>ASR_MAIN_MOVE_Call_menu2th</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_SetMultiVar_Init">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>ASR_MAIN_MOVE_SetMultiVar_Init.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_Decision_iSRNoCountCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_ErrCheck5">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>ASR_MAIN_MOVE_Audio_VC0008</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0007</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>ASR_MAIN_MOVE_Audio_V00007</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>ASR_MAIN_MOVE_Audio_V00007</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Audio_VC0008">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_MOVE_Audio_VC0008.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Audio_V00007">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_MOVE_Audio_V00007.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Call_menu1th">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>ASR_MAIN_MOVE_Call_menu1th.xml</static>
+<invoke>ASR_InductionSet_1th</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ASR_MAIN_MOVE_Log_PlayAudio</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Call_menu2th">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>ASR_MAIN_MOVE_Call_menu2th.xml</static>
+<invoke>ASR_InductionSet_2th</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ASR_MAIN_MOVE_Log_PlayAudio</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Call_INC_ErrFlag">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>ASR_MAIN_MOVE_Call_INC_ErrFlag.xml</static>
+<invoke>incrementErrFlag</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ASR_MAIN_MOVE_Call_ASR1</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Audio_MENU_Play">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ASR_MAIN_MOVE_Audio_MENU_Play.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_Audio_V00002</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Log_PlayAudio">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>ASR_MAIN_MOVE_Log_PlayAudio.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>ASR_MAIN_MOVE_Audio_MENU_Play</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_MOVE_Decision_FileSize">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="작음">
+<next_element>ASR_MAIN_MOVE_Decision_ErrCheck</next_element>
+</exit_state>
+<exit_state name="초과">
+<next_element>ASR_MAIN_MOVE_Decision_ErrCheck2</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>ASR_MAIN_MOVE_SetVar_asrCodeToItemCode</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_SetVar_initASRErrCnt">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>1Level_ASR_1_SetVar_initASRErrCnt.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>1Level_ASR_1_Call_Ment_InductionSet</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Call_ASR2">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>1Level_ASR_1_Call_ASR2.xml</static>
+<invoke>asr_input</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>1Level_ASR_1_MAIN_Decision_ASRResultCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_QuickCode">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="false:미존재">
+<next_element>1Level_ASR_1_Decision_ErrCheck1</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>1Level_ASR_1_Audio_V00001</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Call_Ment_InductionSet">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>1Level_ASR_1_Call_Ment_InductionSet.xml</static>
+<invoke>Ment_InductionSet</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>1Level_ASR_1_Decision_QuickCode</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Audio_V00001">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="1Level_ASR_1_Audio_V00001.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>1Level_ASR_1_Call_ASR2</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_ErrCheck1">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Call_jongmokCodeCheck">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>1Level_ASR_1_Call_jongmokCodeCheck.xml</static>
+<invoke>stock_code</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>1Level_ASR_1_Decision_JongmokCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_JongmokCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="C:에러">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="0:유효함">
+<next_element>COMMON_VC0003</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Audio_ASR_Big">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="1Level_ASR_1_Audio_ASR_Big.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>1Level_ASR_1_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_ErrCheck3">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>1Level_ASR_1_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>1Level_ASR_1_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>1Level_ASR_1_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_FileSize">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="작음">
+<next_element>1Level_ASR_1_Decision_ErrCheck2</next_element>
+</exit_state>
+<exit_state name="초과">
+<next_element>1Level_ASR_1_Decision_ErrCheck</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>1Level_ASR_1_SetVar_asrCodeToItemCode</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_ErrCheck2">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>1Level_ASR_1_Audio_ASR_Small</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>1Level_ASR_1_Audio_ASR_Small</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>1Level_ASR_1_Audio_ASR_Small</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_SetMultiVar_initType">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>1Level_ASR_1_SetMultiVar_initType.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>1Level_ASR_1_Call_QuickCodeCompare</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Call_QuickCodeCompare">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>1Level_ASR_1_Call_QuickCodeCompare.xml</static>
+<invoke>QuickCodeCompare</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>1Level_ASR_1_Decision_QuickCodeCompareResult</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Audio_ASR_Small">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="1Level_ASR_1_Audio_ASR_Small.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>1Level_ASR_1_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_Level1">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>1Level_ASR_1_SetVar_initASRErrCnt</next_element>
+</exit_state>
+<exit_state name="T027:종목명"/>
+<exit_state name="T001:주문">
+<next_element>1Level_ASR_1_SetVar_initASRErrCnt</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_Level3">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>1Level_ASR_1_SubStr_3char</next_element>
+</exit_state>
+<exit_state name="Q222:코스닥주가지수">
+<next_element>COMMON_VC0005</next_element>
+</exit_state>
+<exit_state name="Q221:종합주가지수">
+<next_element>COMMON_VC0004</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_ErrCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>1Level_ASR_1_Audio_ASR_Big</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>1Level_ASR_1_Audio_ASR_Big</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>1Level_ASR_1_Audio_ASR_Big</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_SetVar_asrCodeToItemCode">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>1Level_ASR_1_SetVar_asrCodeToItemCode.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>1Level_ASR_1_Decision_MenuType</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_MAIN_Decision_ASRResultCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="묵음">
+<next_element>1Level_ASR_1_Decision_FileSize</next_element>
+</exit_state>
+<exit_state name="서버Fail">
+<next_element>1Level_ASR_1_Decision_FileSize</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>1Level_ASR_1_Decision_FileSize</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_JongmokCheckFirst">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="000002:머뭇거림">
+<next_element>1Level_ASR_1_Decision_ErrCheck4</next_element>
+</exit_state>
+<exit_state name="KOSDAQ">
+<next_element>COMMON_VC0004</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>1Level_ASR_1_Call_jongmokCodeCheck</next_element>
+</exit_state>
+<exit_state name="000001:욕하는발성">
+<next_element>1Level_ASR_1_Decision_ErrCheck4</next_element>
+</exit_state>
+<exit_state name="000000:이외단어발생">
+<next_element>1Level_ASR_1_Decision_ErrCheck4</next_element>
+</exit_state>
+<exit_state name="KOSPI">
+<next_element>COMMON_VC0005</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_ErrCheck4">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>1Level_ASR_1_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>1Level_ASR_1_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>1Level_ASR_1_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_SubStr_3char">
+<action>
+<class src="Element.Strings.EUStringSubString">
+<static>1Level_ASR_1_SubStr_3char.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>1Level_ASR_1_SetMultiVar_initType</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_QuickCodeCompareResult">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="N:미존재">
+<next_element>1Level_ASR_1_Decision_ErrCheck3</next_element>
+</exit_state>
+<exit_state name="Y:존재">
+<next_element>ASR_MAIN_SetVar_initASRErrCnt3</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Decision_MenuType">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>1Level_ASR_1_Decision_JongmokCheckFirst</next_element>
+</exit_state>
+<exit_state name="Q:3단계메뉴비교">
+<next_element>1Level_ASR_1_Decision_Level3</next_element>
+</exit_state>
+<exit_state name="T:1단계메뉴비교">
+<next_element>1Level_ASR_1_Decision_Level1</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_1_Call_INC_ErrFlag">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>1Level_ASR_1_Call_INC_ErrFlag.xml</static>
+<invoke>GetTimeRandomValue</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>1Level_ASR_1_Call_ASR2</next_element>
+</exit_state>
+</element_def>
+<element_def name="ASR_MAIN_SetVar_initASRErrCnt3">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>ASR_MAIN_SetVar_initASRErrCnt3.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>3Level_ASR_1_Audio_V00005</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_Audio_V00005">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_1_Audio_V00005.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_1_Audio_V00006</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_Audio_V00006">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_1_Audio_V00006.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_1_Call_ASR2</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_Decision_FileSize">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="작음">
+<next_element>3Level_ASR_1_Decision_ErrCheck2</next_element>
+</exit_state>
+<exit_state name="초과">
+<next_element>3Level_ASR_1_Decision_ErrCheck</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>3Level_ASR_1_SetVar_asrCodeToItemCode</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_Call_ASR2">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>3Level_ASR_1_Call_ASR2.xml</static>
+<invoke>asr_input</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>3Level_ASR_1_MAIN_Decision_ASRResultCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_MAIN_Decision_ASRResultCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="묵음">
+<next_element>3Level_ASR_1_Decision_FileSize</next_element>
+</exit_state>
+<exit_state name="서버Fail">
+<next_element>3Level_ASR_1_Decision_FileSize</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>3Level_ASR_1_Decision_FileSize</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_Decision_ErrCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>3Level_ASR_1_Audio_ASR_Big</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>AGENT_SetValue</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>3Level_ASR_1_Audio_ASR_Big</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>3Level_ASR_1_Audio_ASR_Big</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_Audio_ASR_Small">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_1_Audio_ASR_Small.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_1_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_Call_INC_ErrFlag">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>3Level_ASR_1_Call_INC_ErrFlag.xml</static>
+<invoke>GetTimeRandomValue</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>3Level_ASR_1_Call_ASR2</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_Audio_ASR_Big">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_1_Audio_ASR_Big.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_1_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_Decision_ErrCheck2">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>3Level_ASR_1_Audio_ASR_Small</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>AGENT_SetValue</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>3Level_ASR_1_Audio_ASR_Small</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>3Level_ASR_1_Audio_ASR_Small</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_Decision_YN_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="예/그외">
+<next_element>3Level_ASR_1_Audio_VC0006</next_element>
+</exit_state>
+<exit_state name="C000:아니오">
+<next_element>ASR_MAIN_Call_DateRandom</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_SetVar_asrCodeToItemCode">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>3Level_ASR_1_SetVar_asrCodeToItemCode.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>3Level_ASR_1_Decision_YN_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_1_Audio_VC0006">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_1_Audio_VC0006.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>EUSendFTP_02</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_SubStr_3char">
+<action>
+<class src="Element.Strings.EUStringSubString">
+<static>1Level_ASR_2_SubStr_3char.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>1Level_ASR_2_SetMultiVar_initType</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_MenuType">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>1Level_ASR_2_Decision_JongmokCheckFirst</next_element>
+</exit_state>
+<exit_state name="Q:3단계메뉴비교">
+<next_element>1Level_ASR_2_Decision_Level3</next_element>
+</exit_state>
+<exit_state name="T:1단계메뉴비교">
+<next_element>1Level_ASR_2_Decision_Level1</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_ErrCheck2">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>1Level_ASR_2_Audio_ASR_Small</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>1Level_ASR_2_Audio_ASR_Small</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>1Level_ASR_2_Audio_ASR_Small</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_ErrCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>1Level_ASR_2_Audio_ASR_Big</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>1Level_ASR_2_Audio_ASR_Big</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>1Level_ASR_2_Audio_ASR_Big</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Call_QuickCodeCompare">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>1Level_ASR_2_Call_QuickCodeCompare.xml</static>
+<invoke>QuickCodeCompare</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>1Level_ASR_2_Decision_QuickCodeCompareResult</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_SetVar_initASRErrCnt">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>1Level_ASR_2_SetVar_initASRErrCnt.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>1Level_ASR_2_Call_Ment_InductionSet</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Audio_ASR_Big">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="1Level_ASR_2_Audio_ASR_Big.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>1Level_ASR_2_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_ErrCheck1">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>1Level_ASR_2_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>1Level_ASR_2_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>1Level_ASR_2_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_QuickCode">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="false:미존재">
+<next_element>1Level_ASR_2_Decision_ErrCheck1</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>1Level_ASR_2_Audio_STXXX</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_SetMultiVar_initType">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>1Level_ASR_2_SetMultiVar_initType.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>1Level_ASR_2_Call_QuickCodeCompare</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Call_ASR2">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>1Level_ASR_2_Call_ASR2.xml</static>
+<invoke>asr_input</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>1Level_ASR_2_MAIN_Decision_ASRResultCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Call_INC_ErrFlag">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>1Level_ASR_2_Call_INC_ErrFlag.xml</static>
+<invoke>incrementErrFlag</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>1Level_ASR_2_Audio_STXXX</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_ErrCheck3">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>1Level_ASR_2_Audio_VC0010</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>1Level_ASR_2_Audio_VC0010</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>1Level_ASR_2_Audio_VC0010</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_Level3">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>1Level_ASR_2_SubStr_3char</next_element>
+</exit_state>
+<exit_state name="Q033:코스닥지수">
+<next_element>COMMON_VC0005</next_element>
+</exit_state>
+<exit_state name="Q032:종합지수">
+<next_element>COMMON_VC0004</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_JongmokCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="C:에러">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>ASR_MAIN_Call_INC_ErrFlag</next_element>
+</exit_state>
+<exit_state name="0:유효함">
+<next_element>1Level_ASR_2_SetJongmokCode</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Call_jongmokCodeCheck">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>1Level_ASR_2_Call_jongmokCodeCheck.xml</static>
+<invoke>stock_code</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>1Level_ASR_2_Decision_JongmokCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Audio_ASR_Small">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="1Level_ASR_2_Audio_ASR_Small.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>1Level_ASR_2_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_MAIN_Decision_ASRResultCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="실패">
+<next_element>1Level_ASR_2_Decision_FileSize</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>1Level_ASR_2_Decision_FileSize</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Call_Ment_InductionSet">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>1Level_ASR_2_Call_Ment_InductionSet.xml</static>
+<invoke>Ment_InductionSet</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>1Level_ASR_2_Decision_QuickCode</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_QuickCodeCompareResult">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="Y : 존재">
+<next_element>ASR_MAIN_SetVar_initASRErrCnt3</next_element>
+</exit_state>
+<exit_state name="N : 미존재">
+<next_element>1Level_ASR_2_Decision_ErrCheck3</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_Level1">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>1Level_ASR_2_SetVar_initASRErrCnt</next_element>
+</exit_state>
+<exit_state name="T027:종목명"/>
+<exit_state name="T001:주문">
+<next_element>1Level_ASR_2_SetVar_initASRErrCnt</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Audio_V00008">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="1Level_ASR_2_Audio_V00008.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>1Level_ASR_2_Audio_V00009</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_SetVar_asrCodeToItemCode">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>1Level_ASR_2_SetVar_asrCodeToItemCode.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>1Level_ASR_2_Decision_MenuType</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_ErrCheck4">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>1Level_ASR_2_Audio_VC0010</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>1Level_ASR_2_Audio_VC0010</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>1Level_ASR_2_Audio_VC0010</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_FileSize">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="작음">
+<next_element>1Level_ASR_2_Decision_ErrCheck2</next_element>
+</exit_state>
+<exit_state name="초과">
+<next_element>1Level_ASR_2_Decision_ErrCheck</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>1Level_ASR_2_SetVar_asrCodeToItemCode</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Decision_JongmokCheckFirst">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="000002:머뭇거림">
+<next_element>1Level_ASR_2_Decision_ErrCheck4</next_element>
+</exit_state>
+<exit_state name="KOSDAQ">
+<next_element>COMMON_VC0004</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>1Level_ASR_2_Call_jongmokCodeCheck</next_element>
+</exit_state>
+<exit_state name="000001:욕하는발성">
+<next_element>1Level_ASR_2_Decision_ErrCheck4</next_element>
+</exit_state>
+<exit_state name="000000:이외단어발생">
+<next_element>1Level_ASR_2_Decision_ErrCheck4</next_element>
+</exit_state>
+<exit_state name="KOSPI">
+<next_element>COMMON_VC0005</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Audio_STXXX">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="1Level_ASR_2_Audio_STXXX.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>1Level_ASR_2_Audio_V00008</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Audio_V00009">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="1Level_ASR_2_Audio_V00009.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>1Level_ASR_2_Call_ASR2</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_Audio_VC0010">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="1Level_ASR_2_Audio_VC0010.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>1Level_ASR_2_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="1Level_ASR_2_SetJongmokCode">
+<action>
+<class src="Element.Utils.EUSetMultiSessionValue">
+<static>1Level_ASR_2_SetJongmokCode.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>COMMON_VC0003</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Decision_ErrCheck2">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>3Level_ASR_2_Audio_ASR_Small</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>AGENT_SetValue</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>3Level_ASR_2_Audio_ASR_Small</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>3Level_ASR_2_Audio_ASR_Small</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_SetVar_initASRErrCnt3">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>3Level_ASR_2_SetVar_initASRErrCnt3.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Audio_QXXX_1</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Decision_YN_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="예/그외">
+<next_element>3Level_ASR_2_Audio_VC0006</next_element>
+</exit_state>
+<exit_state name="C000:아니오">
+<next_element>3Level_ASR_2_Call_INC_NoErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Audio_V00009">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_2_Audio_V00009.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Call_ASR2</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_SetVar_asrCodeToItemCode">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>3Level_ASR_2_SetVar_asrCodeToItemCode.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Decision_YN_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Audio_ASR_Small">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_2_Audio_ASR_Small.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Call_ASR2">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>3Level_ASR_2_Call_ASR2.xml</static>
+<invoke>asr_input</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>3Level_ASR_2_MAIN_Decision_ASRResultCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_MAIN_Decision_ASRResultCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="서버실패">
+<next_element>COMMON_Audio_VC0007_2</next_element>
+</exit_state>
+<exit_state name="실패">
+<next_element>3Level_ASR_2_Decision_ErrCheck5</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>3Level_ASR_2_Decision_FileSize</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Decision_ErrCheck">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>3Level_ASR_2_Audio_ASR_Big</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>COMMON_Audio_VC0002</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>3Level_ASR_2_Audio_ASR_Big</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>3Level_ASR_2_Audio_ASR_Big</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Audio_VC0006">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_2_Audio_VC0006.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>EUSendFTP_02</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Audio_ASR_Big">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_2_Audio_ASR_Big.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Call_INC_ErrFlag">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>3Level_ASR_2_Call_INC_ErrFlag.xml</static>
+<invoke>incrementErrFlag</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>3Level_ASR_2_Call_ASR2</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Decision_FileSize">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="작음">
+<next_element>3Level_ASR_2_Decision_ErrCheck2</next_element>
+</exit_state>
+<exit_state name="초과">
+<next_element>3Level_ASR_2_Decision_ErrCheck</next_element>
+</exit_state>
+<exit_state name="정상">
+<next_element>3Level_ASR_2_SetVar_asrCodeToItemCode</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Audio_QXXX_1">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_2_Audio_QXXX_1.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Audio_V00009</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Call_INC_NoErrFlag">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>3Level_ASR_2_Call_INC_NoErrFlag.xml</static>
+<invoke>incrementNoErrFlag</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ASR_MAIN_MOVE_Decision_iSRNoCountCheck</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Decision_ErrCheck5">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1회">
+<next_element>3Level_ASR_2_Audio_VC0010</next_element>
+</exit_state>
+<exit_state name="3회초과">
+<next_element>AGENT_SetValue</next_element>
+</exit_state>
+<exit_state name="3회">
+<next_element>3Level_ASR_2_Audio_VC0011</next_element>
+</exit_state>
+<exit_state name="2회">
+<next_element>3Level_ASR_2_Audio_VC0011</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Audio_QXXX_2">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_2_Audio_QXXX_2.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Audio_V00009_1</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Audio_VC0010">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_2_Audio_VC0010.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Audio_QXXX_2</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Audio_V00009_1">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_2_Audio_V00009_1.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Audio_VC0011">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_2_Audio_VC0011.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Audio_QXXX_3</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Audio_QXXX_3">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_2_Audio_QXXX_3.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Audio_V00009_2</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Audio_V00004">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_2_Audio_V00004.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Call_INC_ErrFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="3Level_ASR_2_Audio_V00009_2">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="3Level_ASR_2_Audio_V00009_2.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>3Level_ASR_2_Audio_V00004</next_element>
+</exit_state>
+</element_def>
+<element_def name="LogWrite_END_N">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>LogWrite_END_N.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="END_SetValue">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>END_SetValue.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision</next_element>
+</exit_state>
+</element_def>
+<element_def name="LogWrite_END_Y">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>LogWrite_END_Y.xml</static>
+</class>
+</action>
+<exit_state name="done"/>
+</element_def>
+<element_def name="Decision">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="Other">
+<next_element>LogWrite_END_N</next_element>
+</exit_state>
+<exit_state name="Y">
+<next_element>LogWrite_END_Y</next_element>
+</exit_state>
+</element_def>
+<element_def name="QuickCode">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="310000">
+<next_element>m_strDTMF_Length</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strDTMF_Length</next_element>
+</exit_state>
+</element_def>
+<element_def name="LogWrite_m_strEndType">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>LogWrite_m_strEndType.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_Length_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="3자리">
+<next_element>END_SetValue_0000</next_element>
+</exit_state>
+<exit_state name="2자리">
+<next_element>END_SetValue_00000</next_element>
+</exit_state>
+</element_def>
+<element_def name="END_SetValue_00000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>END_SetValue_00000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>LogWrite_m_strEndType</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_Length">
+<action>
+<class src="Element.Strings.EUStringLength">
+<static>m_strDTMF_Length.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>m_strDTMF_Length_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="END_SetValue_0000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>END_SetValue_0000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>LogWrite_m_strEndType</next_element>
+</exit_state>
+</element_def>
+<element_def name="AGENT_LogWrite">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>AGENT_LogWrite.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="MAIN_SetValue">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>MAIN_SetValue.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>LogWrite_MAIN</next_element>
+</exit_state>
+</element_def>
+<element_def name="LogWrite_MAIN">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>LogWrite_MAIN.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="AGENT_SetValue">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>AGENT_SetValue.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>AGENT_LogWrite</next_element>
+</exit_state>
+</element_def>
+<element_def name="C00027">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="C00027.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ServiceCode</next_element>
+</exit_state>
+</element_def>
+<element_def name="ServiceCode">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="MDA000">
+<next_element>MAIN_SetValue</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>V00000_EUGetCallData</next_element>
+</exit_state>
+</element_def>
+<element_def name="ErrMsg_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="ErrMsg존재안함">
+<next_element>C00027</next_element>
+</exit_state>
+<exit_state name="ErrMsg 존재">
+<next_element>ERROR_Hold</next_element>
+</exit_state>
+</element_def>
+<element_def name="ErrMsg_TTS">
+<decision>
+<class src="Element.Audio.EATTSMaker">
+<static>ErrMsg_TTS.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>ErrMsg_Play</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>ErrMsg_Play</next_element>
+</exit_state>
+</element_def>
+<element_def name="ERROR_Hold">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>ERROR_Hold.xml</static>
+<invoke>Hold</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ErrMsg_TTS</next_element>
+</exit_state>
+</element_def>
+<element_def name="ErrMsg_Play">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="ErrMsg_Play.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>ServiceCode</next_element>
+</exit_state>
+</element_def>
+<element_def name="JongHap_SetValue">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>JongHap_SetValue.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>JongHap_LogWrite_MAIN</next_element>
+</exit_state>
+</element_def>
+<element_def name="JongHap_LogWrite_MAIN">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>JongHap_LogWrite_MAIN.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="KOSPI_SetValue">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>KOSPI_SetValue.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>KOSPI_LogWrite_MAIN</next_element>
+</exit_state>
+</element_def>
+<element_def name="KOSPI_LogWrite_MAIN">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>KOSPI_LogWrite_MAIN.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="COMMON_VC0004">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="COMMON_VC0004.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>JongHap_SetValue</next_element>
+</exit_state>
+</element_def>
+<element_def name="COMMON_VC0005">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="COMMON_VC0005.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>KOSPI_SetValue</next_element>
+</exit_state>
+</element_def>
+<element_def name="COMMON_VC0003">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="COMMON_VC0003.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>Hyunjaega_SetValue</next_element>
+</exit_state>
+</element_def>
+<element_def name="Hyunjaega_SetValue">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>Hyunjaega_SetValue.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Hyunjaega_LogWrite_MAIN</next_element>
+</exit_state>
+</element_def>
+<element_def name="Hyunjaega_LogWrite_MAIN">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>Hyunjaega_LogWrite_MAIN.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="COMMON_VC0013">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>COMMON_VC0013.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>MAIN_SetValue</next_element>
+</exit_state>
+</element_def>
+<element_def name="COMMON_Audio_VC0002">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="COMMON_Audio_VC0002.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>MAIN_SetValue</next_element>
+</exit_state>
+</element_def>
+<element_def name="COMMON_Audio_VC0007">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="COMMON_Audio_VC0007.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>MAIN_SetValue</next_element>
+</exit_state>
+</element_def>
+<element_def name="COMMON_Audio_VC0007_2">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="COMMON_Audio_VC0007_2.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>MAIN_SetValue</next_element>
+</exit_state>
+</element_def>
+<element_def name="SubdialogReturn">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>SubdialogReturn.xml</static>
+<invoke>SubdialogReturn</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>ICM_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="ICM_Return">
+<voice class="com.audium.server.voiceElement.internal.CiscoSubdialogReturnElement">
+<static>ICM_Return.xml</static>
+</voice>
+<exit_state name="done"/>
+</element_def>
+<element_def name="Decision_01">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="메뉴이동">
+<next_element>EUSendFTP_01</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>SubdialogReturn</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSendFTP_01">
+<action>
+<class src="Element.Utils.EUSendFTP">
+<static>EUSendFTP_01.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>SubdialogReturn</next_element>
+</exit_state>
+</element_def>
+<element_def name="QuickCodeMoveInfoLog">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>QuickCodeMoveInfoLog.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>m_strQuickDigit_1_Menu_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="500000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>500000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="510000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>510000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="520000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>520000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="110000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>110000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="111000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>111000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="112000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>112000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="113000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>113000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="other">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>other.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_1_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="121 : 빠른현금매도">
+<next_element>121000</next_element>
+</exit_state>
+<exit_state name="125 : 빠른주문체결내역조회">
+<next_element>125000</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strQuickDigit_2_Menu_Check</next_element>
+</exit_state>
+<exit_state name="112 : 빠른종합주가지수">
+<next_element>112000</next_element>
+</exit_state>
+<exit_state name="124 : 빠른취소">
+<next_element>124000</next_element>
+</exit_state>
+<exit_state name="001 : 빠른말안내">
+<next_element>100000</next_element>
+</exit_state>
+<exit_state name="111 : 빠른현재가조회">
+<next_element>111000</next_element>
+</exit_state>
+<exit_state name="122 : 빠른현금매수">
+<next_element>122000</next_element>
+</exit_state>
+<exit_state name="123 : 빠른정정">
+<next_element>123000</next_element>
+</exit_state>
+<exit_state name="012 : 빠른주문및체결내역">
+<next_element>120000</next_element>
+</exit_state>
+<exit_state name="013 : 빠른실시간잔고">
+<next_element>130000</next_element>
+</exit_state>
+<exit_state name="114 : 빠른시간외단일현재가">
+<next_element>114000</next_element>
+</exit_state>
+<exit_state name="011 : 빠른시세조회">
+<next_element>110000</next_element>
+</exit_state>
+<exit_state name="113 : 빠른코스닥주가지수">
+<next_element>113000</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_2_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="023 : 해외지수">
+<next_element>230000</next_element>
+</exit_state>
+<exit_state name="002 : 시세및지수조회">
+<next_element>200000</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strQuickDigit_3_Menu_Check</next_element>
+</exit_state>
+<exit_state name="252 : 풋옵션현재가">
+<next_element>250000</next_element>
+</exit_state>
+<exit_state name="222 : 코스닥주가지수">
+<next_element>222000</next_element>
+</exit_state>
+<exit_state name="025 : 옵션시세">
+<next_element>250000</next_element>
+</exit_state>
+<exit_state name="237 : 중국상해종합지수">
+<next_element>230000</next_element>
+</exit_state>
+<exit_state name="233 : SP500지수">
+<next_element>230000</next_element>
+</exit_state>
+<exit_state name="236 : 홍콩H지수">
+<next_element>230000</next_element>
+</exit_state>
+<exit_state name="251 : 콜옵션현재가">
+<next_element>250000</next_element>
+</exit_state>
+<exit_state name="021 : 현재가및호가잔량">
+<next_element>210000</next_element>
+</exit_state>
+<exit_state name="235 : 홍콩항세지수">
+<next_element>230000</next_element>
+</exit_state>
+<exit_state name="238 : 인도붐베이지수">
+<next_element>230000</next_element>
+</exit_state>
+<exit_state name="232 : 나스닥종합지수">
+<next_element>230000</next_element>
+</exit_state>
+<exit_state name="223 : 코스피200지수">
+<next_element>223000</next_element>
+</exit_state>
+<exit_state name="022 : 국내지수">
+<next_element>220000</next_element>
+</exit_state>
+<exit_state name="234 : 일본니케이지수">
+<next_element>230000</next_element>
+</exit_state>
+<exit_state name="026 : 시간외단일현재가">
+<next_element>260000</next_element>
+</exit_state>
+<exit_state name="027 : 투자자별매매동향">
+<next_element>270000</next_element>
+</exit_state>
+<exit_state name="231 : 다우존스산업지수">
+<next_element>230000</next_element>
+</exit_state>
+<exit_state name="221 : 종합주가지수">
+<next_element>221000</next_element>
+</exit_state>
+<exit_state name="024 : 선물시세">
+<next_element>240000</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_3_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="037 : 예약주문">
+<next_element>370000</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strQuickDigit_4_Menu_Check</next_element>
+</exit_state>
+<exit_state name="347 : 시간외단일가취소">
+<next_element>340000</next_element>
+</exit_state>
+<exit_state name="362 : 체결내역조회">
+<next_element>362000</next_element>
+</exit_state>
+<exit_state name="325 : 신용취소">
+<next_element>325000</next_element>
+</exit_state>
+<exit_state name="341 : 시간외단일가현금매도">
+<next_element>341000</next_element>
+</exit_state>
+<exit_state name="373 : 예약취소">
+<next_element>373000</next_element>
+</exit_state>
+<exit_state name="336 : 시간외취소">
+<next_element>336000</next_element>
+</exit_state>
+<exit_state name="312 : 현금매수">
+<next_element>312000</next_element>
+</exit_state>
+<exit_state name="353 : 펀드취소주문">
+<next_element>350000</next_element>
+</exit_state>
+<exit_state name="372 : 예약현금매수">
+<next_element>372000</next_element>
+</exit_state>
+<exit_state name="314 : 현금취소">
+<next_element>314000</next_element>
+</exit_state>
+<exit_state name="003 : 주문및체결내역">
+<next_element>300000</next_element>
+</exit_state>
+<exit_state name="363 : 미체결내역조회">
+<next_element>363000</next_element>
+</exit_state>
+<exit_state name="345 : 시간외단일가자기융자매수">
+<next_element>340000</next_element>
+</exit_state>
+<exit_state name="323 : 자기융자매수">
+<next_element>323000</next_element>
+</exit_state>
+<exit_state name="374 : 예약주문내역">
+<next_element>374000</next_element>
+</exit_state>
+<exit_state name="331 : 시간외현금매도">
+<next_element>331000</next_element>
+</exit_state>
+<exit_state name="364 : 종목별체결내역조회">
+<next_element>364000</next_element>
+</exit_state>
+<exit_state name="371 : 예약현금매도">
+<next_element>371000</next_element>
+</exit_state>
+<exit_state name="333 : 시간외자기융자매도상환">
+<next_element>333000</next_element>
+</exit_state>
+<exit_state name="324 : 신용정정">
+<next_element>324000</next_element>
+</exit_state>
+<exit_state name="344 : 시간외단일가담보융자매도상환">
+<next_element>344000</next_element>
+</exit_state>
+<exit_state name="354 : 펀드주문및체결내역조회">
+<next_element>350000</next_element>
+</exit_state>
+<exit_state name="032 : 신용주문">
+<next_element>320000</next_element>
+</exit_state>
+<exit_state name="031 : 현금주문">
+<next_element>310000</next_element>
+</exit_state>
+<exit_state name="351 : 펀드매도">
+<next_element>350000</next_element>
+</exit_state>
+<exit_state name="332 : 시간외현금매수">
+<next_element>332000</next_element>
+</exit_state>
+<exit_state name="335 : 시간외자기융자매수">
+<next_element>335000</next_element>
+</exit_state>
+<exit_state name="334 : 시간외담보융자매도상환">
+<next_element>334000</next_element>
+</exit_state>
+<exit_state name="352 : 펀드추가매수">
+<next_element>350000</next_element>
+</exit_state>
+<exit_state name="342 : 시간외단일가현금매수">
+<next_element>342000</next_element>
+</exit_state>
+<exit_state name="035 : 펀드주문">
+<next_element>350000</next_element>
+</exit_state>
+<exit_state name="346 : 시간외단일가정정">
+<next_element>340000</next_element>
+</exit_state>
+<exit_state name="034 : 시간외단일가주문">
+<next_element>340000</next_element>
+</exit_state>
+<exit_state name="311 : 현금매도">
+<next_element>311000</next_element>
+</exit_state>
+<exit_state name="375 : 처리결과조회">
+<next_element>375000</next_element>
+</exit_state>
+<exit_state name="036 : 내역조회">
+<next_element>360000</next_element>
+</exit_state>
+<exit_state name="322 : 담보융자매도상환">
+<next_element>322000</next_element>
+</exit_state>
+<exit_state name="321 : 자기융자매도상환">
+<next_element>321000</next_element>
+</exit_state>
+<exit_state name="361 : 전체내역조회">
+<next_element>361000</next_element>
+</exit_state>
+<exit_state name="365 : 전일체결내역조회">
+<next_element>365000</next_element>
+</exit_state>
+<exit_state name="343 : 시간외단일가자기융자매도상환">
+<next_element>343000</next_element>
+</exit_state>
+<exit_state name="033 : 시간외주문">
+<next_element>330000</next_element>
+</exit_state>
+<exit_state name="313 : 현금정정">
+<next_element>313000</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_4_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="043 : 보유종목현재가조회">
+<next_element>430000</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strQuickDigit_5_Menu_Check</next_element>
+</exit_state>
+<exit_state name="451 : 매매내역조회">
+<next_element>451000</next_element>
+</exit_state>
+<exit_state name="041 : 실시간잔고">
+<next_element>410000</next_element>
+</exit_state>
+<exit_state name="040 : 잔고및거래내역조회">
+<next_element>400000</next_element>
+</exit_state>
+<exit_state name="442 : 매도가능수량">
+<next_element>442000</next_element>
+</exit_state>
+<exit_state name="462 : 융자일별신용잔고">
+<next_element>462000</next_element>
+</exit_state>
+<exit_state name="441 : 매수가능금액">
+<next_element>441000</next_element>
+</exit_state>
+<exit_state name="452 : 입출금내역조회">
+<next_element>452000</next_element>
+</exit_state>
+<exit_state name="042 : 펀드평가금액조회">
+<next_element>420000</next_element>
+</exit_state>
+<exit_state name="461 : 신용통합잔고">
+<next_element>461000</next_element>
+</exit_state>
+<exit_state name="045 : 일자별거래내역조회">
+<next_element>450000</next_element>
+</exit_state>
+<exit_state name="463 : 담보유지비율조회">
+<next_element>463000</next_element>
+</exit_state>
+<exit_state name="046 : 신용잔고조회">
+<next_element>460000</next_element>
+</exit_state>
+<exit_state name="044 : 주문가능수량및금액조회">
+<next_element>440000</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_5_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="052 : 당사계좌간이체">
+<next_element>520000</next_element>
+</exit_state>
+<exit_state name="051 : 은행으로이체">
+<next_element>510000</next_element>
+</exit_state>
+<exit_state name="005 : 이체서비스">
+<next_element>500000</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strQuickDigit_6_Menu_Check</next_element>
+</exit_state>
+<exit_state name="532 : 일자별입출금내역조회">
+<next_element>532000</next_element>
+</exit_state>
+<exit_state name="053 : 입출금내역조회">
+<next_element>530000</next_element>
+</exit_state>
+<exit_state name="531 : 당일입출금내역조회">
+<next_element>531000</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_7_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="752 : 일괄계좌카드사용등록">
+<next_element>752000</next_element>
+</exit_state>
+<exit_state name="007 : 사고신고 및 부가서비스">
+<next_element>700000</next_element>
+</exit_state>
+<exit_state name="751 : CMA방문개설확인">
+<next_element>751000</next_element>
+</exit_state>
+<exit_state name="075 : 일괄및방문계좌확인">
+<next_element>750000</next_element>
+</exit_state>
+<exit_state name="073 : 사기자금지급정지">
+<next_element>730000</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>other</next_element>
+</exit_state>
+<exit_state name="072 : 분실신고조회">
+<next_element>720000</next_element>
+</exit_state>
+<exit_state name="753 : 일괄계좌유선이체약정확인">
+<next_element>753000</next_element>
+</exit_state>
+<exit_state name="071 : 분실신고">
+<next_element>710000</next_element>
+</exit_state>
+<exit_state name="741 : ARS주문비밀번호변경">
+<next_element>741000</next_element>
+</exit_state>
+<exit_state name="074 : 각종비밀번호변경">
+<next_element>740000</next_element>
+</exit_state>
+<exit_state name="742 : 계좌비밀번호변경">
+<next_element>742000</next_element>
+</exit_state>
+</element_def>
+<element_def name="114000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>114000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="120000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>120000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="121000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>121000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="122000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>122000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="123000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>123000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="124000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>124000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="130000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>130000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="125000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>125000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="210000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>210000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="221000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>221000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="222000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>222000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="240000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>240000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="250000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>250000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="260000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>260000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="310000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>310000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="311000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>311000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="312000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>312000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="313000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>313000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="314000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>314000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="320000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>320000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="321000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>321000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="324000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>324000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="322000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>322000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="323000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>323000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="325000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>325000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="331000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>331000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="334000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>334000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="332000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>332000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="330000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>330000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="335000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>335000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="333000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>333000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="336000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>336000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="341000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>341000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="340000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>340000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="342000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>342000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="344000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>344000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="343000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>343000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="363000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>363000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="362000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>362000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="360000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>360000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="364000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>364000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="361000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>361000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="365000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>365000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="375000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>375000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="370000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>370000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="374000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>374000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="372000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>372000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="371000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>371000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="373000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>373000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="410000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>410000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="430000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>430000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="440000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>440000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="441000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>441000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="442000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>442000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="450000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>450000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="452000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>452000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="451000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>451000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="461000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>461000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="460000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>460000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="462000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>462000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="530000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>530000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="531000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>531000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="532000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>532000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="710000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>710000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="720000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>720000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="730000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>730000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="741000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>741000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="742000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>742000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="751000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>751000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="EUSendFTP_02">
+<action>
+<class src="Element.Utils.EUSendFTP">
+<static>EUSendFTP_02.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>QuickCodeMoveInfoLog</next_element>
+</exit_state>
+</element_def>
+<element_def name="100000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>100000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="200000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>200000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="220000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>220000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="270000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>270000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="230000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>230000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="223000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>223000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="300000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>300000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="350000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>350000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="400000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>400000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="420000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>420000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="463000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>463000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_6_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="066 : 당월청약자격조회">
+<next_element>660000</next_element>
+</exit_state>
+<exit_state name="006 : 청약및조회">
+<next_element>600000</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strQuickDigit_7_Menu_Check</next_element>
+</exit_state>
+<exit_state name="061 : 청약신청">
+<next_element>610000</next_element>
+</exit_state>
+<exit_state name="065 : 청약일정조회">
+<next_element>650000</next_element>
+</exit_state>
+<exit_state name="064 : 청약경쟁률조회">
+<next_element>640000</next_element>
+</exit_state>
+<exit_state name="063 : 청약내역조회">
+<next_element>630000</next_element>
+</exit_state>
+<exit_state name="062 : 청약취소">
+<next_element>620000</next_element>
+</exit_state>
+</element_def>
+<element_def name="600000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>600000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="610000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>610000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="620000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>620000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="630000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>630000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="640000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>640000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="650000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>650000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="660000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>660000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="740000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>740000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="750000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>750000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="752000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>752000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="753000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>753000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="700000">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>700000.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_01</next_element>
+</exit_state>
+</element_def>
+</call_flow>

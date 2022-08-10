@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE call_flow SYSTEM "../../../../dtds/Callflow_1-1.dtd">
+<call_flow first_element="Ment_InductionSet" serial="0000" version="1.1">
+<events/>
+<element_def name="Ment_InductionSet">
+<subflow_start class="com.audium.server.voiceElement.SubflowStartElement">
+<static>Ment_InductionSet.xml</static>
+</subflow_start>
+<exit_state name="next">
+<next_element>Decision_Menu_1</next_element>
+</exit_state>
+</element_def>
+<element_def name="Decision_Menu_1">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="T009:매도 주문">
+<next_element>SetVar_T009</next_element>
+</exit_state>
+<exit_state name="T007:단주">
+<next_element>SetVar_T007</next_element>
+</exit_state>
+<exit_state name="T006:시간외 단일가 주문">
+<next_element>SetVar_T006</next_element>
+</exit_state>
+<exit_state name="T004:시간외 현금주문">
+<next_element>SetVar_T004</next_element>
+</exit_state>
+<exit_state name="T003:신용주문">
+<next_element>SetVar_T003</next_element>
+</exit_state>
+<exit_state name="T008:예약">
+<next_element>SetVar_T008</next_element>
+</exit_state>
+<exit_state name="T005:시간외 신용주문">
+<next_element>SetVar_T005</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>Decision_Menu_2</next_element>
+</exit_state>
+<exit_state name="T010:매수 주문">
+<next_element>SetVar_T010</next_element>
+</exit_state>
+<exit_state name="T001:주문">
+<next_element>SetVar_T001</next_element>
+</exit_state>
+<exit_state name="T002:현금주문">
+<next_element>SetVar_T002</next_element>
+</exit_state>
+</element_def>
+<element_def name="Decision_Menu_2">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="T015:비밀번호 변경">
+<next_element>SetVar_T015</next_element>
+</exit_state>
+<exit_state name="T013:체결 조회">
+<next_element>SetVar_T013</next_element>
+</exit_state>
+<exit_state name="T020:빠른 주문">
+<next_element>SetVar_T020</next_element>
+</exit_state>
+<exit_state name="T016:MY MENU">
+<next_element>SetVar_T016</next_element>
+</exit_state>
+<exit_state name="T014:잔고 조회">
+<next_element>SetVar_T014</next_element>
+</exit_state>
+<exit_state name="T018:거래 주문 내역 조회">
+<next_element>SetVar_T018</next_element>
+</exit_state>
+<exit_state name="T011:주문 취소">
+<next_element>SetVar_T011</next_element>
+</exit_state>
+<exit_state name="T012:주문 정정">
+<next_element>SetVar_T012</next_element>
+</exit_state>
+<exit_state name="T017:입출금내역조회">
+<next_element>SetVar_T017</next_element>
+</exit_state>
+<exit_state name="T019:빠른 시세조회">
+<next_element>SetVar_T019</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>Decision_Menu_3</next_element>
+</exit_state>
+</element_def>
+<element_def name="Decision_Menu_3">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="T026:시간외 매수">
+<next_element>SetVar_T026</next_element>
+</exit_state>
+<exit_state name="T025:시간외 매도">
+<next_element>SetVar_T025</next_element>
+</exit_state>
+<exit_state name="T024:시간외 주문">
+<next_element>SetVar_T024</next_element>
+</exit_state>
+<exit_state name="T022:관심종목">
+<next_element>SetVar_T022</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>SetVar_ELSE</next_element>
+</exit_state>
+<exit_state name="T021:시세조회">
+<next_element>SetVar_T021</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T001">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T001.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T002">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T002.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T003">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T003.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T004">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T004.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T005">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T005.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T006">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T006.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T007">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T007.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T008">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T008.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T009">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T009.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T010">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T010.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T011">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T011.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T018">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T018.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T014">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T014.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T012">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T012.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T019">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T019.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T016">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T016.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T015">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T015.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T017">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T017.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T020">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T020.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T013">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T013.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_ELSE">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_ELSE.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T021">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T021.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T022">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T022.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T024">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T024.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T025">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T025.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetVar_T026">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetVar_T026.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="Subflow Return_01">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>Subflow Return_01.xml</static>
+</subflowreturn>
+</element_def>
+</call_flow>

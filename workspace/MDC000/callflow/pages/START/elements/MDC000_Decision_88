@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@8469930:1474593321942" name="MDC000_Decision_88" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="MDC000_Decision_88" default_exit_state="MAXERROR">
+        <exit_state name="1 : 상담예약" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="1" />
+            </string>
+        </exit_state>
+        <exit_state name="2 : ARS 이용" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="2" />
+            </string>
+        </exit_state>
+        <exit_state name="# : 처음부터" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="#" />
+            </string>
+        </exit_state>
+        <exit_state name="* : 다시듣기" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="*" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

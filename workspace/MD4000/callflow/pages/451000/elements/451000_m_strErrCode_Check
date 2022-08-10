@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@31542028:1480465160878" name="451000_m_strErrCode_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="451000_m_strErrCode_Check" default_exit_state="other">
+        <exit_state name="02637 : 해당내역없음" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strErrCode" />
+                </data>
+                <constant_number value="02637" />
+            </string>
+        </exit_state>
+        <exit_state name="03009 : 기준일자 잘못 입력" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strErrCode" />
+                </data>
+                <constant_string value="03009" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

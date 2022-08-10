@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@33523383:1475131512772" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1475131512772" name="market_time" type="Subflow Start" width="116" x="267" y="62">
+<exit_states>
+<exit_state name="next" target="Element@19625820:1480751953982"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1563947:1476880661461" name="market_time_m_iRepeat_PlustOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="229" x="578" y="721">
+<exit_states>
+<exit_state name="done" target="Element@7233444:1476880661461"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12152741:1476880661461" name="market_time_EUMultiOutputBlock_ROW_CNT" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="290" x="181" y="499">
+<exit_states>
+<exit_state name="done" target="Element@5303891:1476880661461"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24240213:1476880661461" name="market_time_m_iCnt" src="Element.Utils.EUSetSessionValue" type="Action Element" width="170" x="241" y="354">
+<exit_states>
+<exit_state name="done" target="Element@20904320:1476880661461"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24003626:1476880661461" name="market_time_EUCountClear" src="Element.Utils.EUCountClear" type="Action Element" width="195" x="228" y="152">
+<exit_states>
+<exit_state name="done" target="Element@21927837:1476880661461"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21927837:1476880661461" name="market_time_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="147" x="252" y="220">
+<exit_states>
+<exit_state name="done" target="Element@12843630:1476880661461"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4009847:1476880661461" name="market_time_ROW_CNT_Check" type="Decision" width="214" x="218" y="888">
+<exit_states>
+<exit_state name="other" target="Element@16212234:1476880661461"/>
+<exit_state name="시간가져오기완료" target="Element@17043305:1476880661461"/>
+</exit_states>
+</element>
+<element height="15" id="Element@5098393:1476880661461" type="Comment" width="36" x="203" y="90">
+<comment><![CDATA[장시간]]></comment>
+</element>
+<element height="46" id="Element@16212234:1476880661461" name="market_time_m_iCnt_PlusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="208" x="588" y="888">
+<exit_states>
+<exit_state name="done" target="Element@12122572:1476880661461"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7233444:1476880661461" name="market_time_m_iRepeat_Increment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="235" x="575" y="640">
+<exit_states>
+<exit_state name="done" target="Element@4787804:1476880661461"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5303891:1476880661461" name="market_time_ROW_CNT_MinusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="236" x="208" y="569">
+<exit_states>
+<exit_state name="done" target="Element@4787804:1476880661461"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20904320:1476880661461" name="market_time_m_iRepeat" src="Element.Utils.EUSetSessionValue" type="Action Element" width="176" x="238" y="427">
+<exit_states>
+<exit_state name="done" target="Element@12152741:1476880661461"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17043305:1476880661461" name="market_time_return" type="Subflow Return" width="153" x="-91" y="499"/>
+<element height="46" id="Element@12843630:1476880661461" name="market_time_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="186" x="232" y="282">
+<exit_states>
+<exit_state name="success" target="Element@24240213:1476880661461"/>
+<exit_state name="fail" target="Element@32337153:1479622488782"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12122572:1476880661461" name="market_time_m_iCnt_Increment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="218" x="583" y="807">
+<exit_states>
+<exit_state name="done" target="Element@1563947:1476880661461"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4787804:1476880661461" name="market_time_EUMultiOutputBlock_DBData" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="276" x="188" y="639">
+<exit_states>
+<exit_state name="done" target="Element@4009847:1476880661461"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32337153:1479622488782" name="EFINIReader_startTime_01" src="Element.File.EFINIReader" type="Action Element" width="197" x="-133" y="114">
+<exit_states>
+<exit_state name="done" target="Element@9399296:1479622488782"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30545269:1479622488782" name="EFINIReader_endTime_02" src="Element.File.EFINIReader" type="Action Element" width="194" x="-132" y="362">
+<exit_states>
+<exit_state name="done" target="Element@17043305:1476880661461"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33266763:1479622488782" name="EFINIReader_endTime_01" src="Element.File.EFINIReader" type="Action Element" width="194" x="-132" y="275">
+<exit_states>
+<exit_state name="done" target="Element@30545269:1479622488782"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9399296:1479622488782" name="EFINIReader_startTime_02" src="Element.File.EFINIReader" type="Action Element" width="197" x="-133" y="201">
+<exit_states>
+<exit_state name="done" target="Element@33266763:1479622488782"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19625820:1480751953982" name="Holiday_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="122" x="497" y="65">
+<exit_states>
+<exit_state name="done" target="Element@11106877:1480751953982"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11106877:1480751953982" name="EDHolidayCheck_01" src="Element.Decision.EDHolidayCheck" type="Decision Element" width="158" x="471" y="130">
+<exit_states>
+<exit_state name="yes" target="Element@24003626:1476880661461"/>
+<exit_state name="no" target="Element@24003626:1476880661461"/>
+</exit_states>
+</element>
+</page>

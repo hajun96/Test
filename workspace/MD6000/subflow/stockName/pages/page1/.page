@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@16875193:1475131524845" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1475131524845" name="stockName" type="Subflow Start" width="110" x="232" y="8">
+<exit_states>
+<exit_state name="next" target="Element@24113279:1475131990341"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24113279:1475131990341" name="EULogWrite_Query" src="Element.Utils.EULogWrite" type="Action Element" width="149" x="213" y="97">
+<exit_states>
+<exit_state name="done" target="Element@1461150:1475131990341"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29259845:1475131990341" name="ENOracleDB_01" src="Element.DataBase.ENOracleDB" type="Decision Element" width="134" x="221" y="238">
+<exit_states>
+<exit_state name="success" target="Element@22109686:1475131990341"/>
+<exit_state name="fail" target="Element@26151012:1475131990341">
+<bendpoint>
+<dim1 x="-170" y="106"/>
+<dim2 x="-122" y="-106"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@15721473:1475131990341" name="EUMultiOutputBlock_02" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="199" y="408">
+<exit_states>
+<exit_state name="done" target="Element@13733178:1475131990341"/>
+</exit_states>
+</element>
+<element height="15" id="Element@23201629:1475131990341" type="Comment" width="48" x="46" y="19">
+<comment><![CDATA[종목이름]]></comment>
+</element>
+<element height="46" id="Element@26151012:1475131990341" name="Subflow Return_01" type="Subflow Return" width="152" x="-89" y="516"/>
+<element height="46" id="Element@1461150:1475131990341" name="Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="76" x="247" y="169">
+<exit_states>
+<exit_state name="done" target="Element@29259845:1475131990341"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22109686:1475131990341" name="EUMultiOutputBlock_01" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="199" y="303">
+<exit_states>
+<exit_state name="done" target="Element@15721473:1475131990341"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13733178:1475131990341" name="EULogWrite_01" src="Element.Utils.EULogWrite" type="Action Element" width="131" x="222" y="516">
+<exit_states>
+<exit_state name="done" target="Element@26151012:1475131990341"/>
+</exit_states>
+</element>
+</page>

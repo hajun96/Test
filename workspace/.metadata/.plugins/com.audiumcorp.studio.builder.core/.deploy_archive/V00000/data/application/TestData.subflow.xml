@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE call_flow SYSTEM "../../../../dtds/Callflow_1-1.dtd">
+<call_flow first_element="TestData" serial="0000" version="1.1">
+<events/>
+<element_def name="TestData">
+<subflow_start class="com.audium.server.voiceElement.SubflowStartElement">
+<static>TestData.xml</static>
+</subflow_start>
+<exit_state name="next">
+<next_element>m_iHolidayFlag</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_iHolidayFlag">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_iHolidayFlag.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>m_strSelectStartTime3</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strSelectStartTime3">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strSelectStartTime3.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>m_strSelectEndTime3</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strSelectEndTime3">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strSelectEndTime3.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>m_strSelectStartTime6</next_element>
+</exit_state>
+</element_def>
+<element_def name="Subflow Return_01">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>Subflow Return_01.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="m_strSelectEndTime6">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strSelectEndTime6.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strSelectStartTime6">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strSelectStartTime6.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>m_strSelectEndTime6</next_element>
+</exit_state>
+</element_def>
+</call_flow>

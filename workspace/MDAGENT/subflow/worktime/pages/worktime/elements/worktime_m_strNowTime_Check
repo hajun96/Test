@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@13160165:1472780996854" name="worktime_m_strNowTime_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="worktime_m_strNowTime_Check" default_exit_state="other">
+        <exit_state name="상담업무 시작전" conjugate="and">
+            <number operator="less">
+                <data>
+                    <session name="m_strNowTime" />
+                </data>
+                <data>
+                    <session name="m_strCounselStartTime" />
+                </data>
+            </number>
+        </exit_state>
+        <exit_state name="업무시간" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <session name="m_strNowTime" />
+                </data>
+                <data>
+                    <session name="m_strCounselStartTime" />
+                </data>
+            </number>
+            <number operator="less">
+                <data>
+                    <session name="m_strNowTime" />
+                </data>
+                <data>
+                    <session name="m_strCounselEndTime" />
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

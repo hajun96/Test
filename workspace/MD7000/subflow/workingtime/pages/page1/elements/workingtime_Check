@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@2983372:1481012518592" name="workingtime_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="workingtime_Check" default_exit_state="업무시간외:N">
+        <exit_state name="업무시간:Y" conjugate="and">
+            <number operator="less_equal">
+                <data>
+                    <session name="m_strStartWorkingTime" />
+                </data>
+                <data>
+                    <session name="m_strTimeTemp" />
+                </data>
+            </number>
+            <number operator="greater_equal">
+                <data>
+                    <session name="m_strEndWorkingTime" />
+                </data>
+                <data>
+                    <session name="m_strTimeTemp" />
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

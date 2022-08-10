@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE knowledge_base SYSTEM "../../../../../dtds/DecisionKnowledgeBase.dtd">
+<knowledge_base>
+    <rule default_exit_state="other" name="jumun_auth_cash_m_strAccWorkNum_Check">
+        <exit_state conjugate="and" name="22 : 위탁계좌">
+            <string operator="equal">
+                <data>
+                    <session name="m_strAccWorkNum"/>
+                </data>
+                <constant_string value="22"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="50 보다 작음 : 저축계좌보다 작음">
+            <number operator="less">
+                <data>
+                    <session name="m_strAccWorkNum"/>
+                </data>
+                <constant_number value="50"/>
+            </number>
+        </exit_state>
+        <exit_state conjugate="and" name="69 보다 큼 : 저축계좌보다 큼">
+            <number operator="greater">
+                <data>
+                    <session name="m_strAccWorkNum"/>
+                </data>
+                <constant_number value="69"/>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@8895934:1478670262253" name="jumun_auth_m_strSvcCode_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="jumun_auth_m_strSvcCode_Check" default_exit_state="other">
+        <exit_state name="365000 : 전일체결내역조회" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strSvcCode" />
+                </data>
+                <constant_string value="365000" />
+            </string>
+        </exit_state>
+        <exit_state name="361000 : 전체내역조회" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strSvcCode" />
+                </data>
+                <constant_string value="361000" />
+            </string>
+        </exit_state>
+        <exit_state name="362000 : 체결내역조회" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strSvcCode" />
+                </data>
+                <constant_string value="362000" />
+            </string>
+        </exit_state>
+        <exit_state name="363000 : 미체결내역조회" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strSvcCode" />
+                </data>
+                <constant_string value="363000" />
+            </string>
+        </exit_state>
+        <exit_state name="364000 : 종목별체결내역조회" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strSvcCode" />
+                </data>
+                <constant_string value="364000" />
+            </string>
+        </exit_state>
+        <exit_state name="354000 : 펀드 주문 및 체결내역조회" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strSvcCode" />
+                </data>
+                <constant_string value="354000" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

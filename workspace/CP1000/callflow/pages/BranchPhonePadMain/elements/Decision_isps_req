@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@23450839:1427183269481" name="Decision_isps_req" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="Decision_isps_req" default_exit_state="unknown">
+        <exit_state name="success" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="result" />
+                </data>
+                <constant_string value="0" />
+            </string>
+        </exit_state>
+        <exit_state name="not exist data" conjugate="and">
+            <string operator="not_equal">
+                <data>
+                    <session name="code" />
+                </data>
+                <constant_string value="C043" />
+            </string>
+        </exit_state>
+        <exit_state name="timeout" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="result" />
+                </data>
+                <constant_string value="-1" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

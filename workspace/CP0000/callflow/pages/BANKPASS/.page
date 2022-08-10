@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@17887219:1473065007242" name="BANKPASS" version="6.0.1">
+<element height="46" id="Element@16346715:1473065007242" name="BANK_PASSWORD" type="Page Entry" width="156" x="270" y="26">
+<exit_states>
+<exit_state name="next" target="Element@22178448:1484620022661"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22661945:1473065025993" name="BANK_PASS_Decision_01" type="Decision" width="194" x="251" y="231">
+<exit_states>
+<exit_state name="MAXERROR" target="Element@2959250:1473065026008"/>
+<exit_state name="정상입력" target="Element@16718146:1473065071185"/>
+</exit_states>
+</element>
+<element height="15" id="Element@22793004:1473065025993" type="Comment" width="188" x="378" y="128">
+<comment><![CDATA[비밀번호와 우물정자를 눌러주세요]]></comment>
+</element>
+<element height="46" id="Element@2959250:1473065026008" name="DTMF_MAX_ERROR" type="Page Connector" width="164" x="584" y="230">
+<page_connector target="Element@16054767:1473062321146">DTMF_MAX_ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@16718146:1473065071185" name="BUSINESS_EUSetSessionValue_06" src="Element.Utils.EUSetSessionValue" type="Action Element" width="246" x="225" y="329">
+<exit_states>
+<exit_state name="done" target="Element@14143887:1473065071185"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14143887:1473065071185" name="Return_AEMS" type="Page Connector" width="164" x="266" y="419">
+<page_connector target="Element@4655813:1473062436718">Return_AEMS<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@22178448:1484620022661" name="BANK_PASS_DIGIT" type="Subflow Call" width="149" x="273" y="146">
+<subflow_call subflow_name="dtmf_accountTerm_digit" target="Element@31:1478067862834">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/CP1001.wav</data>
+<data name="MINDIGIT">4</data>
+<data name="MAXDIGIT">8</data>
+<data name="TERMCHAR">#</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@22661945:1473065025993"/>
+</exit_states>
+</element>
+</page>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE call_flow SYSTEM "../../../../dtds/Callflow_1-1.dtd">
+<call_flow first_element="jumun_auth_cash" serial="0000" version="1.1">
+<events/>
+<element_def name="jumun_auth_cash">
+<subflow_start class="com.audium.server.voiceElement.SubflowStartElement">
+<static>jumun_auth_cash.xml</static>
+</subflow_start>
+<exit_state name="next">
+<next_element>jumun_auth_cash_m_strArsCustSect_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_m_strDTMFErr_Y">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>jumun_auth_cash_m_strDTMFErr_Y.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_NoMatch_Audio</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_m_strDTMFErr_N">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>jumun_auth_cash_m_strDTMFErr_N.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_cash_No_Agreement_Ment</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_m_strDTMF_N_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>jumun_auth_cash_m_strDTMF_N_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="jumun_auth_cash_No_Agreement_Ment">
+<subflowcall class="com.audium.server.voiceElement.SubflowCallElement">
+<static>jumun_auth_cash_No_Agreement_Ment.xml</static>
+<invoke>dtmf</invoke>
+</subflowcall>
+<exit_state name="next">
+<next_element>jumun_auth_cash_No_Agreement_Decision</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_m_strDTMF_H_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>jumun_auth_cash_m_strDTMF_H_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="m_strDTMF_C">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF_C.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_cash_m_strDTMF_C_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_N">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF_N.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_cash_m_strDTMF_N_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_m_strAccountStatus_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="0 : 정상">
+<next_element>jumun_auth_cash_SubString_m_strAccountNum</next_element>
+</exit_state>
+<exit_state name="2 : 정상">
+<next_element>jumun_auth_cash_SubString_m_strAccountNum</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>jumun_auth_cash_m_strDTMFErr_N</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_Hold_A01OI07">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_auth_cash_Hold_A01OI07.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_auth_cash_ENStockSocket_A01OI07</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_m_strDTMF_1_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>jumun_auth_cash_m_strDTMF_1_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="m_strDTMF_H">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF_H.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_cash_m_strDTMF_H_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strDTMF_0">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>m_strDTMF_0.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_cash_m_strDTMF_0_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_NoMatch_Audio">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<dynamic default="jumun_auth_NoMatch_Audio.xml">
+<source type="class">AudioLogWriter</source>
+</dynamic>
+</voice>
+<exit_state name="done">
+<next_element>jumun_auth_cash_No_Agreement_Ment</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_m_strAccWorkNum">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>jumun_auth_cash_m_strAccWorkNum.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_cash_m_strAccWorkNum_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_m_strDTMF_0_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>jumun_auth_cash_m_strDTMF_0_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="jumun_auth_cash_m_strDTMF_C_Return">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>jumun_auth_cash_m_strDTMF_C_Return.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="jumun_auth_cash_ENStockSocket_A01OI07">
+<decision>
+<class src="Element.Network.ENStockSocket">
+<static>jumun_auth_cash_ENStockSocket_A01OI07.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>m_strDTMF_C</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>jumun_auth_cash_EUSocketOutput_A01OI07</next_element>
+</exit_state>
+<exit_state name="errcode">
+<next_element>m_strDTMF_C</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_No_Agreement_Decision">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="1 : 다른계좌인증">
+<next_element>jumun_auth_cash_ClearAccountInfo</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>jumun_auth_cash_m_strDTMFErr_Y</next_element>
+</exit_state>
+<exit_state name="입력오류">
+<next_element>m_strDTMF_N</next_element>
+</exit_state>
+<exit_state name="# : 상위메뉴">
+<next_element>m_strDTMF_H</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_EUSocketOutput_C20OI22">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>jumun_auth_cash_EUSocketOutput_C20OI22.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_cash_m_strAccountStatus_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_EUSocketOutput_A01OI07">
+<action>
+<class src="Element.Utils.EUSocketOutput">
+<static>jumun_auth_cash_EUSocketOutput_A01OI07.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_cash_m_strAccountType_Check</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_m_strAccountType_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="022 : 위탁계좌">
+<next_element>m_strDTMF_0</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>jumun_auth_cash_m_strDTMFErr_N</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_m_strAccWorkNum_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="69 보다 큼 : 저축계좌보다 큼">
+<next_element>jumun_auth_cash_m_strDTMFErr_N</next_element>
+</exit_state>
+<exit_state name="22 : 위탁계좌">
+<next_element>jumun_auth_cash_EUSocketInput_A01OI07</next_element>
+</exit_state>
+<exit_state name="50 보다 작음 : 저축계좌보다 작음">
+<next_element>jumun_auth_cash_m_strDTMFErr_N</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strDTMF_0</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_ClearAccountInfo">
+<action>
+<class src="Element.Utils.EUClearAccountInfo">
+<static>jumun_auth_cash_ClearAccountInfo.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_cash_m_strDTMF_1_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_EUSocketInput_A01OI07">
+<action>
+<class src="Element.Utils.EUSocketInput">
+<static>jumun_auth_cash_EUSocketInput_A01OI07.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_cash_Hold_A01OI07</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_Hold_C20OI22">
+<voice class="com.audium.server.voiceElement.audio.MAudio">
+<static>jumun_auth_cash_Hold_C20OI22.xml</static>
+</voice>
+<exit_state name="done">
+<next_element>jumun_auth_cash_ENStockSocket_C20OI22</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_m_strArsCustSect_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="3 : ARS 미약정">
+<next_element>jumun_auth_cash_m_strDTMFErr_N</next_element>
+</exit_state>
+<exit_state name="4 : ARS 미약정">
+<next_element>jumun_auth_cash_m_strDTMFErr_N</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>jumun_auth_cash_EUSocketInput_C20OI22</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_SubString_m_strAccountNum">
+<action>
+<class src="Element.Strings.EUStringSubString">
+<static>jumun_auth_cash_SubString_m_strAccountNum.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_cash_m_strAccWorkNum</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_ENStockSocket_C20OI22">
+<decision>
+<class src="Element.Network.ENStockSocket">
+<static>jumun_auth_cash_ENStockSocket_C20OI22.xml</static>
+</class>
+</decision>
+<exit_state name="fail">
+<next_element>m_strDTMF_C</next_element>
+</exit_state>
+<exit_state name="success">
+<next_element>jumun_auth_cash_EUSocketOutput_C20OI22</next_element>
+</exit_state>
+<exit_state name="errcode">
+<next_element>m_strDTMF_C</next_element>
+</exit_state>
+</element_def>
+<element_def name="jumun_auth_cash_EUSocketInput_C20OI22">
+<action>
+<class src="Element.Utils.EUSocketInput">
+<static>jumun_auth_cash_EUSocketInput_C20OI22.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>jumun_auth_cash_Hold_C20OI22</next_element>
+</exit_state>
+</element_def>
+</call_flow>

@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@645788:1469586228284" name="COMMON" version="6.0.1">
+<element height="46" id="Element@14094523:1469586276862" name="MAIN_MENU" type="Page Entry" width="187" x="779" y="39">
+<exit_states>
+<exit_state name="next" target="Element@30950226:1470465765509"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21141355:1469586276862" name="LogWrite_END_N" src="Element.Utils.EULogWrite" type="Action Element" width="144" x="251" y="272">
+<exit_states>
+<exit_state name="done" target="Element@2765888:1473557904546"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13880401:1469586276862" name="END_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="131" x="257" y="134">
+<exit_states>
+<exit_state name="done" target="Element@12014797:1469586276862"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26721278:1469586276862" name="VOICE" type="Page Entry" width="87" x="528" y="353">
+<exit_states>
+<exit_state name="next" target="Element@2765888:1473557904546"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17500269:1469586276862" type="Hang Up" width="98" x="44" y="328"/>
+<element height="46" id="Element@2131476:1469586276862" name="LogWrite_END_Y" src="Element.Utils.EULogWrite" type="Action Element" width="143" x="22" y="209">
+<exit_states>
+<exit_state name="done" target="Element@17500269:1469586276862"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3021463:1469586276862" name="COMMON_END" type="Page Entry" width="139" x="254" y="51">
+<exit_states>
+<exit_state name="next" target="Element@13880401:1469586276862"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17693768:1469586276862" name="TR_ERROR" type="Page Entry" width="113" x="1369" y="-12">
+<exit_states>
+<exit_state name="next" target="Element@5853505:1472012090099"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14889746:1469586276862" name="AGENT" type="Page Entry" width="174" x="963" y="40">
+<exit_states>
+<exit_state name="next" target="Element@19232793:1470465765509"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12014797:1469586276862" name="Decision" type="Decision" width="99" x="273" y="209">
+<exit_states>
+<exit_state name="Y" target="Element@2131476:1469586276862"/>
+<exit_state name="Other" target="Element@21141355:1469586276862"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32882868:1470459305323" name="SMS" type="Page Entry" width="77" x="-8" y="62">
+<exit_states>
+<exit_state name="next" target="Element@20873470:1470459305323"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20873470:1470459305323" type="Hang Up" width="98" x="104" y="62"/>
+<element height="46" id="Element@11252602:1470465429094" name="QuickCode" type="Decision" width="112" x="226" y="1292">
+<exit_states>
+<exit_state name="other" target="Element@5158626:1470465612574"/>
+<exit_state name="310000" target="Element@5158626:1470465612574">
+<bendpoint>
+<dim1 x="156" y="100"/>
+<dim2 x="152" y="-94"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@25650308:1470465612574" name="LogWrite_m_strEndType" src="Element.Utils.EULogWrite" type="Action Element" width="186" x="189" y="1700">
+<exit_states>
+<exit_state name="done" target="Element@2662766:1473557897963"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19691350:1470465612574" name="m_strDTMF_Length_Check" type="Decision" width="201" x="181" y="1508">
+<exit_states>
+<exit_state name="2자리" target="Element@3285341:1470465612574"/>
+<exit_state name="3자리" target="Element@30947256:1470465612574"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3285341:1470465612574" name="END_SetValue_00000" src="Element.Utils.EUSetSessionValue" type="Action Element" width="167" x="358" y="1605">
+<exit_states>
+<exit_state name="done" target="Element@25650308:1470465612574"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5158626:1470465612574" name="m_strDTMF_Length" src="Element.Strings.EUStringLength" type="Action Element" width="159" x="202" y="1402">
+<exit_states>
+<exit_state name="done" target="Element@19691350:1470465612574"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30947256:1470465612574" name="END_SetValue_0000" src="Element.Utils.EUSetSessionValue" type="Action Element" width="161" x="63" y="1605">
+<exit_states>
+<exit_state name="done" target="Element@25650308:1470465612574"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28036647:1470465765509" name="AGENT_LogWrite" src="Element.Utils.EULogWrite" type="Action Element" width="146" x="941" y="202">
+<exit_states>
+<exit_state name="done" target="Element@30679499:1473557882316"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30950226:1470465765509" name="MAIN_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="137" x="753" y="129">
+<exit_states>
+<exit_state name="done" target="Element@19644548:1470465765509"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19644548:1470465765509" name="LogWrite_MAIN" src="Element.Utils.EULogWrite" type="Action Element" width="135" x="752" y="202">
+<exit_states>
+<exit_state name="done" target="Element@30679499:1473557882316"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19232793:1470465765509" name="AGENT_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="148" x="941" y="129">
+<exit_states>
+<exit_state name="done" target="Element@28036647:1470465765509"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9017824:1471495438246" name="C00027" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="93" x="1598" y="132">
+<exit_states>
+<exit_state name="done" target="Element@30766519:1471495438246">
+<bendpoint>
+<dim1 x="6" y="314"/>
+<dim2 x="229" y="0"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="45" id="Element@26192039:1471495438246" type="Comment" width="62" x="1703" y="132">
+<comment><![CDATA[[C00027] : 
+지연처리 
+중입니다.]]></comment>
+</element>
+<element height="46" id="Element@30766519:1471495438246" name="HIGH" type="Page Connector" width="142" x="1350" y="446">
+<page_connector target="Element@22084635:1471495474144">HIGH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@32558816:1471495474144" name="MAIN_MENU" type="Page Connector" width="187" x="1344" y="986">
+<page_connector target="Element@14094523:1469586276862">MAIN_MENU<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@22084635:1471495474144" name="HIGH" type="Page Entry" width="142" x="1367" y="664">
+<exit_states>
+<exit_state name="next" target="Element@11197183:1471495579676"/>
+</exit_states>
+</element>
+<element height="15" id="Element@7104249:1471495484550" type="Comment" width="54" x="2209" y="1586">
+<comment><![CDATA[Comment]]></comment>
+</element>
+<element height="46" id="Element@18170136:1471495560271" name="APP_메인메뉴" type="Page Connector" width="128" x="1173" y="800">
+<page_connector target="Element@16133005:1471311087816">APP_메인메뉴<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@11197183:1471495579676" name="ServiceCode" type="Decision" width="122" x="1377" y="800">
+<exit_states>
+<exit_state name="other" target="Element@18170136:1471495560271"/>
+<exit_state name="MDA000" target="Element@32558816:1471495474144"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5853505:1472012090099" name="ErrMsg_Check" type="Decision" width="133" x="1354" y="132">
+<exit_states>
+<exit_state name="ErrMsg 존재" target="Element@32227288:1472012187579"/>
+<exit_state name="ErrMsg존재안함" target="Element@9017824:1471495438246"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8403292:1472012187579" name="ErrMsg_TTS" src="Element.Audio.EATTSMaker" type="Decision Element" width="121" x="1360" y="286">
+<exit_states>
+<exit_state name="success" target="Element@27303450:1472012187579"/>
+<exit_state name="fail" target="Element@27303450:1472012187579"/>
+</exit_states>
+</element>
+<element height="30" id="Element@12213944:1472012187579" type="Comment" width="60" x="1391" y="334">
+<comment><![CDATA[에러메세지
+TTS 플레이]]></comment>
+</element>
+<element height="46" id="Element@32227288:1472012187579" name="ERROR_Hold" type="Subflow Call" width="122" x="1360" y="213">
+<subflow_call subflow_name="Hold" target="Element@31:1471824511405">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@8403292:1472012187579"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27303450:1472012187579" name="ErrMsg_Play" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="122" x="1360" y="367">
+<exit_states>
+<exit_state name="done" target="Element@30766519:1471495438246"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31564782:1472631009644" name="QUICK" type="Page Entry" width="87" x="238" y="1204">
+<exit_states>
+<exit_state name="next" target="Element@11252602:1470465429094"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22074983:1473556545456" name="JONGHAP" type="Page Entry" width="107" x="695" y="410">
+<exit_states>
+<exit_state name="next" target="Element@9890959:1473556703057"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20751090:1473556545456" name="JongHap_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="155" x="671" y="583">
+<exit_states>
+<exit_state name="done" target="Element@32358279:1473556545456"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32358279:1473556545456" name="JongHap_LogWrite_MAIN" src="Element.Utils.EULogWrite" type="Action Element" width="190" x="654" y="656">
+<exit_states>
+<exit_state name="done" target="Element@18413897:1473557867559"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6432385:1473556590445" name="KOSPI" type="Page Entry" width="129" x="910" y="414">
+<exit_states>
+<exit_state name="next" target="Element@26412923:1473556733148"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28508636:1473556590445" name="KOSPI_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="142" x="903" y="571">
+<exit_states>
+<exit_state name="done" target="Element@20917249:1473556590445"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20917249:1473556590445" name="KOSPI_LogWrite_MAIN" src="Element.Utils.EULogWrite" type="Action Element" width="177" x="886" y="644">
+<exit_states>
+<exit_state name="done" target="Element@18413897:1473557867559"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9890959:1473556703057" name="COMMON_VC0004" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="156" x="671" y="500">
+<exit_states>
+<exit_state name="done" target="Element@20751090:1473556545456"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26412923:1473556733148" name="COMMON_VC0005" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="156" x="897" y="496">
+<exit_states>
+<exit_state name="done" target="Element@28508636:1473556590445"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27725743:1473557783695" name="COMMON_VC0003" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="156" x="685" y="922">
+<exit_states>
+<exit_state name="done" target="Element@13232095:1473557783695"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13232095:1473557783695" name="Hyunjaega_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="166" x="680" y="1005">
+<exit_states>
+<exit_state name="done" target="Element@26600429:1473557783695"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26600429:1473557783695" name="Hyunjaega_LogWrite_MAIN" src="Element.Utils.EULogWrite" type="Action Element" width="201" x="662" y="1078">
+<exit_states>
+<exit_state name="done" target="Element@8550096:1473557877262"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16166159:1473557783695" name="Hyunjaega" type="Page Entry" width="110" x="708" y="833">
+<exit_states>
+<exit_state name="next" target="Element@27725743:1473557783695"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27702150:1473557850322" name="APP_TO_ICM" type="Page Entry" width="126" x="1140" y="1046">
+<exit_states>
+<exit_state name="next" target="Element@4743117:1485944899806"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18413897:1473557867559" name="APP_TO_ICM" type="Page Connector" width="128" x="795" y="756">
+<page_connector target="Element@27702150:1473557850322">APP_TO_ICM<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@8550096:1473557877262" name="APP_TO_ICM" type="Page Connector" width="126" x="700" y="1164">
+<page_connector target="Element@27702150:1473557850322">APP_TO_ICM<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@30679499:1473557882316" name="APP_TO_ICM" type="Page Connector" width="128" x="845" y="285">
+<page_connector target="Element@27702150:1473557850322">APP_TO_ICM<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@2662766:1473557897963" name="APP_TO_ICM" type="Page Connector" width="126" x="219" y="1793">
+<page_connector target="Element@27702150:1473557850322">APP_TO_ICM<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@2765888:1473557904546" name="APP_TO_ICM" type="Page Connector" width="128" x="259" y="361">
+<page_connector target="Element@27702150:1473557850322">APP_TO_ICM<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@1398235:1473587109016" name="SERVER_FAQIL" type="Page Entry" width="138" x="391" y="461">
+<exit_states>
+<exit_state name="next" target="Element@9533481:1473587117627"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9533481:1473587117627" name="COMMON_VC0013" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="207" x="358" y="566">
+<exit_states>
+<exit_state name="done" target="Element@18794305:1473587168841"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18794305:1473587168841" name="MAIN_MENU" type="Page Connector" width="187" x="391" y="647">
+<page_connector target="Element@14094523:1469586276862">MAIN_MENU<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@20577830:1473728649695" name="MAIN_MENU" type="Page Connector" width="187" x="-79" y="717">
+<page_connector target="Element@14094523:1469586276862">MAIN_MENU<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@22557022:1473728649695" name="ASR_MAIN_ERR_END" type="Page Entry" width="172" x="-2" y="488">
+<exit_states>
+<exit_state name="next" target="Element@17901446:1473728649695"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17901446:1473728649695" name="COMMON_Audio_VC0002" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="196" x="-14" y="575">
+<exit_states>
+<exit_state name="done" target="Element@20577830:1473728649695"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6316384:1473728954857" name="AGENT" type="Page Connector" width="92" x="58" y="904">
+<page_connector target="Element@14889746:1469586276862">AGENT<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@31082683:1473728998019" name="1Level_1_ERR_END" type="Page Entry" width="159" x="191" y="489">
+<exit_states>
+<exit_state name="next" target="Element@17901446:1473728649695"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9032240:1473729007629" name="3Level_1_ERR_END" type="Page Entry" width="159" x="25" y="817">
+<exit_states>
+<exit_state name="next" target="Element@6316384:1473728954857"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23715699:1473729634192" name="SERVER_FAIL" type="Page Entry" width="151" x="302" y="856">
+<exit_states>
+<exit_state name="next" target="Element@12796844:1476322249134"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19405518:1473729660337" name="MAIN_MENU" type="Page Connector" width="187" x="284" y="1053">
+<page_connector target="Element@14094523:1469586276862">MAIN_MENU<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@10050651:1473740234723" name="ASR_MAIN_MOVE_ERR_END" type="Page Entry" width="224" x="-17" y="1054">
+<exit_states>
+<exit_state name="next" target="Element@13163630:1473740246875"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16773517:1473740246875" name="MAIN_MENU" type="Page Connector" width="187" x="2" y="1226">
+<page_connector target="Element@14094523:1469586276862">MAIN_MENU<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@13163630:1473740246875" name="COMMON_Audio_VC0007" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="193" x="-1" y="1147">
+<exit_states>
+<exit_state name="done" target="Element@16773517:1473740246875"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2900695:1474244380625" name="1Level_2_ERR_END" type="Page Entry" width="159" x="252" y="698">
+<exit_states>
+<exit_state name="next" target="Element@17901446:1473728649695"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14859857:1474244393948" name="3Level_2_ERR_END" type="Page Entry" width="159" x="186" y="758">
+<exit_states>
+<exit_state name="next" target="Element@17901446:1473728649695"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12796844:1476322249134" name="COMMON_Audio_VC0007_2" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="245" x="255" y="945">
+<exit_states>
+<exit_state name="done" target="Element@19405518:1473729660337"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25406590:1481283945705" name="SubdialogReturn" type="Subflow Call" width="142" x="975" y="1210">
+<subflow_call subflow_name="SubdialogReturn" target="Element@31:1481283947077">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@4264609:1481602597348"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4264609:1481602597348" name="ICM_Return" src="com.audium.server.voiceElement.internal.CiscoSubdialogReturnElement" type="Subdialog Return" width="117" x="988" y="1335">
+<exit_states>
+<exit_state name="done"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4743117:1485944899806" name="Decision_01" type="Decision" width="117" x="1160" y="1170">
+<exit_states>
+<exit_state name="메뉴이동" target="Element@23944313:1485945001075"/>
+<exit_state name="other" target="Element@25406590:1481283945705"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23944313:1485945001075" name="EUSendFTP_01" src="Element.Utils.EUSendFTP" type="Action Element" width="136" x="978" y="1083">
+<exit_states>
+<exit_state name="done" target="Element@25406590:1481283945705"/>
+</exit_states>
+</element>
+</page>

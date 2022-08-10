@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@16117565:1474880461053" name="ASR_MAIN_MOVE_Decision_FileSize" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="ASR_MAIN_Decision_FileSize" default_exit_state="정상">
+        <exit_state name="초과" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <session name="m_iSRsnrv" />
+                </data>
+                <data>
+                    <session name="iSRsnrMax" />
+                </data>
+            </number>
+        </exit_state>
+        <exit_state name="작음" conjugate="and">
+            <number operator="less">
+                <data>
+                    <session name="m_iSRsnrv" />
+                </data>
+                <data>
+                    <session name="iSRsnrMin" />
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

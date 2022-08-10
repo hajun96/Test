@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@4182184:1474522486726" name="MDC000_Decision_01" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="MDC000_Decision_01" default_exit_state="MAXERROR">
+        <exit_state name="1 : 주식상담 및 주문상담" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="1" />
+            </string>
+        </exit_state>
+        <exit_state name="2 : 금융상품상담" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="2" />
+            </string>
+        </exit_state>
+        <exit_state name="3 : 계좌개설상담" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="3" />
+            </string>
+        </exit_state>
+        <exit_state name="* : 다시듣기" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="*" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

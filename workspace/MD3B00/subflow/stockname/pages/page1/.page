@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@28447103:1475307633642" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1475307633642" name="stockname" type="Subflow Start" width="108" x="230" y="30">
+<exit_states>
+<exit_state name="next" target="Element@23604674:1475307646650"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14902956:1475307646650" name="stockname_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="178" x="208" y="248">
+<exit_states>
+<exit_state name="success" target="Element@22499512:1475307646650"/>
+<exit_state name="fail" target="Element@24855825:1475307646650">
+<bendpoint>
+<dim1 x="-280" y="1"/>
+<dim2 x="-2" y="-174"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@9710243:1475307646650" name="stockname_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="228" y="179">
+<exit_states>
+<exit_state name="done" target="Element@14902956:1475307646650"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32732778:1475307646650" name="stockname_EULogWrite" src="Element.Utils.EULogWrite" type="Action Element" width="175" x="209" y="423">
+<exit_states>
+<exit_state name="done" target="Element@24855825:1475307646650"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23604674:1475307646650" name="stockname_EULogWrite_Query" src="Element.Utils.EULogWrite" type="Action Element" width="212" x="192" y="107">
+<exit_states>
+<exit_state name="done" target="Element@9710243:1475307646650"/>
+</exit_states>
+</element>
+<element height="15" id="Element@23703261:1475307646650" type="Comment" width="48" x="189" y="22">
+<comment><![CDATA[종목이름]]></comment>
+</element>
+<element height="46" id="Element@22499512:1475307646650" name="stockname_EUMultiOutputBlock" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="222" x="186" y="338">
+<exit_states>
+<exit_state name="done" target="Element@32732778:1475307646650"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24855825:1475307646650" name="stockname_Subflow Return" type="Subflow Return" width="196" x="-79" y="423"/>
+</page>

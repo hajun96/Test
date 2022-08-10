@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@28737716:1477359765585" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1477359765585" name="ttsSub_ExpectAmt1" type="Subflow Start" width="154" x="254" y="30">
+<exit_states>
+<exit_state name="next" target="Element@7364017:1477359774227"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7364017:1477359774227" name="210000_TTS_210000_6" type="Action" width="175" x="243" y="136">
+<exit_states>
+<exit_state name="done" target="Element@8097860:1477359774227"/>
+</exit_states>
+</element>
+<element height="15" id="Element@18645382:1477359774227" type="Comment" width="161" x="430" y="56">
+<comment><![CDATA[예상 체결가 TTS 안내 subflow]]></comment>
+</element>
+<element height="46" id="Element@12738497:1477359774227" name="Subflow Return_01" type="Subflow Return" width="153" x="254" y="514"/>
+<element height="46" id="Element@3967395:1477359774227" name="ExpectAmt_EATTSMaker_20" src="Element.Audio.EATTSMaker" type="Decision Element" width="210" x="226" y="326">
+<exit_states>
+<exit_state name="success" target="Element@29480423:1477359774227"/>
+<exit_state name="fail" target="Element@29480423:1477359774227"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8097860:1477359774227" name="210000_HOLD_TTS_210000_6" type="Subflow Call" width="213" x="224" y="224">
+<subflow_call subflow_name="HOLD" target="Element@31:1471582135859">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@3967395:1477359774227"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29480423:1477359774227" name="ExpectAmt_ment_20" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="163" x="249" y="418">
+<exit_states>
+<exit_state name="done" target="Element@12738497:1477359774227"/>
+</exit_states>
+</element>
+</page>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@2159691:1476064815986" name="CSINFO" version="6.0.1">
+<element height="46" id="Element@815659:1476064827390" name="CSINFO" type="Page Entry" width="95" x="463" y="-493">
+<exit_states>
+<exit_state name="next" target="Element@3215163:1477294995274"/>
+</exit_states>
+</element>
+<element height="195" id="Element@3368088:1476088851221" type="Comment" width="271" x="687" y="-542">
+<comment><![CDATA[상담원 연결시 제일 처음 작업은 
+[고객정보조회]
+SELECT FN_GRADE_FOR_IVR ('m_strAccountNum')
+AS G 
+FROM DUAL
+로 고객정보를 가져와 vip 여부를 판단 하는것이다.
+
+두번째는 주의/블랙/문제행동소비자 판단 
+
+세번째는 직전상담원 여부를 체크 하고 
+직전상담원을 사용한다면 
+한시간 이내인지 체크 하고 
+한시간 이내라면 직전상담원 로직 태우기]]></comment>
+</element>
+<element height="46" id="Element@13517771:1476088949617" name="AGENT" type="Page Connector" width="92" x="661" y="1285">
+<page_connector target="Element@15083913:1476262092834">AGENT<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@12700557:1476321587538" name="AGENT_m_strMenuChoice_Check" type="Decision" width="243" x="386" y="486">
+<exit_states>
+<exit_state name="other" target="Element@16911041:1480493354424"/>
+<exit_state name="1 : 단순주문" target="Element@30136399:1476321619906">
+<bendpoint>
+<dim1 x="-243" y="154"/>
+<dim2 x="-43" y="-174"/>
+</bendpoint>
+</exit_state>
+<exit_state name="2 : 일반업무 및 기타문의" target="Element@10547248:1476321666501">
+<bendpoint>
+<dim1 x="-118" y="200"/>
+<dim2 x="-55" y="-128"/>
+</bendpoint>
+</exit_state>
+<exit_state name="3 : Qway 및 사이버매체" target="Element@26146825:1476321794932">
+<bendpoint>
+<dim1 x="50" y="160"/>
+<dim2 x="-56" y="-168"/>
+</bendpoint>
+</exit_state>
+<exit_state name="4 : 계좌가없는고객" target="Element@16911041:1480493354424">
+<bendpoint>
+<dim1 x="269" y="179"/>
+<dim2 x="20" y="-149"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@30136399:1476321619906" name="AGENT_A" src="Element.Utils.EUSetSessionValue" type="Action Element" width="106" x="244" y="703">
+<exit_states>
+<exit_state name="done" target="Element@720949:1479873547341"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10547248:1476321666501" name="AGENT_B" src="Element.Utils.EUSetSessionValue" type="Action Element" width="106" x="382" y="703">
+<exit_states>
+<exit_state name="done" target="Element@720949:1479873547341"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26146825:1476321794932" name="AGENT_C" src="Element.Utils.EUSetSessionValue" type="Action Element" width="107" x="550" y="703">
+<exit_states>
+<exit_state name="done" target="Element@720949:1479873547341"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29354699:1477118035928" name="Before_Agent_YN_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="223" x="404" y="139">
+<exit_states>
+<exit_state name="success" target="Element@11495270:1477118087342"/>
+<exit_state name="fail" target="Element@28641838:1477118087342"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28641838:1477118087342" name="Before_Agent_m_iSqlSelectCnt_0" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="234" x="251" y="236">
+<exit_states>
+<exit_state name="done" target="Element@12700557:1476321587538"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11495270:1477118087342" name="Before_Agent_YN_EUMultiOutputBlock" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="263" x="505" y="236">
+<exit_states>
+<exit_state name="done" target="Element@33535053:1477119298226"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33535053:1477119298226" name="AGENT_m_strBeforeAgent_Check" type="Decision" width="239" x="521" y="321">
+<exit_states>
+<exit_state name="other" target="Element@12700557:1476321587538"/>
+<exit_state name="Y : 직전상담원사용" target="Element@25224891:1477276295856"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28949339:1477120224552" name="AGENT_CV4" src="Element.Utils.EUSetSessionValue" type="Action Element" width="121" x="1031" y="870">
+<exit_states>
+<exit_state name="done" target="Element@720949:1479873547341"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29892668:1477275062637" name="Before_Agent_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="200" x="994" y="307">
+<exit_states>
+<exit_state name="success" target="Element@26181612:1477281802652"/>
+<exit_state name="fail" target="Element@12700557:1476321587538">
+<bendpoint>
+<dim1 x="-107" y="-148"/>
+<dim2 x="342" y="62"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@25224891:1477276295856" name="Before_Agent_yyyyMMdd" src="Element.Utils.EUGetDateTime" type="Action Element" width="194" x="997" y="75">
+<exit_states>
+<exit_state name="done" target="Element@18517466:1477276322671"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18517466:1477276322671" name="Before_Agent_m_strYMD" src="Element.Utils.EUSetSessionValue" type="Action Element" width="188" x="999" y="148">
+<exit_states>
+<exit_state name="done" target="Element@6201040:1477281603346"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13265872:1477281574698" name="Before_Agent_YN_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="178" x="423" y="66">
+<exit_states>
+<exit_state name="done" target="Element@29354699:1477118035928"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6201040:1477281603346" name="Before_Agent_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="155" x="1014" y="231">
+<exit_states>
+<exit_state name="done" target="Element@29892668:1477275062637"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26181612:1477281802652" name="Before_Agent_EUMultiOutputBlock_CNT" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="272" x="958" y="382">
+<exit_states>
+<exit_state name="done" target="Element@33020303:1477282961695"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33020303:1477282961695" name="Before_Agent_m_iSqlSelectCnt_Check" type="Decision" width="264" x="964" y="455">
+<exit_states>
+<exit_state name="other" target="Element@12700557:1476321587538">
+<bendpoint>
+<dim1 x="-140" y="-169"/>
+<dim2 x="309" y="46"/>
+</bendpoint>
+</exit_state>
+<exit_state name="상담원연결내역존재" target="Element@23748969:1477292909683"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23748969:1477292909683" name="Before_Agent_m_strCompareTime" type="Action" width="242" x="974" y="604">
+<exit_states>
+<exit_state name="done" target="Element@32242471:1480555872635"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17093852:1477293572850" name="Before_Agent_Log" src="Element.Utils.EULogWrite" type="Action Element" width="151" x="1016" y="775">
+<exit_states>
+<exit_state name="done" target="Element@28949339:1477120224552"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3215163:1477294995274" name="Black_Customer_YN_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="196" x="416" y="-406">
+<exit_states>
+<exit_state name="done" target="Element@14617449:1477294995274"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14617449:1477294995274" name="Black_Customer_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="218" x="407" y="-333">
+<exit_states>
+<exit_state name="success" target="Element@22539176:1477295698638"/>
+<exit_state name="fail" target="Element@13265872:1477281574698">
+<bendpoint>
+<dim1 x="202" y="0"/>
+<dim2 x="206" y="-399"/>
+</bendpoint>
+<bendpoint>
+<dim1 x="202" y="399"/>
+<dim2 x="206" y="0"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@22539176:1477295698638" name="Black_Customer_EUMultiOutputBlock" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="258" x="385" y="-259">
+<exit_states>
+<exit_state name="done" target="Element@28490166:1477295777172"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28490166:1477295777172" name="Black_Customer_Log" src="Element.Utils.EULogWrite" type="Action Element" width="169" x="429" y="-185">
+<exit_states>
+<exit_state name="done" target="Element@5593517:1477296603720"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5593517:1477296603720" name="Black_Customer_m_iSqlSelectCnt_Check" type="Decision" width="282" x="376" y="-112">
+<exit_states>
+<exit_state name="other" target="Element@13265872:1477281574698"/>
+<exit_state name="진상" target="Element@308042:1477296842866"/>
+</exit_states>
+</element>
+<element height="46" id="Element@308042:1477296842866" name="Black_Customer_m_strCustTp_Check" type="Decision" width="262" x="20" y="-112">
+<exit_states>
+<exit_state name="other" target="Element@13265872:1477281574698"/>
+<exit_state name="01 : 문제행동소비자" target="Element@21945102:1477297185636">
+<bendpoint>
+<dim1 x="-113" y="53"/>
+<dim2 x="-112" y="-31"/>
+</bendpoint>
+</exit_state>
+<exit_state name="02 : 주의고객" target="Element@21945102:1477297185636">
+<bendpoint>
+<dim1 x="6" y="54"/>
+<dim2 x="7" y="-30"/>
+</bendpoint>
+</exit_state>
+<exit_state name="03 : 블랙고객" target="Element@25104786:1477297062563"/>
+</exit_states>
+</element>
+<element height="45" id="Element@20760640:1477297062563" type="Comment" width="270" x="-176" y="-159">
+<comment><![CDATA[[A00022] : 
+죄송합니다. 현재 모든 상담직원이 통화중 입니다. 
+잠시후에 다시 이용하여 주세요.]]></comment>
+</element>
+<element height="46" id="Element@25104786:1477297062563" name="A00000_A00022" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="141" x="-178" y="-112">
+<exit_states>
+<exit_state name="done" target="Element@21534669:1477297148735"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21534669:1477297148735" name="END" type="Page Connector" width="75" x="-145" y="-28">
+<page_connector target="Element@27150027:1472686711459">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@21945102:1477297185636" name="AGENT_I" src="Element.Utils.EUSetSessionValue" type="Action Element" width="101" x="94" y="-28">
+<exit_states>
+<exit_state name="done" target="Element@5949615:1477297225129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5949615:1477297225129" name="AGENT" type="Page Connector" width="92" x="98" y="45">
+<page_connector target="Element@15083913:1476262092834">AGENT<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@12145976:1479873447596" name="A00000_Decision_09" type="Decision" width="163" x="445" y="1025">
+<exit_states>
+<exit_state name="계좌번호존재" target="Element@15155900:1479873714117"/>
+<exit_state name="계좌없음" target="Element@29909335:1480137439152"/>
+</exit_states>
+</element>
+<element height="46" id="Element@720949:1479873547341" name="A00000_EUStringLength_09" src="Element.Strings.EUStringLength" type="Action Element" width="200" x="429" y="914">
+<exit_states>
+<exit_state name="done" target="Element@12145976:1479873447596"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17829780:1479873674042" name="A00000_EUSocketInput_09" src="Element.Utils.EUSocketInput" type="Action Element" width="195" x="167" y="1119">
+<exit_states>
+<exit_state name="done" target="Element@5239317:1479873886166"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15155900:1479873714117" name="EUStringSubString_01" src="Element.Strings.EUStringSubString" type="Action Element" width="170" x="182" y="1025">
+<exit_states>
+<exit_state name="done" target="Element@17829780:1479873674042"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5239317:1479873886166" name="VIP_Agent_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="138" x="193" y="1204">
+<exit_states>
+<exit_state name="done" target="Element@25450602:1479873926944"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25450602:1479873926944" name="VIPCheck_ENStockSocket_01" src="Element.Network.ENStockSocket" type="Decision Element" width="215" x="152" y="1284">
+<exit_states>
+<exit_state name="success" target="Element@23481573:1479873952309"/>
+<exit_state name="fail" target="Element@29909335:1480137439152"/>
+<exit_state name="errcode" target="Element@29909335:1480137439152"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23481573:1479873952309" name="A00000_EUSocketOutput_09" src="Element.Utils.EUSocketOutput" type="Action Element" width="205" x="157" y="1380">
+<exit_states>
+<exit_state name="done" target="Element@9349288:1482723059695"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29909335:1480137439152" name="SetCV3_CLASS" type="Action" width="137" x="458" y="1282">
+<exit_states>
+<exit_state name="done" target="Element@13517771:1476088949617"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16911041:1480493354424" name="AGENT_H" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="106" x="706" y="705">
+<exit_states>
+<exit_state name="done" target="Element@720949:1479873547341"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32242471:1480555872635" name="Check_Before_Agent" type="Decision" width="166" x="1016" y="685">
+<exit_states>
+<exit_state name="직전상담원연결" target="Element@17093852:1477293572850"/>
+<exit_state name="OTHER" target="Element@12700557:1476321587538"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5059391:1482722946909" name="ENOracleDB_01" src="Element.DataBase.ENOracleDB" type="Decision Element" width="138" x="190" y="1551">
+<exit_states>
+<exit_state name="success" target="Element@77939:1482723091938"/>
+<exit_state name="fail" target="Element@77939:1482723091938"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9349288:1482723059695" name="VIP_Agent_Hold_01" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="156" x="181" y="1466">
+<exit_states>
+<exit_state name="done" target="Element@5059391:1482722946909"/>
+</exit_states>
+</element>
+<element height="46" id="Element@77939:1482723091938" name="EUMultiOutputBlock_01" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="172" y="1641">
+<exit_states>
+<exit_state name="done" target="Element@29909335:1480137439152"/>
+</exit_states>
+</element>
+</page>

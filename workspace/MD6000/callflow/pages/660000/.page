@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@15863154:1470298685177" name="660000" version="6.0.1">
+<element height="46" id="Element@22071889:1470298685177" name="660000" type="Page Entry" width="92" x="295" y="-838">
+<exit_states>
+<exit_state name="next" target="Element@21503222:1470737749635"/>
+</exit_states>
+</element>
+<element height="165" id="Element@11794833:1470737692609" type="Comment" width="147" x="48" y="-779">
+<comment><![CDATA[[시나리오정보]
+작성자 : 정혜진
+작성일 : 2016년 11월 09일
+
+
+메뉴명 : 당월 청약자격조회
+서비스코드 : 660000
+
+
+
+[세션변수 사용내역]]]></comment>
+</element>
+<element height="46" id="Element@12065970:1470737749635" name="616000_616001" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="700" y="-608">
+<exit_states>
+<exit_state name="done" target="Element@10478117:1470737749635"/>
+</exit_states>
+</element>
+<element height="15" id="Element@11798336:1470737749635" type="Comment" width="161" x="716" y="-633">
+<comment><![CDATA[[616001] : 발신번호 금지번호]]></comment>
+</element>
+<element height="46" id="Element@10478117:1470737749635" name="MAIN" type="Page Connector" width="81" x="893" y="-608">
+<page_connector target="Element@16991888:1470307251903">MAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@21503222:1470737749635" name="660000_ServiceCode" src="Element.Utils.EUSetSvcCode" type="Action Element" width="164" x="260" y="-720">
+<exit_states>
+<exit_state name="done" target="Element@24904881:1475727841377"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12972816:1470737891227" name="616000_616002" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="272" y="-378">
+<exit_states>
+<exit_state name="done" target="Element@27651891:1473407084748"/>
+</exit_states>
+</element>
+<element height="30" id="Element@10593966:1470737891227" type="Comment" width="137" x="66" y="-352">
+<comment><![CDATA[[616002] : 당월 청약자격
+조회 서비스 입니다.]]></comment>
+</element>
+<element height="15" id="Element@25695693:1470737996457" type="Comment" width="48" x="-149" y="-305">
+<comment><![CDATA[계좌인증]]></comment>
+</element>
+<element height="15" id="Element@11967354:1470738185973" type="Comment" width="205" x="15" y="-282">
+<comment><![CDATA[[616003] : 당월 청약 자격조회를 위해]]></comment>
+</element>
+<element height="46" id="Element@10056777:1470738185973" name="616000_616003" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="512" y="-234">
+<exit_states>
+<exit_state name="done" target="Element@16464022:1473407084748"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8273326:1470738311108" name="616000_616004" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="471" y="-71">
+<exit_states>
+<exit_state name="done" target="Element@32863247:1470738434773"/>
+</exit_states>
+</element>
+<element height="75" id="Element@24947542:1470738347301" type="Comment" width="249" x="488" y="26">
+<comment><![CDATA[[616004] : 해당 계좌의 거래가 불가능하오니  
+신분증, 증권 카드, 
+등록인감을 지참하시고 
+가까운 영업점에 
+내방하시면 됩니다]]></comment>
+</element>
+<element height="45" id="Element@6126894:1470738434773" type="Comment" width="160" x="950" y="59">
+<comment><![CDATA[[616005] 상담원 연결은 0번, 
+상위메뉴로 가시려면 
+우물정자(#)를 눌러 주십시오.]]></comment>
+</element>
+<element height="46" id="Element@32863247:1470738434773" name="616000_616005_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="233" x="725" y="-71">
+<exit_states>
+<exit_state name="done" target="Element@29720634:1470738434773"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29720634:1470738434773" name="616000_616005" type="Subflow Call" width="139" x="772" y="50">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT6/616005.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">0*#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">0</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@23426370:1470738434773"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23426370:1470738434773" name="616000_Decision_616005" type="Decision" width="190" x="746" y="164">
+<exit_states>
+<exit_state name="false : MAXError" target="Element@16103457:1470738557045"/>
+<exit_state name="# : 상위메뉴" target="Element@3433669:1470738551273"/>
+<exit_state name="0 : 상담원연결" target="Element@33191031:1470738555454"/>
+<exit_state name="other" target="Element@4929257:1474878488593"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3433669:1470738551273" name="HIGH" type="Page Connector" width="79" x="802" y="268">
+<page_connector target="Element@31902372:1470307251903">HIGH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@33191031:1470738555454" name="AGENT" type="Page Connector" width="92" x="989" y="268">
+<page_connector target="Element@20192874:1470307251903">AGENT<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@16103457:1470738557045" name="MAIN" type="Page Connector" width="81" x="1156" y="268">
+<page_connector target="Element@16991888:1470307251903">MAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@29801962:1470738789442" name="616000_EUSocketOutput_R31OI35" src="Element.Utils.EUSocketOutput" type="Action Element" width="237" x="223" y="576">
+<exit_states>
+<exit_state name="done" target="Element@8651923:1470739150099"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29167854:1470738789442" name="616000_yyyyMM" src="Element.Utils.EUGetDateTime" type="Action Element" width="143" x="272" y="-78">
+<exit_states>
+<exit_state name="done" target="Element@27428732:1470738789442"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13555380:1470738789442" name="616000_Hold_R31OI35" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="175" x="254" y="385">
+<exit_states>
+<exit_state name="done" target="Element@24244735:1470738789442"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23915273:1470738789442" name="616000_m_iRepeat" src="Element.Utils.EUSetSessionValue" type="Action Element" width="152" x="268" y="155">
+<exit_states>
+<exit_state name="done" target="Element@29023283:1470738789442"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24244735:1470738789442" name="616000_ENStockSocket_R31OI35" src="Element.Network.ENStockSocket" type="Decision Element" width="230" x="226" y="486">
+<exit_states>
+<exit_state name="success" target="Element@29801962:1470738789442"/>
+<exit_state name="fail" target="Element@8486824:1471496471660"/>
+<exit_state name="errcode" target="Element@8486824:1471496471660"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29023283:1470738789442" name="616000_EUSocketInput_R31OI35" src="Element.Utils.EUSocketInput" type="Action Element" width="227" x="230" y="291">
+<exit_states>
+<exit_state name="done" target="Element@13555380:1470738789442"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27428732:1470738789442" name="616000_m_strSubNowTime" src="Element.Utils.EUSetSessionValue" type="Action Element" width="200" x="245" y="46">
+<exit_states>
+<exit_state name="done" target="Element@23915273:1470738789442"/>
+</exit_states>
+</element>
+<element height="270" id="Element@1105461:1470738851977" type="Comment" width="336" x="-179" y="-72">
+<comment><![CDATA[청약가능종목(조회)  TR
+R31OI35
+[INPUT]
+m_strSubNowTime
+zzzzzzzzzzzzz
+
+
+[OUTPUT]
+m_strSaveKey
+
+
+m_strSubsTurn / SubsTrun	청약회차
+m_strSubItemNm /ItemNm	종목명
+
+m_strSubsStrDate / SubsStrDate	청약시작일자
+m_strSubsEndDate / SubsEndDate	청약종료일자
+m_strSubsRpmtDate / RpmtDate	환불일자
+m_strTdaySubsEnblYn / TdaySubsEnblYn	당일청약가능여부]]></comment>
+</element>
+<element height="46" id="Element@8651923:1470739150099" name="616000_m_iCnt" src="Element.Utils.EUSetSessionValue" type="Action Element" width="135" x="274" y="646">
+<exit_states>
+<exit_state name="done" target="Element@28843440:1470739177521"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28843440:1470739177521" name="616000_m_iRepeat_1" src="Element.Utils.EUSetSessionValue" type="Action Element" width="164" x="259" y="709">
+<exit_states>
+<exit_state name="done" target="Element@22928231:1473416485898"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24986437:1470739282281" name="616000_EUSocketOutput_R31OI35_1" src="Element.Utils.EUSocketOutput" type="Action Element" width="249" x="608" y="911">
+<exit_states>
+<exit_state name="done" target="Element@29182656:1470740879279"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30872682:1470739282281" name="616000_R31OI35_A_CNT_Check" type="Decision" width="224" x="229" y="911">
+<exit_states>
+<exit_state name="존재" target="Element@24986437:1470739282281"/>
+<exit_state name="other" target="Element@5904085:1473416597080"/>
+</exit_states>
+</element>
+<element height="15" id="Element@12947468:1470739282281" type="Comment" width="96" x="167" y="1227">
+<comment><![CDATA[청약종목존재여부]]></comment>
+</element>
+<element height="46" id="Element@13345080:1470739282281" name="616000_RE_A_CNT_Check" type="Page Entry" width="196" x="-120" y="911">
+<exit_states>
+<exit_state name="next" target="Element@30872682:1470739282281"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29182656:1470740879279" name="616000_m_strTdaySubsEnblyn" type="Decision" width="223" x="621" y="1007">
+<exit_states>
+<exit_state name="other" target="Element@25115383:1470741020304"/>
+<exit_state name="청약가능" target="Element@25892183:1470741020304"/>
+</exit_states>
+</element>
+<element height="15" id="Element@27630224:1470740976395" type="Comment" width="76" x="1273" y="809">
+<comment><![CDATA[청약가능 비교]]></comment>
+</element>
+<element height="46" id="Element@24755549:1470741020304" name="616000_m_iRepeat_Increment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="213" x="922" y="1169">
+<exit_states>
+<exit_state name="done" target="Element@25115383:1470741020304"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29405341:1470741020304" name="616000_m_iCnt_Increment" src="Element.Utils.EUSetSessionValue" type="Action Element" width="194" x="1215" y="1126">
+<exit_states>
+<exit_state name="done" target="Element@6586114:1473495915319"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25115383:1470741020304" name="616000_m_iCnt_PlusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="185" x="1220" y="1007">
+<exit_states>
+<exit_state name="done" target="Element@29405341:1470741020304"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25892183:1470741020304" name="616000_m_iRepeat_PlusOne" src="Element.Utils.EUIntegerManager" type="Action Element" width="205" x="632" y="1170">
+<exit_states>
+<exit_state name="done" target="Element@24755549:1470741020304"/>
+</exit_states>
+</element>
+<element height="15" id="Element@26893789:1470741318155" type="Comment" width="72" x="177" y="899">
+<comment><![CDATA[내역존재여부]]></comment>
+</element>
+<element height="46" id="Element@29359831:1470742681748" name="616000_SubsGroup" type="Page Connector" width="156" x="262" y="1143">
+<page_connector target="Element@5942136:1470742686506">616000_SubsGroup<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@5942136:1470742686506" name="616000_SubsGroup" type="Page Entry" width="156" x="1056" y="3017">
+<exit_states>
+<exit_state name="next" target="Element@15480726:1470742970412"/>
+</exit_states>
+</element>
+<element height="15" id="Element@7495979:1470742767872" type="Comment" width="93" x="1105" y="2988">
+<comment><![CDATA[청약 그룹조회 TR]]></comment>
+</element>
+<element height="46" id="Element@4696560:1470742970412" name="MAIN" type="Page Connector" width="86" x="1687" y="4059">
+<page_connector target="Element@16991888:1470307251903">MAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@1438943:1470742970412" name="616000_EUSocketInput_R31OI40" src="Element.Utils.EUSocketInput" type="Action Element" width="227" x="1022" y="3620">
+<exit_states>
+<exit_state name="done" target="Element@13231974:1470742970412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17703296:1470742970412" name="616000_EUSocketOutput_R31OI40_1" src="Element.Utils.EUSocketOutput" type="Action Element" width="249" x="1010" y="4152">
+<exit_states>
+<exit_state name="done" target="Element@16310972:1470742970412"/>
+</exit_states>
+</element>
+<element height="15" id="Element@2452985:1470742970412" type="Comment" width="24" x="486" y="3975">
+<comment><![CDATA[실패]]></comment>
+</element>
+<element height="15" id="Element@24742222:1470742970412" type="Comment" width="136" x="324" y="4049">
+<comment><![CDATA[SubsGrpCd 청약그룹코드]]></comment>
+</element>
+<element height="46" id="Element@1727987:1470742970412" name="616000_R31OI40_A_CNT_Check" type="Decision" width="224" x="1023" y="4059">
+<exit_states>
+<exit_state name="존재" target="Element@17703296:1470742970412"/>
+<exit_state name="other" target="Element@12155082:1470742970412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12155082:1470742970412" name="616000_616007" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="1365" y="4059">
+<exit_states>
+<exit_state name="done" target="Element@4696560:1470742970412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15480726:1470742970412" name="616000_yyyyMM_1" src="Element.Utils.EUGetDateTime" type="Action Element" width="155" x="1056" y="3132">
+<exit_states>
+<exit_state name="done" target="Element@23029667:1470742970412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2060736:1470742970412" name="616000_Hold_R31OI36" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="175" x="1047" y="4396">
+<exit_states>
+<exit_state name="done" target="Element@22874290:1470742970412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33373471:1470742970412" name="616000_EUSocketOutput_R31OI40" src="Element.Utils.EUSocketOutput" type="Action Element" width="237" x="1016" y="3967">
+<exit_states>
+<exit_state name="done" target="Element@1727987:1470742970412"/>
+</exit_states>
+</element>
+<element height="30" id="Element@3652172:1470742970412" type="Comment" width="107" x="1363" y="4019">
+<comment><![CDATA[[616007]
+지연 처리중 입니다.]]></comment>
+</element>
+<element height="46" id="Element@4506123:1470742970412" name="616000_EUSocketInput_R31OI36" src="Element.Utils.EUSocketInput" type="Action Element" width="227" x="1021" y="4299">
+<exit_states>
+<exit_state name="done" target="Element@2060736:1470742970412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13231974:1470742970412" name="616000_Hold_R31OI40" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="175" x="1047" y="3789">
+<exit_states>
+<exit_state name="done" target="Element@24573348:1470742970412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12048086:1470742970412" name="ERROR" type="Page Connector" width="91" x="1373" y="3876">
+<page_connector target="Element@11358847:1470307251903">ERROR<config/>
+</page_connector>
+</element>
+<element height="15" id="Element@19709290:1470742970412" type="Comment" width="80" x="385" y="3905">
+<comment><![CDATA[내역 존재 여부]]></comment>
+</element>
+<element height="46" id="Element@16310972:1470742970412" name="616000_m_iRepeat_4" src="Element.Utils.EUSetSessionValue" type="Action Element" width="164" x="1052" y="4232">
+<exit_states>
+<exit_state name="done" target="Element@4506123:1470742970412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6626648:1470742970412" name="616000_RE_R31OU04_A_CNT_Check" type="Page Entry" width="251" x="634" y="4059">
+<exit_states>
+<exit_state name="next" target="Element@1727987:1470742970412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23029667:1470742970412" name="616000_EUStringSubString" src="Element.Strings.EUStringSubString" type="Action Element" width="196" x="1041" y="3234">
+<exit_states>
+<exit_state name="done" target="Element@31240227:1473496308005"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24573348:1470742970412" name="616000_ENStockSocket_R31OI40" src="Element.Network.ENStockSocket" type="Decision Element" width="230" x="1019" y="3876">
+<exit_states>
+<exit_state name="success" target="Element@33373471:1470742970412"/>
+<exit_state name="fail" target="Element@12048086:1470742970412"/>
+<exit_state name="errcode" target="Element@12048086:1470742970412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17623849:1470742970412" name="ERROR" type="Page Connector" width="91" x="1479" y="4488">
+<page_connector target="Element@11358847:1470307251903">ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@22874290:1470742970412" name="616000_ENStockSocket_R31OI36" src="Element.Network.ENStockSocket" type="Decision Element" width="230" x="1019" y="4488">
+<exit_states>
+<exit_state name="success" target="Element@15080278:1470742970412"/>
+<exit_state name="fail" target="Element@17623849:1470742970412"/>
+<exit_state name="errcode" target="Element@17623849:1470742970412"/>
+</exit_states>
+</element>
+<element height="150" id="Element@11007633:1470742970412" type="Comment" width="236" x="-122" y="3472">
+<comment><![CDATA[R31OI40: 청약그룹조회
+[INPUT]
+"16", 권리구분
+ LEFT(@m_strSubNowTime,4), 청약년도
+@m_strSubsTurnIn,  청약회차
+@m_strAccountNum) 시스템계좌번호
+
+[OUTPUT]
+m_strSaveKey : SaveKey : 저장키
+m_strSubsGrpCd SubsGrpCd : 청약그룹코드]]></comment>
+</element>
+<element height="46" id="Element@15080278:1470742970412" name="616000_EUSocketOutput_R31OI36" src="Element.Utils.EUSocketOutput" type="Action Element" width="237" x="1016" y="4600">
+<exit_states>
+<exit_state name="done" target="Element@4105664:1470744111525"/>
+</exit_states>
+</element>
+<element height="180" id="Element@9241379:1470742970412" type="Comment" width="185" x="366" y="4100">
+<comment><![CDATA[R31OI36: 청약자격여부조회
+[INPUT]
+m_strSubNowTime 
+m_strSubsTurnIn
+2
+m_strAccountNum
+m_strAccPwd
+01
+
+[OUTPUT]
+m_strSubsItemNm : 종목명
+m_strSubsLcnsSect : 청약자격구분]]></comment>
+</element>
+<element height="15" id="Element@7248900:1470743788850" type="Comment" width="72" x="929" y="4227">
+<comment><![CDATA[청약자격조회]]></comment>
+</element>
+<element height="46" id="Element@33033769:1470744111525" name="616000_616010" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="939" y="5181">
+<exit_states>
+<exit_state name="done" target="Element@12904430:1474632030816"/>
+</exit_states>
+</element>
+<element height="30" id="Element@9598231:1470744111525" type="Comment" width="162" x="1703" y="5182">
+<comment><![CDATA[[616011] 청약 가능한 종목은 
+없습니다.]]></comment>
+</element>
+<element height="15" id="Element@2085345:1470744111525" type="Comment" width="76" x="1295" y="4810">
+<comment><![CDATA[청약자격 비교]]></comment>
+</element>
+<element height="46" id="Element@15984263:1470744111525" name="616000_616008" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="563" y="5181">
+<exit_states>
+<exit_state name="done" target="Element@12904430:1474632030816"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30697210:1470744111525" name="616000_616009_1" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="151" x="1139" y="5181">
+<exit_states>
+<exit_state name="done" target="Element@12904430:1474632030816"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28631416:1470744111525" name="616000_616010_1" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="151" x="1335" y="5181">
+<exit_states>
+<exit_state name="done" target="Element@12904430:1474632030816"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4105664:1470744111525" name="616000_m_strSubsLcnsSect" type="Decision" width="205" x="1040" y="4790">
+<exit_states>
+<exit_state name="0. 일반의30%(증거금100%)" target="Element@15984263:1470744111525"/>
+<exit_state name="1. 일반그룹(증거금 50%)" target="Element@10738904:1470744111525"/>
+<exit_state name="2. 우대그룹(증거금50%)" target="Element@33033769:1470744111525">
+<bendpoint>
+<dim1 x="-77" y="205"/>
+<dim2 x="54" y="-186"/>
+</bendpoint>
+</exit_state>
+<exit_state name="3. 우대25(증거금25%)" target="Element@6940251:1470744111525">
+<bendpoint>
+<dim1 x="466" y="24"/>
+<dim2 x="-29" y="-215"/>
+</bendpoint>
+</exit_state>
+<exit_state name="4. 일반그룹(증거금 100%)" target="Element@30697210:1470744111525"/>
+<exit_state name="5. 우대그룹(증거금 100%)" target="Element@28631416:1470744111525"/>
+<exit_state name="6. 우대25(증거금100%)" target="Element@6940251:1470744111525"/>
+</exit_states>
+</element>
+<element height="30" id="Element@10563386:1470744111525" type="Comment" width="155" x="1500" y="5373">
+<comment><![CDATA[[616010]
+당월 청약은 우대자격입니다.]]></comment>
+</element>
+<element height="30" id="Element@30136329:1470744111525" type="Comment" width="155" x="1094" y="5246">
+<comment><![CDATA[[616009] 
+당월 청약은 일반자격입니다.]]></comment>
+</element>
+<element height="15" id="Element@17577190:1470744111525" type="Comment" width="197" x="477" y="5129">
+<comment><![CDATA[[616008] 당월 청약은 무자격입니다.]]></comment>
+</element>
+<element height="46" id="Element@6940251:1470744111525" name="616000_616011" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="1536" y="5181">
+<exit_states>
+<exit_state name="done" target="Element@12904430:1474632030816"/>
+</exit_states>
+</element>
+<element height="30" id="Element@2329660:1470744111525" type="Comment" width="118" x="747" y="5239">
+<comment><![CDATA[[616009] 당월 청약은
+일반자격입니다.]]></comment>
+</element>
+<element height="46" id="Element@10738904:1470744111525" name="616000_616009" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="746" y="5181">
+<exit_states>
+<exit_state name="done" target="Element@12904430:1474632030816"/>
+</exit_states>
+</element>
+<element height="30" id="Element@21322271:1470744111525" type="Comment" width="122" x="940" y="5242">
+<comment><![CDATA[[616010] 당월 청약은 
+우대자격입니다.]]></comment>
+</element>
+<element height="46" id="Element@20285544:1470745278479" name="616000_616012" type="Subflow Call" width="139" x="1052" y="5583">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT6/616012.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">0*#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">0</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@26118763:1470745278479"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12776261:1470745278479" name="MAIN" type="Page Connector" width="81" x="1306" y="5830">
+<page_connector target="Element@16991888:1470307251903">MAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@28062942:1470745278479" name="AGENT" type="Page Connector" width="92" x="1078" y="5830">
+<page_connector target="Element@20192874:1470307251903">AGENT<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@20177847:1470745278479" name="HIGH" type="Page Connector" width="92" x="852" y="5830">
+<page_connector target="Element@31902372:1470307251903">HIGH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18975510:1470745278479" name="616000_RE_R31OI35" type="Page Connector" width="162" x="1418" y="5676">
+<page_connector target="Element@20326374:1473498772030">616000_RE_R31OI35<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@20091534:1470745278479" name="616000_616012_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="233" x="1005" y="5495">
+<exit_states>
+<exit_state name="done" target="Element@20285544:1470745278479"/>
+</exit_states>
+</element>
+<element height="45" id="Element@15819125:1470745278479" type="Comment" width="195" x="1247" y="5554">
+<comment><![CDATA[[616012] 재청취는 별표, 
+상위 메뉴는 우물정자를 눌러주세요.
+상담원 연결은 0번을 눌러 주세요.]]></comment>
+</element>
+<element height="46" id="Element@26118763:1470745278479" name="616000_Decision_616012" type="Decision" width="190" x="1026" y="5676">
+<exit_states>
+<exit_state name="false : MAXError" target="Element@12776261:1470745278479"/>
+<exit_state name="# : 상위메뉴" target="Element@20177847:1470745278479"/>
+<exit_state name="0 : 상담원연결" target="Element@28062942:1470745278479"/>
+<exit_state name="* : 청약가능종목 다시듣기" target="Element@18975510:1470745278479"/>
+<exit_state name="other" target="Element@10932956:1474878527927"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19594507:1471496471660" name="ERROR" type="Page Connector" width="91" x="865" y="489">
+<page_connector target="Element@11358847:1470307251903">ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@12700115:1471496471660" name="616000_616006_1" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="151" x="601" y="576">
+<exit_states>
+<exit_state name="done" target="Element@31718448:1471496471660"/>
+</exit_states>
+</element>
+<element height="30" id="Element@11091477:1471496471660" type="Comment" width="129" x="792" y="586">
+<comment><![CDATA[[616006] : 청약 가능한 
+종목은 없습니다.]]></comment>
+</element>
+<element height="46" id="Element@8486824:1471496471660" name="616000_m_strErrCode_Check" type="Decision" width="217" x="568" y="484">
+<exit_states>
+<exit_state name="other" target="Element@19594507:1471496471660"/>
+<exit_state name="02471 : 데이터없음" target="Element@12700115:1471496471660">
+<bendpoint>
+<dim1 x="-77" y="52"/>
+<dim2 x="-77" y="-40"/>
+</bendpoint>
+</exit_state>
+<exit_state name="02907 : 데이터없음" target="Element@12700115:1471496471660"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31718448:1471496471660" name="HIGH" type="Page Connector" width="86" x="633" y="668">
+<page_connector target="Element@31902372:1470307251903">HIGH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@16464022:1473407084748" name="ACC" type="Page Connector" width="79" x="723" y="-234">
+<page_connector target="Element@13780278:1471396145666">ACC<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@27651891:1473407084748" name="616000_m_strAccreditFlag_Check" type="Decision" width="235" x="227" y="-230">
+<exit_states>
+<exit_state name="other" target="Element@10056777:1470738185973"/>
+<exit_state name="Y : 계좌인증완료" target="Element@29167854:1470738789442"/>
+<exit_state name="B : 사고계좌" target="Element@8273326:1470738311108"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17019434:1473407084748" name="616000_Acc_Auth" type="Page Entry" width="148" x="-49" y="-230">
+<exit_states>
+<exit_state name="next" target="Element@27651891:1473407084748"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11074369:1473411206844" name="616000_RE_A_CNT_Check" type="Page Connector" width="196" x="1217" y="1304">
+<page_connector target="Element@13345080:1470739282281">616000_RE_A_CNT_Check<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@22928231:1473416485898" name="616000_R31OI35_0_Check" type="Decision" width="194" x="244" y="799">
+<exit_states>
+<exit_state name="other" target="Element@30872682:1470739282281"/>
+<exit_state name="없음" target="Element@22996459:1473416568704"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22996459:1473416568704" name="616000_616006" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="-15" y="799">
+<exit_states>
+<exit_state name="done" target="Element@21539342:1473416568704"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21539342:1473416568704" name="HIGH" type="Page Connector" width="79" x="-184" y="799">
+<page_connector target="Element@31902372:1470307251903">HIGH<config/>
+</page_connector>
+</element>
+<element height="15" id="Element@26511897:1473416568704" type="Comment" width="220" x="-66" y="747">
+<comment><![CDATA[[616006] : 청약 가능한 종목은 없습니다.]]></comment>
+</element>
+<element height="46" id="Element@5904085:1473416597080" name="616000_m_strTradeCnt" src="Element.Utils.EUSetSessionValue" type="Action Element" width="175" x="253" y="1007">
+<exit_states>
+<exit_state name="done" target="Element@29359831:1470742681748"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6586114:1473495915319" name="616000_SubsTurnIn" src="Element.Utils.EUSetSessionValue" type="Action Element" width="157" x="1233" y="1222">
+<exit_states>
+<exit_state name="done" target="Element@11074369:1473411206844"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31240227:1473496308005" name="616000_m_strSubYear" src="Element.Utils.EUSetSessionValue" type="Action Element" width="189" x="1048" y="3326">
+<exit_states>
+<exit_state name="done" target="Element@1438943:1470742970412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20326374:1473498772030" name="616000_RE_R31OI35" type="Page Entry" width="162" x="-8" y="-78">
+<exit_states>
+<exit_state name="next" target="Element@29167854:1470738789442"/>
+</exit_states>
+</element>
+<element height="30" id="Element@19176725:1474632030816" type="Comment" width="169" x="1277" y="5402">
+<comment><![CDATA[[CV0001] : 음성인식 서비스는 
+우물정자와 99번을 눌러주세요.]]></comment>
+</element>
+<element height="46" id="Element@12904430:1474632030816" name="616000_CV0001" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="141" x="1051" y="5393">
+<exit_states>
+<exit_state name="done" target="Element@20091534:1470745278479"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4929257:1474878488593" name="END" type="Page Connector" width="79" x="639" y="248">
+<page_connector target="Element@16910656:1470307251903">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@10932956:1474878527927" name="END" type="Page Connector" width="81" x="1440" y="5830">
+<page_connector target="Element@16910656:1470307251903">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@17988507:1475727841377" name="616000_m_strAnyFlag_3" src="Element.Utils.EUSetSessionValue" type="Action Element" width="181" x="251" y="-529">
+<exit_states>
+<exit_state name="done" target="Element@12972816:1470737891227"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24904881:1475727841377" name="616000_CV1_Check" type="Decision" width="158" x="263" y="-608">
+<exit_states>
+<exit_state name="F : 해외전화" target="Element@21050737:1475727841377"/>
+<exit_state name="P : 공중전화or발신제한전화" target="Element@18362473:1475727841377"/>
+<exit_state name="other" target="Element@17988507:1475727841377"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18362473:1475727841377" name="616000_m_strAnyFlag_2" src="Element.Utils.EUSetSessionValue" type="Action Element" width="181" x="465" y="-529">
+<exit_states>
+<exit_state name="done" target="Element@12065970:1470737749635"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21050737:1475727841377" name="616000_m_strAnyFlag_4" src="Element.Utils.EUSetSessionValue" type="Action Element" width="181" x="465" y="-608">
+<exit_states>
+<exit_state name="done" target="Element@12065970:1470737749635"/>
+</exit_states>
+</element>
+</page>

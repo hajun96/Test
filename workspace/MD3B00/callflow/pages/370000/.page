@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@30289284:1469584775542" name="370000" version="6.0.1">
+<element height="46" id="Element@17723521:1469584775542" name="370000" type="Page Entry" width="92" x="271" y="155">
+<exit_states>
+<exit_state name="next" target="Element@31702038:1470458240622"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11303827:1470458240622" name="372000" type="Page Connector" width="92" x="272" y="1679">
+<page_connector target="Element@23872389:1469584776992">372000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@27633053:1470458240622" name="MAIN" type="Page Connector" width="92" x="-44" y="862">
+<page_connector target="Element@14094523:1469586276862">MAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@3191733:1470458240622" name="370000_Decision_370002" type="Decision" width="190" x="223" y="862">
+<exit_states>
+<exit_state name="false : MAX ERROR" target="Element@27633053:1470458240622"/>
+<exit_state name="* : 재청취" target="Element@23486825:1470458240622">
+<bendpoint>
+<dim1 x="-111" y="-52"/>
+<dim2 x="-110" y="39"/>
+</bendpoint>
+</exit_state>
+<exit_state name="# : 상위메뉴" target="Element@8733587:1470458240622"/>
+<exit_state name="0 : 상담원 연결" target="Element@18316986:1470458240622"/>
+<exit_state name="1 : 예약현금매도" target="Element@25237282:1470458240622">
+<bendpoint>
+<dim1 x="-116" y="117"/>
+<dim2 x="-120" y="-111"/>
+</bendpoint>
+</exit_state>
+<exit_state name="2 : 예약현금매수" target="Element@25237282:1470458240622"/>
+<exit_state name="3 : 예약취소주문" target="Element@25237282:1470458240622">
+<bendpoint>
+<dim1 x="119" y="118"/>
+<dim2 x="115" y="-110"/>
+</bendpoint>
+</exit_state>
+<exit_state name="4 : 예약주문내역" target="Element@1681205:1470458240622">
+<bendpoint>
+<dim1 x="224" y="80"/>
+<dim2 x="8" y="-148"/>
+</bendpoint>
+</exit_state>
+<exit_state name="5 : 처리결과조회" target="Element@1433838:1470458240622">
+<bendpoint>
+<dim1 x="351" y="7"/>
+<dim2 x="-9" y="-221"/>
+</bendpoint>
+</exit_state>
+<exit_state name="9 : 이어받기" target="Element@10686065:1474615363682"/>
+</exit_states>
+</element>
+<element height="150" id="Element@31788015:1470458240622" type="Comment" width="175" x="-8" y="640">
+<comment><![CDATA[[370002] : 예약현금매도는 1번, 
+예약현금매수는 2번, 
+예약취소주문은 3번, 
+예약주문내역은 4번, 
+처리결과조회는 5번, 
+상담직원 연결은 
+0번을 눌러주십시오.
+다시 들으시려면 별표를, 
+상위메뉴로 가시려면 
+우물정자를 눌러주십시오.]]></comment>
+</element>
+<element height="46" id="Element@387984:1470458240622" name="MAIN" type="Page Connector" width="81" x="951" y="312">
+<page_connector target="Element@14094523:1469586276862">MAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@7517281:1470458240622" name="370000_m_iSRMoveFlag" src="Element.Utils.EUSetSessionValue" type="Action Element" width="183" x="226" y="559">
+<exit_states>
+<exit_state name="done" target="Element@10507446:1470458240622"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6444393:1470458240622" name="370000_370001" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="248" y="462">
+<exit_states>
+<exit_state name="done" target="Element@7517281:1470458240622"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8579277:1470458240622" name="370000_m_strNowTime" src="Element.Utils.EUSetSessionValue" type="Action Element" width="178" x="241" y="1274">
+<exit_states>
+<exit_state name="done" target="Element@19816448:1479195087351"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1681205:1470458240622" name="374000" type="Page Connector" width="92" x="484" y="1087">
+<page_connector target="Element@2421542:1469584919981">374000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@159694:1470458240622" name="371000" type="Page Connector" width="92" x="111" y="1679">
+<page_connector target="Element@16875119:1469584776212">371000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@6934716:1470458240622" name="370000_Compare" type="Decision" width="146" x="245" y="1572">
+<exit_states>
+<exit_state name="1 : 예약현금매도" target="Element@159694:1470458240622"/>
+<exit_state name="2 : 예약현금매수" target="Element@11303827:1470458240622"/>
+<exit_state name="3 : 예약취소주문" target="Element@33180870:1470458240622"/>
+</exit_states>
+</element>
+<element height="15" id="Element@30768227:1470458240622" type="Comment" width="161" x="754" y="291">
+<comment><![CDATA[[370003] : 발신번호 금지번호]]></comment>
+</element>
+<element height="46" id="Element@1840755:1470458240622" name="370000_370003" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="755" y="312">
+<exit_states>
+<exit_state name="done" target="Element@387984:1470458240622"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18316986:1470458240622" name="AGENT" type="Page Connector" width="92" x="-44" y="923">
+<page_connector target="Element@14889746:1469586276862">AGENT<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@23486825:1470458240622" name="370000_370002" type="Subflow Call" width="139" x="248" y="748">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT3/370002.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">*#0123459</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@3191733:1470458240622"/>
+</exit_states>
+</element>
+<element height="15" id="Element@1970554:1470458240622" type="Comment" width="185" x="59" y="479">
+<comment><![CDATA[[370001] 예약주문 서비스 입니다.]]></comment>
+</element>
+<element height="15" id="Element@8520867:1470458240622" type="Comment" width="54" x="1369" y="1166">
+<comment><![CDATA[Comment]]></comment>
+</element>
+<element height="46" id="Element@33180870:1470458240622" name="373000" type="Page Connector" width="92" x="469" y="1679">
+<page_connector target="Element@21678501:1469584918811">373000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@8733587:1470458240622" name="HIGH" type="Page Connector" width="116" x="-44" y="981">
+<page_connector target="Element@22084635:1471495474144">HIGH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@5335589:1470458240622" name="370000_370004" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="-237" y="1087">
+<exit_states>
+<exit_state name="done" target="Element@17812302:1470458240622"/>
+</exit_states>
+</element>
+<element height="105" id="Element@33456694:1470458240622" type="Comment" width="134" x="-248" y="962">
+<comment><![CDATA[[370004] 지금은 서비스 
+가능 시간이 아닙니다.
+본 서비스는 
+오후 15시 40분 부터 
+다음영업일 
+오전 7시 30분 까지 
+이용 가능합니다.]]></comment>
+</element>
+<element height="46" id="Element@26475510:1470458240622" name="370000_HHmmss" src="Element.Utils.EUGetDateTime" type="Action Element" width="147" x="244" y="1187">
+<exit_states>
+<exit_state name="done" target="Element@8579277:1470458240622"/>
+</exit_states>
+</element>
+<element height="46" id="Element@888001:1470458240622" name="370000_Restart" type="Page Entry" width="133" x="-54" y="559">
+<exit_states>
+<exit_state name="next" target="Element@7517281:1470458240622"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25237282:1470458240622" name="370000_Decision_iHolidayFlag" type="Decision" width="216" x="210" y="1087">
+<exit_states>
+<exit_state name="휴무일" target="Element@5335589:1470458240622"/>
+<exit_state name="other" target="Element@26475510:1470458240622"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31702038:1470458240622" name="370000_ServiceCode" src="Element.Utils.EUSetSvcCode" type="Action Element" width="164" x="238" y="231">
+<exit_states>
+<exit_state name="done" target="Element@1958989:1475727135011"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10507446:1470458240622" name="370000_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="188" x="224" y="665">
+<exit_states>
+<exit_state name="done" target="Element@23486825:1470458240622"/>
+</exit_states>
+</element>
+<element height="180" id="Element@32280647:1470458240622" type="Comment" width="274" x="-157" y="96">
+<comment><![CDATA[[시나리오정보]
+작성자 : 정혜진
+작성일 : 2016년 7월 29일
+메뉴명 : 예약주문
+서비스코드 : 370000
+
+[세션변수 사용내역]
+m_iSRMoveFlag : 메뉴 이동 Flag 값
+m_iHolidayFlag : 휴무일 비교
+m_strNowTime : 현재시간 설정
+m_strNowTime < m_strSelectStartTime8 : 오전시간
+m_strNowTime < m_strSelectEndTime8 : 오후시간]]></comment>
+</element>
+<element height="46" id="Element@17812302:1470458240622" name="370000_Restart" type="Page Connector" width="133" x="-234" y="1187">
+<page_connector target="Element@888001:1470458240622">370000_Restart<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@1433838:1470458240622" name="375000" type="Page Connector" width="92" x="628" y="1087">
+<page_connector target="Element@10866778:1469584945456">375000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@9264135:1474615363682" name="VOICE" type="Page Connector" width="87" x="748" y="1087">
+<page_connector target="Element@26721278:1469586276862">VOICE<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@10686065:1474615363682" name="370000_DTMF" src="com.audium.server.voiceElement.digit.MBasicDigit" type="Voice Element" width="129" x="725" y="797">
+<exit_states>
+<exit_state name="done" target="Element@13868049:1474615363682"/>
+<exit_state name="max_nomatch" target="Element@9763304:1474615363682"/>
+<exit_state name="max_noinput" target="Element@6887939:1474615363682"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2813557:1474615363682" name="370000_m_strDTMFErr_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="187" x="698" y="709">
+<exit_states>
+<exit_state name="done" target="Element@23486825:1470458240622"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9763304:1474615363682" name="370000_NoMatch_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="184" x="970" y="882">
+<exit_states>
+<exit_state name="done" target="Element@2813557:1474615363682"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6887939:1474615363682" name="370000_NoInput_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="178" x="973" y="810">
+<exit_states>
+<exit_state name="done" target="Element@2813557:1474615363682"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11230473:1474615363682" name="370000_Decision_NoMent" type="Decision" width="192" x="694" y="935">
+<exit_states>
+<exit_state name="other" target="Element@9763304:1474615363682"/>
+<exit_state name="9 : 음성인식" target="Element@9264135:1474615363682"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13868049:1474615363682" name="370000_m_strDTMF" src="Element.Utils.EUSetSessionValue" type="Action Element" width="158" x="711" y="874">
+<exit_states>
+<exit_state name="done" target="Element@11230473:1474615363682"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13910663:1475727135011" name="370000_m_strAnyFlag_3" src="Element.Utils.EUSetSessionValue" type="Action Element" width="181" x="227" y="389">
+<exit_states>
+<exit_state name="done" target="Element@6444393:1470458240622"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1958989:1475727135011" name="370000_CV1_Check" type="Decision" width="158" x="238" y="312">
+<exit_states>
+<exit_state name="F : 해외전화" target="Element@10557374:1475727135011"/>
+<exit_state name="P : 공중전화or발신제한전화" target="Element@22795385:1475727135011"/>
+<exit_state name="other" target="Element@13910663:1475727135011"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10557374:1475727135011" name="370000_m_strAnyFlag_4" src="Element.Utils.EUSetSessionValue" type="Action Element" width="181" x="471" y="312">
+<exit_states>
+<exit_state name="done" target="Element@1840755:1470458240622"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22795385:1475727135011" name="370000_m_strAnyFlag_2" src="Element.Utils.EUSetSessionValue" type="Action Element" width="181" x="471" y="389">
+<exit_states>
+<exit_state name="done" target="Element@1840755:1470458240622"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19816448:1479195087351" name="370000_m_strSelectStartTime7_Check" type="Decision" width="254" x="203" y="1350">
+<exit_states>
+<exit_state name="other" target="Element@6934716:1470458240622"/>
+<exit_state name="예약불가" target="Element@13840195:1481163310033"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13840195:1481163310033" name="370000_m_strSelectEndTime7_Check" type="Decision" width="249" x="-134" y="1350">
+<exit_states>
+<exit_state name="other" target="Element@6934716:1470458240622"/>
+<exit_state name="예약불가" target="Element@5335589:1470458240622"/>
+</exit_states>
+</element>
+</page>

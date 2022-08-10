@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE call_flow SYSTEM "../../../../dtds/Callflow_1-1.dtd">
+<call_flow first_element="SubdialogReturn" serial="0000" version="1.1">
+<events/>
+<element_def name="SubdialogReturn">
+<subflow_start class="com.audium.server.voiceElement.SubflowStartElement">
+<static>SubdialogReturn.xml</static>
+</subflow_start>
+<exit_state name="next">
+<next_element>Subdialog_Return</next_element>
+</exit_state>
+</element_def>
+<element_def name="EULogWrite_03">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>EULogWrite_03.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EULogWrite_04</next_element>
+</exit_state>
+</element_def>
+<element_def name="Subdialog_Return">
+<action>
+<class src="CLASS.S00000.SubdialogReturn"/>
+</action>
+<exit_state name="done">
+<next_element>EULogWrite_01</next_element>
+</exit_state>
+</element_def>
+<element_def name="EULogWrite_02">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>EULogWrite_02.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EULogWrite_03</next_element>
+</exit_state>
+</element_def>
+<element_def name="EULogWrite_01">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>EULogWrite_01.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>EULogWrite_02</next_element>
+</exit_state>
+</element_def>
+<element_def name="Subflow Return_01">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>Subflow Return_01.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="EULogWrite_04">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>EULogWrite_04.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_01</next_element>
+</exit_state>
+</element_def>
+</call_flow>

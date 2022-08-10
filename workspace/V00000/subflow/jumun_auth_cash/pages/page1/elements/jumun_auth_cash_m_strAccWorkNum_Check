@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@712473:1471311450982" name="jumun_auth_cash_m_strAccWorkNum_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="jumun_auth_cash_m_strAccWorkNum_Check" default_exit_state="other">
+        <exit_state name="22 : 위탁계좌" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strAccWorkNum" />
+                </data>
+                <constant_string value="22" />
+            </string>
+        </exit_state>
+        <exit_state name="50 보다 작음 : 저축계좌보다 작음" conjugate="and">
+            <number operator="less">
+                <data>
+                    <session name="m_strAccWorkNum" />
+                </data>
+                <constant_number value="50" />
+            </number>
+        </exit_state>
+        <exit_state name="69 보다 큼 : 저축계좌보다 큼" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <session name="m_strAccWorkNum" />
+                </data>
+                <constant_number value="69" />
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

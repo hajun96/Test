@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@18725468:1474522733903" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1474522733903" name="sub_Account_auth" type="Subflow Start" width="153" x="360" y="16">
+<exit_states>
+<exit_state name="next" target="Element@15205953:1474524691564"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33299491:1474522739129" name="AgtAuth_EUSetMulti_02" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="178" x="96" y="1153">
+<exit_states>
+<exit_state name="done" target="Element@10186512:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32568774:1474522739129" name="AgtAuth_Decision_03" type="Decision" width="166" x="359" y="390">
+<exit_states>
+<exit_state name="단순주문상담요청" target="Element@6479432:1474522739129"/>
+<exit_state name="other" target="Element@6841069:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9319159:1474522739129" name="AgtAuth_EUSetMulti_20" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="-271" y="781">
+<exit_states>
+<exit_state name="done" target="Element@14116134:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12718944:1474522739129" name="AgtAuth_ENStockSocket_01" src="Element.Network.ENStockSocket" type="Decision Element" width="203" x="212" y="1055">
+<exit_states>
+<exit_state name="success" target="Element@12850377:1474522739129"/>
+<exit_state name="fail" target="Element@33299491:1474522739129"/>
+<exit_state name="errcode" target="Element@33299491:1474522739129"/>
+</exit_states>
+</element>
+<element height="15" id="Element@21494682:1474522739129" type="Comment" width="54" x="2639" y="918">
+<comment><![CDATA[Comment]]></comment>
+</element>
+<element height="46" id="Element@12077665:1474522739129" name="Re_AccountInput" type="Page Connector" width="144" x="1307" y="514">
+<page_connector target="Element@24330781:1474522739129">Re_AccountInput<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@2989344:1474522739129" name="AgtAuth_EUSetMulti_03" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="178" x="398" y="1252">
+<exit_states>
+<exit_state name="done" target="Element@20377935:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10919927:1474522739129" name="HOLD_02" type="Subflow Call" width="102" x="135" y="1345">
+<subflow_call subflow_name="HOLD" target="Element@31:1471309297150">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@22031131:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1880986:1474522739129" name="AgtAuth_EUSocketInput_01" src="Element.Utils.EUSocketInput" type="Action Element" width="198" x="215" y="870">
+<exit_states>
+<exit_state name="done" target="Element@33129943:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19966451:1474522739129" name="HOLD_20" type="Subflow Call" width="102" x="882" y="517">
+<subflow_call subflow_name="HOLD" target="Element@31:1471309297150">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@5467014:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20377935:1474522739129" name="FINISH" type="Page Connector" width="88" x="443" y="1352">
+<page_connector target="Element@25568208:1474522739129">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@15698116:1474522739129" name="AgtAuth_Decision_04" type="Decision" width="166" x="90" y="781">
+<exit_states>
+<exit_state name="* 입력" target="Element@1880986:1474522739129"/>
+<exit_state name="# 입력" target="Element@4073324:1474522739129"/>
+<exit_state name="MAXERROR" target="Element@9319159:1474522739129"/>
+<exit_state name="정상입력"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9603359:1474522739129" name="FINISH" type="Page Connector" width="88" x="1097" y="816">
+<page_connector target="Element@25568208:1474522739129">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@14116134:1474522739129" name="FINISH" type="Page Connector" width="88" x="-210" y="687">
+<page_connector target="Element@25568208:1474522739129">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@33129943:1474522739129" name="HOLD_01" type="Subflow Call" width="102" x="264" y="960">
+<subflow_call subflow_name="HOLD" target="Element@31:1471309297150">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@12718944:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21731806:1474522739129" name="AgtAuth_EUSetMulti_21" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="178" x="1054" y="721">
+<exit_states>
+<exit_state name="done" target="Element@9603359:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26822954:1474522739129" name="Subflow Return_01" type="Subflow Return" width="153" x="1053" y="196"/>
+<element height="46" id="Element@12850377:1474522739129" name="AgtAuth_EUSocketOutput_01" src="Element.Utils.EUSocketOutput" type="Action Element" width="207" x="384" y="1150">
+<exit_states>
+<exit_state name="done" target="Element@2989344:1474522739129"/>
+</exit_states>
+</element>
+<element height="15" id="Element@17686679:1474522739129" type="Comment" width="54" x="566" y="2628">
+<comment><![CDATA[Comment]]></comment>
+</element>
+<element height="46" id="Element@25568208:1474522739129" name="FINISH" type="Page Entry" width="97" x="1076" y="109">
+<exit_states>
+<exit_state name="next" target="Element@26822954:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6841069:1474522739129" name="AgtAuth_EUSocketInput_20" src="Element.Utils.EUSocketInput" type="Action Element" width="198" x="613" y="514">
+<exit_states>
+<exit_state name="done" target="Element@19966451:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6479432:1474522739129" name="AgtAuth_Call_01" type="Subflow Call" width="139" x="102" y="688">
+<subflow_call subflow_name="dtmf_accountTerm_digit" target="Element@31:1474355920381">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/C00042.wav</data>
+<data name="MINDIGIT">11</data>
+<data name="MAXDIGIT">12</data>
+<data name="TERMCHAR">#</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@15698116:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9935656:1474522739129" name="AgtAuth_EUSocketOutput_20" src="Element.Utils.EUSocketOutput" type="Action Element" width="207" x="1040" y="620">
+<exit_states>
+<exit_state name="done" target="Element@21731806:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1305205:1474522739129" name="AgtAuth_EUSocketOutput_02" src="Element.Utils.EUSocketOutput" type="Action Element" width="207" x="81" y="1531">
+<exit_states>
+<exit_state name="done" target="Element@25539237:1474522739129"/>
+</exit_states>
+</element>
+<element height="90" id="Element@26238186:1474522739129" type="Comment" width="124" x="563" y="72">
+<comment><![CDATA[subflow 리턴 데이터
+
+SessionData : subresult
+0 : 성공
+1 : 상위메뉴
+false : MAX 에러 초과]]></comment>
+</element>
+<element height="46" id="Element@21395544:1474522739129" name="AgtAuth_Decision_01" type="Decision" width="166" x="359" y="184">
+<exit_states>
+<exit_state name="EzPass등록고객" target="Element@6759823:1474593707730"/>
+<exit_state name="other" target="Element@30158613:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2559397:1474522739129" name="FINISH" type="Page Connector" width="88" x="826" y="236">
+<page_connector target="Element@25568208:1474522739129">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@10186512:1474522739129" name="AgtAuth_EUSocketInput_02" src="Element.Utils.EUSocketInput" type="Action Element" width="198" x="86" y="1252">
+<exit_states>
+<exit_state name="done" target="Element@10919927:1474522739129"/>
+</exit_states>
+</element>
+<element height="75" id="Element@18567873:1474522739129" type="Comment" width="226" x="253" y="685">
+<comment><![CDATA[[S60001]
+계좌번호 12자리를 눌러 주세요. 
+계좌번호를 모르시거나 입력을 
+원치 않으시면 별표를, 
+이전메뉴로 돌아가시려면 #를 눌러주세요.]]></comment>
+</element>
+<element height="46" id="Element@5467014:1474522739129" name="AgtAuth_ENStockSocket_20" src="Element.Network.ENStockSocket" type="Decision Element" width="203" x="1040" y="515">
+<exit_states>
+<exit_state name="success" target="Element@9935656:1474522739129"/>
+<exit_state name="fail" target="Element@12077665:1474522739129">
+<bendpoint>
+<dim1 x="134" y="15"/>
+<dim2 x="-104" y="16"/>
+</bendpoint>
+</exit_state>
+<exit_state name="errcode" target="Element@12077665:1474522739129">
+<bendpoint>
+<dim1 x="134" y="-24"/>
+<dim2 x="-104" y="-23"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@30158613:1474522739129" name="AgtAuth_Decision_02" type="Decision" width="166" x="359" y="292">
+<exit_states>
+<exit_state name="계좌인증계좌" target="Element@6759823:1474593707730"/>
+<exit_state name="other" target="Element@32568774:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19345107:1474522739129" name="FINISH" type="Page Connector" width="88" x="-70" y="1044">
+<page_connector target="Element@25568208:1474522739129">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@4073324:1474522739129" name="AgtAuth_EUClearAccountInfo_01" src="Element.Utils.EUClearAccountInfo" type="Action Element" width="229" x="-140" y="875">
+<exit_states>
+<exit_state name="done" target="Element@9999401:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22031131:1474522739129" name="AgtAuth_ENStockSocket_02" src="Element.Network.ENStockSocket" type="Decision Element" width="203" x="83" y="1437">
+<exit_states>
+<exit_state name="success" target="Element@1305205:1474522739129"/>
+<exit_state name="fail" target="Element@1305205:1474522739129">
+<bendpoint>
+<dim1 x="-111" y="46"/>
+<dim2 x="-111" y="-48"/>
+</bendpoint>
+</exit_state>
+<exit_state name="errcode" target="Element@1305205:1474522739129">
+<bendpoint>
+<dim1 x="117" y="46"/>
+<dim2 x="117" y="-48"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@24330781:1474522739129" name="Re_AccountInput" type="Page Entry" width="144" x="-54" y="592">
+<exit_states>
+<exit_state name="next" target="Element@6479432:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13260637:1474522739129" name="FINISH" type="Page Connector" width="88" x="141" y="1707">
+<page_connector target="Element@25568208:1474522739129">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@9999401:1474522739129" name="EUSetMultiSessionValue_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="-129" y="958">
+<exit_states>
+<exit_state name="done" target="Element@19345107:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9677546:1474522739129" name="FINISH" type="Page Connector" width="88" x="1299" y="441">
+<page_connector target="Element@25568208:1474522739129">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@25539237:1474522739129" name="AgtAuth_EUSetMulti_04" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="207" x="81" y="1624">
+<exit_states>
+<exit_state name="done" target="Element@13260637:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15205953:1474524691564" name="Action_01" type="Action" width="104" x="391" y="104">
+<exit_states>
+<exit_state name="done" target="Element@21395544:1474522739129"/>
+</exit_states>
+</element>
+<element height="15" id="Element@5475186:1474524691564" type="Comment" width="93" x="283" y="125">
+<comment><![CDATA[Any 값 번호 분리]]></comment>
+</element>
+<element height="46" id="Element@6759823:1474593707730" name="AgtAuth_EUSetMulti_30" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="178" x="584" y="238">
+<exit_states>
+<exit_state name="done" target="Element@2559397:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32812211:1482474636651" name="ACC_LogWrite" src="Element.Utils.EULogWrite" type="Action Element" width="130" x="1279" y="356">
+<exit_states>
+<exit_state name="done" target="Element@9677546:1474522739129"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9469145:1482474636651" name="ACC_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="132" x="1279" y="203">
+<exit_states>
+<exit_state name="done" target="Element@13247532:1482475340128"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7744027:1482474636651" name="ACC" type="Page Entry" width="76" x="1308" y="88">
+<exit_states>
+<exit_state name="next" target="Element@9469145:1482474636651"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14881659:1482474759351" name="ACC" type="Page Connector" width="88" x="536" y="867">
+<page_connector target="Element@7744027:1482474636651">ACC<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@13247532:1482475340128" name="ACC_EUSetMulti_RESULT" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="183" x="1244" y="279">
+<exit_states>
+<exit_state name="done" target="Element@32812211:1482474636651"/>
+</exit_states>
+</element>
+</page>

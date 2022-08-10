@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@17664023:1474593764710" name="COMMON" version="6.0.1">
+<element height="46" id="Element@32381133:1474593800158" name="APP_TO_ICM" type="Page Entry" width="126" x="614" y="103">
+<exit_states>
+<exit_state name="next" target="Element@7872479:1481594990808"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19868859:1474593841684" name="APP_TO_ICM" type="Page Connector" width="128" x="256" y="299">
+<page_connector target="Element@32381133:1474593800158">APP_TO_ICM<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@2209255:1474593841684" type="Hang Up" width="98" x="41" y="266"/>
+<element height="46" id="Element@19349083:1474593841684" name="END_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="131" x="254" y="72">
+<exit_states>
+<exit_state name="done" target="Element@24050488:1474593841684"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24050488:1474593841684" name="Decision" type="Decision" width="99" x="270" y="147">
+<exit_states>
+<exit_state name="Y" target="Element@19760665:1474593841684"/>
+<exit_state name="Other" target="Element@29299587:1474593841684"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14146338:1474593841685" name="COMMON_END" type="Page Entry" width="139" x="251" y="-11">
+<exit_states>
+<exit_state name="next" target="Element@19349083:1474593841684"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19760665:1474593841684" name="LogWrite_END_Y" src="Element.Utils.EULogWrite" type="Action Element" width="143" x="19" y="147">
+<exit_states>
+<exit_state name="done" target="Element@2209255:1474593841684"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29299587:1474593841684" name="LogWrite_END_N" src="Element.Utils.EULogWrite" type="Action Element" width="144" x="248" y="210">
+<exit_states>
+<exit_state name="done" target="Element@19868859:1474593841684"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24782109:1474594668852" name="MultiSessionValue_Agent_Q" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="211" x="410" y="525">
+<exit_states>
+<exit_state name="done" target="Element@4485798:1479126221704"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7091893:1474594672044" name="COMMON_AGENT_Q" type="Page Entry" width="191" x="420" y="445">
+<exit_states>
+<exit_state name="next" target="Element@24782109:1474594668852"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29695478:1474594695995" name="APP_TO_ICM" type="Page Connector" width="128" x="451" y="831">
+<page_connector target="Element@32381133:1474593800158">APP_TO_ICM<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@31748893:1474616423378" name="TR_ERROR" type="Page Entry" width="113" x="125" y="361">
+<exit_states>
+<exit_state name="next" target="Element@15823908:1474616428932"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15823908:1474616428932" name="APP_TO_ICM" type="Page Connector" width="128" x="117" y="478">
+<page_connector target="Element@32381133:1474593800158">APP_TO_ICM<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@4485798:1479126221704" name="Action_M" type="Action" width="103" x="464" y="623">
+<exit_states>
+<exit_state name="done" target="Element@23119968:1479126409318"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23119968:1479126409318" name="EULogWrite_01" src="Element.Utils.EULogWrite" type="Action Element" width="132" x="449" y="720">
+<exit_states>
+<exit_state name="done" target="Element@29695478:1474594695995"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7872479:1481594990808" name="Subdialog_Return" type="Subflow Call" width="148" x="603" y="184">
+<subflow_call subflow_name="SubdialogReturn" target="Element@31:1481200587946">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@11662283:1481602391170"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11662283:1481602391170" name="ICM_Return" src="com.audium.server.voiceElement.internal.CiscoSubdialogReturnElement" type="Subdialog Return" width="117" x="619" y="274">
+<exit_states>
+<exit_state name="done"/>
+</exit_states>
+</element>
+</page>

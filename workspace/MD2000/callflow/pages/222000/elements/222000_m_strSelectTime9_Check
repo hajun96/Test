@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@18833170:1479200054695" name="222000_m_strSelectTime9_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="222000_m_strSelectTime9_Check" default_exit_state="other">
+        <exit_state name="장마감직전 예상지수 시작시간전" conjugate="and">
+            <number operator="less">
+                <data>
+                    <session name="m_strNowTime" />
+                </data>
+                <data>
+                    <session name="m_strSelectStartTime9" />
+                </data>
+            </number>
+        </exit_state>
+        <exit_state name="장마감직전 예상지수 종료시간후" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <session name="m_strNowTime" />
+                </data>
+                <data>
+                    <session name="m_strSelectEndTime9" />
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

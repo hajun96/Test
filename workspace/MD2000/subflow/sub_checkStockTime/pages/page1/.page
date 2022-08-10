@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@15358386:1471926833489" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1471926833489" name="sub_checkStockTime" type="Subflow Start" width="171" x="230" y="30">
+<exit_states>
+<exit_state name="next" target="Element@18126926:1471926963366"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18126926:1471926963366" name="Set_TestData" type="Subflow Call" width="124" x="251" y="134">
+<subflow_call subflow_name="Set_TestData" target="Element@31:1471926969856">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@24745226:1471927015425"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24745226:1471927015425" name="EUGetDateTime_01" src="Element.Utils.EUGetDateTime" type="Action Element" width="157" x="236" y="234">
+<exit_states>
+<exit_state name="done" target="Element@25590045:1471927015425"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25590045:1471927015425" name="Decision_10" type="Decision" width="159" x="236" y="351">
+<exit_states>
+<exit_state name="장중" target="Element@18509285:1471927094161"/>
+<exit_state name="장시작전" target="Element@16508034:1471927081947"/>
+<exit_state name="장종료후" target="Element@12662394:1471927100994"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16508034:1471927081947" name="StockTime_Set_01" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="152" x="72" y="466">
+<exit_states>
+<exit_state name="done" target="Element@5263465:1471927143690"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18509285:1471927094161" name="StockTime_Set_02" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="152" x="241" y="466">
+<exit_states>
+<exit_state name="done" target="Element@5263465:1471927143690"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12662394:1471927100994" name="StockTime_Set_03" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="152" x="408" y="466">
+<exit_states>
+<exit_state name="done" target="Element@5263465:1471927143690"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5263465:1471927143690" name="Subflow Return_01" type="Subflow Return" width="153" x="237" y="573"/>
+</page>

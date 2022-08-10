@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@293242:1481249532082" name="611000_m_strErrorCode_1" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="Copy_of_611000_m_strErrorCode" default_exit_state="other">
+        <exit_state name="05592 : 이미 청약한 종목" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strErrorCode" />
+                </data>
+                <constant_string value="05592" />
+            </string>
+        </exit_state>
+        <exit_state name="21764 : 미작성계좌 청약 불가능" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strErrorCode" />
+                </data>
+                <constant_string value="21764" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

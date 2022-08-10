@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@5593517:1477296603720" name="Black_Customer_m_iSqlSelectCnt_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="Black_Customer_m_iSqlSelectCnt_Check" default_exit_state="other">
+        <exit_state name="진상" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <session name="m_iSqlSelectCnt" />
+                </data>
+                <constant_number value="0" />
+            </number>
+            <string operator="equal">
+                <data>
+                    <session name="useYN" />
+                </data>
+                <constant_string value="Y" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

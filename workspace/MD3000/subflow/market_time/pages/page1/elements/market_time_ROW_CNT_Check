@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@26185333:1482209499550" name="market_time_ROW_CNT_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="market_time_ROW_CNT_Check" default_exit_state="other">
+        <exit_state name="시간가져오기완료" conjugate="and">
+            <number operator="greater_equal">
+                <data>
+                    <session name="m_iCnt" />
+                </data>
+                <data>
+                    <element name="market_time_ROW_CNT_MinusOne" variable="value" />
+                </data>
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

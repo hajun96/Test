@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@9414770:1473555986873" name="1Level_ASR_1" version="6.0.1">
+<element height="46" id="Element@10243130:1473580631147" name="1Level_ASR_1" type="Page Entry" width="128" x="192" y="53">
+<exit_states>
+<exit_state name="next" target="Element@7106310:1473582127363"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7106310:1473582127363" name="1Level_ASR_1_SetVar_initASRErrCnt" src="Element.Utils.EUSetSessionValue" type="Action Element" width="252" x="130" y="155">
+<exit_states>
+<exit_state name="done" target="Element@32646198:1473586774509"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31347183:1473582740463" name="1Level_ASR_1_Call_ASR2" type="Subflow Call" width="192" x="160" y="501">
+<subflow_call subflow_name="asr_input" target="Element@31:1473586778659">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTV/V00002.wav</data>
+<data name="ASR_MODE">1</data>
+<data name="ASR_TIME">5</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@30571241:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32621888:1473586709817" name="1Level_ASR_1_Decision_QuickCode" type="Decision" width="251" x="130" y="329">
+<exit_states>
+<exit_state name="false:미존재" target="Element@5982682:1473586910337"/>
+<exit_state name="정상" target="Element@29592667:1473586843040"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32646198:1473586774509" name="1Level_ASR_1_Call_Ment_InductionSet" type="Subflow Call" width="265" x="123" y="234">
+<subflow_call subflow_name="Ment_InductionSet" target="Element@31:1473586768441">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTV/V00002.wav</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@32621888:1473586709817"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29592667:1473586843040" name="1Level_ASR_1_Audio_V00001" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="216" x="148" y="414">
+<exit_states>
+<exit_state name="done" target="Element@31347183:1473582740463"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5982682:1473586910337" name="1Level_ASR_1_Decision_ErrCheck1" type="Decision" width="247" x="482" y="321">
+<exit_states>
+<exit_state name="1회" target="Element@15562728:1473586910337"/>
+<exit_state name="2회" target="Element@15562728:1473586910337"/>
+<exit_state name="3회" target="Element@15562728:1473586910337"/>
+<exit_state name="3회초과" target="Element@30981728:1473586910337"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15562728:1473586910337" name="ASR_MAIN_AGAIN" type="Page Connector" width="154" x="658" y="196">
+<page_connector target="Element@28418573:1473579004083">ASR_MAIN_AGAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@30981728:1473586910337" name="ASR_MAIN_ERR_END" type="Page Connector" width="172" x="623" y="433">
+<page_connector target="Element@22557022:1473728649695">ASR_MAIN_ERR_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@224324:1473587026805" name="1Level_ASR_1_Call_jongmokCodeCheck" type="Subflow Call" width="276" x="727" y="1286">
+<subflow_call subflow_name="stock_code" target="Element@31:1473581645529">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTV/V00002.wav</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@31111290:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31111290:1473587026805" name="1Level_ASR_1_Decision_JongmokCheck" type="Decision" width="276" x="731" y="1385">
+<exit_states>
+<exit_state name="그외" target="Element@30260506:1473587026805"/>
+<exit_state name="0:유효함" target="Element@7605191:1473587026805"/>
+<exit_state name="C:에러" target="Element@30260506:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4482909:1473587026805" name="1Level_ASR_1_Audio_ASR_Big" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="220" x="-337" y="747">
+<exit_states>
+<exit_state name="done" target="Element@2458490:1473587536660"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27548963:1473587026805" name="1Level_ASR_1_Decision_ErrCheck3" type="Decision" width="247" x="435" y="1804">
+<exit_states>
+<exit_state name="1회" target="Element@24853922:1473587761329">
+<bendpoint>
+<dim1 x="63" y="-97"/>
+<dim2 x="-140" y="17"/>
+</bendpoint>
+</exit_state>
+<exit_state name="2회" target="Element@24853922:1473587761329"/>
+<exit_state name="3회" target="Element@24853922:1473587761329">
+<bendpoint>
+<dim1 x="193" y="-38"/>
+<dim2 x="-10" y="76"/>
+</bendpoint>
+</exit_state>
+<exit_state name="3회초과" target="Element@31378337:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25395184:1473587026805" name="1Level_ASR_1_Decision_FileSize" type="Decision" width="234" x="139" y="716">
+<exit_states>
+<exit_state name="초과" target="Element@8742932:1473587026805"/>
+<exit_state name="작음" target="Element@33393316:1473587026805"/>
+<exit_state name="정상" target="Element@16876198:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33393316:1473587026805" name="1Level_ASR_1_Decision_ErrCheck2" type="Decision" width="247" x="514" y="855">
+<exit_states>
+<exit_state name="1회" target="Element@10036317:1473587026805">
+<bendpoint>
+<dim1 x="35" y="-74"/>
+<dim2 x="-162" y="24"/>
+</bendpoint>
+</exit_state>
+<exit_state name="2회" target="Element@10036317:1473587026805"/>
+<exit_state name="3회" target="Element@10036317:1473587026805">
+<bendpoint>
+<dim1 x="159" y="-39"/>
+<dim2 x="-38" y="59"/>
+</bendpoint>
+</exit_state>
+<exit_state name="3회초과" target="Element@2264939:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11577437:1473587026805" name="1Level_ASR_1_SetMultiVar_initType" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="249" x="224" y="1502">
+<exit_states>
+<exit_state name="done" target="Element@32004828:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8345039:1473587026805" name="1Level_1_ERR_END" type="Page Connector" width="172" x="-313" y="969">
+<page_connector target="Element@31082683:1473728998019">1Level_1_ERR_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@32004828:1473587026805" name="1Level_ASR_1_Call_QuickCodeCompare" type="Subflow Call" width="276" x="211" y="1590">
+<subflow_call subflow_name="QuickCodeCompare" target="Element@31:1473580776646">
+<config>
+<argument_data>
+<data name="TYPE">1</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@27609990:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16115194:1473587026805" name="1Level_ASR_1" type="Page Connector" width="128" x="-308" y="1198">
+<page_connector target="Element@10243130:1473580631147">1Level_ASR_1<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@31378337:1473587026805" name="1Level_1_ERR_END" type="Page Connector" width="172" x="472" y="1918">
+<page_connector target="Element@31082683:1473728998019">1Level_1_ERR_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@10036317:1473587026805" name="1Level_ASR_1_Audio_ASR_Small" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="234" x="714" y="734">
+<exit_states>
+<exit_state name="done" target="Element@18281871:1473587546644"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3799805:1473587026805" name="1Level_ASR_1_Decision_Level1" type="Decision" width="225" x="-234" y="1089">
+<exit_states>
+<exit_state name="그외" target="Element@16115194:1473587026805">
+<bendpoint>
+<dim1 x="-147" y="52"/>
+<dim2 x="-29" y="-71"/>
+</bendpoint>
+</exit_state>
+<exit_state name="T001:주문" target="Element@16115194:1473587026805"/>
+<exit_state name="T027:종목명" target="Element@25175129:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2264939:1473587026805" name="1Level_1_ERR_END" type="Page Connector" width="172" x="695" y="971">
+<page_connector target="Element@31082683:1473728998019">1Level_1_ERR_END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@9243033:1473587026805" name="1Level_ASR_1_Decision_Level3" type="Decision" width="225" x="0" y="1269">
+<exit_states>
+<exit_state name="그외" target="Element@25058205:1473587026805"/>
+<exit_state name="Q221:종합주가지수" target="Element@281408:1473587026805"/>
+<exit_state name="Q222:코스닥주가지수" target="Element@24191550:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8742932:1473587026805" name="1Level_ASR_1_Decision_ErrCheck" type="Decision" width="241" x="-348" y="880">
+<exit_states>
+<exit_state name="1회" target="Element@4482909:1473587026805">
+<bendpoint>
+<dim1 x="-13" y="-65"/>
+<dim2 x="162" y="26"/>
+</bendpoint>
+</exit_state>
+<exit_state name="2회" target="Element@4482909:1473587026805"/>
+<exit_state name="3회" target="Element@4482909:1473587026805">
+<bendpoint>
+<dim1 x="-145" y="-42"/>
+<dim2 x="30" y="49"/>
+</bendpoint>
+</exit_state>
+<exit_state name="3회초과" target="Element@8345039:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26512433:1473587026805" name="3Level_ASR_1" type="Page Connector" width="150" x="80" y="1812">
+<page_connector target="Element@32641311:1473556077661">3Level_ASR_1<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@24191550:1473587026805" name="KOSPI" type="Page Connector" width="150" x="28" y="1431">
+<page_connector target="Element@6432385:1473556590445">KOSPI<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@30260506:1473587026805" name="ASR_MAIN_AGAIN" type="Page Connector" width="154" x="903" y="1511">
+<page_connector target="Element@28418573:1473579004083">ASR_MAIN_AGAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@16876198:1473587026805" name="1Level_ASR_1_SetVar_asrCodeToItemCode" src="Element.Utils.EUSetSessionValue" type="Action Element" width="294" x="109" y="925">
+<exit_states>
+<exit_state name="done" target="Element@2662766:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30571241:1473587026805" name="1Level_ASR_1_MAIN_Decision_ASRResultCheck" type="Decision" width="321" x="95" y="604">
+<exit_states>
+<exit_state name="정상" target="Element@25395184:1473587026805">
+<bendpoint>
+<dim1 x="-88" y="50"/>
+<dim2 x="-95" y="-62"/>
+</bendpoint>
+</exit_state>
+<exit_state name="묵음" target="Element@25395184:1473587026805">
+<bendpoint>
+<dim1 x="97" y="53"/>
+<dim2 x="96" y="-57"/>
+</bendpoint>
+</exit_state>
+<exit_state name="서버Fail" target="Element@25395184:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29713294:1473587026805" name="1Level_ASR_1_Decision_JongmokCheckFirst" type="Decision" width="300" x="379" y="1133">
+<exit_states>
+<exit_state name="그외" target="Element@224324:1473587026805"/>
+<exit_state name="KOSPI" target="Element@721822:1473587026805"/>
+<exit_state name="KOSDAQ" target="Element@18518710:1473587026805"/>
+<exit_state name="000000:이외단어발생" target="Element@26606779:1473587026805">
+<bendpoint>
+<dim1 x="237" y="-67"/>
+<dim2 x="-89" y="-69"/>
+</bendpoint>
+</exit_state>
+<exit_state name="000001:욕하는발성" target="Element@26606779:1473587026805">
+<bendpoint>
+<dim1 x="224" y="66"/>
+<dim2 x="-191" y="63"/>
+</bendpoint>
+</exit_state>
+<exit_state name="000002:머뭇거림" target="Element@26606779:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7605191:1473587026805" name="Hyunjaega" type="Page Connector" width="110" x="657" y="1506">
+<page_connector target="Element@16166159:1473557783695">Hyunjaega<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18518710:1473587026805" name="JONGHAP" type="Page Connector" width="107" x="314" y="1242">
+<page_connector target="Element@22074983:1473556545456">JONGHAP<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@721822:1473587026805" name="KOSPI" type="Page Connector" width="86" x="508" y="1242">
+<page_connector target="Element@6432385:1473556590445">KOSPI<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@26606779:1473587026805" name="1Level_ASR_1_Decision_ErrCheck4" type="Decision" width="247" x="915" y="1146">
+<exit_states>
+<exit_state name="1회" target="Element@9945142:1473587608279">
+<bendpoint>
+<dim1 x="-39" y="-90"/>
+<dim2 x="-124" y="48"/>
+</bendpoint>
+</exit_state>
+<exit_state name="2회" target="Element@9945142:1473587608279"/>
+<exit_state name="3회" target="Element@9945142:1473587608279">
+<bendpoint>
+<dim1 x="126" y="-54"/>
+<dim2 x="41" y="84"/>
+</bendpoint>
+</exit_state>
+<exit_state name="3회초과" target="Element@2264939:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25058205:1473587026805" name="1Level_ASR_1_SubStr_3char" src="Element.Strings.EUStringSubString" type="Action Element" width="208" x="245" y="1419">
+<exit_states>
+<exit_state name="done" target="Element@11577437:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27609990:1473587026805" name="1Level_ASR_1_Decision_QuickCodeCompareResult" type="Decision" width="338" x="180" y="1697">
+<exit_states>
+<exit_state name="Y:존재" target="Element@26512433:1473587026805"/>
+<exit_state name="N:미존재" target="Element@27548963:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2662766:1473587026805" name="1Level_ASR_1_Decision_MenuType" type="Decision" width="250" x="131" y="1026">
+<exit_states>
+<exit_state name="T:1단계메뉴비교" target="Element@3799805:1473587026805"/>
+<exit_state name="Q:3단계메뉴비교" target="Element@9243033:1473587026805"/>
+<exit_state name="그외" target="Element@29713294:1473587026805"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25175129:1473587026805" name="JongMok_ASR_1" type="Page Connector" width="143" x="-118" y="1194">
+<page_connector target="Element@27036675:1473556042781">JongMok_ASR_1<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@281408:1473587026805" name="JONGHAP" type="Page Connector" width="171" x="-177" y="1432">
+<page_connector target="Element@22074983:1473556545456">JONGHAP<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@4062495:1473587369907" name="1Level_ASR_AGAIN" type="Page Entry" width="159" x="-177" y="398">
+<exit_states>
+<exit_state name="next" target="Element@1780183:1473587517239"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1780183:1473587517239" name="1Level_ASR_1_Call_INC_ErrFlag" type="Subflow Call" width="229" x="-212" y="502">
+<subflow_call subflow_name="GetTimeRandomValue" target="Element@31:1473579401806">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@31347183:1473582740463"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2458490:1473587536660" name="1Level_ASR_AGAIN" type="Page Connector" width="159" x="-307" y="652">
+<page_connector target="Element@4062495:1473587369907">1Level_ASR_AGAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18281871:1473587546644" name="1Level_ASR_AGAIN" type="Page Connector" width="159" x="729" y="646">
+<page_connector target="Element@4062495:1473587369907">1Level_ASR_AGAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@9945142:1473587608279" name="1Level_ASR_AGAIN" type="Page Connector" width="159" x="1044" y="1008">
+<page_connector target="Element@4062495:1473587369907">1Level_ASR_AGAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@24853922:1473587761329" name="1Level_ASR_AGAIN" type="Page Connector" width="159" x="656" y="1690">
+<page_connector target="Element@4062495:1473587369907">1Level_ASR_AGAIN<config/>
+</page_connector>
+</element>
+</page>

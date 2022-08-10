@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@4659084:1486367029891" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1486367029891" name="holiday" type="Subflow Start" width="89" x="406" y="214">
+<exit_states>
+<exit_state name="next" target="Element@13661729:1486367039001"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2402549:1486367039001" name="EULogWrite_1" src="Element.Utils.EULogWrite" type="Action Element" width="124" x="526" y="486">
+<exit_states>
+<exit_state name="done" target="Element@10133526:1486367039001"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13661729:1486367039001" name="EDHolidayCheck" src="Element.Decision.EDHolidayCheck" type="Decision Element" width="139" x="381" y="329">
+<exit_states>
+<exit_state name="yes" target="Element@25440978:1486367039001"/>
+<exit_state name="no" target="Element@33260392:1486367039001"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25440978:1486367039001" name="m_iHolidayFlag_1" src="Element.Utils.EUSetSessionValue" type="Action Element" width="144" x="516" y="413">
+<exit_states>
+<exit_state name="done" target="Element@2402549:1486367039001"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10133526:1486367039001" name="Subflow Return" type="Subflow Return" width="133" x="384" y="572"/>
+<element height="46" id="Element@322032:1486367039001" name="EULogWrite_NO" src="Element.Utils.EULogWrite" type="Action Element" width="135" x="259" y="486">
+<exit_states>
+<exit_state name="done" target="Element@10133526:1486367039001"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33260392:1486367039001" name="m_iHolidayFlag_NO" src="Element.Utils.EUSetSessionValue" type="Action Element" width="155" x="249" y="413">
+<exit_states>
+<exit_state name="done" target="Element@322032:1486367039001"/>
+</exit_states>
+</element>
+</page>

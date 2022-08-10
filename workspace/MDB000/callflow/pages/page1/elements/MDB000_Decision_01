@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@10718934:1474268962609" name="MDB000_Decision_01" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="MDB000_Decision_01" default_exit_state="MAXERROR">
+        <exit_state name="1 : 방문계좌개설예약" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="1" />
+            </string>
+        </exit_state>
+        <exit_state name="2 : 주문관련직원연결" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="2" />
+            </string>
+        </exit_state>
+        <exit_state name="3 : 분실신고 및 사기자금" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="3" />
+            </string>
+        </exit_state>
+        <exit_state name="4 : 기타문의" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="4" />
+            </string>
+        </exit_state>
+        <exit_state name="0 : ARS이용" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="0" />
+            </string>
+        </exit_state>
+        <exit_state name="* : 재청취" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="digitvalue" />
+                </data>
+                <constant_string value="*" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

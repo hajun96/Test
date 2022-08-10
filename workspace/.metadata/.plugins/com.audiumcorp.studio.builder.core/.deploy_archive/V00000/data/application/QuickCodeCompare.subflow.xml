@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE call_flow SYSTEM "../../../../dtds/Callflow_1-1.dtd">
+<call_flow first_element="QuickCodeCompare" serial="0000" version="1.1">
+<events/>
+<element_def name="QuickCodeCompare">
+<subflow_start class="com.audium.server.voiceElement.SubflowStartElement">
+<static>QuickCodeCompare.xml</static>
+</subflow_start>
+<exit_state name="next">
+<next_element>QuickCodeComp_StartLog</next_element>
+</exit_state>
+</element_def>
+<element_def name="Decision_QuickCode_1">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="상담원연결:0">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="그외">
+<next_element>m_strQuickDigit_1_Menu_Check</next_element>
+</exit_state>
+<exit_state name="이체:6">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="주식시황안내:2">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="분실신고 등:8">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="단축계좌저장:75">
+<next_element>SetValue_NotExist</next_element>
+</exit_state>
+</element_def>
+<element_def name="Decision_QuickCode_CompareType">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="그외">
+<next_element>m_strQuickDigit_1_Menu_Check</next_element>
+</exit_state>
+<exit_state name="음성인식">
+<next_element>Decision_QuickCode_1</next_element>
+</exit_state>
+</element_def>
+<element_def name="Subflow Return_END">
+<subflowreturn class="com.audium.server.voiceElement.SubflowReturnElement">
+<static>Subflow Return_END.xml</static>
+</subflowreturn>
+</element_def>
+<element_def name="SetValue_Exist">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetValue_Exist.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_END</next_element>
+</exit_state>
+</element_def>
+<element_def name="SetValue_NotExist">
+<action>
+<class src="Element.Utils.EUSetSessionValue">
+<static>SetValue_NotExist.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Subflow Return_END</next_element>
+</exit_state>
+</element_def>
+<element_def name="QuickCodeComp_StartLog">
+<action>
+<class src="Element.Utils.EULogWrite">
+<static>QuickCodeComp_StartLog.xml</static>
+</class>
+</action>
+<exit_state name="done">
+<next_element>Decision_QuickCode_CompareType</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_7_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="752 : 일괄계좌카드사용등록">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="007 : 사고신고 및 부가서비스">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="751 : CMA방문개설확인">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="075 : 일괄및방문계좌확인">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="073 : 사기자금지급정지">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>SetValue_NotExist</next_element>
+</exit_state>
+<exit_state name="072 : 분실신고조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="753 : 일괄계좌유선이체약정확인">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="071 : 분실신고">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="741 : ARS주문비밀번호변경">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="074 : 각종비밀번호변경">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="742 : 계좌비밀번호변경">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_5_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="052 : 당사계좌간이체">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="051 : 은행으로이체">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="005 : 이체서비스">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strQuickDigit_6_Menu_Check</next_element>
+</exit_state>
+<exit_state name="532 : 일자별입출금내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="053 : 입출금내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="531 : 당일입출금내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_4_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="043 : 보유종목현재가조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strQuickDigit_5_Menu_Check</next_element>
+</exit_state>
+<exit_state name="451 : 매매내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="041 : 실시간잔고">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="040 : 잔고및거래내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="442 : 매도가능수량">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="462 : 융자일별신용잔고">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="441 : 매수가능금액">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="452 : 입출금내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="042 : 펀드평가금액조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="461 : 신용통합잔고">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="045 : 일자별거래내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="463 : 담보유지비율조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="046 : 신용잔고조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="044 : 주문가능수량및금액조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_3_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="037 : 예약주문">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strQuickDigit_4_Menu_Check</next_element>
+</exit_state>
+<exit_state name="347 : 시간외단일가취소">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="362 : 체결내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="325 : 신용취소">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="341 : 시간외단일가현금매도">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="373 : 예약취소">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="336 : 시간외취소">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="312 : 현금매수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="353 : 펀드취소주문">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="372 : 예약현금매수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="314 : 현금취소">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="003 : 주문및체결내역">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="363 : 미체결내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="345 : 시간외단일가자기융자매수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="323 : 자기융자매수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="374 : 예약주문내역">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="331 : 시간외현금매도">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="364 : 종목별체결내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="371 : 예약현금매도">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="333 : 시간외자기융자매도상환">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="324 : 신용정정">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="344 : 시간외단일가담보융자매도상환">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="354 : 펀드주문및체결내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="032 : 신용주문">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="031 : 현금주문">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="351 : 펀드매도">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="332 : 시간외현금매수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="335 : 시간외자기융자매수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="334 : 시간외담보융자매도상환">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="352 : 펀드추가매수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="342 : 시간외단일가현금매수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="035 : 펀드주문">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="346 : 시간외단일가정정">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="034 : 시간외단일가주문">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="311 : 현금매도">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="375 : 처리결과조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="036 : 내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="322 : 담보융자매도상환">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="321 : 자기융자매도상환">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="361 : 전체내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="365 : 전일체결내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="343 : 시간외단일가자기융자매도상환">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="033 : 시간외주문">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="313 : 현금정정">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_6_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="066 : 당월청약자격조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="006 : 청약및조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strQuickDigit_7_Menu_Check</next_element>
+</exit_state>
+<exit_state name="061 : 청약신청">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="065 : 청약일정조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="064 : 청약경쟁률조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="063 : 청약내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="062 : 청약취소">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_2_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="023 : 해외지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="002 : 시세및지수조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strQuickDigit_3_Menu_Check</next_element>
+</exit_state>
+<exit_state name="252 : 풋옵션현재가">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="222 : 코스닥주가지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="025 : 옵션시세">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="237 : 중국상해종합지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="233 : SP500지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="236 : 홍콩H지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="251 : 콜옵션현재가">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="021 : 현재가및호가잔량">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="235 : 홍콩항세지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="238 : 인도붐베이지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="232 : 나스닥종합지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="223 : 코스피200지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="022 : 국내지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="234 : 일본니케이지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="026 : 시간외단일현재가">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="027 : 투자자별매매동향">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="231 : 다우존스산업지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="221 : 종합주가지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="024 : 선물시세">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+</element_def>
+<element_def name="m_strQuickDigit_1_Menu_Check">
+<decision>
+<class src="com.audium.server.rules.XMLDecision"/>
+</decision>
+<exit_state name="121 : 빠른현금매도">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="125 : 빠른주문체결내역조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="other">
+<next_element>m_strQuickDigit_2_Menu_Check</next_element>
+</exit_state>
+<exit_state name="112 : 빠른종합주가지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="124 : 빠른취소">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="001 : 빠른말안내">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="111 : 빠른현재가조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="122 : 빠른현금매수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="123 : 빠른정정">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="012 : 빠른주문및체결내역">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="013 : 빠른실시간잔고">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="114 : 빠른시간외단일현재가">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="011 : 빠른시세조회">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+<exit_state name="113 : 빠른코스닥주가지수">
+<next_element>SetValue_Exist</next_element>
+</exit_state>
+</element_def>
+</call_flow>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@11913568:1475125462606" name="bankname" version="6.0.1">
+<element height="46" id="Element@31:1475125462606" name="bankname" type="Subflow Start" width="108" x="228" y="-11">
+<exit_states>
+<exit_state name="next" target="Element@15044299:1478258749960"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18471998:1475125560334" name="bankname_Subflow Return" type="Subflow Return" width="194" x="184" y="500"/>
+<element height="15" id="Element@10362324:1475127175835" type="Comment" width="48" x="46" y="19">
+<comment><![CDATA[은행코드]]></comment>
+</element>
+<element height="46" id="Element@24711267:1478258749960" name="bankname_EULogWrite" src="Element.Utils.EULogWrite" type="Action Element" width="173" x="195" y="406">
+<exit_states>
+<exit_state name="done" target="Element@18471998:1475125560334"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32799245:1478258749960" name="bankname_EUMultiOutputBlock" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="220" x="172" y="313">
+<exit_states>
+<exit_state name="done" target="Element@24711267:1478258749960"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16891967:1478258749960" name="bankname_Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="137" x="213" y="145">
+<exit_states>
+<exit_state name="done" target="Element@19060061:1478258749960"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19060061:1478258749960" name="bankname_ENOracleDB" src="Element.DataBase.ENOracleDB" type="Decision Element" width="176" x="194" y="226">
+<exit_states>
+<exit_state name="success" target="Element@32799245:1478258749960"/>
+<exit_state name="fail" target="Element@22083967:1479545246446"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15044299:1478258749960" name="bankname_EULogWrite_Query" src="Element.Utils.EULogWrite" type="Action Element" width="210" x="177" y="70">
+<exit_states>
+<exit_state name="done" target="Element@16891967:1478258749960"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22083967:1479545246446" name="bankname_EFINIReader_bankName" src="Element.File.EFINIReader" type="Action Element" width="237" x="-148" y="226">
+<exit_states>
+<exit_state name="done" target="Element@24711267:1478258749960"/>
+</exit_states>
+</element>
+</page>

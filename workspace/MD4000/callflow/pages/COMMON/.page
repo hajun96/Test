@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@14749603:1470377081836" name="COMMON" version="6.0.1">
+<element height="46" id="Element@31667251:1470377591180" name="LogWrite_MAIN" src="Element.Utils.EULogWrite" type="Action Element" width="135" x="826" y="187">
+<exit_states>
+<exit_state name="done" target="Element@25677864:1480296700710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25537354:1470377591180" type="Hang Up" width="98" x="54" y="338"/>
+<element height="46" id="Element@11579145:1470377591180" name="AGENT" type="Page Entry" width="96" x="1074" y="11">
+<exit_states>
+<exit_state name="next" target="Element@28539200:1470377591180"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10297583:1470377591180" name="END" type="Page Entry" width="84" x="285" y="42">
+<exit_states>
+<exit_state name="next" target="Element@33185607:1481282725732"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30015715:1470377591180" name="MAIN_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="137" x="827" y="103">
+<exit_states>
+<exit_state name="done" target="Element@31667251:1470377591180"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14010915:1470377591180" name="MAIN" type="Page Entry" width="81" x="853" y="11">
+<exit_states>
+<exit_state name="next" target="Element@30015715:1470377591180"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28539200:1470377591180" name="AGENT_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="148" x="1052" y="103">
+<exit_states>
+<exit_state name="done" target="Element@24646579:1470377591180"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24244395:1470377591180" name="VOICE" type="Page Entry" width="87" x="1600" y="11">
+<exit_states>
+<exit_state name="next" target="Element@25983715:1474629956918"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5603798:1470377591180" name="ERROR" type="Page Entry" width="91" x="76" y="591">
+<exit_states>
+<exit_state name="next" target="Element@13169677:1482211870779"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24646579:1470377591180" name="AGENT_LogWrite" src="Element.Utils.EULogWrite" type="Action Element" width="146" x="1052" y="187">
+<exit_states>
+<exit_state name="done" target="Element@26836987:1480296700710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26993590:1470377596624" name="QUICK" type="Page Entry" width="87" x="629" y="812">
+<exit_states>
+<exit_state name="next" target="Element@16956024:1479788036935"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25356680:1470377596624" name="HIGH" type="Page Entry" width="79" x="903" y="639">
+<exit_states>
+<exit_state name="next" target="Element@15788370:1470805170600"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15788370:1470805170600" name="ServiceCode" type="Decision" width="122" x="884" y="740">
+<exit_states>
+<exit_state name="other" target="Element@26808317:1470805587733"/>
+<exit_state name="400000 : 잔고 및 거래내역조회" target="Element@26808317:1470805587733"/>
+<exit_state name="410000 : 실시간잔고" target="Element@3290108:1470805446042"/>
+<exit_state name="420000 : 펀드평가금액조회" target="Element@3290108:1470805446042"/>
+<exit_state name="430000 : 보유종목 현재가 조회" target="Element@3290108:1470805446042"/>
+<exit_state name="440000 : 주문가능 수량 및 금액 조회" target="Element@3290108:1470805446042"/>
+<exit_state name="441000 : 매수가능금액" target="Element@7269230:1470805504759"/>
+<exit_state name="442000 : 매도가능수량" target="Element@7269230:1470805504759"/>
+<exit_state name="450000 : 일자별 거래내역조회" target="Element@3290108:1470805446042"/>
+<exit_state name="451000 : 매매내역조회" target="Element@7750132:1470805534539"/>
+<exit_state name="452000 : 입출금내역조회" target="Element@7750132:1470805534539"/>
+<exit_state name="460000 : 신용잔고조회" target="Element@3290108:1470805446042"/>
+<exit_state name="461000 : 신용통합잔고" target="Element@25642720:1470805562384"/>
+<exit_state name="462000 : 융자일별신용잔고" target="Element@25642720:1470805562384"/>
+<exit_state name="463000 : 담보유지비율 조회" target="Element@25642720:1470805562384"/>
+<exit_state name="470000 : 예수금변동현황" target="Element@3290108:1470805446042"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3290108:1470805446042" name="400000" type="Page Connector" width="92" x="1219" y="600">
+<page_connector target="Element@8331265:1470805462016">400000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@7269230:1470805504759" name="440000" type="Page Connector" width="92" x="1199" y="706">
+<page_connector target="Element@18942632:1470377333880">440000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@7750132:1470805534539" name="450000" type="Page Connector" width="92" x="1199" y="752">
+<page_connector target="Element@31327361:1470377354861">450000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@25642720:1470805562384" name="460000" type="Page Connector" width="92" x="1200" y="796">
+<page_connector target="Element@16597770:1470377374797">460000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@26808317:1470805587733" name="MAIN" type="Page Connector" width="92" x="1144" y="503">
+<page_connector target="Element@14010915:1470377591180">MAIN<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@30666084:1470808215250" name="ACC" type="Page Entry" width="76" x="1343" y="11">
+<exit_states>
+<exit_state name="next" target="Element@1167963:1470808215250"/>
+</exit_states>
+</element>
+<element height="46" id="Element@622722:1470808215250" name="ACC_LogWrite" src="Element.Utils.EULogWrite" type="Action Element" width="130" x="1316" y="187">
+<exit_states>
+<exit_state name="done" target="Element@20509065:1480296700710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1167963:1470808215250" name="ACC_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="132" x="1317" y="103">
+<exit_states>
+<exit_state name="done" target="Element@622722:1470808215250"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25983715:1474629956918" name="VOICE_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="143" x="1574" y="103">
+<exit_states>
+<exit_state name="done" target="Element@11698780:1474629956918"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11698780:1474629956918" name="VOICE_LogWrite" src="Element.Utils.EULogWrite" type="Action Element" width="141" x="1573" y="187">
+<exit_states>
+<exit_state name="done" target="Element@10217460:1480296700710"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25198149:1478756666343" name="LogWrite_FUND" src="Element.Utils.EULogWrite" type="Action Element" width="136" x="552" y="103">
+<exit_states>
+<exit_state name="done" target="Element@15714017:1480304291893"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11498587:1478756666343" name="FUND" type="Page Entry" width="82" x="579" y="11">
+<exit_states>
+<exit_state name="next" target="Element@25198149:1478756666343"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12473012:1479788036935" name="m_strDTMF_Length" src="Element.Strings.EUStringLength" type="Action Element" width="159" x="594" y="1090">
+<exit_states>
+<exit_state name="done" target="Element@19377653:1479788036935"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20058602:1479788036935" name="END_SetValue_00000" src="Element.Utils.EUSetSessionValue" type="Action Element" width="167" x="721" y="1294">
+<exit_states>
+<exit_state name="done" target="Element@3556696:1479788036935"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3556696:1479788036935" name="LogWrite_m_strEndType" src="Element.Utils.EULogWrite" type="Action Element" width="190" x="588" y="1388">
+<exit_states>
+<exit_state name="done" target="Element@14560672:1480304240476"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19377653:1479788036935" name="m_strDTMF_Length_Check" type="Decision" width="201" x="575" y="1196">
+<exit_states>
+<exit_state name="2자리" target="Element@20058602:1479788036935"/>
+<exit_state name="3자리" target="Element@9640296:1479788036935"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16956024:1479788036935" name="QuickCode" type="Decision" width="115" x="613" y="925">
+<exit_states>
+<exit_state name="other" target="Element@12473012:1479788036935"/>
+<exit_state name="41" target="Element@580295:1479788167206"/>
+<exit_state name="42" target="Element@3153685:1479788176627"/>
+<exit_state name="43" target="Element@18277694:1479788181806"/>
+<exit_state name="44" target="Element@17161528:1479788186953"/>
+<exit_state name="441" target="Element@1239622:1479788204610"/>
+<exit_state name="442" target="Element@5894066:1479788217400"/>
+<exit_state name="45" target="Element@24119997:1479788231797"/>
+<exit_state name="451" target="Element@19009690:1479788231797"/>
+<exit_state name="452" target="Element@18802574:1479788251107"/>
+<exit_state name="46" target="Element@8104606:1479788259733"/>
+<exit_state name="461" target="Element@25191334:1479788269419"/>
+<exit_state name="462" target="Element@8382455:1479788279636"/>
+<exit_state name="463" target="Element@26196973:1479788288589"/>
+<exit_state name="47" target="Element@9167544:1485819374975"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9640296:1479788036935" name="END_SetValue_0000" src="Element.Utils.EUSetSessionValue" type="Action Element" width="161" x="469" y="1294">
+<exit_states>
+<exit_state name="done" target="Element@3556696:1479788036935"/>
+</exit_states>
+</element>
+<element height="46" id="Element@580295:1479788167206" name="410000" type="Page Connector" width="92" x="884" y="795">
+<page_connector target="Element@29663889:1470377312274">410000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@3153685:1479788176627" name="420000" type="Page Connector" width="92" x="884" y="850">
+<page_connector target="Element@21497983:1478253373551">420000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18277694:1479788181806" name="430000" type="Page Connector" width="92" x="884" y="905">
+<page_connector target="Element@19952410:1479537343032">430000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@17161528:1479788186953" name="440000" type="Page Connector" width="92" x="884" y="958">
+<page_connector target="Element@18942632:1470377333880">440000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@1239622:1479788204610" name="441000" type="Page Connector" width="92" x="884" y="1007">
+<page_connector target="Element@13620946:1470377341383">441000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@5894066:1479788217400" name="442000" type="Page Connector" width="92" x="884" y="1057">
+<page_connector target="Element@362318:1470377347685">442000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@19009690:1479788231797" name="451000" type="Page Connector" width="92" x="434" y="877">
+<page_connector target="Element@22154637:1470377361803">451000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@24119997:1479788231797" name="450000" type="Page Connector" width="92" x="434" y="822">
+<page_connector target="Element@31327361:1470377354861">450000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18802574:1479788251107" name="452000" type="Page Connector" width="92" x="434" y="925">
+<page_connector target="Element@889790:1470377369213">452000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@8104606:1479788259733" name="460000" type="Page Connector" width="92" x="437" y="973">
+<page_connector target="Element@16597770:1470377374797">460000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@25191334:1479788269419" name="461000" type="Page Connector" width="92" x="441" y="1022">
+<page_connector target="Element@10181030:1470377384188">461000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@8382455:1479788279636" name="462000" type="Page Connector" width="92" x="442" y="1069">
+<page_connector target="Element@24880695:1470377390834">462000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@26196973:1479788288589" name="463000" type="Page Connector" width="92" x="444" y="1124">
+<page_connector target="Element@13169908:1470377397214">463000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@28123458:1480133583538" name="m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="146" x="49" y="780">
+<exit_states>
+<exit_state name="done" target="Element@7153663:1480133583538"/>
+</exit_states>
+</element>
+<element height="45" id="Element@8604135:1480133583538" type="Comment" width="62" x="-37" y="588">
+<comment><![CDATA[[C00027] : 
+지연처리 
+중입니다.]]></comment>
+</element>
+<element height="46" id="Element@23242279:1480133583538" name="C00044_Check" type="Decision" width="131" x="53" y="961">
+<exit_states>
+<exit_state name="0 : 상담원연결" target="Element@16867134:1480751503365"/>
+<exit_state name="# : 상위메뉴" target="Element@25846200:1480133583538"/>
+<exit_state name="other" target="Element@1411919:1480133583538"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7153663:1480133583538" name="C00044" type="Subflow Call" width="93" x="72" y="870">
+<subflow_call subflow_name="dtmf" target="Element@31:1470296185757">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/C00044.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">0#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@23242279:1480133583538"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1411919:1480133583538" name="MAIN" type="Page Connector" width="81" x="182" y="1071">
+<page_connector target="Element@14010915:1470377591180">MAIN<config/>
+</page_connector>
+</element>
+<element height="45" id="Element@6093694:1480133583538" type="Comment" width="178" x="147" y="829">
+<comment><![CDATA[[C00044] : 
+상담직원연결은 0번, 상위메뉴는 
+우물정자를 눌러 주십시오.]]></comment>
+</element>
+<element height="46" id="Element@25846200:1480133583538" name="HIGH" type="Page Connector" width="79" x="79" y="1071">
+<page_connector target="Element@25356680:1470377596624">HIGH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@1417160:1480133583538" name="C00027" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="93" x="72" y="686">
+<exit_states>
+<exit_state name="done" target="Element@28123458:1480133583538"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13044926:1480133583538" name="AGENT" type="Page Connector" width="92" x="-44" y="1266">
+<page_connector target="Element@11579145:1470377591180">AGENT<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@8756160:1480296627752" name="StandAlone" type="Page Entry" width="123" x="-225" y="83">
+<exit_states>
+<exit_state name="next" target="Element@28597918:1480296627752"/>
+</exit_states>
+</element>
+<element height="46" id="Element@11540100:1480296627752" name="APPNAME_MD3A00" src="Element.Utils.EUSetSessionValue" type="Action Element" width="161" x="-488" y="219">
+<exit_states>
+<exit_state name="done" target="Element@22051839:1480296627752"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28597918:1480296627752" name="StandAlone_SvcCode_Check" type="Decision" width="213" x="-265" y="219">
+<exit_states>
+<exit_state name="MD1000" target="Element@7971227:1480296627752"/>
+<exit_state name="MD2000" target="Element@4623367:1480296627752"/>
+<exit_state name="MD3A00" target="Element@11540100:1480296627752"/>
+<exit_state name="MD4000" target="Element@16567572:1480296627752"/>
+<exit_state name="MD5000" target="Element@16515451:1480296627752"/>
+<exit_state name="MD6000" target="Element@23125222:1480296627752"/>
+<exit_state name="MD7000" target="Element@12933561:1480296627752"/>
+<exit_state name="other" target="Element@3824123:1481282725732"/>
+<exit_state name="MDAGENT" target="Element@31532496:1480296627752"/>
+<exit_state name="V00000" target="Element@9860374:1480296627752"/>
+<exit_state name="MDA000" target="Element@9454530:1480296627752"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7971227:1480296627752" name="APPNAME_MD1000" src="Element.Utils.EUSetSessionValue" type="Action Element" width="159" x="-488" y="96">
+<exit_states>
+<exit_state name="done" target="Element@22051839:1480296627752"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22051839:1480296627752" type="Application Transfer" width="62" x="-650" y="219">
+<app_transfer destination="{Data.Session.APPNAME}">
+<from_session_data>
+<data name="CV1"/>
+<data name="CV2"/>
+<data name="CV3"/>
+<data name="CV4"/>
+<data name="CV5"/>
+<data name="CV6"/>
+<data name="CV7"/>
+<data name="CV8"/>
+<data name="CV9"/>
+<data name="CV10"/>
+<data name="m_strCallkey"/>
+<data name="m_strAnyNum"/>
+<data name="m_strCustomNum"/>
+<data name="m_strAccountNum"/>
+<data name="m_strAccPwdNum"/>
+<data name="m_strEndType"/>
+<data name="m_strCallInQ"/>
+<data name="m_strEWT"/>
+<data name="m_strAccreditFlag"/>
+<data name="m_strProcSect"/>
+<data name="m_strCustSect"/>
+<data name="m_strPwdErrCnt"/>
+<data name="m_strAccountType"/>
+<data name="m_strAccountSect"/>
+<data name="m_strAgtType"/>
+<data name="m_iSRPlayFlag"/>
+<data name="m_strItemCode"/>
+<data name="m_isStandAlone"/>
+</from_session_data>
+</app_transfer>
+</element>
+<element height="46" id="Element@16515451:1480296627752" name="APPNAME_MD5000" src="Element.Utils.EUSetSessionValue" type="Action Element" width="159" x="-488" y="356">
+<exit_states>
+<exit_state name="done" target="Element@22051839:1480296627752"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31532496:1480296627752" name="APPNAME_MDAGENT" src="Element.Utils.EUSetSessionValue" type="Action Element" width="177" x="-492" y="539">
+<exit_states>
+<exit_state name="done" target="Element@22051839:1480296627752"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4623367:1480296627752" name="APPNAME_MD2000" src="Element.Utils.EUSetSessionValue" type="Action Element" width="159" x="-488" y="165">
+<exit_states>
+<exit_state name="done" target="Element@22051839:1480296627752"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16567572:1480296627752" name="APPNAME_MD4000" src="Element.Utils.EUSetSessionValue" type="Action Element" width="159" x="-488" y="288">
+<exit_states>
+<exit_state name="done" target="Element@22051839:1480296627752"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9860374:1480296627752" name="APPNAME_V00000" src="Element.Utils.EUSetSessionValue" type="Action Element" width="154" x="-485" y="48">
+<exit_states>
+<exit_state name="done" target="Element@22051839:1480296627752"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9454530:1480296627752" name="APPNAME_MDA000" src="Element.Utils.EUSetSessionValue" type="Action Element" width="161" x="-488" y="599">
+<exit_states>
+<exit_state name="done" target="Element@22051839:1480296627752"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12933561:1480296627752" name="APPNAME_MD7000" src="Element.Utils.EUSetSessionValue" type="Action Element" width="159" x="-488" y="481">
+<exit_states>
+<exit_state name="done" target="Element@22051839:1480296627752"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23125222:1480296627752" name="APPNAME_MD6000" src="Element.Utils.EUSetSessionValue" type="Action Element" width="159" x="-488" y="421">
+<exit_states>
+<exit_state name="done" target="Element@22051839:1480296627752"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26836987:1480296700710" name="StandAlone_AGENT_Check" type="Decision" width="204" x="1020" y="259">
+<exit_states>
+<exit_state name="Y" target="Element@10570764:1480296700710"/>
+<exit_state name="Other" target="Element@28099569:1481103349235"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26749734:1480296700710" name="StandAlone" type="Page Connector" width="114" x="774" y="418">
+<page_connector target="Element@8756160:1480296627752">StandAlone<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@20509065:1480296700710" name="StandAlone_ACC_Check" type="Decision" width="188" x="1290" y="259">
+<exit_states>
+<exit_state name="Y" target="Element@24734838:1480296700710"/>
+<exit_state name="Other" target="Element@19688295:1481103341296"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25677864:1480296700710" name="StandAlone_MAIN_Check" type="Decision" width="193" x="793" y="259">
+<exit_states>
+<exit_state name="Y" target="Element@26749734:1480296700710"/>
+<exit_state name="Other" target="Element@4239821:1481103361652"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10570764:1480296700710" name="StandAlone" type="Page Connector" width="114" x="1010" y="418">
+<page_connector target="Element@8756160:1480296627752">StandAlone<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@24734838:1480296700710" name="StandAlone" type="Page Connector" width="114" x="1269" y="418">
+<page_connector target="Element@8756160:1480296627752">StandAlone<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@12572289:1480296700710" name="StandAlone" type="Page Connector" width="114" x="1517" y="418">
+<page_connector target="Element@8756160:1480296627752">StandAlone<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@10217460:1480296700710" name="StandAlone_VOICE_Check" type="Decision" width="199" x="1551" y="259">
+<exit_states>
+<exit_state name="Y" target="Element@12572289:1480296700710"/>
+<exit_state name="Other" target="Element@7240745:1481103356068"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14560672:1480304240476" name="StandAlone_Quick_Check" type="Decision" width="194" x="587" y="1472">
+<exit_states>
+<exit_state name="Y" target="Element@5820534:1480304240476"/>
+<exit_state name="Other" target="Element@11860842:1481103388717"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5820534:1480304240476" name="StandAlone" type="Page Connector" width="114" x="398" y="1472">
+<page_connector target="Element@8756160:1480296627752">StandAlone<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@15714017:1480304291893" name="StandAlone_FUND_Check" type="Decision" width="194" x="526" y="258">
+<exit_states>
+<exit_state name="Y" target="Element@32106365:1480304291893"/>
+<exit_state name="Other" target="Element@12491864:1481103370045"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32106365:1480304291893" name="StandAlone" type="Page Connector" width="114" x="494" y="418">
+<page_connector target="Element@8756160:1480296627752">StandAlone<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@9535288:1480671266010" name="ErrorInsert" src="Element.Network.ENErrorInsert" type="Action Element" width="108" x="-53" y="1157">
+<exit_states>
+<exit_state name="done" target="Element@13044926:1480133583538"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16867134:1480751503365" name="Hold_ErrorInsert" type="Subflow Call" width="139" x="-74" y="1066">
+<subflow_call subflow_name="Hold" target="Element@31:1480751514143">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@9535288:1480671266010"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12154230:1481103329222" name="FINISH" type="Page Entry" width="97" x="279" y="441">
+<exit_states>
+<exit_state name="next" target="Element@29182171:1481282725732"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19688295:1481103341296" name="FINISH" type="Page Connector" width="114" x="1397" y="419">
+<page_connector target="Element@12154230:1481103329222">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@28099569:1481103349235" name="FINISH" type="Page Connector" width="114" x="1142" y="418">
+<page_connector target="Element@12154230:1481103329222">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@7240745:1481103356068" name="FINISH" type="Page Connector" width="114" x="1644" y="416">
+<page_connector target="Element@12154230:1481103329222">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@4239821:1481103361652" name="FINISH" type="Page Connector" width="114" x="892" y="417">
+<page_connector target="Element@12154230:1481103329222">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@12491864:1481103370045" name="FINISH" type="Page Connector" width="114" x="633" y="407">
+<page_connector target="Element@12154230:1481103329222">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@11860842:1481103388717" name="FINISH" type="Page Connector" width="114" x="622" y="1566">
+<page_connector target="Element@12154230:1481103329222">FINISH<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@23899799:1481282725732" name="END_Return" src="com.audium.server.voiceElement.internal.CiscoSubdialogReturnElement" type="Subdialog Return" width="117" x="269" y="358">
+<exit_states>
+<exit_state name="done"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3824123:1481282725732" name="LogWrite_END_Y" src="Element.Utils.EULogWrite" type="Action Element" width="143" x="30" y="219">
+<exit_states>
+<exit_state name="done" target="Element@25537354:1470377591180"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8733919:1481282725732" name="Decision" type="Decision" width="99" x="278" y="219">
+<exit_states>
+<exit_state name="Y" target="Element@3824123:1481282725732"/>
+<exit_state name="Other" target="Element@13124440:1481282725732"/>
+</exit_states>
+</element>
+<element height="46" id="Element@33185607:1481282725732" name="END_SetValue" src="Element.Utils.EUSetSessionValue" type="Action Element" width="131" x="262" y="135">
+<exit_states>
+<exit_state name="done" target="Element@8733919:1481282725732"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29182171:1481282725732" name="Subdialog_Return" type="Subflow Call" width="148" x="403" y="358">
+<subflow_call subflow_name="SubdialogReturn" target="Element@31:1481200587946">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@23899799:1481282725732"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13124440:1481282725732" name="LogWrite_END_N" src="Element.Utils.EULogWrite" type="Action Element" width="144" x="255" y="273">
+<exit_states>
+<exit_state name="done" target="Element@29182171:1481282725732"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13367065:1482211870779" name="ErrMsg_TTS" src="Element.Audio.EATTSMaker" type="Decision Element" width="121" x="-161" y="854">
+<exit_states>
+<exit_state name="success" target="Element@13355076:1482211870779"/>
+<exit_state name="fail" target="Element@13355076:1482211870779"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19156788:1482211870779" name="ErrMsg_HOLD" type="Subflow Call" width="125" x="-164" y="786">
+<subflow_call subflow_name="Hold" target="Element@31:1482211766593">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@13367065:1482211870779"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13355076:1482211870779" name="ErrMsg_Play" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="122" x="-166" y="935">
+<exit_states>
+<exit_state name="done" target="Element@28123458:1480133583538"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13169677:1482211870779" name="ErrMsg_Check" type="Decision" width="133" x="-168" y="700">
+<exit_states>
+<exit_state name="ErrMsg 존재" target="Element@19156788:1482211870779"/>
+<exit_state name="ErrMsg존재안함" target="Element@1417160:1480133583538"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9167544:1485819374975" name="470000" type="Page Connector" width="92" x="885" y="1115">
+<page_connector target="Element@17939832:1483686563645">470000<config/>
+</page_connector>
+</element>
+</page>

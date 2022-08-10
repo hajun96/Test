@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@26036905:1480312395135" name="Decision_01" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="Decision_01" default_exit_state="other">
+        <exit_state name="콜백시간(11:00~17:00)" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <element name="EUGetDateTime_01" variable="value" />
+                </data>
+                <constant_number value="1100" />
+            </number>
+            <number operator="less">
+                <data>
+                    <element name="EUGetDateTime_01" variable="value" />
+                </data>
+                <constant_number value="1700" />
+            </number>
+        </exit_state>
+        <exit_state name="콜백시간(11:00~23:59)" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <element name="EUGetDateTime_01" variable="value" />
+                </data>
+                <constant_number value="1800" />
+            </number>
+            <number operator="less">
+                <data>
+                    <element name="EUGetDateTime_01" variable="value" />
+                </data>
+                <constant_number value="2359" />
+            </number>
+        </exit_state>
+        <exit_state name="콜백시간(00:00~09:00)" conjugate="and">
+            <number operator="less_equal">
+                <data>
+                    <element name="EUGetDateTime_01" variable="value" />
+                </data>
+                <constant_number value="0000" />
+            </number>
+            <number operator="less">
+                <data>
+                    <element name="EUGetDateTime_01" variable="value" />
+                </data>
+                <constant_number value="0900" />
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

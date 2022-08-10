@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE knowledge_base SYSTEM "../../../../dtds/DecisionKnowledgeBase.dtd">
+<knowledge_base>
+    <rule default_exit_state="그외" name="ASR_MAIN_MOVE_Decision_m_iSRPlayFlag">
+        <exit_state conjugate="and" name="처음진입">
+            <string operator="equal">
+                <data>
+                    <session name="m_isRPlayFlag"/>
+                </data>
+                <constant_string value="N"/>
+            </string>
+        </exit_state>
+        <exit_state conjugate="and" name="음성인식했었음">
+            <string operator="equal">
+                <data>
+                    <session name="m_isRPlayFlag"/>
+                </data>
+                <constant_string value="Y"/>
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>

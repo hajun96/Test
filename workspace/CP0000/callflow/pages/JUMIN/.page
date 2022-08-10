@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@27136334:1473064514329" name="JUMIN" version="6.0.1">
+<element height="46" id="Element@8535197:1473064514329" name="JUMIN" type="Page Entry" width="87" x="300" y="30">
+<exit_states>
+<exit_state name="next" target="Element@22576927:1473064779817"/>
+</exit_states>
+</element>
+<element height="15" id="Element@26034708:1473064779817" type="Comment" width="205" x="426" y="136">
+<comment><![CDATA[주민등록번호 13자리를 눌러주십시오.]]></comment>
+</element>
+<element height="46" id="Element@15553733:1473064779817" name="JUMIN_Decision_01" type="Decision" width="160" x="263" y="234">
+<exit_states>
+<exit_state name="MAXERROR" target="Element@23729425:1473064779817"/>
+<exit_state name="정상입력" target="Element@14061568:1478066923633"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23729425:1473064779817" name="DTMF_MAX_ERROR" type="Page Connector" width="164" x="499" y="233">
+<page_connector target="Element@16054767:1473062321146">DTMF_MAX_ERROR<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@22576927:1473064779817" name="JUMIN_DIGIT" type="Subflow Call" width="124" x="281" y="122">
+<subflow_call subflow_name="dtmf_multi_digit" target="Element@31:1473061546252">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENTC/CP0002.wav</data>
+<data name="LENGTH">13</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@15553733:1473064779817"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4395659:1473064886221" name="JUMIN_EUSocketInput_02" src="Element.Utils.EUSocketInput" type="Action Element" width="192" x="451" y="416">
+<exit_states>
+<exit_state name="done" target="Element@3296488:1473064886221"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5722103:1473064886221" name="Return_AEMS" type="Page Connector" width="164" x="1224" y="593">
+<page_connector target="Element@4655813:1473062436718">Return_AEMS<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@20399981:1473064886221" name="JUMIN_Decision_03" type="Decision" width="160" x="681" y="706">
+<exit_states>
+<exit_state name="비정상" target="Element@28245073:1473064886221"/>
+<exit_state name="정상" target="Element@30870301:1473064886221"/>
+<exit_state name="비밀번호오류" target="Element@28245073:1473064886221"/>
+<exit_state name="other" target="Element@28245073:1473064886221"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18535745:1473064886221" name="Return_AEMS" type="Page Connector" width="164" x="250" y="453">
+<page_connector target="Element@4655813:1473062436718">Return_AEMS<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@30870301:1473064886221" name="JUMIN_EUSetSessionValue_06" src="Element.Utils.EUSetSessionValue" type="Action Element" width="223" x="350" y="710">
+<exit_states>
+<exit_state name="done" target="Element@18535745:1473064886221"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28245073:1473064886221" name="JUMIN_EUSetSessionValue_05" src="Element.Utils.EUSetSessionValue" type="Action Element" width="223" x="934" y="596">
+<exit_states>
+<exit_state name="done" target="Element@5722103:1473064886221"/>
+</exit_states>
+</element>
+<element height="46" id="Element@10928075:1473064886221" name="JUMIN_ENStockSocket_01" src="Element.Network.ENStockSocket" type="Decision Element" width="197" x="663" y="507">
+<exit_states>
+<exit_state name="success" target="Element@24759728:1473064886221"/>
+<exit_state name="fail" target="Element@28245073:1473064886221"/>
+<exit_state name="errcode" target="Element@28245073:1473064886221"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3296488:1473064886221" name="JUMIN_HOLD_01" type="Subflow Call" width="143" x="690" y="416">
+<subflow_call subflow_name="HOLD" target="Element@31:1473064044321">
+<config/>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@10928075:1473064886221"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24759728:1473064886221" name="JUMIN_EUSocketOutput_01" src="Element.Utils.EUSocketOutput" type="Action Element" width="201" x="661" y="596">
+<exit_states>
+<exit_state name="done" target="Element@20399981:1473064886221"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14061568:1478066923633" name="JUMIN_EUSetSessionValue_061" src="Element.Utils.EUSetSessionValue" type="Action Element" width="229" x="233" y="338">
+<exit_states>
+<exit_state name="done" target="Element@18535745:1473064886221"/>
+</exit_states>
+</element>
+<element height="46" id="Element@235408:1478066962024" name="Entry_01" type="Page Entry" width="97" x="543" y="330">
+<exit_states>
+<exit_state name="next" target="Element@4395659:1473064886221"/>
+</exit_states>
+</element>
+</page>

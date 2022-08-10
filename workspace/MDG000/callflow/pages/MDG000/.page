@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@24302800:1474592998168" name="MDG000" version="6.0.1">
+<element height="46" id="Element@28864206:1474592998168" name="Start Of Call" start_of_call="true" type="Page Entry" width="117" x="170" y="-20">
+<exit_states>
+<exit_state name="next" target="Element@28236418:1474595478581"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27102620:1474593048954" name="EUSetSvcCode_01" src="Element.Utils.EUSetSvcCode" type="Action Element" width="153" x="152" y="226">
+<exit_states>
+<exit_state name="done" target="Element@23218360:1474593101536"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23218360:1474593101536" name="MDG000_Audio_MDG0001" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="197" x="133" y="303">
+<exit_states>
+<exit_state name="done" target="Element@12054872:1474593357537"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12054872:1474593357537" name="MDG000_Audio_MDG0002" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="197" x="133" y="392">
+<exit_states>
+<exit_state name="done" target="Element@3823078:1475557363933"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28236418:1474595478581" name="MDG000_CVP Subdialog Start" src="com.audium.server.voiceElement.internal.CiscoSubdialogStartElement" type="Subdialog Start" width="214" x="121" y="62">
+<exit_states>
+<exit_state name="done" target="Element@1675200:1474619351704"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1675200:1474619351704" name="EUGetCallData_01" src="Element.Utils.EUGetCallData" type="Action Element" width="150" x="153" y="148">
+<exit_states>
+<exit_state name="done" target="Element@27102620:1474593048954"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4532631:1475557346447" name="Flag_busy" type="Flag" width="108" x="718" y="964">
+<exit_states>
+<exit_state name="done" target="Element@40535:1475557346447"/>
+</exit_states>
+</element>
+<element height="46" id="Element@29542390:1475557346447" name="Transfer_01" src="com.audium.server.voiceElement.transfer.MTransfer" type="Voice Element" width="115" x="715" y="740">
+<exit_states>
+<exit_state name="done" target="Element@4839678:1475557346447"/>
+<exit_state name="busy" target="Element@4532631:1475557346447"/>
+<exit_state name="noanswer" target="Element@13462389:1475557346447"/>
+<exit_state name="phone_error" target="Element@14033888:1475557346447"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4839678:1475557346447" name="Flag_done" type="Flag" width="108" x="1089" y="740">
+<exit_states>
+<exit_state name="done" target="Element@40535:1475557346447"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13462389:1475557346447" name="Flag_normal" type="Flag" width="119" x="903" y="814">
+<exit_states>
+<exit_state name="done" target="Element@40535:1475557346447"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12471173:1475557346447" name="COMMON_HUNT" type="Page Entry" width="191" x="421" y="451">
+<exit_states>
+<exit_state name="next" target="Element@22024537:1475557346447"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24742072:1475557346447" name="LogWrite_Transfer_01" src="Element.Utils.EULogWrite" type="Action Element" width="169" x="690" y="564">
+<exit_states>
+<exit_state name="done" target="Element@29542390:1475557346447"/>
+</exit_states>
+</element>
+<element height="46" id="Element@40535:1475557346447" type="Hang Up" width="98" x="1094" y="964"/>
+<element height="46" id="Element@14033888:1475557346447" name="Flag_error" type="Flag" width="106" x="836" y="882">
+<exit_states>
+<exit_state name="done" target="Element@40535:1475557346447"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22024537:1475557346447" name="MultiSessionValue_Hunt" src="Element.Utils.EUSetMultiSessionValue" type="Action Element" width="211" x="411" y="564">
+<exit_states>
+<exit_state name="done" target="Element@24742072:1475557346447"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3823078:1475557363933" name="COMMON_HUNT" type="Page Connector" width="147" x="157" y="539">
+<page_connector target="Element@12471173:1475557346447">COMMON_HUNT<config/>
+</page_connector>
+</element>
+</page>

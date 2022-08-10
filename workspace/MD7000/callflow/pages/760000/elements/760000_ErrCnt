@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@28885325:1471075378652" name="760000_ErrCnt" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="760000_ErrCnt">
+        <exit_state name="5회 오류 미등록" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strErrCnt" />
+                </data>
+                <constant_string value="N" />
+            </string>
+        </exit_state>
+        <exit_state name="Y" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strErrCnt" />
+                </data>
+                <constant_string value="Y" />
+            </string>
+        </exit_state>
+        <exit_state name="기존 초기화 이력 있을때" conjugate="and">
+            <string operator="equal">
+                <data>
+                    <session name="m_strErrCnt" />
+                </data>
+                <constant_string value="NN" />
+            </string>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@23872389:1474248198290" name="ASR_InductionSet_1th" version="6.0.1">
+<element height="46" id="Element@31:1474248198290" name="ASR_InductionSet_1th" type="Subflow Start" width="171" x="230" y="30">
+<exit_states>
+<exit_state name="next" target="Element@6370964:1474272374778"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18295917:1474251055087" name="Subflow Return_01" type="Subflow Return" width="153" x="648" y="99"/>
+<element height="46" id="Element@18176608:1474272205190" name="EUGetDateTime" src="Element.Utils.EUGetDateTime" type="Action Element" width="139" x="92" y="170">
+<exit_states>
+<exit_state name="done" target="Element@8430478:1474272298967"/>
+</exit_states>
+</element>
+<element height="46" id="Element@22970731:1474272238955" name="Decision_stockTimeCheck" type="Decision" width="211" x="-5" y="461">
+<exit_states>
+<exit_state name="8시 이전" target="Element@28851775:1474272622869">
+<bendpoint>
+<dim1 x="200" y="-35"/>
+<dim2 x="-124" y="-30"/>
+</bendpoint>
+</exit_state>
+<exit_state name="10시 이전" target="Element@30021368:1474273863295"/>
+<exit_state name="14시 이전" target="Element@31397803:1474274278055"/>
+<exit_state name="16시 이전" target="Element@6577875:1474274516747"/>
+<exit_state name="19시 이전" target="Element@16655436:1474279617940"/>
+<exit_state name="그외" target="Element@28851775:1474272622869">
+<bendpoint>
+<dim1 x="186" y="36"/>
+<dim2 x="-138" y="41"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@22067158:1474272244554" name="END" type="Page Entry" width="97" x="676" y="0">
+<exit_states>
+<exit_state name="next" target="Element@18295917:1474251055087"/>
+</exit_states>
+</element>
+<element height="46" id="Element@14765265:1474272262941" name="Math_01" src="com.audium.server.action.math.MathAction" type="Action Element" width="96" x="109" y="363">
+<exit_states>
+<exit_state name="done" target="Element@28351057:1474272717787"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8430478:1474272298967" name="EUSetSessionValue_01" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="74" y="261">
+<exit_states>
+<exit_state name="done" target="Element@25769570:1474272663330"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6370964:1474272374778" name="Flag_01" type="Flag" width="92" x="351" y="127">
+<exit_states>
+<exit_state name="done" target="Element@18176608:1474272205190"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28851775:1474272622869" name="Decision_menu1" type="Decision" width="143" x="353" y="456">
+<exit_states>
+<exit_state name="그외" target="Element@31729025:1474273433459"/>
+<exit_state name="1.보유종목현재가" target="Element@21822691:1474273466687"/>
+<exit_state name="2.종목조회" target="Element@6003456:1474273475422"/>
+<exit_state name="3.종목조회" target="Element@3088433:1474273479681"/>
+<exit_state name="4.현재가" target="Element@24681057:1474273491100"/>
+<exit_state name="5.현재가" target="Element@5645441:1474273512487"/>
+<exit_state name="6.종합주가지수" target="Element@30556981:1474273525466"/>
+<exit_state name="7.코스닥지수" target="Element@21772327:1474273545059"/>
+<exit_state name="8.잔고확인" target="Element@25240946:1474273554981"/>
+<exit_state name="9.통장잔고" target="Element@21573885:1474273654975"/>
+<exit_state name="0.분실신고" target="Element@23531903:1474273819381"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25769570:1474272663330" name="EUGetDateTime_random" src="Element.Utils.EUGetDateTime" type="Action Element" width="191" x="308" y="244">
+<exit_states>
+<exit_state name="done" target="Element@14765265:1474272262941"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28351057:1474272717787" name="EUSetSessionValue_02" src="Element.Utils.EUSetSessionValue" type="Action Element" width="180" x="276" y="355">
+<exit_states>
+<exit_state name="done" target="Element@22970731:1474272238955"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21700335:1474272964302" name="EUSetSessionValue_SRA0008" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1321" y="541">
+<exit_states>
+<exit_state name="done" target="Element@32764665:1474273136599"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28728920:1474273107116" name="EUSetSessionValue_SRA0001" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1321" y="48">
+<exit_states>
+<exit_state name="done" target="Element@32764665:1474273136599"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32764665:1474273136599" name="END" type="Page Connector" width="75" x="1791" y="294">
+<page_connector target="Element@22067158:1474272244554">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@30402385:1474273138689" name="Entry_SRA0008" type="Page Entry" width="133" x="1065" y="540">
+<exit_states>
+<exit_state name="next" target="Element@21700335:1474272964302"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16827865:1474273144742" name="Entry_SRA0001" type="Page Entry" width="133" x="1065" y="48">
+<exit_states>
+<exit_state name="next" target="Element@28728920:1474273107116"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9982165:1474273168469" name="Entry_SRA0005" type="Page Entry" width="133" x="1065" y="348">
+<exit_states>
+<exit_state name="next" target="Element@31644028:1474273168469"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31644028:1474273168469" name="EUSetSessionValue_SRA0005" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1321" y="348">
+<exit_states>
+<exit_state name="done" target="Element@32764665:1474273136599"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3346372:1474273180933" name="EUSetSessionValue_SRA0002" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1321" y="129">
+<exit_states>
+<exit_state name="done" target="Element@32764665:1474273136599"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28954797:1474273180933" name="Entry_SRA0002" type="Page Entry" width="133" x="1065" y="129">
+<exit_states>
+<exit_state name="next" target="Element@3346372:1474273180933"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12317858:1474273180933" name="EUSetSessionValue_SRA0006" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1321" y="414">
+<exit_states>
+<exit_state name="done" target="Element@32764665:1474273136599"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4902924:1474273180933" name="Entry_SRA0006" type="Page Entry" width="133" x="1065" y="414">
+<exit_states>
+<exit_state name="next" target="Element@12317858:1474273180933"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20042711:1474273180933" name="Entry_SRA0003" type="Page Entry" width="133" x="1065" y="207">
+<exit_states>
+<exit_state name="next" target="Element@5249874:1474273180933"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5249874:1474273180933" name="EUSetSessionValue_SRA0003" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1321" y="207">
+<exit_states>
+<exit_state name="done" target="Element@32764665:1474273136599"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7235948:1474273183398" name="EUSetSessionValue_SRA0007" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1321" y="474">
+<exit_states>
+<exit_state name="done" target="Element@32764665:1474273136599"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23083452:1474273183398" name="Entry_SRA0007" type="Page Entry" width="133" x="1065" y="474">
+<exit_states>
+<exit_state name="next" target="Element@7235948:1474273183398"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4173965:1474273183398" name="EUSetSessionValue_SRA0004" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1320" y="274">
+<exit_states>
+<exit_state name="done" target="Element@32764665:1474273136599"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30167494:1474273183398" name="Entry_SRA0004" type="Page Entry" width="133" x="1064" y="274">
+<exit_states>
+<exit_state name="next" target="Element@4173965:1474273183398"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5374257:1474273183398" name="Entry_SRA0009" type="Page Entry" width="133" x="1065" y="616">
+<exit_states>
+<exit_state name="next" target="Element@13324665:1474273183398"/>
+</exit_states>
+</element>
+<element height="46" id="Element@13324665:1474273183398" name="EUSetSessionValue_SRA0009" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1321" y="616">
+<exit_states>
+<exit_state name="done" target="Element@26983603:1474273725408"/>
+</exit_states>
+</element>
+<element height="46" id="Element@31729025:1474273433459" name="Entry_SRA0007" type="Page Connector" width="133" x="517" y="184">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@21822691:1474273466687" name="Entry_SRA0007" type="Page Connector" width="133" x="690" y="183">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@6003456:1474273475422" name="Entry_SRA0001" type="Page Connector" width="133" x="878" y="221">
+<page_connector target="Element@16827865:1474273144742">Entry_SRA0001<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@3088433:1474273479681" name="Entry_SRA0001" type="Page Connector" width="133" x="878" y="307">
+<page_connector target="Element@16827865:1474273144742">Entry_SRA0001<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@24681057:1474273491100" name="Entry_SRA0005" type="Page Connector" width="133" x="878" y="380">
+<page_connector target="Element@9982165:1474273168469">Entry_SRA0005<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@5645441:1474273512487" name="Entry_SRA0005" type="Page Connector" width="133" x="878" y="459">
+<page_connector target="Element@9982165:1474273168469">Entry_SRA0005<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@30556981:1474273525466" name="Entry_SRA0006" type="Page Connector" width="133" x="878" y="533">
+<page_connector target="Element@4902924:1474273180933">Entry_SRA0006<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@21772327:1474273545059" name="Entry_SRA0007" type="Page Connector" width="133" x="878" y="597">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@25240946:1474273554981" name="Entry_SRA0010" type="Page Connector" width="133" x="878" y="659">
+<page_connector target="Element@21711070:1474273573997">Entry_SRA0010<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@21711070:1474273573997" name="Entry_SRA0010" type="Page Entry" width="133" x="1063" y="692">
+<exit_states>
+<exit_state name="next" target="Element@27074272:1474273573997"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27074272:1474273573997" name="EUSetSessionValue_SRA0010" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1319" y="692">
+<exit_states>
+<exit_state name="done" target="Element@26983603:1474273725408"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21573885:1474273654975" name="Entry_SRA0011" type="Page Connector" width="133" x="736" y="701">
+<page_connector target="Element@28551121:1474273658844">Entry_SRA0011<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@29499332:1474273658844" name="EUSetSessionValue_SRA0011" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1320" y="758">
+<exit_states>
+<exit_state name="done" target="Element@26983603:1474273725408"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28551121:1474273658844" name="Entry_SRA0011" type="Page Entry" width="133" x="1064" y="758">
+<exit_states>
+<exit_state name="next" target="Element@29499332:1474273658844"/>
+</exit_states>
+</element>
+<element height="46" id="Element@7713982:1474273703584" name="Entry_SRA0012" type="Page Entry" width="133" x="1062" y="825">
+<exit_states>
+<exit_state name="next" target="Element@28134960:1474273703584"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28134960:1474273703584" name="EUSetSessionValue_SRA0012" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1318" y="825">
+<exit_states>
+<exit_state name="done" target="Element@26983603:1474273725408"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26983603:1474273725408" name="END" type="Page Connector" width="75" x="1729" y="849">
+<page_connector target="Element@22067158:1474272244554">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@31264823:1474273742833" name="EUSetSessionValue_SRA0013" src="Element.Utils.EUSetSessionValue" type="Action Element" width="216" x="1321" y="900">
+<exit_states>
+<exit_state name="done" target="Element@26983603:1474273725408"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5488153:1474273742833" name="Entry_SRA0013" type="Page Entry" width="133" x="1065" y="900">
+<exit_states>
+<exit_state name="next" target="Element@31264823:1474273742833"/>
+</exit_states>
+</element>
+<element height="46" id="Element@23531903:1474273819381" name="Entry_SRA0013" type="Page Connector" width="133" x="542" y="699">
+<page_connector target="Element@5488153:1474273742833">Entry_SRA0013<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@12946435:1474273863295" name="Entry_SRA0001" type="Page Connector" width="133" x="867" y="816">
+<page_connector target="Element@16827865:1474273144742">Entry_SRA0001<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@20405564:1474273863295" name="Entry_SRA0007" type="Page Connector" width="133" x="867" y="1192">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@17750004:1474273863295" name="Entry_SRA0003" type="Page Connector" width="133" x="725" y="1296">
+<page_connector target="Element@20042711:1474273180933">Entry_SRA0003<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@26320529:1474273863295" name="Entry_SRA0009" type="Page Connector" width="133" x="531" y="1294">
+<page_connector target="Element@5374257:1474273183398">Entry_SRA0009<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@30021368:1474273863295" name="Decision_menu2" type="Decision" width="143" x="342" y="1051">
+<exit_states>
+<exit_state name="그외" target="Element@11147680:1474273863295"/>
+<exit_state name="1.보유종목현재가" target="Element@24678959:1474273863295"/>
+<exit_state name="2.종목조회" target="Element@12946435:1474273863295"/>
+<exit_state name="3.종목조회" target="Element@23811552:1474273863295"/>
+<exit_state name="4.현재가" target="Element@30603082:1474273863295"/>
+<exit_state name="5.현재가" target="Element@23677534:1474273863295"/>
+<exit_state name="6.종합주가지수" target="Element@1540323:1474273863295"/>
+<exit_state name="7.코스닥지수" target="Element@20405564:1474273863295"/>
+<exit_state name="8.팔자주문" target="Element@25426078:1474273863295"/>
+<exit_state name="9.사자주문" target="Element@17750004:1474273863295"/>
+<exit_state name="0.주문취소" target="Element@26320529:1474273863295"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1540323:1474273863295" name="Entry_SRA0006" type="Page Connector" width="133" x="867" y="1128">
+<page_connector target="Element@4902924:1474273180933">Entry_SRA0006<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@25426078:1474273863295" name="Entry_SRA0002" type="Page Connector" width="133" x="867" y="1254">
+<page_connector target="Element@28954797:1474273180933">Entry_SRA0002<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@23811552:1474273863295" name="Entry_SRA0001" type="Page Connector" width="133" x="867" y="902">
+<page_connector target="Element@16827865:1474273144742">Entry_SRA0001<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@24678959:1474273863295" name="Entry_SRA0007" type="Page Connector" width="133" x="679" y="778">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@30603082:1474273863295" name="Entry_SRA0005" type="Page Connector" width="133" x="867" y="975">
+<page_connector target="Element@9982165:1474273168469">Entry_SRA0005<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@11147680:1474273863295" name="Entry_SRA0007" type="Page Connector" width="133" x="506" y="779">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@23677534:1474273863295" name="Entry_SRA0005" type="Page Connector" width="133" x="867" y="1054">
+<page_connector target="Element@9982165:1474273168469">Entry_SRA0005<config/>
+</page_connector>
+</element>
+<element height="12" id="Element@2026819:1474273913667" type="Comment" width="142" x="409" y="50">
+<comment><![CDATA[TODO:휴일체크 추가 필요]]></comment>
+</element>
+<element height="46" id="Element@4945848:1474274278055" name="Entry_SRA0012" type="Page Connector" width="133" x="-507" y="1100">
+<page_connector target="Element@7713982:1474273703584">Entry_SRA0012<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@17843816:1474274278055" name="Entry_SRA0005" type="Page Connector" width="133" x="-206" y="1399">
+<page_connector target="Element@9982165:1474273168469">Entry_SRA0005<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@20951101:1474274278055" name="Entry_SRA0006" type="Page Connector" width="133" x="-342" y="1367">
+<page_connector target="Element@4902924:1474273180933">Entry_SRA0006<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@4958656:1474274278055" name="Entry_SRA0007" type="Page Connector" width="133" x="259" y="1224">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@17533936:1474274278055" name="Entry_SRA0005" type="Page Connector" width="133" x="-65" y="1404">
+<page_connector target="Element@9982165:1474273168469">Entry_SRA0005<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@20032445:1474274278055" name="Entry_SRA0004" type="Page Connector" width="133" x="-488" y="1212">
+<page_connector target="Element@30167494:1474273183398">Entry_SRA0004<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@133634:1474274278055" name="Entry_SRA0007" type="Page Connector" width="133" x="-465" y="1309">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@31397803:1474274278055" name="Decision_menu3" type="Decision" width="143" x="-191" y="928">
+<exit_states>
+<exit_state name="그외" target="Element@25887088:1474274278055"/>
+<exit_state name="1.보유종목현재가" target="Element@4958656:1474274278055"/>
+<exit_state name="3.종목조회" target="Element@24477562:1474274278055"/>
+<exit_state name="4.현재가" target="Element@17533936:1474274278055"/>
+<exit_state name="5.현재가" target="Element@17843816:1474274278055"/>
+<exit_state name="6.종합주가지수" target="Element@20951101:1474274278055"/>
+<exit_state name="7.코스닥지수" target="Element@133634:1474274278055"/>
+<exit_state name="2.보유종목현재가" target="Element@8180505:1474274447749"/>
+<exit_state name="8.체결내역" target="Element@20032445:1474274278055"/>
+<exit_state name="9.이체" target="Element@4945848:1474274278055"/>
+</exit_states>
+</element>
+<element height="46" id="Element@24477562:1474274278055" name="Entry_SRA0001" type="Page Connector" width="133" x="94" y="1386">
+<page_connector target="Element@16827865:1474273144742">Entry_SRA0001<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@25887088:1474274278055" name="Entry_SRA0007" type="Page Connector" width="133" x="183" y="1046">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@8180505:1474274447749" name="Entry_SRA0007" type="Page Connector" width="133" x="209" y="1295">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@28490629:1474274516747" name="Entry_SRA0006" type="Page Connector" width="133" x="-1088" y="483">
+<page_connector target="Element@4902924:1474273180933">Entry_SRA0006<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@33349937:1474274516747" name="Entry_SRA0008" type="Page Connector" width="133" x="-742" y="760">
+<page_connector target="Element@30402385:1474273138689">Entry_SRA0008<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@19463108:1474274516747" name="Entry_SRA0005" type="Page Connector" width="133" x="-1088" y="592">
+<page_connector target="Element@9982165:1474273168469">Entry_SRA0005<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@6577875:1474274516747" name="Decision_menu4" type="Decision" width="143" x="-651" y="430">
+<exit_states>
+<exit_state name="그외" target="Element@14800117:1474274516747"/>
+<exit_state name="1.보유종목현재가" target="Element@33349937:1474274516747"/>
+<exit_state name="3.종목조회" target="Element@26052733:1474274516747"/>
+<exit_state name="4.현재가" target="Element@16512384:1474274516747"/>
+<exit_state name="5.현재가" target="Element@19463108:1474274516747"/>
+<exit_state name="6.종합주가지수" target="Element@28490629:1474274516747"/>
+<exit_state name="7.코스닥지수" target="Element@27853434:1474274516747"/>
+<exit_state name="8.체결내역" target="Element@20264013:1474274516747"/>
+<exit_state name="2.종목조회" target="Element@11794885:1474274666536"/>
+<exit_state name="9.잔고확인" target="Element@11877237:1474274682229"/>
+<exit_state name="0.통장잔고" target="Element@8003088:1474274693243"/>
+</exit_states>
+</element>
+<element height="46" id="Element@26052733:1474274516747" name="Entry_SRA0001" type="Page Connector" width="133" x="-1088" y="760">
+<page_connector target="Element@16827865:1474273144742">Entry_SRA0001<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@14800117:1474274516747" name="Entry_SRA0007" type="Page Connector" width="133" x="-566" y="760">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@20264013:1474274516747" name="Entry_SRA0004" type="Page Connector" width="133" x="-1088" y="294">
+<page_connector target="Element@30167494:1474273183398">Entry_SRA0004<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@16512384:1474274516747" name="Entry_SRA0005" type="Page Connector" width="133" x="-1088" y="674">
+<page_connector target="Element@9982165:1474273168469">Entry_SRA0005<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@27853434:1474274516747" name="Entry_SRA0007" type="Page Connector" width="133" x="-1088" y="399">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@11794885:1474274666536" name="Entry_SRA0001" type="Page Connector" width="133" x="-928" y="760">
+<page_connector target="Element@16827865:1474273144742">Entry_SRA0001<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@11877237:1474274682229" name="Entry_SRA0010" type="Page Connector" width="133" x="-1088" y="219">
+<page_connector target="Element@21711070:1474273573997">Entry_SRA0010<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@8003088:1474274693243" name="Entry_SRA0011" type="Page Connector" width="133" x="-1088" y="110">
+<page_connector target="Element@28551121:1474273658844">Entry_SRA0011<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@4475048:1474279617940" name="Entry_SRA0001" type="Page Connector" width="133" x="-666" y="-369">
+<page_connector target="Element@16827865:1474273144742">Entry_SRA0001<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@10687775:1474279617940" name="Entry_SRA0011" type="Page Connector" width="133" x="-842" y="188">
+<page_connector target="Element@28551121:1474273658844">Entry_SRA0011<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@2855198:1474279617940" name="Entry_SRA0005" type="Page Connector" width="133" x="-841" y="-352">
+<page_connector target="Element@9982165:1474273168469">Entry_SRA0005<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@16848328:1474279617940" name="Entry_SRA0007" type="Page Connector" width="133" x="-144" y="-369">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@21470521:1474279617940" name="Entry_SRA0010" type="Page Connector" width="133" x="-848" y="48">
+<page_connector target="Element@21711070:1474273573997">Entry_SRA0010<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@14230017:1474279617940" name="Entry_SRA0001" type="Page Connector" width="133" x="-506" y="-369">
+<page_connector target="Element@16827865:1474273144742">Entry_SRA0001<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@4010572:1474279617940" name="Entry_SRA0005" type="Page Connector" width="133" x="-848" y="-247">
+<page_connector target="Element@9982165:1474273168469">Entry_SRA0005<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@5928323:1474279617940" name="Entry_SRA0007" type="Page Connector" width="133" x="-848" y="-93">
+<page_connector target="Element@23083452:1474273183398">Entry_SRA0007<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@28399935:1474279617940" name="Entry_SRA0006" type="Page Connector" width="133" x="-848" y="-182">
+<page_connector target="Element@4902924:1474273180933">Entry_SRA0006<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@16655436:1474279617940" name="Decision_menu5" type="Decision" width="143" x="-387" y="18">
+<exit_states>
+<exit_state name="그외" target="Element@16848328:1474279617940"/>
+<exit_state name="1.보유종목현재가" target="Element@17742672:1474279617940"/>
+<exit_state name="3.종목조회" target="Element@4475048:1474279617940"/>
+<exit_state name="4.현재가" target="Element@2855198:1474279617940"/>
+<exit_state name="5.현재가" target="Element@4010572:1474279617940"/>
+<exit_state name="6.종합주가지수" target="Element@28399935:1474279617940"/>
+<exit_state name="7.코스닥지수" target="Element@5928323:1474279617940"/>
+<exit_state name="2.종목조회" target="Element@14230017:1474279617940"/>
+<exit_state name="0.통장잔고" target="Element@10687775:1474279617940"/>
+<exit_state name="8.잔고확인" target="Element@21470521:1474279617940"/>
+<exit_state name="9.통장잔고" target="Element@10939142:1474280108426"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17742672:1474279617940" name="Entry_SRA0008" type="Page Connector" width="133" x="-320" y="-369">
+<page_connector target="Element@30402385:1474273138689">Entry_SRA0008<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@10939142:1474280108426" name="Entry_SRA0011" type="Page Connector" width="133" x="-842" y="120">
+<page_connector target="Element@28551121:1474273658844">Entry_SRA0011<config/>
+</page_connector>
+</element>
+</page>

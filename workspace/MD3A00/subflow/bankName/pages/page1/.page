@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@851716:1475130313483" name="page1" version="6.0.1">
+<element height="46" id="Element@31:1475130313483" name="bankName" type="Subflow Start" width="108" x="237" y="30">
+<exit_states>
+<exit_state name="next" target="Element@2945254:1475131136183"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3202490:1475131136183" name="ENOracleDB_01" src="Element.DataBase.ENOracleDB" type="Decision Element" width="134" x="224" y="249">
+<exit_states>
+<exit_state name="success" target="Element@8359748:1475131136183"/>
+<exit_state name="fail" target="Element@5824652:1475131136183">
+<bendpoint>
+<dim1 x="-208" y="36"/>
+<dim2 x="31" y="-205"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@8359748:1475131136183" name="EUMultiOutputBlock_01" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="202" y="333">
+<exit_states>
+<exit_state name="done" target="Element@9880806:1475131136183"/>
+</exit_states>
+</element>
+<element height="46" id="Element@16651479:1475131136183" name="EULogWrite_01" src="Element.Utils.EULogWrite" type="Action Element" width="131" x="226" y="488">
+<exit_states>
+<exit_state name="done" target="Element@5824652:1475131136183"/>
+</exit_states>
+</element>
+<element height="46" id="Element@17453206:1475131136183" name="Hold" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="76" x="253" y="187">
+<exit_states>
+<exit_state name="done" target="Element@3202490:1475131136183"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2945254:1475131136183" name="EULogWrite_Query" src="Element.Utils.EULogWrite" type="Action Element" width="149" x="217" y="103">
+<exit_states>
+<exit_state name="done" target="Element@17453206:1475131136183"/>
+</exit_states>
+</element>
+<element height="15" id="Element@13105233:1475131136183" type="Comment" width="48" x="56" y="29">
+<comment><![CDATA[은행코드]]></comment>
+</element>
+<element height="46" id="Element@9880806:1475131136183" name="EUMultiOutputBlock_02" src="Element.Utils.EUMultiOutputBlock" type="Action Element" width="178" x="202" y="415">
+<exit_states>
+<exit_state name="done" target="Element@16651479:1475131136183"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5824652:1475131136183" name="Subflow Return_01" type="Subflow Return" width="152" x="-19" y="488"/>
+</page>

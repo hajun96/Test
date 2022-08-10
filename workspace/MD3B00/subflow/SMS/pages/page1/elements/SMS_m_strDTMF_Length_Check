@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@1965610:1476493633050" name="SMS_m_strDTMF_Length_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="SMS_m_strDTMF_Length_Check" default_exit_state="other">
+        <exit_state name="길이초과" conjugate="and">
+            <number operator="greater">
+                <data>
+                    <element name="SMS_m_strDTMF_Length" variable="value" />
+                </data>
+                <constant_string value="12" />
+            </number>
+        </exit_state>
+        <exit_state name="길이작음" conjugate="and">
+            <number operator="less">
+                <data>
+                    <element name="SMS_m_strDTMF_Length" variable="value" />
+                </data>
+                <constant_number value="10" />
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

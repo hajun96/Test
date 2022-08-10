@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<decision id="Element@18090955:1479532892321" name="m_strAccPwdErrCnt_Check" version="6.0.1">
+<config>
+<source type="Decision Editor"><![CDATA[<knowledge_base>
+    <rule name="A00000_m_strAccPwdErrCnt_Check" default_exit_state="other">
+        <exit_state name="3회미만" conjugate="and">
+            <number operator="less">
+                <data>
+                    <session name="m_strAccPwdErrCnt" />
+                </data>
+                <constant_number value="3" />
+            </number>
+        </exit_state>
+        <exit_state name="5회이상" conjugate="and">
+            <number operator="greater_equal">
+                <data>
+                    <session name="m_strAccPwdErrCnt" />
+                </data>
+                <constant_number value="5" />
+            </number>
+        </exit_state>
+    </rule>
+</knowledge_base>]]></source>
+</config>
+</decision>

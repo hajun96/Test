@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page id="Page@17005590:1470743632177" name="770000" version="6.0.1">
+<element height="46" id="Element@29856807:1470743632177" name="770000" type="Page Entry" width="92" x="334" y="272">
+<exit_states>
+<exit_state name="next" target="Element@7239241:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12288585:1471073260775" name="770000_770004_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="233" x="264" y="1972">
+<exit_states>
+<exit_state name="done" target="Element@6732886:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32043044:1471073260775" name="770000_NoMatch_Audio_2" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="196" x="739" y="1477">
+<exit_states>
+<exit_state name="done" target="Element@3606291:1471073260775"/>
+</exit_states>
+</element>
+<element height="30" id="Element@2735356:1471073260775" type="Comment" width="219" x="457" y="461">
+<comment><![CDATA[[770001]
+이용자비밀번호 사고 해지 서비스입니다.]]></comment>
+</element>
+<element height="46" id="Element@3606291:1471073260775" name="770000_770003" type="Subflow Call" width="139" x="311" y="1477">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT7/754005.wav</data>
+<data name="MINDIGIT">4</data>
+<data name="MAXDIGIT">9</data>
+<data name="PATTERN">0123456789#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">sharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@5078182:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@1348437:1471073260775" name="770000_NoMatch_Audio_3" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="196" x="717" y="2093">
+<exit_states>
+<exit_state name="done" target="Element@6732886:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2160717:1471073260775" name="770000_770004_m_strDTMF_Length_Check" type="Decision" width="285" x="238" y="2480">
+<exit_states>
+<exit_state name="other" target="Element@18850615:1471073260775"/>
+<exit_state name="주민번호" target="Element@11045929:1471074200412"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6179973:1471073260775" name="750000" type="Page Connector" width="92" x="662" y="2193">
+<page_connector target="Element@21439811:1470743625828">750000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18850615:1471073260775" name="770000_770004_m_strDTMFErr_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="231" x="699" y="2476">
+<exit_states>
+<exit_state name="done" target="Element@1348437:1471073260775"/>
+</exit_states>
+</element>
+<element height="60" id="Element@15842895:1471073260775" type="Comment" width="131" x="164" y="1470">
+<comment><![CDATA[[770003] : 비밀번호와 
+우물정자를 눌러주세요. 
+상위메뉴로 가시려면 
+우물정자를 눌러주세요.]]></comment>
+</element>
+<element height="15" id="Element@17632753:1471073260775" type="Comment" width="103" x="786" y="1460">
+<comment><![CDATA[잘못 누르셨습니다.]]></comment>
+</element>
+<element height="46" id="Element@20402005:1471073260775" name="770000_Input_Pwd" type="Page Entry" width="153" x="8" y="1357">
+<exit_states>
+<exit_state name="next" target="Element@2964447:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@4660458:1471073260775" name="770000_770003_m_strDTMFErr_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="231" x="722" y="1864">
+<exit_states>
+<exit_state name="done" target="Element@32043044:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@28686290:1471073260775" name="770000_AccPwd_Length" src="Element.Strings.EUStringLength" type="Action Element" width="183" x="289" y="1776">
+<exit_states>
+<exit_state name="done" target="Element@4108983:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2964447:1471073260775" name="770000_770003_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="233" x="264" y="1357">
+<exit_states>
+<exit_state name="done" target="Element@3606291:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@6732886:1471073260775" name="770000_770004" type="Subflow Call" width="140" x="310" y="2093">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT7/770004wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">14</data>
+<data name="PATTERN">0123456789#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">sharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@3931559:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9048141:1471073260775" name="END" type="Page Connector" width="75" x="26" y="2192">
+<page_connector target="Element@13471862:1470743142115">END<config/>
+</page_connector>
+</element>
+<element height="135" id="Element@28194111:1471073260775" type="Comment" width="183" x="-11" y="282">
+<comment><![CDATA[[시나리오정보]
+작성자 : 배은희
+작성일 : 2016년 8월 13일
+메뉴명 : 인증서비밀번호 사고해지
+서비스코드 : 770000
+
+[세션변수 사용내역]
+
+m_strAccountNum : 계좌번호]]></comment>
+</element>
+<element height="46" id="Element@7239241:1471073260775" name="770000_ServiceCode" src="Element.Utils.EUSetSvcCode" type="Action Element" width="176" x="292" y="400">
+<exit_states>
+<exit_state name="done" target="Element@1563353:1471073260775"/>
+</exit_states>
+</element>
+<element height="15" id="Element@17133437:1471073260775" type="Comment" width="103" x="763" y="2073">
+<comment><![CDATA[잘못 누르셨습니다.]]></comment>
+</element>
+<element height="46" id="Element@5078182:1471073260775" name="770000_Decision_770003" type="Decision" width="190" x="285" y="1579">
+<exit_states>
+<exit_state name="false : MAX ERROR" target="Element@20092478:1471073260775"/>
+<exit_state name="other" target="Element@2484759:1471073260775"/>
+<exit_state name="# : 상위메뉴" target="Element@19641628:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20164170:1471073260775" name="770000_Input_Jumin" type="Page Entry" width="181" x="-18" y="1972">
+<exit_states>
+<exit_state name="next" target="Element@12288585:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@3931559:1471073260775" name="770000_Decision_770004" type="Decision" width="190" x="285" y="2192">
+<exit_states>
+<exit_state name="false : MAX ERROR" target="Element@9048141:1471073260775"/>
+<exit_state name="other" target="Element@3420296:1471073260775"/>
+<exit_state name="# : 상위메뉴" target="Element@6179973:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20092478:1471073260775" name="END" type="Page Connector" width="75" x="48" y="1579">
+<page_connector target="Element@13471862:1470743142115">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@1563353:1471073260775" name="770000_770001" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="139" x="311" y="480">
+<exit_states>
+<exit_state name="done" target="Element@30268976:1471073347788"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8709661:1471073260775" name="770000_Jumin_Length" src="Element.Strings.EUStringLength" type="Action Element" width="171" x="295" y="2389">
+<exit_states>
+<exit_state name="done" target="Element@2160717:1471073260775"/>
+</exit_states>
+</element>
+<element height="60" id="Element@2699149:1471073260775" type="Comment" width="243" x="71" y="2087">
+<comment><![CDATA[[770004] 
+사고 내역 조회를 위해 
+주민등록번호 13자리를 눌러주세요.
+상위메뉴로 가시려면 우물정자를 눌러주세요.]]></comment>
+</element>
+<element height="46" id="Element@3420296:1471073260775" name="770000_Jumin" src="Element.Utils.EUSetSessionValue" type="Action Element" width="129" x="316" y="2293">
+<exit_states>
+<exit_state name="done" target="Element@8709661:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19641628:1471073260775" name="700000" type="Page Connector" width="116" x="582" y="1579">
+<page_connector target="Element@25352979:1471309510951">700000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@4108983:1471073260775" name="770000_770003_m_strDTMF_Length_Check" type="Decision" width="285" x="238" y="1864">
+<exit_states>
+<exit_state name="other" target="Element@4660458:1471073260775"/>
+<exit_state name="4자리" target="Element@12288585:1471073260775">
+<bendpoint>
+<dim1 x="-99" y="54"/>
+<dim2 x="-98" y="-54"/>
+</bendpoint>
+</exit_state>
+<exit_state name="5자리" target="Element@12288585:1471073260775">
+<bendpoint>
+<dim1 x="-40" y="55"/>
+<dim2 x="-39" y="-53"/>
+</bendpoint>
+</exit_state>
+<exit_state name="6자리" target="Element@12288585:1471073260775"/>
+<exit_state name="7자리" target="Element@12288585:1471073260775">
+<bendpoint>
+<dim1 x="52" y="54"/>
+<dim2 x="53" y="-54"/>
+</bendpoint>
+</exit_state>
+<exit_state name="8자리" target="Element@12288585:1471073260775">
+<bendpoint>
+<dim1 x="100" y="51"/>
+<dim2 x="101" y="-57"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@2484759:1471073260775" name="770000_AccPwd" src="Element.Utils.EUSetSessionValue" type="Action Element" width="140" x="310" y="1680">
+<exit_states>
+<exit_state name="done" target="Element@28686290:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@30268976:1471073347788" name="770000_AccountYN" type="Decision" width="158" x="301" y="579">
+<exit_states>
+<exit_state name="인증" target="Element@18397312:1471073682045"/>
+<exit_state name="미인증" target="Element@8483568:1471073426204"/>
+</exit_states>
+</element>
+<element height="46" id="Element@19553846:1471073426204" name="770000_Decision_770002" type="Decision" width="190" x="285" y="874">
+<exit_states>
+<exit_state name="other" target="Element@21042590:1471073426204"/>
+<exit_state name="# : 상위메뉴" target="Element@9395997:1471073426204"/>
+<exit_state name="false : MAXError" target="Element@27514074:1484611578175"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9445180:1471073426204" name="770000_m_strAccount" src="Element.Utils.EUSetSessionValue" type="Action Element" width="171" x="295" y="1251">
+<exit_states>
+<exit_state name="done" target="Element@2964447:1471073260775"/>
+</exit_states>
+</element>
+<element height="46" id="Element@15266064:1471073426204" name="770000_770002" type="Subflow Call" width="139" x="311" y="770">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT7/770002.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">13</data>
+<data name="PATTERN">*#0123456789</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">sharp</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@19553846:1471073426204"/>
+</exit_states>
+</element>
+<element height="15" id="Element@10552177:1471073426204" type="Comment" width="99" x="739" y="742">
+<comment><![CDATA[잘못누르셨습니다.]]></comment>
+</element>
+<element height="46" id="Element@18366138:1471073426204" name="770000_770002_m_strDTMFErr_Y" src="Element.Utils.EUSetSessionValue" type="Action Element" width="231" x="685" y="1138">
+<exit_states>
+<exit_state name="done" target="Element@32655123:1471073426204"/>
+</exit_states>
+</element>
+<element height="45" id="Element@11373064:1471073426204" type="Comment" width="307" x="-8" y="766">
+<comment><![CDATA[[770002] 
+계좌번호 11자리 또는 12자리와 우물정자를 눌러주세요. 
+상위메뉴로 가시려면 우물정자를 눌러주세요.]]></comment>
+</element>
+<element height="46" id="Element@21042590:1471073426204" name="770000_770002_m_strDTMF_Length" src="Element.Strings.EUStringLength" type="Action Element" width="247" x="257" y="1032">
+<exit_states>
+<exit_state name="done" target="Element@21845780:1471073426204"/>
+</exit_states>
+</element>
+<element height="46" id="Element@21845780:1471073426204" name="770000_770002_m_strDTMF_Length_Check" type="Decision" width="285" x="238" y="1138">
+<exit_states>
+<exit_state name="11자리" target="Element@9445180:1471073426204">
+<bendpoint>
+<dim1 x="-31" y="59"/>
+<dim2 x="-38" y="-53"/>
+</bendpoint>
+</exit_state>
+<exit_state name="12자리" target="Element@9445180:1471073426204">
+<bendpoint>
+<dim1 x="54" y="56"/>
+<dim2 x="47" y="-56"/>
+</bendpoint>
+</exit_state>
+<exit_state name="other" target="Element@18366138:1471073426204"/>
+</exit_states>
+</element>
+<element height="46" id="Element@8483568:1471073426204" name="770000_770002_m_strDTMFErr_N" src="Element.Utils.EUSetSessionValue" type="Action Element" width="233" x="264" y="672">
+<exit_states>
+<exit_state name="done" target="Element@15266064:1471073426204"/>
+</exit_states>
+</element>
+<element height="46" id="Element@9395997:1471073426204" name="700000" type="Page Connector" width="92" x="58" y="874">
+<page_connector target="Element@25352979:1471309510951">700000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@32692467:1471073426204" name="77000_InputAccount" type="Page Entry" width="163" x="-13" y="673">
+<exit_states>
+<exit_state name="next" target="Element@8483568:1471073426204"/>
+</exit_states>
+</element>
+<element height="46" id="Element@32655123:1471073426204" name="770000_NoMatch_Audio" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="184" x="706" y="772">
+<exit_states>
+<exit_state name="done" target="Element@15266064:1471073426204"/>
+</exit_states>
+</element>
+<element height="46" id="Element@18397312:1471073682045" name="770000_Input_Jumin" type="Page Connector" width="162" x="587" y="579">
+<page_connector target="Element@20164170:1471073260775">770000_Input_Jumin<config/>
+</page_connector>
+</element>
+<element height="15" id="Element@10702956:1471073980817" type="Comment" width="54" x="-296" y="4729">
+<comment><![CDATA[Comment]]></comment>
+</element>
+<element height="46" id="Element@11045929:1471074200412" name="770000_SagoCheck" type="Decision" width="157" x="302" y="2588">
+<exit_states>
+<exit_state name="Y" target="Element@3804372:1471074596100"/>
+<exit_state name="N" target="Element@9055302:1471572943787"/>
+</exit_states>
+</element>
+<element height="46" id="Element@5695107:1471074312168" name="770000_SagoN_Play" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="161" x="668" y="2789">
+<exit_states>
+<exit_state name="done" target="Element@8023492:1471074419307"/>
+</exit_states>
+</element>
+<element height="30" id="Element@20437247:1471074312168" type="Comment" width="202" x="696" y="2551">
+<comment><![CDATA[[TTS] 
+현재 안증서비밀번호 #회 오류입니다.]]></comment>
+</element>
+<element height="46" id="Element@52246:1471074312168" name="770000_SagoN_TTS" src="Element.Audio.EATTSMaker" type="Decision Element" width="160" x="670" y="2692">
+<exit_states>
+<exit_state name="success" target="Element@5695107:1471074312168"/>
+<exit_state name="fail" target="Element@5695107:1471074312168"/>
+</exit_states>
+</element>
+<element height="90" id="Element@29130209:1471074419307" type="Comment" width="236" x="857" y="2826">
+<comment><![CDATA[[770008] 
+7회 오류 시 사고 해지가 가능합니다. 
+기존 인증서비밀번호를 기억하실 경우 
+바로 접속이 가능합니다. 
+망각하셨을 경우 홈페이지 또는 모바일에서 
+공인인증서 재발급 후 이용하시기 바랍니다.]]></comment>
+</element>
+<element height="46" id="Element@8023492:1471074419307" name="770000_770008" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="145" x="676" y="2873">
+<exit_states>
+<exit_state name="done" target="Element@25443072:1471074481519"/>
+</exit_states>
+</element>
+<element height="46" id="Element@25443072:1471074481519" name="770000_770007" type="Subflow Call" width="139" x="679" y="2977">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT7/770007.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">0*#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@4030682:1471074481519"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12349466:1471074481519" name="END" type="Page Connector" width="75" x="969" y="3069">
+<page_connector target="Element@13471862:1470743142115">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@4030682:1471074481519" name="770000_Decision770007" type="Decision" width="185" x="656" y="3069">
+<exit_states>
+<exit_state name="false : MAX ERROR" target="Element@12349466:1471074481519"/>
+<exit_state name="# : 상위메뉴" target="Element@23326106:1471074481519"/>
+<exit_state name="* : 재청취" target="Element@52246:1471074312168">
+<bendpoint>
+<dim1 x="-182" y="0"/>
+<dim2 x="-182" y="377"/>
+</bendpoint>
+<bendpoint>
+<dim1 x="-180" y="-382"/>
+<dim2 x="-180" y="-5"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@23326106:1471074481519" name="700000" type="Page Connector" width="116" x="690" y="3175">
+<page_connector target="Element@25352979:1471309510951">700000<config/>
+</page_connector>
+</element>
+<element height="60" id="Element@30844648:1471074481519" type="Comment" width="243" x="847" y="2970">
+<comment><![CDATA[[770007] 
+다시 듣고 싶으시면 별표를, 
+상담직원 연결은 0번, 
+상위메뉴로 가시려면 우물정자를 눌러주세요.]]></comment>
+</element>
+<element height="60" id="Element@14334853:1471074596100" type="Comment" width="243" x="-95" y="2598">
+<comment><![CDATA[[770005] 
+인증서비밀번호 사고등록 내역이 있습니다. 
+해지하시려면 1번, 상담직원 연결은 0번, 
+상위메뉴로 가시려면 우물정자를 눌러주세요.]]></comment>
+</element>
+<element height="46" id="Element@3804372:1471074596100" name="770000_770005" type="Subflow Call" width="139" x="-26" y="2690">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT7/770007.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">01#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@18893313:1471074596100"/>
+</exit_states>
+</element>
+<element height="46" id="Element@20429586:1471074596100" name="700000" type="Page Connector" width="116" x="-213" y="2802">
+<page_connector target="Element@25352979:1471309510951">700000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@5058237:1471074596100" name="END" type="Page Connector" width="75" x="271" y="2812">
+<page_connector target="Element@13471862:1470743142115">END<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@18893313:1471074596100" name="770000_Decision770005" type="Decision" width="185" x="-49" y="2812">
+<exit_states>
+<exit_state name="false : MAX ERROR" target="Element@5058237:1471074596100"/>
+<exit_state name="# : 상위메뉴" target="Element@20429586:1471074596100"/>
+<exit_state name="1 : 해지" target="Element@12173609:1471074726436"/>
+</exit_states>
+</element>
+<element height="46" id="Element@12173609:1471074726436" name="770000_770006_1" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="188" x="-50" y="2914">
+<exit_states>
+<exit_state name="done" target="Element@33347706:1471074789850"/>
+</exit_states>
+</element>
+<element height="105" id="Element@1759601:1471074726436" type="Comment" width="247" x="175" y="2920">
+<comment><![CDATA[[770006] 
+인증서비밀번호 사고 해지가 완료되었습니다. 
+기존 인증서비밀번호를 기억하실 경우 
+바로 접속이 가능합니다. 
+망각하셨을 경우 홈페이지 
+또는 모바일에서 공인인증서를 
+재발급 후 이용하시기 바랍니다.]]></comment>
+</element>
+<element height="46" id="Element@30919263:1471074789850" name="END" type="Page Connector" width="75" x="264" y="3146">
+<page_connector target="Element@13471862:1470743142115">END<config/>
+</page_connector>
+</element>
+<element height="60" id="Element@12417798:1471074789850" type="Comment" width="243" x="142" y="3047">
+<comment><![CDATA[[770007] 
+다시 듣고 싶으시면 별표를, 
+상담직원 연결은 0번, 
+상위메뉴로 가시려면 우물정자를 눌러주세요.]]></comment>
+</element>
+<element height="46" id="Element@15225710:1471074789850" name="770000_Decision770007_1" type="Decision" width="197" x="-55" y="3146">
+<exit_states>
+<exit_state name="false : MAX ERROR" target="Element@30919263:1471074789850"/>
+<exit_state name="# : 상위메뉴" target="Element@2565098:1471074789850"/>
+<exit_state name="* : 재청취" target="Element@12173609:1471074726436">
+<bendpoint>
+<dim1 x="-195" y="-123"/>
+<dim2 x="-196" y="109"/>
+</bendpoint>
+</exit_state>
+</exit_states>
+</element>
+<element height="46" id="Element@33347706:1471074789850" name="770000_770007_1" type="Subflow Call" width="151" x="-32" y="3054">
+<subflow_call subflow_name="dtmf" target="Element@31:1468913166322">
+<config>
+<argument_data>
+<data name="MENT">{Data.Session.m_MediaServer}/MENT7/770007.wav</data>
+<data name="MINDIGIT">1</data>
+<data name="MAXDIGIT">1</data>
+<data name="PATTERN">0*#</data>
+<data name="ERR">{Data.Session.m_strDTMFErr}</data>
+<data name="NUM">z</data>
+<data name="OPTION">menu</data>
+</argument_data>
+</config>
+</subflow_call>
+<exit_states>
+<exit_state name="next" target="Element@15225710:1471074789850"/>
+</exit_states>
+</element>
+<element height="46" id="Element@2565098:1471074789850" name="700000" type="Page Connector" width="116" x="-14" y="3252">
+<page_connector target="Element@25352979:1471309510951">700000<config/>
+</page_connector>
+</element>
+<element height="46" id="Element@9055302:1471572943787" name="770000_Hold_SagoN_TTS" src="com.audium.server.voiceElement.audio.MAudio" type="Voice Element" width="191" x="651" y="2594">
+<exit_states>
+<exit_state name="done" target="Element@52246:1471074312168"/>
+</exit_states>
+</element>
+<element height="46" id="Element@27514074:1484611578175" name="MAIN" type="Page Connector" width="92" x="56" y="949">
+<page_connector target="Element@3553551:1470743142115">MAIN<config/>
+</page_connector>
+</element>
+</page>
