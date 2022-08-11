@@ -6,84 +6,83 @@ import com.audium.server.voiceElement.ActionElementBase;
 
 public class TTS_111_2 extends ActionElementBase{
 	public void doAction(String name, ActionElementData actionAPI) throws AudiumException {
-		String m_strExpectAmt = (String) actionAPI.getSessionData("m_strExpectAmt");			//ÇöÀç°¡
-		m_strExpectAmt = trimNum(m_strExpectAmt);
-		String m_strExpectFlucBit = (String) actionAPI.getSessionData("m_strExpectFlucBit");	//ÀüÀÏ´ëºñ±¸ºĞ
-		String m_strExpectFluctAmt = (String) actionAPI.getSessionData("m_strExpectFluctAmt");	//ÀüÀÏ´ëºñ
+		String m_strExpectAmt = (String) actionAPI.getSessionData("m_strExpectAmt");			//í˜„ì¬ê°€
+		String m_strExpectFlucBit = (String) actionAPI.getSessionData("m_strExpectFlucBit");	//ì „ì¼ëŒ€ë¹„êµ¬ë¶„
+		String m_strExpectFluctAmt = (String) actionAPI.getSessionData("m_strExpectFluctAmt");	//ì „ì¼ëŒ€ë¹„
 		m_strExpectFluctAmt = trimNum(m_strExpectFluctAmt);
-		String m_strExpectVolume = (String) actionAPI.getSessionData("m_strExpectVolume");		//°Å·¡·®
+		String m_strExpectVolume = (String) actionAPI.getSessionData("m_strExpectVolume");		//ê±°ë˜ëŸ‰
 		m_strExpectVolume = trimNum(m_strExpectVolume);
 		Float f_m_strExpectVolume = Float.parseFloat(m_strExpectVolume);
 		
 		StringBuffer sb = new StringBuffer();
 		
-		if(m_strExpectFlucBit.equals("0")){			//º¸ÇÕ
-			sb.append("¿¹»ó°¡´Â")
-			.append("º¸ÇÕÀÎ")
+		if(m_strExpectFlucBit.equals("0")){			//ë³´í•©
+			sb.append("ì˜ˆìƒê°€ëŠ”")
+			.append("ë³´í•©ì¸")
 			.append(m_strExpectAmt)
-			.append(", ¿ø, ");
-		}else if(m_strExpectFlucBit.equals("1")){	//¿À¸¥
-			sb.append("¿¹»ó°¡´Â")
+			.append(", ì›, ");
+		}else if(m_strExpectFlucBit.equals("1")){	//ì˜¤ë¥¸
+			sb.append("ì˜ˆìƒê°€ëŠ”")
 			.append(m_strExpectFluctAmt)
-			.append(", ¿ø, ")
-			.append("¿À¸¥")
+			.append(", ì›, ")
+			.append("ì˜¤ë¥¸")
 			.append(m_strExpectAmt)
-			.append(", ¿ø, ");
-		}else if(m_strExpectFlucBit.equals("2")){	//»óÇÑ°¡
-			sb.append("¿¹»ó°¡´Â")
-			.append("»óÇÑ°¡·Î")
+			.append(", ì›, ");
+		}else if(m_strExpectFlucBit.equals("2")){	//ìƒí•œê°€
+			sb.append("ì˜ˆìƒê°€ëŠ”")
+			.append("ìƒí•œê°€ë¡œ")
 			.append(m_strExpectAmt)
-			.append(", ¿ø, ");
-		}else if(m_strExpectFlucBit.equals("3")){	//±â¼¼»ó½Â
-			sb.append("¿¹»ó°¡´Â")
-			.append("±â¼¼»ó½ÂÀ¸·Î")
+			.append(", ì›, ");
+		}else if(m_strExpectFlucBit.equals("3")){	//ê¸°ì„¸ìƒìŠ¹
+			sb.append("ì˜ˆìƒê°€ëŠ”")
+			.append("ê¸°ì„¸ìƒìŠ¹ìœ¼ë¡œ")
 			.append(m_strExpectAmt)
-			.append(", ¿ø, ");
-		}else if(m_strExpectFlucBit.equals("4")){	//±â¼¼»óÇÑ
-			sb.append("¿¹»ó°¡´Â")
-			.append("±â¼¼»óÇÑÀ¸·Î")
+			.append(", ì›, ");
+		}else if(m_strExpectFlucBit.equals("4")){	//ê¸°ì„¸ìƒí•œ
+			sb.append("ì˜ˆìƒê°€ëŠ”")
+			.append("ê¸°ì„¸ìƒí•œìœ¼ë¡œ")
 			.append(m_strExpectAmt)
-			.append(", ¿ø, ");
-		}else if(m_strExpectFlucBit.equals("5")){	//³»¸°
-			sb.append("¿¹»ó°¡´Â")
+			.append(", ì›, ");
+		}else if(m_strExpectFlucBit.equals("5")){	//ë‚´ë¦°
+			sb.append("ì˜ˆìƒê°€ëŠ”")
 			.append(m_strExpectFluctAmt)
-			.append(", ¿ø, ")
-			.append("³»¸°")
+			.append(", ì›, ")
+			.append("ë‚´ë¦°")
 			.append(m_strExpectAmt)
-			.append(", ¿ø, ");
-		}else if(m_strExpectFlucBit.equals("6")){	//ÇÏÇÑ°¡
-			sb.append("¿¹»ó°¡´Â")
-			.append("ÇÏÇÑ°¡·Î")
+			.append(", ì›, ");
+		}else if(m_strExpectFlucBit.equals("6")){	//í•˜í•œê°€
+			sb.append("ì˜ˆìƒê°€ëŠ”")
+			.append("í•˜í•œê°€ë¡œ")
 			.append(m_strExpectAmt)
-			.append(", ¿ø, ");
-		}else if(m_strExpectFlucBit.equals("7")){	//±â¼¼ÇÏ¶ô
-			sb.append("¿¹»ó°¡´Â")
-			.append("±â¼¼ÇÏ¶ôÀ¸·Î")
+			.append(", ì›, ");
+		}else if(m_strExpectFlucBit.equals("7")){	//ê¸°ì„¸í•˜ë½
+			sb.append("ì˜ˆìƒê°€ëŠ”")
+			.append("ê¸°ì„¸í•˜ë½ìœ¼ë¡œ")
 			.append(m_strExpectAmt)
-			.append(", ¿ø, ");
-		}else if(m_strExpectFlucBit.equals("8")){	//±â¼¼ÇÏÇÑ
-			sb.append("¿¹»ó°¡´Â")
-			.append("±â¼¼ÇÏÇÑÀ¸·Î")
+			.append(", ì›, ");
+		}else if(m_strExpectFlucBit.equals("8")){	//ê¸°ì„¸í•˜í•œ
+			sb.append("ì˜ˆìƒê°€ëŠ”")
+			.append("ê¸°ì„¸í•˜í•œìœ¼ë¡œ")
 			.append(m_strExpectAmt)
-			.append(", ¿ø, ");
-		}else if(m_strExpectFlucBit.equals("9")){	//°Å·¡¾øÀ½
-			sb.append("¿¹»ó°¡´Â")
-			.append("º¸ÇÕÀÎ")
+			.append(", ì›, ");
+		}else if(m_strExpectFlucBit.equals("9")){	//ê±°ë˜ì—†ìŒ
+			sb.append("ì˜ˆìƒê°€ëŠ”")
+			.append("ë³´í•©ì¸")
 			.append(m_strExpectAmt)
-			.append(", ¿ø, ");
+			.append(", ì›, ");
 		}else{
 			actionAPI.setSessionData("ment", "error");
 		}
 		
 		if(f_m_strExpectVolume > 0.0){
 			m_strExpectVolume = trimNum(m_strExpectVolume);
-			sb.append("¿¹»ó , °Å·¡·®Àº")
+			sb.append("ì˜ˆìƒ , ê±°ë˜ëŸ‰ì€")
 			.append(m_strExpectVolume)
-			.append(" , ÁÖ, ")
-			.append(" , ÀÔ´Ï´Ù. ");
+			.append(" , ì£¼, ")
+			.append(" , ì…ë‹ˆë‹¤. ");
 		}else{
-			sb.append("¿¹»ó , °Å·¡·®Àº")
-			.append(" , ¾ø½À´Ï´Ù. ");
+			sb.append("ì˜ˆìƒ , ê±°ë˜ëŸ‰ì€")
+			.append(" , ì—†ìŠµë‹ˆë‹¤. ");
 		}
 		
 		actionAPI.setSessionData("ment", sb.toString());
