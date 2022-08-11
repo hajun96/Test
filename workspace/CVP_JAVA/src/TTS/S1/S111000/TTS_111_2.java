@@ -7,6 +7,7 @@ import com.audium.server.voiceElement.ActionElementBase;
 public class TTS_111_2 extends ActionElementBase{
 	public void doAction(String name, ActionElementData actionAPI) throws AudiumException {
 		String m_strExpectAmt = (String) actionAPI.getSessionData("m_strExpectAmt");			//현재가
+		m_strExpectAmt = trimNum(m_strExpectAmt); // TrimNum 추가
 		String m_strExpectFlucBit = (String) actionAPI.getSessionData("m_strExpectFlucBit");	//전일대비구분
 		String m_strExpectFluctAmt = (String) actionAPI.getSessionData("m_strExpectFluctAmt");	//전일대비
 		m_strExpectFluctAmt = trimNum(m_strExpectFluctAmt);
